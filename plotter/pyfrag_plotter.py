@@ -8,7 +8,7 @@ np.set_printoptions(precision=2)
 
 plot_systems_dic: dict[str, dict[str, list[str]]] = {
     "orbs": {
-        # "plot_all_O_di_ureas": ["ureas_di_O_Cs_all", "ureas_di_O_Cs_sigma", "ureas_di_O_Cs_pi"],
+        "plot_all_O_di_ureas": ["ureas_di_O_Cs_all", "ureas_di_O_Cs_sigma", "ureas_di_O_Cs_pi"],
         # "plot_all_S_di_ureas": ["ureas_di_S_Cs_all", "ureas_di_S_Cs_sigma", "ureas_di_S_Cs_pi"],
         # "plot_all_Se_di_ureas": ["ureas_di_Se_Cs_all", "ureas_di_Se_Cs_sigma", "ureas_di_Se_Cs_pi"],
         # "plot_all_O_di_deltamides": ["deltamides_di_O_Cs_all", "deltamides_di_O_Cs_sigma", "deltamides_di_O_Cs_pi"],
@@ -20,12 +20,12 @@ plot_systems_dic: dict[str, dict[str, list[str]]] = {
         # "plot_all_O_tri_ureas": ["ureas_tri_O_Cs_all", "ureas_tri_O_Cs_sigma", "ureas_tri_O_Cs_pi"],
         # "plot_all_S_tri_ureas": ["ureas_tri_S_Cs_all", "ureas_tri_S_Cs_sigma", "ureas_tri_S_Cs_pi"],
         # "plot_all_Se_tri_ureas": ["ureas_tri_Se_Cs_all", "ureas_tri_Se_Cs_sigma", "ureas_tri_Se_Cs_pi"],
-        "plot_all_O_tri_deltamides": ["deltamides_tri_O_Cs_all", "deltamides_tri_O_Cs_sigma", "deltamides_tri_O_Cs_pi"],
-        "plot_all_S_tri_deltamides": ["deltamides_tri_S_Cs_all", "deltamides_tri_S_Cs_sigma", "deltamides_tri_S_Cs_pi"],
-        "plot_all_Se_tri_deltamides": ["deltamides_tri_Se_Cs_all", "deltamides_tri_Se_Cs_sigma", "deltamides_tri_Se_Cs_pi"],
-        "plot_all_O_tri_squaramides": ["squaramides_tri_O_Cs_all", "squaramides_tri_O_Cs_sigma", "squaramides_tri_O_Cs_pi"],
-        "plot_all_S_tri_squaramides": ["squaramides_tri_S_Cs_all", "squaramides_tri_S_Cs_sigma", "squaramides_tri_S_Cs_pi"],
-        "plot_all_Se_tri_squaramides": ["squaramides_tri_Se_Cs_all", "squaramides_tri_Se_Cs_sigma", "squaramides_tri_Se_Cs_pi"],
+        # "plot_all_O_tri_deltamides": ["deltamides_tri_O_Cs_all", "deltamides_tri_O_Cs_sigma", "deltamides_tri_O_Cs_pi"],
+        # "plot_all_S_tri_deltamides": ["deltamides_tri_S_Cs_all", "deltamides_tri_S_Cs_sigma", "deltamides_tri_S_Cs_pi"],
+        # "plot_all_Se_tri_deltamides": ["deltamides_tri_Se_Cs_all", "deltamides_tri_Se_Cs_sigma", "deltamides_tri_Se_Cs_pi"],
+        # "plot_all_O_tri_squaramides": ["squaramides_tri_O_Cs_all", "squaramides_tri_O_Cs_sigma", "squaramides_tri_O_Cs_pi"],
+        # "plot_all_S_tri_squaramides": ["squaramides_tri_S_Cs_all", "squaramides_tri_S_Cs_sigma", "squaramides_tri_S_Cs_pi"],
+        # "plot_all_Se_tri_squaramides": ["squaramides_tri_Se_Cs_all", "squaramides_tri_Se_Cs_sigma", "squaramides_tri_Se_Cs_pi"],
     },
     # "chalcs": {
     #     "plot_all_OSSe_di_ureas": ["ureas_di_O_Cs_all", "ureas_di_S_Cs_all", "ureas_di_Se_Cs_all"],
@@ -50,8 +50,10 @@ plot_systems_dic: dict[str, dict[str, list[str]]] = {
 }
 
 # ################# General Data ###################
-output_dir = "/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Projects/Squaramides/Plots"
-pyfragresults_dir = "/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Projects/Squaramides/pyfrag_results"
+# output_dir = "/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Projects/Squaramides/Plots"
+# pyfragresults_dir = "/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Projects/Squaramides/pyfrag_results"
+output_dir = r"C:\Users\siebb\VU_PhD\PhD\Projects\Squaramides\Plots"
+pyfragresults_dir = r"C:\Users\siebb\VU_PhD\PhD\Projects\Squaramides\pyfrag_results"
 # plot_type = 'Sync'#  'NP_trends' , 'E_trends'
 # plotfoldername = 'AB_Test'# 'PlotFull_Ge_PSync_Ethy_Series'
 
@@ -129,11 +131,11 @@ if __name__ == "__main__":
             print(f"Output folder       {j(output_dir, plot_type, plotfoldername)}\n")
 
             print("-" * 10, " Peak Info ", "-" * 10)
-            [
-                print(f"{system} with {pp.stat_point} energy at {inst.get_peakinfo()['IRC'] :<3d}at coord = {inst.get_peakinfo()[irc_coord] :.4f} A with energy {inst.get_peakinfo()['EnergyTotal'] :.1f}")
-                for system, inst in zip(systems, instances)
-            ]
-            print("")
+            for system, inst in zip(systems, instances):
+                print(f"{system} with {pp.stat_point} energy at {inst.get_peakinfo()['IRC'] :<3d}", end=" ")
+                print(f"at coord = {inst.get_peakinfo()[irc_coord] :.4f} A", end=" ")
+                print(f"with energy {inst.get_peakinfo()['EnergyTotal'] :.1f}")
+            print()
 
             print("-" * 10, " Locations of inputfiles ", "-" * 10)
             [print(inputfile) for inputfile in inputfiles]
@@ -156,8 +158,10 @@ if __name__ == "__main__":
                 outfile.write("\n")
 
                 outfile.write(f'{"-"*10} Peak Info {"-"*10}\n')
-                [outfile.write(f"""{system} with max energy at {inst.get_peakinfo()["IRC"] :<3d}at coord = {inst.get_peakinfo()[irc_coord] :.4f} A with energy {inst.get_peakinfo()["EnergyTotal"] :.1f}\n""")
-                    for system, inst in zip(systems, instances)]
+                for system, inst in zip(systems, instances):
+                    outfile.write(f"{system} with {pp.stat_point} energy at {inst.get_peakinfo()['IRC'] :<3d}")
+                    outfile.write(f"at coord = {inst.get_peakinfo()[irc_coord] :.4f} A")
+                    outfile.write(f"with energy {inst.get_peakinfo()['EnergyTotal'] :.1f}\n")
                 outfile.write("\n")
 
                 outfile.write(f'{"-"*10} Locations of inputfiles {"-"*10}\n')
