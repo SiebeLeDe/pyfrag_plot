@@ -1,7 +1,7 @@
 import os
 import tempfile
 import pytest
-from plotter.file_func import get_pyfrag_files
+from pyfrag_plotter.plotter.file_func import get_pyfrag_files
 
 
 @pytest.fixture
