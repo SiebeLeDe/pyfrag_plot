@@ -132,11 +132,12 @@ if __name__ == "__main__":
             print(f"Output folder       {j(output_dir, plot_type, plotfoldername)}\n")
 
             print("-" * 10, " Peak Info ", "-" * 10)
-            [
-                print(f"{system} with {pp.stat_point} energy at {inst.get_peakinfo()['IRC'] :<3d}at coord = {inst.get_peakinfo()[irc_coord] :.4f} A with energy {inst.get_peakinfo()['EnergyTotal'] :.1f}")
-                for system, inst in zip(systems, instances)
-            ]
-            print("")
+            print()
+            for system, inst in zip(systems, instances):
+                print(f"{system} with {pp.stat_point} energy at {inst.get_peakinfo()['IRC'] :<3d}", end=" ")
+                print(f"at coord = {inst.get_peakinfo()[irc_coord] :.4f} A", end=" ")
+                print(f"with energy {inst.get_peakinfo()['EnergyTotal'] :.1f}")
+            print()
 
             print("-" * 10, " Locations of inputfiles ", "-" * 10)
             [print(inputfile) for inputfile in inputfiles]
@@ -147,7 +148,7 @@ if __name__ == "__main__":
             print("")
 
             # Does the same as the previous printing block, but now writing it to a file
-            with open(j(output_dir, plot_type, plotfoldername, "result.txt"),"w", encoding="utf-8") as outfile:
+            with open(j(output_dir, plot_type, plotfoldername, "result.txt"), "w", encoding="utf-8") as outfile:
 
                 outfile.write(f'{"-"*10} Settings {"-"*10}\n')
                 outfile.write(f"Solo plot           {solo_plot}\n")
@@ -159,8 +160,10 @@ if __name__ == "__main__":
                 outfile.write("\n")
 
                 outfile.write(f'{"-"*10} Peak Info {"-"*10}\n')
-                [outfile.write(f"""{system} with max energy at {inst.get_peakinfo()["IRC"] :<3d}at coord = {inst.get_peakinfo()[irc_coord] :.4f} A with energy {inst.get_peakinfo()["EnergyTotal"] :.1f}\n""")
-                    for system, inst in zip(systems, instances)]
+                for system, inst in zip(systems, instances):
+                    outfile.write(f"{system} with {pp.stat_point} energy at {inst.get_peakinfo()['IRC'] :<3d}")
+                    outfile.write(f"at coord = {inst.get_peakinfo()[irc_coord] :.4f} A")
+                    outfile.write(f"with energy {inst.get_peakinfo()['EnergyTotal'] :.1f}\n")
                 outfile.write("\n")
 
                 outfile.write(f'{"-"*10} Locations of inputfiles {"-"*10}\n')
