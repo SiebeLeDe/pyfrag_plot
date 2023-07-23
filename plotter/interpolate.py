@@ -1,5 +1,6 @@
 # Code that contains a class/function used for interpolating data from the PyFrag calculations
 # Siebe Lekanne Deprez | 4 Feb 2022
+from typing import Dict
 import pyfrag_plotter as pfp
 import plot_parameters as pp
 import numpy as np
@@ -41,8 +42,8 @@ class InterpolatePyFragData:
         self.systems = instances
         self.bondlength = bondlength
         self.interpol_indices = []
-        self.interpolated_data: dict[str, dict[str, float]] = {}
-        self.interpolated_specialkeys: dict[str, dict[str, dict[str, dict[str, float]]]] = {}
+        self.interpolated_data: Dict[str, Dict[str, float]] = {}
+        self.interpolated_specialkeys: Dict[str, Dict[str, Dict[str, Dict[str, float]]]] = {}
 
     def interpolate(self):
         """
@@ -62,7 +63,7 @@ class InterpolatePyFragData:
         """
         Determines which indices in the bondlength array are the closest to the desired bondlength
         Then it uses the indices to interpolate data at the desired bondlength
-        Returns dictionary with the format: keys | y-values of one key for each key
+        Returns Dictionary with the format: keys | y-values of one key for each key
         """
         diff_array = data[pfp.irc_coord] - self.bondlength
 
@@ -85,10 +86,10 @@ class InterpolatePyFragData:
 
         return i_interpol, nearest_points
 
-    def interpolate_keys(self, i_points, x_points, data) -> dict[str, float]:
+    def interpolate_keys(self, i_points, x_points, data) -> Dict[str, float]:
         """
         Calculates the interpolated data using the indices (i_points) and nearest x-values (x_points) around the desired bondlength
-        Returns dictionary with the format: keys | y-values of one key for each key
+        Returns Dictionary with the format: keys | y-values of one key for each key
         """
         # Uses the nearest points to solve a linear equation for specific data,
         # specified by the keys in the inter_keys1 list
@@ -101,7 +102,7 @@ class InterpolatePyFragData:
     def interpolate_specialkeys(self, i_points, x_points, system, systemdata):
         """
         Interpolated data of special keys using the indices (i_points) and nearest x-values (x_points) around the desired bondlength
-        Returns dictionary with the format: keys | y-values of one key for each key
+        Returns Dictionary with the format: keys | y-values of one key for each key
         """
         specialkeys_dic = system.get_specialkey()
         ret_data = {}

@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import List, Optional
 import numpy as np
 from matplotlib.ticker import MaxNLocator
 import matplotlib.pyplot as plt
@@ -629,7 +629,7 @@ def set_plot_details(
     title: Optional[str] = None,
     savefig: Optional[str] = None,
     clear: Optional[bool] = True,
-    ylim: Optional[list[float]] = None,
+    ylim: Optional[List[float]] = None,
     vline: Optional[float] = None,
     zero_line: Optional[bool] = None,
 ):

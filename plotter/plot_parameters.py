@@ -1,4 +1,5 @@
 # Script that specifies general plot parameters used in the pyfrag_plotter.py file
+from typing import List
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 mpl.use("Agg")
@@ -89,12 +90,12 @@ har_eV_ratio = 27.211  # 1 hartree = 27.211 eV
 outlier_threshold = 70  # kcal/mol
 
 # y limits for all plots
-ASM_ylim: list[float] = [-20, 20]  # [-80, 80]
-strain_ylim: list[float] = [0, 50]
-EDA_ylim: list[float] = [-20, 20]
+ASM_ylim: List[float] = [-20, 20]  # [-80, 80]
+strain_ylim: List[float] = [0, 50]
+EDA_ylim: List[float] = [-20, 20]
 
 # x limits for all plots
-xlim: list[float] = [-0.5, 0.5]
+xlim: List[float] = [-0.5, 0.5]
 
 # Determines if a vertical line should be plotted (mostly used for visualizing the interpolation line)
 vline = None
