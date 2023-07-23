@@ -1,7 +1,8 @@
 import os
+from typing import List, Tuple
 
 
-def get_pyfrag_files(folder_path: str) -> list[tuple[str, str]]:
+def get_pyfrag_files(folder_path: str) -> List[Tuple[str, str]]:
     """ Searches for pyfrag input files and pyfrag txt files in the given folder and returns a list of tuples containing the absolute path to the pyfrag input file and the pyfrag txt file
 
     :param folder_path: absolute path to the folder containing the pyfrag input files
@@ -11,7 +12,7 @@ def get_pyfrag_files(folder_path: str) -> list[tuple[str, str]]:
     :rtype: list[tuple[str, str]]
     """
 
-    pyfrag_files: list[tuple[str, str]] = []
+    pyfrag_files: List[Tuple[str, str]] = []
     for root, _, files in os.walk(folder_path):
         # print(files)
         if root.count(os.sep) - folder_path.count(os.sep) > 2:

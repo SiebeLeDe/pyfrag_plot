@@ -24,7 +24,7 @@ def temp_dir():
         yield temp_dir
 
 
-def test_get_pyfrag_files_with_valid_inputfiles(temp_dir):
+def test_get_pyfrag_files_with_valid_inputfiles(temp_dir: str):
     pyfrag_files = get_pyfrag_files(temp_dir)
     assert len(pyfrag_files) == 3
     assert (os.path.join(temp_dir, 'file1.in'), os.path.join(temp_dir, 'pyfrag_file1.txt')) in pyfrag_files
