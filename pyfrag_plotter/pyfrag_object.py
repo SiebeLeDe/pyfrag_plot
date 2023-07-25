@@ -61,7 +61,7 @@ class Irrep:
 
 
 @define(slots=True)
-class PyFragObject:
+class PyFragResultsObject:
     """
     Dataclass containing all the data of *one* pyfrag calculation
     """
@@ -72,3 +72,4 @@ class PyFragObject:
     orb_energies: Optional[Sequence[OrbitalEnergy]] = None
     populations: Optional[Sequence[Population]] = None
     vdd: Optional[Sequence[VDD]] = None
+    irrep: Optional[Sequence[Irrep]] = None

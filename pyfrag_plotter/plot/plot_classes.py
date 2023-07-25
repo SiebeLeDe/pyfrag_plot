@@ -1,18 +1,22 @@
-from typing import List, Optional
-import numpy as np
-from matplotlib.ticker import MaxNLocator
-import matplotlib.pyplot as plt
 import os
-import pyfrag_plotter as pfp
-import plot_parameters as pp
 from os.path import join as j
+from typing import List, Optional, Dict, Tuple
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pyfrag_plotter.plot_parameters as pp
+from matplotlib.ticker import MaxNLocator
+
+extra_keys = ["orbitalenergy", "population", "overlap"]
 
 
 class SoloPlotter:
-    def __init__(self, inputfile, resultfile, color, systemname):
+    def __init__(self, inputfile, resultfile, color, systemname, irc_coord_info: Tuple[str, Dict[str, str]], max_plotstep):
         # Init variables
         self.name = systemname
         self.color = color
+        self.irc_coord, self.irc_coords = irc_coord_info
+        self.max_plotstep = max_plotstep
 
         # Init functions
         self.read_inputfile(inputfile)
@@ -61,7 +65,7 @@ class SoloPlotter:
                     if "frag2" in elements:
                         elements[elements.index("frag2")] = self.name.split("_")[1]
                     # Checks if an element of a line is in the extra_keys list ...
-                    if element in pfp.extra_keys:
+                    if element in extra_keys:
                         if old_spec in "":
                             old_spec = elements[0]
                         if elements[0] in old_spec:
@@ -87,17 +91,17 @@ class SoloPlotter:
 
         # Determines until which step the data should be processed (eventually plotted)
         self.max_steps = len(steps) - 1
-        if isinstance(pfp.max_plotstep, int):
-            self.max_steps = pfp.max_plotstep
-        elif isinstance(pfp.max_plotstep, float):
+        if isinstance(self.max_plotstep, int):
+            self.max_steps = self.max_plotstep
+        elif isinstance(self.max_plotstep, float):
             # First find to which array the specified bondlength should be compared to, for example a stretch coord of an angle
             try:
-                irc_index = np.where(header == pfp.irc_coord)[0] - 1
+                irc_index = np.where(header == self.irc_coord)[0] - 1
             except IndexError:
-                raise NameError(f"{pfp.irc_coord} not in header of pyfrag text file")
+                raise NameError(f"{self.irc_coord} not in header of pyfrag text file")
             # Then determine the nearest value using the correct array
-            self.max_steps = np.abs(data[:, irc_index] - pfp.max_plotstep).argmin()
-        elif isinstance(pfp.max_plotstep, str):
+            self.max_steps = np.abs(data[:, irc_index] - self.max_plotstep).argmin()
+        elif isinstance(self.max_plotstep, str):
             self.max_steps = self.determine_stationary_point(data[:, 1])
 
         # Processes the data
@@ -255,7 +259,7 @@ class SoloPlotter:
             MO_pair = ["_".join(orb_keys[i].split("_")[1:]), "_".join(orb_keys[i + 1].split("_")[1:])]
             label = "_".join(MO_pair)
             gap = self.get_energygap(orb_keys[i], orb_keys[i + 1])
-            plt.plot(self.datadic[pfp.irc_coord], gap, label=label, color=pp.solo_col[i])
+            plt.plot(self.datadic[self.irc_coord], gap, label=label, color=pp.solo_col[i])
             set_plot_details(ylabel="\u03B5 / eV", title=f"Energy Gap #{i}", savefig=j(self.path, "Energy Gap #{i}.png"))
 
     def plot_populations(self, pop_keys):
@@ -269,7 +273,7 @@ class SoloPlotter:
             if i % 2 == 0 and i != 0:
                 color_counter += 1
             label = "_".join(key.split("_")[1:])
-            plt.plot(self.datadic[pfp.irc_coord], self.datadic[key], label=label, color=pp.solo_col[color_counter], linestyle=pp.styles[style_counter])
+            plt.plot(self.datadic[self.irc_coord], self.datadic[key], label=label, color=pp.solo_col[color_counter], linestyle=pp.styles[style_counter])
             style_counter = switch(style_counter)
         set_plot_details(ylabel="Gross Population", title=f"Gross Populations of {self.name}", savefig=j(self.path, "GrossPopulations.png"), ylim=[0, 2],)
 
@@ -281,7 +285,7 @@ class SoloPlotter:
         for i, key in enumerate(overlap_keys):
             label = "_".join(key.split("_")[1:])
             plt.plot(
-                self.datadic[pfp.irc_coord],
+                self.datadic[self.irc_coord],
                 self.datadic[key],
                 label=label,
                 color=pp.solo_col[i],
@@ -299,7 +303,7 @@ class SoloPlotter:
         """
         for i, key in enumerate(self.EDA_keys):
             plt.plot(
-                self.datadic[pfp.irc_coord],
+                self.datadic[self.irc_coord],
                 self.datadic[key],
                 label=self.EDA_names[i],
                 color=pp.solo_col[i],
@@ -316,7 +320,7 @@ class SoloPlotter:
         """
         for i, key in enumerate(pp.ASM_keys[:3]):
             plt.plot(
-                self.datadic[pfp.irc_coord],
+                self.datadic[self.irc_coord],
                 self.datadic[key],
                 label=pp.ASM_names[i],
                 color=pp.solo_col[i],
@@ -329,9 +333,10 @@ class SoloPlotter:
 
 
 class MultiPlotter:
-    def __init__(self, plotpath, instances):
+    def __init__(self, plotpath, instances, irc_coord_info: Tuple[str, Dict[str, str]]):
         self.instances = instances
         self.path = plotpath
+        self.irc_coord, self.irc_coords = irc_coord_info
 
     def plot(self, interpolate_coord: Optional[float] = None):
         """
@@ -383,7 +388,7 @@ class MultiPlotter:
         """
         Checks which system has the highest peak and return the coordinate corresponding to that peak
         """
-        peaks = [inst.get_peakinfo()[pfp.irc_coord] for inst in self.instances]
+        peaks = [inst.get_peakinfo()[self.irc_coord] for inst in self.instances]
         return max(peaks)
 
     def plot_multiple_asm(self, plot_extra_strain=False):
@@ -403,17 +408,17 @@ class MultiPlotter:
                 peakdic = system.get_peakinfo()
                 if i == 0:
                     plt.plot(
-                        data[pfp.irc_coord],
+                        data[self.irc_coord],
                         data[key],
                         label=name,
                         color=color,
                         linestyle=pp.ASM_styles[i],
                     )
-                    plt.scatter(peakdic[pfp.irc_coord], peakdic[key], color=color, s=50)
+                    plt.scatter(peakdic[self.irc_coord], peakdic[key], color=color, s=50)
                     continue
 
                 plt.plot(
-                    data[pfp.irc_coord],
+                    data[self.irc_coord],
                     data[key],
                     color=color,
                     linestyle=pp.ASM_styles[i],
@@ -440,16 +445,16 @@ class MultiPlotter:
             for i, key in enumerate(EDA_keys):
                 if i == 0:
                     plt.plot(
-                        data[pfp.irc_coord],
+                        data[self.irc_coord],
                         data[key],
                         label=name,
                         color=color,
                         linestyle=pp.EDA_styles[i],
                     )
-                    plt.scatter(peakdic[pfp.irc_coord], peakdic[key], color=color, s=50)
+                    plt.scatter(peakdic[self.irc_coord], peakdic[key], color=color, s=50)
                 else:
                     plt.plot(
-                        data[pfp.irc_coord],
+                        data[self.irc_coord],
                         data[key],
                         color=color,
                         linestyle=pp.EDA_styles[i],
@@ -473,8 +478,8 @@ class MultiPlotter:
             for system in self.instances:
                 name, data, color = system.get_systeminfo()
                 peakdic = system.get_peakinfo()
-                plt.plot(data[pfp.irc_coord], data[key], label=name, color=color)
-                plt.scatter(peakdic[pfp.irc_coord], peakdic[key], color=color, s=50)
+                plt.plot(data[self.irc_coord], data[key], label=name, color=color)
+                plt.scatter(peakdic[self.irc_coord], peakdic[key], color=color, s=50)
             set_plot_details(
                 ylabel="\u0394$\it{E}$ / kcal mol$^{-1}$",
                 title=f"EDA term {EDA_names[i]}",
@@ -495,13 +500,13 @@ class MultiPlotter:
                 peakdic = system.get_peakinfo()
                 label = "_".join(overlap_keys[k][i].split("_")[1:])
                 plt.plot(
-                    data[pfp.irc_coord],
+                    data[self.irc_coord],
                     data[overlap_keys[k][i]],
                     label=label,
                     color=color,
                 )
                 plt.scatter(
-                    peakdic[pfp.irc_coord], peakdic[overlap_keys[k][i]], color=color
+                    peakdic[self.irc_coord], peakdic[overlap_keys[k][i]], color=color
                 )
             set_plot_details(
                 ylabel="Overlap $\itS$",
@@ -525,24 +530,24 @@ class MultiPlotter:
                     "_".join(population_keys[k][i + 1].split("_")[1:]),
                 ]
                 plt.plot(
-                    data[pfp.irc_coord],
+                    data[self.irc_coord],
                     data[population_keys[k][i]],
                     label=labels[0],
                     color=color,
                     linestyle=pp.styles[0],
                 )
                 plt.plot(
-                    data[pfp.irc_coord],
+                    data[self.irc_coord],
                     data[population_keys[k][i + 1]],
                     label=labels[1],
                     color=color,
                     linestyle=pp.styles[1],
                 )
                 plt.scatter(
-                    peakdic[pfp.irc_coord], peakdic[population_keys[k][i]], color=color
+                    peakdic[self.irc_coord], peakdic[population_keys[k][i]], color=color
                 )
                 plt.scatter(
-                    peakdic[pfp.irc_coord],
+                    peakdic[self.irc_coord],
                     peakdic[population_keys[k][i + 1]],
                     color=color,
                 )
@@ -568,9 +573,9 @@ class MultiPlotter:
                     "_".join(energy_keys[k][i].split("_")[1:]),
                     "_".join(energy_keys[k][i + 1].split("_")[1:]),
                 ]
-                plt.plot(data[pfp.irc_coord], gap, label="_".join(MO_pair), color=color)
+                plt.plot(data[self.irc_coord], gap, label="_".join(MO_pair), color=color)
                 plt.scatter(
-                    peakdic[pfp.irc_coord], gap[peakdic["IRC"] - 1], color=color
+                    peakdic[self.irc_coord], gap[peakdic["IRC"] - 1], color=color
                 )
             set_plot_details(
                 ylabel="\u03B5 / eV",
@@ -597,9 +602,9 @@ class MultiPlotter:
                     energy_keys[k][e_counter + 1],
                 )
                 MOpair = "_".join(overlap_keys[k][i].split("_")[1:])
-                plt.plot(data[pfp.irc_coord], stabilization, label=MOpair, color=color)
+                plt.plot(data[self.irc_coord], stabilization, label=MOpair, color=color)
                 plt.scatter(
-                    peakdic[pfp.irc_coord],
+                    peakdic[self.irc_coord],
                     stabilization[peakdic["IRC"] - 1],
                     color=color,
                 )
@@ -636,13 +641,14 @@ def set_plot_details(
     """
     Function that specifies plot options for making a shorter and cleaner code
     """
+    from pyfrag_plotter.pyfrag_plotter import irc_coord, irc_coords  # should be removed. This import is horrible and denotes a bad design (terrible coupling)
     ax = plt.gca()
 
     # Plot labels
     if xlabel:
         plt.xlabel(xlabel, labelpad=20)
     else:
-        plt.xlabel(f"{pfp.irc_coords[pfp.irc_coord]} / \u00c5")
+        plt.xlabel(f"{irc_coords[irc_coord]} / \u00c5")
 
     if ylabel:
         plt.ylabel(ylabel, labelpad=20)
@@ -655,7 +661,7 @@ def set_plot_details(
     plt.xlim(pp.xlim[0], pp.xlim[1])
 
     # Reverses the plot direction by reversing the x-axis
-    if pfp.irc_coord == "bondlength_2":
+    if irc_coord == "bondlength_2":
         ax.set_xlim(ax.get_xlim()[::-1])
 
     # Draws a vertical line at the specified point

@@ -1,10 +1,9 @@
 [build-system]
-requires = ["setuptools>=61.0", "numpy>=1.25.0", "matplotlib>=3.7.1", "attrs>=21.2.0"]
+requires = ["setuptools>=64.0", "setuptools-scm", "numpy>=1.25.0", "matplotlib>=3.7.1", "attrs>=21.2.0", "pandas"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pyfrag_plotter_SiebeLeDe"
-version = "0.0.1"
+name = "pyfrag_plotter"
 authors = [
   { name="SiebeLeDe", email="s.j.lekanne.deprez@vu.nl" },
 ]
@@ -16,3 +15,4 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+dynamic = ["version"]

@@ -2,16 +2,16 @@ import os
 from os.path import join as j
 
 from typing import List, Dict
-import interpolate as ip
+import pyfrag_plotter.interpolate.interpolate as ip
 import numpy as np
 import plot_parameters as pp
-from plot_classes import MultiPlotter, SoloPlotter
+from pyfrag_plotter.plot.plot_classes import MultiPlotter, SoloPlotter
 
 np.set_printoptions(precision=2)
 
 plot_systems_dic: Dict[str, Dict[str, List[str]]] = {
     "orbs": {
-        # "plot_all_O_di_ureas": ["ureas_di_O_Cs_all", "ureas_di_O_Cs_sigma", "ureas_di_O_Cs_pi"],
+        "plot_all_O_di_ureas": ["ureas_di_O_Cs_all", "ureas_di_O_Cs_sigma", "ureas_di_O_Cs_pi"],
         # "plot_all_S_di_ureas": ["ureas_di_S_Cs_all", "ureas_di_S_Cs_sigma", "ureas_di_S_Cs_pi"],
         # "plot_all_Se_di_ureas": ["ureas_di_Se_Cs_all", "ureas_di_Se_Cs_sigma", "ureas_di_Se_Cs_pi"],
         # "plot_all_O_di_deltamides": ["deltamides_di_O_Cs_all", "deltamides_di_O_Cs_sigma", "deltamides_di_O_Cs_pi"],
@@ -23,12 +23,12 @@ plot_systems_dic: Dict[str, Dict[str, List[str]]] = {
         # "plot_all_O_tri_ureas": ["ureas_tri_O_Cs_all", "ureas_tri_O_Cs_sigma", "ureas_tri_O_Cs_pi"],
         # "plot_all_S_tri_ureas": ["ureas_tri_S_Cs_all", "ureas_tri_S_Cs_sigma", "ureas_tri_S_Cs_pi"],
         # "plot_all_Se_tri_ureas": ["ureas_tri_Se_Cs_all", "ureas_tri_Se_Cs_sigma", "ureas_tri_Se_Cs_pi"],
-        "plot_all_O_tri_deltamides": ["deltamides_tri_O_Cs_all", "deltamides_tri_O_Cs_sigma", "deltamides_tri_O_Cs_pi"],
-        "plot_all_S_tri_deltamides": ["deltamides_tri_S_Cs_all", "deltamides_tri_S_Cs_sigma", "deltamides_tri_S_Cs_pi"],
-        "plot_all_Se_tri_deltamides": ["deltamides_tri_Se_Cs_all", "deltamides_tri_Se_Cs_sigma", "deltamides_tri_Se_Cs_pi"],
-        "plot_all_O_tri_squaramides": ["squaramides_tri_O_Cs_all", "squaramides_tri_O_Cs_sigma", "squaramides_tri_O_Cs_pi"],
-        "plot_all_S_tri_squaramides": ["squaramides_tri_S_Cs_all", "squaramides_tri_S_Cs_sigma", "squaramides_tri_S_Cs_pi"],
-        "plot_all_Se_tri_squaramides": ["squaramides_tri_Se_Cs_all", "squaramides_tri_Se_Cs_sigma", "squaramides_tri_Se_Cs_pi"],
+        # "plot_all_O_tri_deltamides": ["deltamides_tri_O_Cs_all", "deltamides_tri_O_Cs_sigma", "deltamides_tri_O_Cs_pi"],
+        # "plot_all_S_tri_deltamides": ["deltamides_tri_S_Cs_all", "deltamides_tri_S_Cs_sigma", "deltamides_tri_S_Cs_pi"],
+        # "plot_all_Se_tri_deltamides": ["deltamides_tri_Se_Cs_all", "deltamides_tri_Se_Cs_sigma", "deltamides_tri_Se_Cs_pi"],
+        # "plot_all_O_tri_squaramides": ["squaramides_tri_O_Cs_all", "squaramides_tri_O_Cs_sigma", "squaramides_tri_O_Cs_pi"],
+        # "plot_all_S_tri_squaramides": ["squaramides_tri_S_Cs_all", "squaramides_tri_S_Cs_sigma", "squaramides_tri_S_Cs_pi"],
+        # "plot_all_Se_tri_squaramides": ["squaramides_tri_Se_Cs_all", "squaramides_tri_Se_Cs_sigma", "squaramides_tri_Se_Cs_pi"],
     },
     # "chalcs": {
     #     "plot_all_OSSe_di_ureas": ["ureas_di_O_Cs_all", "ureas_di_S_Cs_all", "ureas_di_Se_Cs_all"],
@@ -64,7 +64,6 @@ max_plotstep = None  # "peak"  # int value (index), float value (coord), 'peak',
 
 solo_plot = False
 multi_plot = True
-extra_keys = ["orbitalenergy", "population", "overlap"]
 irc_coords = {"bondlength": "r - r$_{eq}$"}
 interpolate_option = 0.000   # string ("min" or "max" of total energy) or float 1.67 (coordinate in Angstrom)
 
@@ -99,11 +98,11 @@ if __name__ == "__main__":
 
             for i, system in enumerate(systems):
                 plotpath = j(output_dir, plot_type, plotfoldername, system)
-                instances.append(SoloPlotter(inputfiles[i], resultfiles[i], colors[i], system))
+                instances.append(SoloPlotter(inputfiles[i], resultfiles[i], colors[i], system, (irc_coord, irc_coords), max_plotstep))
                 [inst.plot(plotpath, solo_plot) for inst in instances]
 
             # Initialises the plots with multiple systems
-            multi_instance = MultiPlotter(j(output_dir, plot_type, plotfoldername), instances)
+            multi_instance = MultiPlotter(j(output_dir, plot_type, plotfoldername), instances, (irc_coord, irc_coords))
 
             if interpolate_option is not None:
                 if isinstance(interpolate_option, str):

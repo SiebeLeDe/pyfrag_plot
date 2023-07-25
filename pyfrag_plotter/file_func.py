@@ -14,11 +14,15 @@ def get_pyfrag_files(folder_path: str) -> List[Tuple[str, str]]:
 
     pyfrag_files: List[Tuple[str, str]] = []
     for root, _, files in os.walk(folder_path):
-        # print(files)
         if root.count(os.sep) - folder_path.count(os.sep) > 2:
             # Only search up to two levels deep
             continue
 
+        # Only search in folders containing files
+        if not files:
+            continue
+
+        # Search for pyfrag input file and pyfrag txt file
         pyfrag_input_file = ""
         pyfrag_txt_file = ""
         for file in files:
