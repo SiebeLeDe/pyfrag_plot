@@ -1,0 +1,1669 @@
+RESTART: Moving ureas_di_O_Cs_all to ureas_di_O_Cs_all.res and restarting from it
+[05.03|21:19:32] PLAMS working folder: /scistor/tc/slz230/Promotie/Squaramides/manual_calculations/calcs/ureas_di_O_Cs_all/ureas_di_O_Cs_all
+[05.03|21:19:40] JOB frag1.00001 STARTED
+[05.03|21:19:40] Job frag1.00001 previously run as frag1.00030, using old results
+[05.03|21:19:40] JOB frag1.00001 COPIED
+[05.03|21:19:40] JOB frag2.00001 STARTED
+[05.03|21:19:40] Job frag2.00001 previously run as frag2.00001, using old results
+[05.03|21:19:40] JOB frag2.00001 COPIED
+[05.03|21:19:40] JOB complex.00001 STARTED
+[05.03|21:19:40] JOB complex.00001 RUNNING
+[05.03|21:20:43] JOB complex.00001 FINISHED
+[05.03|21:20:43] JOB complex.00001 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                
+  Elstat              
+  Int                
+  OI                  
+  Pauli              
+  StrainTotal         
+  bondlength          
+  frag1Strain          
+  frag2Strain          
+
+  1     
+  47.825728326278465  
+  -4.345129845843876  
+  -72.13524757843534  
+  47.52369331854351  
+  -44.43603653592131  
+  168.4401104005623  
+  0.3020350077349576  
+  -0.997998803827941  
+  0.06003430666328313  
+  0.24200070107167448  
+
+[05.03|21:20:43] JOB frag1.00002 STARTED
+[05.03|21:20:43] Job frag1.00002 previously run as frag1.00030, using old results
+[05.03|21:20:43] JOB frag1.00002 COPIED
+[05.03|21:20:43] JOB frag2.00002 STARTED
+[05.03|21:20:43] Job frag2.00002 previously run as frag2.00002, using old results
+[05.03|21:20:43] JOB frag2.00002 COPIED
+[05.03|21:20:43] JOB complex.00002 STARTED
+[05.03|21:20:43] JOB complex.00002 RUNNING
+[05.03|21:21:46] JOB complex.00002 FINISHED
+[05.03|21:21:46] JOB complex.00002 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                
+  Elstat              
+  Int                 
+  OI                  
+  Pauli               
+  StrainTotal          
+  bondlength           
+  frag1Strain          
+  frag2Strain          
+
+  2     
+  33.693104949010625  
+  -4.232502701319609  
+  -60.98300488169115  
+  33.391069940963256  
+  -37.15698664716186  
+  135.76356485191127  
+  0.30203500804736905  
+  -0.9146654997505235  
+  0.06003430666328313  
+  0.24200070138408591  
+
+[05.03|21:21:46] JOB frag1.00003 STARTED
+[05.03|21:21:46] Job frag1.00003 previously run as frag1.00030, using old results
+[05.03|21:21:46] JOB frag1.00003 COPIED
+[05.03|21:21:46] JOB frag2.00003 STARTED
+[05.03|21:21:46] Job frag2.00003 previously run as frag2.00003, using old results
+[05.03|21:21:46] JOB frag2.00003 COPIED
+[05.03|21:21:46] JOB complex.00003 STARTED
+[05.03|21:21:46] JOB complex.00003 RUNNING
+[05.03|21:22:46] JOB complex.00003 FINISHED
+[05.03|21:22:47] JOB complex.00003 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                
+  Elstat              
+  Int                 
+  OI                   
+  Pauli               
+  StrainTotal          
+  bondlength           
+  frag1Strain          
+  frag2Strain          
+
+  3     
+  22.444274521831698  
+  -4.065218448651357  
+  -51.55229583031514  
+  22.142239513809567  
+  -30.951302791631473  
+  108.71105306740932  
+  0.30203500802213057  
+  -0.8313321845733901  
+  0.06003430666328313  
+  0.24200070135884744  
+
+[05.03|21:22:47] JOB frag1.00004 STARTED
+[05.03|21:22:47] Job frag1.00004 previously run as frag1.00030, using old results
+[05.03|21:22:47] JOB frag1.00004 COPIED
+[05.03|21:22:47] JOB frag2.00004 STARTED
+[05.03|21:22:47] Job frag2.00004 previously run as frag2.00004, using old results
+[05.03|21:22:47] JOB frag2.00004 COPIED
+[05.03|21:22:47] JOB complex.00004 STARTED
+[05.03|21:22:47] JOB complex.00004 RUNNING
+[05.03|21:23:48] JOB complex.00004 FINISHED
+[05.03|21:23:48] JOB complex.00004 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                 
+  Elstat              
+  Int                 
+  OI                  
+  Pauli              
+  StrainTotal         
+  bondlength           
+  frag1Strain          
+  frag2Strain          
+
+  4     
+  13.631756555896045  
+  -3.8603095948113033  
+  -43.62124876201491  
+  13.329721548036487  
+  -25.70311017715079  
+  86.51438786053632  
+  0.3020350078595584  
+  -0.7479988783650624  
+  0.06003430666328313  
+  0.24200070119627526  
+
+[05.03|21:23:48] JOB frag1.00005 STARTED
+[05.03|21:23:48] Job frag1.00005 previously run as frag1.00030, using old results
+[05.03|21:23:48] JOB frag1.00005 COPIED
+[05.03|21:23:48] JOB frag2.00005 STARTED
+[05.03|21:23:48] Job frag2.00005 previously run as frag2.00005, using old results
+[05.03|21:23:48] JOB frag2.00005 COPIED
+[05.03|21:23:48] JOB complex.00005 STARTED
+[05.03|21:23:48] JOB complex.00005 RUNNING
+[05.03|21:24:49] JOB complex.00005 FINISHED
+[05.03|21:24:50] JOB complex.00005 SUCCESSFUL
+  #IRC  
+  EnergyTotal        
+  Disp                 
+  Elstat              
+  Int                
+  OI                   
+  Pauli              
+  StrainTotal         
+  bondlength           
+  frag1Strain          
+  frag2Strain          
+
+  5     
+  6.829931628035531  
+  -3.6447389632874576  
+  -36.98747139773948  
+  6.527896620250324  
+  -21.297372160064867  
+  68.45748071065417  
+  0.3020350077852072  
+  -0.6646655711884915  
+  0.06003430666328313  
+  0.24200070112192407  
+
+[05.03|21:24:50] JOB frag1.00006 STARTED
+[05.03|21:24:50] Job frag1.00006 previously run as frag1.00030, using old results
+[05.03|21:24:50] JOB frag1.00006 COPIED
+[05.03|21:24:50] JOB frag2.00006 STARTED
+[05.03|21:24:50] Job frag2.00006 previously run as frag2.00006, using old results
+[05.03|21:24:50] JOB frag2.00006 COPIED
+[05.03|21:24:50] JOB complex.00006 STARTED
+[05.03|21:24:50] JOB complex.00006 RUNNING
+[05.03|21:25:59] JOB complex.00006 FINISHED
+[05.03|21:25:59] JOB complex.00006 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                 
+  Elstat              
+  Int                
+  OI                   
+  Pauli               
+  StrainTotal         
+  bondlength           
+  frag1Strain          
+  frag2Strain         
+
+  6     
+  1.6738281838318887  
+  -3.4289983512130098  
+  -31.46217553457254  
+  1.371793175921626  
+  -17.622535866952468  
+  53.885504411954194  
+  0.3020350079102627  
+  -0.5813322531016079  
+  0.06003430666328313  
+  0.2420007012469796  
+
+[05.03|21:25:59] JOB frag1.00007 STARTED
+[05.03|21:25:59] Job frag1.00007 previously run as frag1.00030, using old results
+[05.03|21:25:59] JOB frag1.00007 COPIED
+[05.03|21:25:59] JOB frag2.00007 STARTED
+[05.03|21:25:59] Job frag2.00007 previously run as frag2.00007, using old results
+[05.03|21:25:59] JOB frag2.00007 COPIED
+[05.03|21:25:59] JOB complex.00007 STARTED
+[05.03|21:25:59] JOB complex.00007 RUNNING
+[05.03|21:27:07] JOB complex.00007 FINISHED
+[05.03|21:27:07] JOB complex.00007 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                 
+  Elstat               
+  Int                 
+  OI                   
+  Pauli             
+  StrainTotal          
+  bondlength            
+  frag1Strain          
+  frag2Strain         
+
+  7     
+  -2.152250562664254  
+  -3.2170929505390786  
+  -26.875977984603637  
+  -2.454285570507896  
+  -14.574272550622101  
+  42.2130576846863  
+  0.30203500784364223  
+  -0.49799894415780344  
+  0.06003430666328313  
+  0.2420007011803591  
+
+[05.03|21:27:07] JOB frag1.00008 STARTED
+[05.03|21:27:07] Job frag1.00008 previously run as frag1.00030, using old results
+[05.03|21:27:07] JOB frag1.00008 COPIED
+[05.03|21:27:07] JOB frag2.00008 STARTED
+[05.03|21:27:07] Job frag2.00008 previously run as frag2.00008, using old results
+[05.03|21:27:07] JOB frag2.00008 COPIED
+[05.03|21:27:07] JOB complex.00008 STARTED
+[05.03|21:27:07] JOB complex.00008 RUNNING
+[05.03|21:28:17] JOB complex.00008 FINISHED
+[05.03|21:28:17] JOB complex.00008 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                
+  Elstat               
+  Int                 
+  OI                   
+  Pauli              
+  StrainTotal         
+  bondlength            
+  frag1Strain          
+  frag2Strain          
+
+  8     
+  -4.916235940917334  
+  -3.010871936614575  
+  -23.078084478354555  
+  -5.218270948912407  
+  -12.056130700422248  
+  32.92681609706622  
+  0.3020350079950731  
+  -0.41466563440638193  
+  0.06003430666328313  
+  0.24200070133178997  
+
+[05.03|21:28:17] JOB frag1.00009 STARTED
+[05.03|21:28:17] Job frag1.00009 previously run as frag1.00030, using old results
+[05.03|21:28:17] JOB frag1.00009 COPIED
+[05.03|21:28:18] JOB frag2.00009 STARTED
+[05.03|21:28:18] Job frag2.00009 previously run as frag2.00009, using old results
+[05.03|21:28:18] JOB frag2.00009 COPIED
+[05.03|21:28:18] JOB complex.00009 STARTED
+[05.03|21:28:18] JOB complex.00009 RUNNING
+[05.03|21:29:25] JOB complex.00009 FINISHED
+[05.03|21:29:25] JOB complex.00009 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                 
+  Elstat              
+  Int                 
+  OI                 
+  Pauli             
+  StrainTotal         
+  bondlength            
+  frag1Strain          
+  frag2Strain          
+
+  9     
+  -6.841268402307283  
+  -2.8113711237451464  
+  -19.93625337308833  
+  -7.143303410144331  
+  -9.98288242977354  
+  25.5872052103932  
+  0.3020350078370484  
+  -0.33133231389293716  
+  0.06003430666328313  
+  0.24200070117376526  
+
+[05.03|21:29:25] JOB frag1.00010 STARTED
+[05.03|21:29:25] Job frag1.00010 previously run as frag1.00030, using old results
+[05.03|21:29:25] JOB frag1.00010 COPIED
+[05.03|21:29:25] JOB frag2.00010 STARTED
+[05.03|21:29:25] Job frag2.00010 previously run as frag2.00010, using old results
+[05.03|21:29:25] JOB frag2.00010 COPIED
+[05.03|21:29:26] JOB complex.00010 STARTED
+[05.03|21:29:26] JOB complex.00010 RUNNING
+[05.03|21:30:34] JOB complex.00010 FINISHED
+[05.03|21:30:34] JOB complex.00010 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                
+  Elstat              
+  Int                 
+  OI                  
+  Pauli               
+  StrainTotal         
+  bondlength          
+  frag1Strain          
+  frag2Strain          
+
+  10    
+  -8.113068750740586  
+  -2.619265541868008  
+  -17.33712960755796  
+  -8.415103758673586  
+  -8.279391999998312  
+  19.820685795840596  
+  0.3020350079330001  
+  -0.247999002659685  
+  0.06003430666328313  
+  0.24200070126971696  
+
+[05.03|21:30:35] JOB frag1.00011 STARTED
+[05.03|21:30:35] Job frag1.00011 previously run as frag1.00030, using old results
+[05.03|21:30:35] JOB frag1.00011 COPIED
+[05.03|21:30:35] JOB frag2.00011 STARTED
+[05.03|21:30:35] Job frag2.00011 previously run as frag2.00011, using old results
+[05.03|21:30:35] JOB frag2.00011 COPIED
+[05.03|21:30:35] JOB complex.00011 STARTED
+[05.03|21:30:35] JOB complex.00011 RUNNING
+[05.03|21:31:41] JOB complex.00011 FINISHED
+[05.03|21:31:41] JOB complex.00011 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                 
+  Elstat               
+  Int                 
+  OI                  
+  Pauli               
+  StrainTotal         
+  bondlength            
+  frag1Strain          
+  frag2Strain          
+
+  11    
+  -8.883997059585223  
+  -2.4350440765428494  
+  -15.184078013203925  
+  -9.186032067556194  
+  -6.880396132105719  
+  15.313487587597706  
+  0.3020350079709715  
+  -0.16466569074578796  
+  0.06003430666328313  
+  0.24200070130768836  
+
+[05.03|21:31:42] JOB frag1.00012 STARTED
+[05.03|21:31:42] Job frag1.00012 previously run as frag1.00030, using old results
+[05.03|21:31:42] JOB frag1.00012 COPIED
+[05.03|21:31:42] JOB frag2.00012 STARTED
+[05.03|21:31:42] Job frag2.00012 previously run as frag2.00012, using old results
+[05.03|21:31:42] JOB frag2.00012 COPIED
+[05.03|21:31:43] JOB complex.00012 STARTED
+[05.03|21:31:43] JOB complex.00012 RUNNING
+[05.03|21:32:51] JOB complex.00012 FINISHED
+[05.03|21:32:51] JOB complex.00012 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                
+  Elstat               
+  Int                 
+  OI                  
+  Pauli               
+  StrainTotal          
+  bondlength            
+  frag1Strain          
+  frag2Strain          
+
+  12    
+  -9.276155173839513  
+  -2.259080990674695  
+  -13.395419776725666  
+  -9.578190181740908  
+  -5.731196609890753  
+  11.807507114006555  
+  0.30203500790139515  
+  -0.08133236818761791  
+  0.06003430666328313  
+  0.24200070123811201  
+
+[05.03|21:32:51] JOB frag1.00013 STARTED
+[05.03|21:32:51] Job frag1.00013 previously run as frag1.00030, using old results
+[05.03|21:32:51] JOB frag1.00013 COPIED
+[05.03|21:32:51] JOB frag2.00013 STARTED
+[05.03|21:32:51] Job frag2.00013 previously run as frag2.00013, using old results
+[05.03|21:32:51] JOB frag2.00013 COPIED
+[05.03|21:32:52] JOB complex.00013 STARTED
+[05.03|21:32:52] JOB complex.00013 RUNNING
+[05.03|21:33:58] JOB complex.00013 FINISHED
+[05.03|21:33:58] JOB complex.00013 SUCCESSFUL
+  #IRC  
+  EnergyTotal       
+  Disp               
+  Elstat               
+  Int                 
+  OI                  
+  Pauli              
+  StrainTotal          
+  bondlength            
+  frag1Strain          
+  frag2Strain         
+
+  13    
+  -9.3879642265134  
+  -2.09166146408695  
+  -11.903793192610905  
+  -9.689999234466637  
+  -4.787374477007937  
+  9.092829145905377  
+  0.30203500795323635  
+  0.002000944981006114  
+  0.06003430666328313  
+  0.2420007012899532  
+
+[05.03|21:33:59] JOB frag1.00014 STARTED
+[05.03|21:33:59] Job frag1.00014 previously run as frag1.00030, using old results
+[05.03|21:33:59] JOB frag1.00014 COPIED
+[05.03|21:33:59] JOB frag2.00014 STARTED
+[05.03|21:33:59] Job frag2.00014 previously run as frag2.00014, using old results
+[05.03|21:33:59] JOB frag2.00014 COPIED
+[05.03|21:33:59] JOB complex.00014 STARTED
+[05.03|21:33:59] JOB complex.00014 RUNNING
+[05.03|21:35:05] JOB complex.00014 FINISHED
+[05.03|21:35:06] JOB complex.00014 SUCCESSFUL
+  #IRC  
+  EnergyTotal        
+  Disp                 
+  Elstat               
+  Int                 
+  OI                  
+  Pauli              
+  StrainTotal         
+  bondlength          
+  frag1Strain          
+  frag2Strain          
+
+  14    
+  -9.29719736285958  
+  -1.9329846753741975  
+  -10.654049557214215  
+  -9.599232370985847  
+  -4.010585172096804  
+  6.998386382251665  
+  0.3020350081262677  
+  0.0853342587285848  
+  0.06003430666328313  
+  0.24200070146298458  
+
+[05.03|21:35:06] JOB frag1.00015 STARTED
+[05.03|21:35:06] Job frag1.00015 previously run as frag1.00030, using old results
+[05.03|21:35:06] JOB frag1.00015 COPIED
+[05.03|21:35:06] JOB frag2.00015 STARTED
+[05.03|21:35:06] Job frag2.00015 previously run as frag2.00015, using old results
+[05.03|21:35:06] JOB frag2.00015 COPIED
+[05.03|21:35:07] JOB complex.00015 STARTED
+[05.03|21:35:07] JOB complex.00015 RUNNING
+[05.03|21:36:14] JOB complex.00015 FINISHED
+[05.03|21:36:14] JOB complex.00015 SUCCESSFUL
+  #IRC  
+  EnergyTotal        
+  Disp                 
+  Elstat              
+  Int                 
+  OI                  
+  Pauli             
+  StrainTotal         
+  bondlength           
+  frag1Strain          
+  frag2Strain          
+
+  15    
+  -9.06383855454883  
+  -1.7831574235953636  
+  -9.601044065634325  
+  -9.365873562542085  
+  -3.370290539791948  
+  5.38861828457294  
+  0.3020350079932541  
+  0.16866758302574958  
+  0.06003430666328313  
+  0.24200070132997098  
+
+[05.03|21:36:14] JOB frag1.00016 STARTED
+[05.03|21:36:14] Job frag1.00016 previously run as frag1.00030, using old results
+[05.03|21:36:14] JOB frag1.00016 COPIED
+[05.03|21:36:14] JOB frag2.00016 STARTED
+[05.03|21:36:14] Job frag2.00016 previously run as frag2.00016, using old results
+[05.03|21:36:14] JOB frag2.00016 COPIED
+[05.03|21:36:14] JOB complex.00016 STARTED
+[05.03|21:36:14] JOB complex.00016 RUNNING
+[05.03|21:37:19] JOB complex.00016 FINISHED
+[05.03|21:37:19] JOB complex.00016 SUCCESSFUL
+  #IRC  
+  EnergyTotal        
+  Disp                 
+  Elstat              
+  Int                 
+  OI                   
+  Pauli              
+  StrainTotal         
+  bondlength          
+  frag1Strain          
+  frag2Strain          
+
+  16    
+  -8.73393881253195  
+  -1.6421862959894922  
+  -8.708074595448704  
+  -9.035973820338075  
+  -2.8419342646899817  
+  4.156221541481558  
+  0.3020350078061256  
+  0.2520008978450905  
+  0.06003430666328313  
+  0.24200070114284244  
+
+[05.03|21:37:20] JOB frag1.00017 STARTED
+[05.03|21:37:20] Job frag1.00017 previously run as frag1.00030, using old results
+[05.03|21:37:20] JOB frag1.00017 COPIED
+[05.03|21:37:20] JOB frag2.00017 STARTED
+[05.03|21:37:20] Job frag2.00017 previously run as frag2.00017, using old results
+[05.03|21:37:20] JOB frag2.00017 COPIED
+[05.03|21:37:20] JOB complex.00017 STARTED
+[05.03|21:37:20] JOB complex.00017 RUNNING
+[05.03|21:38:26] JOB complex.00017 FINISHED
+[05.03|21:38:26] JOB complex.00017 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                 
+  Elstat               
+  Int                 
+  OI                   
+  Pauli               
+  StrainTotal        
+  bondlength          
+  frag1Strain          
+  frag2Strain          
+
+  17    
+  -8.343903587627182  
+  -1.5099739984928071  
+  -7.9454475034680225  
+  -8.645938595572915  
+  -2.4041591484783176  
+  3.2136424029583726  
+  0.302035007945733  
+  0.3353342131609862  
+  0.06003430666328313  
+  0.24200070128244988  
+
+[05.03|21:38:26] JOB frag1.00018 STARTED
+[05.03|21:38:26] Job frag1.00018 previously run as frag1.00030, using old results
+[05.03|21:38:26] JOB frag1.00018 COPIED
+[05.03|21:38:26] JOB frag2.00018 STARTED
+[05.03|21:38:26] Job frag2.00018 previously run as frag2.00018, using old results
+[05.03|21:38:26] JOB frag2.00018 COPIED
+[05.03|21:38:26] JOB complex.00018 STARTED
+[05.03|21:38:26] JOB complex.00018 RUNNING
+[05.03|21:39:29] JOB complex.00018 FINISHED
+[05.03|21:39:29] JOB complex.00018 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                 
+  Elstat             
+  Int                 
+  OI                   
+  Pauli               
+  StrainTotal          
+  bondlength           
+  frag1Strain          
+  frag2Strain          
+
+  18    
+  -7.919663788638784  
+  -1.3863237596119453  
+  -7.28922598966501  
+  -8.221698796739586  
+  -2.0412038281816014  
+  2.4950548885512247  
+  0.30203500810080186  
+  0.41866753894946207  
+  0.06003430666328313  
+  0.24200070143751873  
+
+[05.03|21:39:30] JOB frag1.00019 STARTED
+[05.03|21:39:30] Job frag1.00019 previously run as frag1.00030, using old results
+[05.03|21:39:30] JOB frag1.00019 COPIED
+[05.03|21:39:30] JOB frag2.00019 STARTED
+[05.03|21:39:30] Job frag2.00019 previously run as frag2.00019, using old results
+[05.03|21:39:30] JOB frag2.00019 COPIED
+[05.03|21:39:30] JOB complex.00019 STARTED
+[05.03|21:39:30] JOB complex.00019 RUNNING
+[05.03|21:40:34] JOB complex.00019 FINISHED
+[05.03|21:40:34] JOB complex.00019 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                 
+  Elstat               
+  Int                
+  OI                   
+  Pauli              
+  StrainTotal         
+  bondlength          
+  frag1Strain          
+  frag2Strain          
+
+  19    
+  -7.479544991900944  
+  -1.2709528627697906  
+  -6.7202471418864835  
+  -7.78158000001698  
+  -1.7394841604880316  
+  1.949103887834981  
+  0.3020350081160359  
+  0.5020008551880712  
+  0.06003430666328313  
+  0.24200070145275276  
+
+[05.03|21:40:35] JOB frag1.00020 STARTED
+[05.03|21:40:35] Job frag1.00020 previously run as frag1.00030, using old results
+[05.03|21:40:35] JOB frag1.00020 COPIED
+[05.03|21:40:35] JOB frag2.00020 STARTED
+[05.03|21:40:35] Job frag2.00020 previously run as frag2.00020, using old results
+[05.03|21:40:35] JOB frag2.00020 COPIED
+[05.03|21:40:35] JOB complex.00020 STARTED
+[05.03|21:40:35] JOB complex.00020 RUNNING
+[05.03|21:41:38] JOB complex.00020 FINISHED
+[05.03|21:41:38] JOB complex.00020 SUCCESSFUL
+  #IRC  
+  EnergyTotal          
+  Disp                 
+  Elstat              
+  Int                 
+  OI                   
+  Pauli               
+  StrainTotal          
+  bondlength          
+  frag1Strain          
+  frag2Strain         
+
+  20    
+  -7.0389265895215996  
+  -1.1635140381689806  
+  -6.223131997986707  
+  -7.340961597571697  
+  -1.4877539426681032  
+  1.5334380050393177  
+  0.30203500805009753  
+  0.5853341718557585  
+  0.06003430666328313  
+  0.2420007013868144  
+
+[05.03|21:41:38] JOB frag1.00021 STARTED
+[05.03|21:41:38] Job frag1.00021 previously run as frag1.00030, using old results
+[05.03|21:41:38] JOB frag1.00021 COPIED
+[05.03|21:41:38] JOB frag2.00021 STARTED
+[05.03|21:41:38] Job frag2.00021 previously run as frag2.00021, using old results
+[05.03|21:41:38] JOB frag2.00021 COPIED
+[05.03|21:41:39] JOB complex.00021 STARTED
+[05.03|21:41:39] JOB complex.00021 RUNNING
+[05.03|21:42:42] JOB complex.00021 FINISHED
+[05.03|21:42:42] JOB complex.00021 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                 
+  Elstat              
+  Int                 
+  OI                   
+  Pauli               
+  StrainTotal         
+  bondlength         
+  frag1Strain          
+  frag2Strain          
+
+  21    
+  -6.607611182576771  
+  -1.0636217893502709  
+  -5.785799610859843  
+  -6.909646190625504  
+  -1.2770292815006348  
+  1.2168042915897799  
+  0.3020350080487333  
+  0.668667498932761  
+  0.06003430666328313  
+  0.24200070138545016  
+
+[05.03|21:42:42] JOB frag1.00022 STARTED
+[05.03|21:42:42] Job frag1.00022 previously run as frag1.00030, using old results
+[05.03|21:42:42] JOB frag1.00022 COPIED
+[05.03|21:42:42] JOB frag2.00022 STARTED
+[05.03|21:42:42] Job frag2.00022 previously run as frag2.00022, using old results
+[05.03|21:42:42] JOB frag2.00022 COPIED
+[05.03|21:42:42] JOB complex.00022 STARTED
+[05.03|21:42:42] JOB complex.00022 RUNNING
+[05.03|21:43:46] JOB complex.00022 FINISHED
+[05.03|21:43:46] JOB complex.00022 SUCCESSFUL
+  #IRC  
+  EnergyTotal        
+  Disp                 
+  Elstat              
+  Int                 
+  OI                  
+  Pauli               
+  StrainTotal         
+  bondlength          
+  frag1Strain          
+  frag2Strain          
+
+  22    
+  -6.19143381579435  
+  -0.9708790996120998  
+  -5.398133025347373  
+  -6.493468823881737  
+  -1.100094934947268  
+  0.9756381745186036  
+  0.3020350080873868  
+  0.7520008164005203  
+  0.06003430666328313  
+  0.24200070142410368  
+
+[05.03|21:43:47] JOB frag1.00023 STARTED
+[05.03|21:43:47] Job frag1.00023 previously run as frag1.00030, using old results
+[05.03|21:43:47] JOB frag1.00023 COPIED
+[05.03|21:43:47] JOB frag2.00023 STARTED
+[05.03|21:43:47] Job frag2.00023 previously run as frag2.00023, using old results
+[05.03|21:43:47] JOB frag2.00023 COPIED
+[05.03|21:43:47] JOB complex.00023 STARTED
+[05.03|21:43:47] JOB complex.00023 RUNNING
+[05.03|21:44:51] JOB complex.00023 FINISHED
+[05.03|21:44:52] JOB complex.00023 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                
+  Elstat              
+  Int                 
+  OI                  
+  Pauli              
+  StrainTotal          
+  bondlength         
+  frag1Strain          
+  frag2Strain          
+
+  23    
+  -5.795344067757674  
+  -0.884899941517588  
+  -5.052175196345095  
+  -6.097379075690902  
+  -0.951809325482321  
+  0.791505320459597  
+  0.30203500793322746  
+  0.835334134241573  
+  0.06003430666328313  
+  0.24200070126994433  
+
+[05.03|21:44:52] JOB frag1.00024 STARTED
+[05.03|21:44:52] Job frag1.00024 previously run as frag1.00030, using old results
+[05.03|21:44:52] JOB frag1.00024 COPIED
+[05.03|21:44:52] JOB frag2.00024 STARTED
+[05.03|21:44:52] Job frag2.00024 previously run as frag2.00024, using old results
+[05.03|21:44:52] JOB frag2.00024 COPIED
+[05.03|21:44:52] JOB complex.00024 STARTED
+[05.03|21:44:52] JOB complex.00024 RUNNING
+[05.03|21:45:57] JOB complex.00024 FINISHED
+[05.03|21:45:57] JOB complex.00024 SUCCESSFUL
+  #IRC  
+  EnergyTotal          
+  Disp                 
+  Elstat              
+  Int                  
+  OI                  
+  Pauli               
+  StrainTotal          
+  bondlength          
+  frag1Strain          
+  frag2Strain          
+
+  24    
+  -5.4213721123933665  
+  -0.8053243592229652  
+  -4.741579536562284  
+  -5.7234071203938965  
+  -0.826641870257227  
+  0.6501385045213823  
+  0.30203500800053007  
+  0.9186674624394833  
+  0.06003430666328313  
+  0.24200070133724694  
+
+[05.03|21:45:57] JOB frag1.00025 STARTED
+[05.03|21:45:57] Job frag1.00025 previously run as frag1.00030, using old results
+[05.03|21:45:57] JOB frag1.00025 COPIED
+[05.03|21:45:57] JOB frag2.00025 STARTED
+[05.03|21:45:57] Job frag2.00025 previously run as frag2.00025, using old results
+[05.03|21:45:57] JOB frag2.00025 COPIED
+[05.03|21:45:57] JOB complex.00025 STARTED
+[05.03|21:45:57] JOB complex.00025 RUNNING
+[05.03|21:46:59] JOB complex.00025 FINISHED
+[05.03|21:46:59] JOB complex.00025 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                 
+  Elstat              
+  Int                 
+  OI                   
+  Pauli               
+  StrainTotal         
+  bondlength          
+  frag1Strain          
+  frag2Strain          
+
+  25    
+  -5.070079326433957  
+  -0.7318244397369518  
+  -4.460836978237441  
+  -5.372114334357407  
+  -0.7201690123353909  
+  0.5407159143565364  
+  0.3020350079234504  
+  1.0020007809787739  
+  0.06003430666328313  
+  0.24200070126016726  
+
+[05.03|21:46:59] JOB frag1.00026 STARTED
+[05.03|21:46:59] Job frag1.00026 previously run as frag1.00030, using old results
+[05.03|21:46:59] JOB frag1.00026 COPIED
+[05.03|21:47:00] JOB frag2.00026 STARTED
+[05.03|21:47:00] Job frag2.00026 previously run as frag2.00026, using old results
+[05.03|21:47:00] JOB frag2.00026 COPIED
+[05.03|21:47:00] JOB complex.00026 STARTED
+[05.03|21:47:00] JOB complex.00026 RUNNING
+[05.03|21:48:04] JOB complex.00026 FINISHED
+[05.03|21:48:04] JOB complex.00026 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                 
+  Elstat              
+  Int                 
+  OI                   
+  Pauli               
+  StrainTotal          
+  bondlength          
+  frag1Strain          
+  frag2Strain          
+
+  26    
+  -4.742472292155543  
+  -0.6641017290303705  
+  -4.205932318607723  
+  -5.044507300035337  
+  -0.6303561930775433  
+  0.4558827646235104  
+  0.30203500787979465  
+  1.0853340998448404  
+  0.06003430666328313  
+  0.24200070121651152  
+
+[05.03|21:48:04] JOB frag1.00027 STARTED
+[05.03|21:48:04] Job frag1.00027 previously run as frag1.00030, using old results
+[05.03|21:48:04] JOB frag1.00027 COPIED
+[05.03|21:48:04] JOB frag2.00027 STARTED
+[05.03|21:48:04] Job frag2.00027 previously run as frag2.00027, using old results
+[05.03|21:48:04] JOB frag2.00027 COPIED
+[05.03|21:48:05] JOB complex.00027 STARTED
+[05.03|21:48:05] JOB complex.00027 RUNNING
+[05.03|21:49:05] JOB complex.00027 FINISHED
+[05.03|21:49:06] JOB complex.00027 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                 
+  Elstat              
+  Int                 
+  OI                   
+  Pauli                
+  StrainTotal         
+  bondlength          
+  frag1Strain          
+  frag2Strain          
+
+  27    
+  -4.437960745603593  
+  -0.6018787155939441  
+  -3.973295571276845  
+  -4.739995753527044  
+  -0.5539574455049961  
+  0.38913581197676417  
+  0.3020350079234504  
+  1.1686674290239019  
+  0.06003430666328313  
+  0.24200070126016726  
+
+[05.03|21:49:06] JOB frag1.00028 STARTED
+[05.03|21:49:06] Job frag1.00028 previously run as frag1.00030, using old results
+[05.03|21:49:06] JOB frag1.00028 COPIED
+[05.03|21:49:06] JOB frag2.00028 STARTED
+[05.03|21:49:06] Job frag2.00028 previously run as frag2.00028, using old results
+[05.03|21:49:06] JOB frag2.00028 COPIED
+[05.03|21:49:07] JOB complex.00028 STARTED
+[05.03|21:49:07] JOB complex.00028 RUNNING
+[05.03|21:50:09] JOB complex.00028 FINISHED
+[05.03|21:50:09] JOB complex.00028 SUCCESSFUL
+  #IRC  
+  EnergyTotal        
+  Disp                 
+  Elstat              
+  Int                 
+  OI                   
+  Pauli               
+  StrainTotal          
+  bondlength          
+  frag1Strain          
+  frag2Strain          
+
+  28    
+  -4.15588759927757  
+  -0.5448876898677381  
+  -3.760079232144495  
+  -4.457922607178965  
+  -0.4880388935009008  
+  0.3350830610421472  
+  0.30203500790139515  
+  1.2520007485029474  
+  0.06003430666328313  
+  0.24200070123811201  
+
+[05.03|21:50:09] JOB frag1.00029 STARTED
+[05.03|21:50:09] Job frag1.00029 previously run as frag1.00030, using old results
+[05.03|21:50:10] JOB frag1.00029 COPIED
+[05.03|21:50:10] JOB frag2.00029 STARTED
+[05.03|21:50:10] Job frag2.00029 previously run as frag2.00029, using old results
+[05.03|21:50:10] JOB frag2.00029 COPIED
+[05.03|21:50:10] JOB complex.00029 STARTED
+[05.03|21:50:10] JOB complex.00029 RUNNING
+[05.03|21:51:10] JOB complex.00029 FINISHED
+[05.03|21:51:10] JOB complex.00029 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                 
+  Elstat              
+  Int                 
+  OI                   
+  Pauli               
+  StrainTotal          
+  bondlength          
+  frag1Strain          
+  frag2Strain          
+
+  29    
+  -3.895081849823434  
+  -0.4928602448832462  
+  -3.563972857659368  
+  -4.197116857818052  
+  -0.4318220894184944  
+  0.2915382058922904  
+  0.30203500799461835  
+  1.3353340682696704  
+  0.06003430666328313  
+  0.24200070133133522  
+
+[05.03|21:51:10] JOB frag1.00030 STARTED
+[05.03|21:51:10] Job frag1.00030 previously run as frag1.00030, using old results
+[05.03|21:51:10] JOB frag1.00030 COPIED
+[05.03|21:51:10] JOB frag2.00030 STARTED
+[05.03|21:51:10] Job frag2.00030 previously run as frag2.00030, using old results
+[05.03|21:51:10] JOB frag2.00030 COPIED
+[05.03|21:51:11] JOB complex.00030 STARTED
+[05.03|21:51:11] JOB complex.00030 RUNNING
+[05.03|21:52:11] JOB complex.00030 FINISHED
+[05.03|21:52:11] JOB complex.00030 SUCCESSFUL
+  #IRC  
+  EnergyTotal          
+  Disp                 
+  Elstat              
+  Int                  
+  OI                    
+  Pauli               
+  StrainTotal        
+  bondlength          
+  frag1Strain          
+  frag2Strain          
+
+  30    
+  -3.6537860472896715  
+  -0.4455199293164061  
+  -3.382780899885456  
+  -3.9558210553218065  
+  -0.38381545944966505  
+  0.2562951196349415  
+  0.302035008032135  
+  1.4186673983124294  
+  0.06003430666328313  
+  0.24200070136885188  
+
+[05.03|21:52:11] JOB frag1.00031 STARTED
+[05.03|21:52:11] Job frag1.00031 previously run as frag1.00030, using old results
+[05.03|21:52:11] JOB frag1.00031 COPIED
+[05.03|21:52:11] JOB frag2.00031 STARTED
+[05.03|21:52:11] Job frag2.00031 previously run as frag2.00031, using old results
+[05.03|21:52:11] JOB frag2.00031 COPIED
+[05.03|21:52:12] JOB complex.00031 STARTED
+[05.03|21:52:12] JOB complex.00031 RUNNING
+[05.03|21:53:12] JOB complex.00031 FINISHED
+[05.03|21:53:12] JOB complex.00031 SUCCESSFUL
+  #IRC  
+  EnergyTotal          
+  Disp                 
+  Elstat               
+  Int                 
+  OI                  
+  Pauli               
+  StrainTotal          
+  bondlength          
+  frag1Strain          
+  frag2Strain          
+
+  31    
+  -3.4311813004598473  
+  -0.4025790245803082  
+  -3.2149687379660232  
+  -3.733216308358514  
+  -0.342006193874011  
+  0.2263375416986894  
+  0.30203500789866666  
+  1.5020007186202076  
+  0.06003430666328313  
+  0.24200070123538353  
+
+[05.03|21:53:13] JOB frag1.00032 STARTED
+[05.03|21:53:13] Job frag1.00032 previously run as frag1.00030, using old results
+[05.03|21:53:13] JOB frag1.00032 COPIED
+[05.03|21:53:13] JOB frag2.00032 STARTED
+[05.03|21:53:13] Job frag2.00032 previously run as frag2.00032, using old results
+[05.03|21:53:13] JOB frag2.00032 COPIED
+[05.03|21:53:13] JOB complex.00032 STARTED
+[05.03|21:53:13] JOB complex.00032 RUNNING
+[05.03|21:54:12] JOB complex.00032 FINISHED
+[05.03|21:54:12] JOB complex.00032 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                 
+  Elstat              
+  Int                 
+  OI                   
+  Pauli               
+  StrainTotal          
+  bondlength          
+  frag1Strain          
+  frag2Strain         
+
+  32    
+  -3.225997552482378  
+  -0.3637392343054773  
+  -3.059118457248941  
+  -3.528032560539297  
+  -0.3055236329517149  
+  0.2003488015049332  
+  0.30203500805691874  
+  1.5853340391825625  
+  0.06003430666328313  
+  0.2420007013936356  
+
+[05.03|21:54:12] JOB frag1.00033 STARTED
+[05.03|21:54:12] Job frag1.00033 previously run as frag1.00030, using old results
+[05.03|21:54:12] JOB frag1.00033 COPIED
+[05.03|21:54:13] JOB frag2.00033 STARTED
+[05.03|21:54:13] Job frag2.00033 previously run as frag2.00033, using old results
+[05.03|21:54:13] JOB frag2.00033 COPIED
+[05.03|21:54:13] JOB complex.00033 STARTED
+[05.03|21:54:13] JOB complex.00033 RUNNING
+[05.03|21:55:14] JOB complex.00033 FINISHED
+[05.03|21:55:14] JOB complex.00033 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                  
+  Elstat               
+  Int                 
+  OI                    
+  Pauli                
+  StrainTotal          
+  bondlength         
+  frag1Strain          
+  frag2Strain         
+
+  33    
+  -3.036269509868403  
+  -0.32869540249781276  
+  -2.9140271777275486  
+  -3.338304517831189  
+  -0.27416064194305895  
+  0.17857873888855488  
+  0.30203500796278604  
+  1.668667369989591  
+  0.06003430666328313  
+  0.2420007012995029  
+
+[05.03|21:55:15] JOB frag1.00034 STARTED
+[05.03|21:55:15] Job frag1.00034 previously run as frag1.00030, using old results
+[05.03|21:55:15] JOB frag1.00034 COPIED
+[05.03|21:55:15] JOB frag2.00034 STARTED
+[05.03|21:55:15] Job frag2.00034 previously run as frag2.00034, using old results
+[05.03|21:55:15] JOB frag2.00034 COPIED
+[05.03|21:55:15] JOB complex.00034 STARTED
+[05.03|21:55:15] JOB complex.00034 RUNNING
+[05.03|21:56:13] JOB complex.00034 FINISHED
+[05.03|21:56:13] JOB complex.00034 SUCCESSFUL
+  #IRC  
+  EnergyTotal          
+  Disp                 
+  Elstat              
+  Int                 
+  OI                    
+  Pauli                
+  StrainTotal         
+  bondlength          
+  frag1Strain          
+  frag2Strain          
+
+  34    
+  -2.8606577099254626  
+  -0.2971408977472617  
+  -2.778608277021047  
+  -3.162692717852551  
+  -0.24673066508311417  
+  0.15978714917758724  
+  0.3020350079270884  
+  1.7520006910319044  
+  0.06003430666328313  
+  0.24200070126380524  
+
+[05.03|21:56:13] JOB frag1.00035 STARTED
+[05.03|21:56:13] Job frag1.00035 previously run as frag1.00030, using old results
+[05.03|21:56:13] JOB frag1.00035 COPIED
+[05.03|21:56:13] JOB frag2.00035 STARTED
+[05.03|21:56:13] Job frag2.00035 previously run as frag2.00035, using old results
+[05.03|21:56:13] JOB frag2.00035 COPIED
+[05.03|21:56:14] JOB complex.00035 STARTED
+[05.03|21:56:14] JOB complex.00035 RUNNING
+[05.03|21:57:14] JOB complex.00035 FINISHED
+[05.03|21:57:14] JOB complex.00035 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                  
+  Elstat               
+  Int                  
+  OI                   
+  Pauli             
+  StrainTotal          
+  bondlength          
+  frag1Strain          
+  frag2Strain         
+
+  35    
+  -2.698596486701764  
+  -0.26877341902615487  
+  -2.6518736206022226  
+  -3.0006314946775103  
+  -0.2224869841630147  
+  0.14250254825429  
+  0.30203500797574634  
+  1.8353340123005815  
+  0.06003430666328313  
+  0.2420007013124632  
+
+[05.03|21:57:14] JOB frag1.00036 STARTED
+[05.03|21:57:14] Job frag1.00036 previously run as frag1.00030, using old results
+[05.03|21:57:14] JOB frag1.00036 COPIED
+[05.03|21:57:14] JOB frag2.00036 STARTED
+[05.03|21:57:14] Job frag2.00036 previously run as frag2.00036, using old results
+[05.03|21:57:14] JOB frag2.00036 COPIED
+[05.03|21:57:15] JOB complex.00036 STARTED
+[05.03|21:57:15] JOB complex.00036 RUNNING
+[05.03|21:58:13] JOB complex.00036 FINISHED
+[05.03|21:58:13] JOB complex.00036 SUCCESSFUL
+  #IRC  
+  EnergyTotal        
+  Disp                  
+  Elstat              
+  Int                  
+  OI                    
+  Pauli                
+  StrainTotal         
+  bondlength          
+  frag1Strain          
+  frag2Strain          
+
+  36    
+  -2.54843679734294  
+  -0.24330038666078246  
+  -2.533148966557049  
+  -2.8504718051497475  
+  -0.20115922753101517  
+  0.12713679260716662  
+  0.3020350078068077  
+  1.9186673437871482  
+  0.06003430666328313  
+  0.24200070114352457  
+
+[05.03|21:58:13] JOB frag1.00037 STARTED
+[05.03|21:58:13] Job frag1.00037 previously run as frag1.00030, using old results
+[05.03|21:58:13] JOB frag1.00037 COPIED
+[05.03|21:58:13] JOB frag2.00037 STARTED
+[05.03|21:58:13] Job frag2.00037 previously run as frag2.00037, using old results
+[05.03|21:58:13] JOB frag2.00037 COPIED
+[05.03|21:58:13] JOB complex.00037 STARTED
+[05.03|21:58:13] JOB complex.00037 RUNNING
+[05.03|21:59:13] JOB complex.00037 FINISHED
+[05.03|21:59:13] JOB complex.00037 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                  
+  Elstat               
+  Int                
+  OI                    
+  Pauli                
+  StrainTotal          
+  bondlength          
+  frag1Strain          
+  frag2Strain          
+
+  37    
+  -2.408677678013961  
+  -0.22044332834292193  
+  -2.4217869364430613  
+  -2.71071268597129  
+  -0.18236500905706401  
+  0.11388260443973874  
+  0.30203500795732907  
+  2.0020006654835516  
+  0.06003430666328313  
+  0.24200070129404594  
+
+[05.03|21:59:14] JOB frag1.00038 STARTED
+[05.03|21:59:14] Job frag1.00038 previously run as frag1.00030, using old results
+[05.03|21:59:14] JOB frag1.00038 COPIED
+[05.03|21:59:14] JOB frag2.00038 STARTED
+[05.03|21:59:14] Job frag2.00038 previously run as frag2.00038, using old results
+[05.03|21:59:14] JOB frag2.00038 COPIED
+[05.03|21:59:14] JOB complex.00038 STARTED
+[05.03|21:59:14] JOB complex.00038 RUNNING
+[05.03|22:00:11] JOB complex.00038 FINISHED
+[05.03|22:00:11] JOB complex.00038 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                  
+  Elstat              
+  Int                
+  OI                    
+  Pauli                
+  StrainTotal          
+  bondlength          
+  frag1Strain          
+  frag2Strain         
+
+  38    
+  -2.278835337130094  
+  -0.19994102088617122  
+  -2.317212950230625  
+  -2.58087034506173  
+  -0.16563458374308782  
+  0.10191822600996805  
+  0.30203500793163585  
+  2.0853339873821266  
+  0.06003430666328313  
+  0.2420007012683527  
+
+[05.03|22:00:12] JOB frag1.00039 STARTED
+[05.03|22:00:12] Job frag1.00039 previously run as frag1.00030, using old results
+[05.03|22:00:12] JOB frag1.00039 COPIED
+[05.03|22:00:12] JOB frag2.00039 STARTED
+[05.03|22:00:12] Job frag2.00039 previously run as frag2.00039, using old results
+[05.03|22:00:12] JOB frag2.00039 COPIED
+[05.03|22:00:12] JOB complex.00039 STARTED
+[05.03|22:00:12] JOB complex.00039 RUNNING
+[05.03|22:01:19] JOB complex.00039 FINISHED
+[05.03|22:01:19] JOB complex.00039 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                 
+  Elstat               
+  Int                  
+  OI                    
+  Pauli                
+  StrainTotal          
+  bondlength         
+  frag1Strain          
+  frag2Strain          
+
+  39    
+  -2.158443410154784  
+  -0.1815514540541337  
+  -2.2188629445150285  
+  -2.4604784178824657  
+  -0.15078941365235435  
+  0.09072541343315224  
+  0.30203500772768166  
+  2.168667319475577  
+  0.06003430666328313  
+  0.24200070106439853  
+
+[05.03|22:01:19] JOB frag1.00040 STARTED
+[05.03|22:01:19] Job frag1.00040 previously run as frag1.00030, using old results
+[05.03|22:01:19] JOB frag1.00040 COPIED
+[05.03|22:01:19] JOB frag2.00040 STARTED
+[05.03|22:01:19] Job frag2.00040 previously run as frag2.00040, using old results
+[05.03|22:01:19] JOB frag2.00040 COPIED
+[05.03|22:01:19] JOB complex.00040 STARTED
+[05.03|22:01:19] JOB complex.00040 RUNNING
+[05.03|22:02:17] JOB complex.00040 FINISHED
+[05.03|22:02:17] JOB complex.00040 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                  
+  Elstat               
+  Int                  
+  OI                    
+  Pauli                
+  StrainTotal          
+  bondlength          
+  frag1Strain          
+  frag2Strain         
+
+  40    
+  -2.045707385183582  
+  -0.16505273201336382  
+  -2.1259191830495774  
+  -2.3477423933303134  
+  -0.13745539186311265  
+  0.08068493620471959  
+  0.30203500814673134  
+  2.2520006417569585  
+  0.06003430666328313  
+  0.2420007014834482  
+
+[05.03|22:02:17] JOB frag1.00041 STARTED
+[05.03|22:02:17] Job frag1.00041 previously run as frag1.00030, using old results
+[05.03|22:02:17] JOB frag1.00041 COPIED
+[05.03|22:02:18] JOB frag2.00041 STARTED
+[05.03|22:02:18] Job frag2.00041 previously run as frag2.00041, using old results
+[05.03|22:02:18] JOB frag2.00041 COPIED
+[05.03|22:02:18] JOB complex.00041 STARTED
+[05.03|22:02:18] JOB complex.00041 RUNNING
+[05.03|22:03:16] JOB complex.00041 FINISHED
+[05.03|22:03:16] JOB complex.00041 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                  
+  Elstat               
+  Int                 
+  OI                    
+  Pauli                
+  StrainTotal         
+  bondlength          
+  frag1Strain          
+  frag2Strain          
+
+  41    
+  -1.939911832179817  
+  -0.15024310937229302  
+  -2.0381177083993056  
+  -2.241946840195581  
+  -0.12550032143801415  
+  0.07191432673749333  
+  0.3020350080157641  
+  2.3353339642196467  
+  0.06003430666328313  
+  0.24200070135248097  
+
+[05.03|22:03:16] JOB frag1.00042 STARTED
+[05.03|22:03:16] Job frag1.00042 previously run as frag1.00030, using old results
+[05.03|22:03:16] JOB frag1.00042 COPIED
+[05.03|22:03:16] JOB frag2.00042 STARTED
+[05.03|22:03:16] Job frag2.00042 previously run as frag2.00042, using old results
+[05.03|22:03:16] JOB frag2.00042 COPIED
+[05.03|22:03:16] JOB complex.00042 STARTED
+[05.03|22:03:16] JOB complex.00042 RUNNING
+[05.03|22:04:15] JOB complex.00042 FINISHED
+[05.03|22:04:15] JOB complex.00042 SUCCESSFUL
+  #IRC  
+  EnergyTotal          
+  Disp                 
+  Elstat               
+  Int                  
+  OI                    
+  Pauli                
+  StrainTotal          
+  bondlength          
+  frag1Strain          
+  frag2Strain         
+
+  42    
+  -1.8409200448626977  
+  -0.1369404205974069  
+  -1.9554139066801453  
+  -2.1429550527158896  
+  -0.11467852406865359  
+  0.06407783036142345  
+  0.30203500785319193  
+  2.4186672968573264  
+  0.06003430666328313  
+  0.2420007011899088  
+
+[05.03|22:04:15] JOB frag1.00043 STARTED
+[05.03|22:04:15] Job frag1.00043 previously run as frag1.00030, using old results
+[05.03|22:04:15] JOB frag1.00043 COPIED
+[05.03|22:04:15] JOB frag2.00043 STARTED
+[05.03|22:04:15] Job frag2.00043 previously run as frag2.00043, using old results
+[05.03|22:04:15] JOB frag2.00043 COPIED
+[05.03|22:04:15] JOB complex.00043 STARTED
+[05.03|22:04:15] JOB complex.00043 RUNNING
+[05.03|22:05:12] JOB complex.00043 FINISHED
+[05.03|22:05:12] JOB complex.00043 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                  
+  Elstat               
+  Int                  
+  OI                    
+  Pauli                 
+  StrainTotal         
+  bondlength          
+  frag1Strain          
+  frag2Strain          
+
+  43    
+  -1.748644053642932  
+  -0.12498107725550661  
+  -1.8774128857050467  
+  -2.0506790615638812  
+  -0.10501552130184737  
+  0.056730453942327085  
+  0.3020350079209493  
+  2.5020006196639777  
+  0.06003430666328313  
+  0.24200070125766615  
+
+[05.03|22:05:12] JOB frag1.00044 STARTED
+[05.03|22:05:12] Job frag1.00044 previously run as frag1.00030, using old results
+[05.03|22:05:12] JOB frag1.00044 COPIED
+[05.03|22:05:13] JOB frag2.00044 STARTED
+[05.03|22:05:13] Job frag2.00044 previously run as frag2.00044, using old results
+[05.03|22:05:13] JOB frag2.00044 COPIED
+[05.03|22:05:13] JOB complex.00044 STARTED
+[05.03|22:05:13] JOB complex.00044 RUNNING
+[05.03|22:06:12] JOB complex.00044 FINISHED
+[05.03|22:06:12] JOB complex.00044 SUCCESSFUL
+  #IRC  
+  EnergyTotal         
+  Disp                  
+  Elstat               
+  Int                  
+  OI                    
+  Pauli                
+  StrainTotal          
+  bondlength         
+  frag1Strain          
+  frag2Strain          
+
+  44    
+  -1.661773545101728  
+  -0.11421878812771714  
+  -1.8034077478015227  
+  -1.9638085531127172  
+  -0.09623419406930221  
+  0.05005220501097341  
+  0.30203500801098926  
+  2.585333942633847  
+  0.06003430666328313  
+  0.24200070134770613  
+
+[05.03|22:06:12] JOB frag1.00045 STARTED
+[05.03|22:06:12] Job frag1.00045 previously run as frag1.00030, using old results
+[05.03|22:06:12] JOB frag1.00045 COPIED
+[05.03|22:06:12] JOB frag2.00045 STARTED
+[05.03|22:06:12] Job frag2.00045 previously run as frag2.00045, using old results
+[05.03|22:06:12] JOB frag2.00045 COPIED
+[05.03|22:06:12] JOB complex.00045 STARTED
+[05.03|22:06:12] JOB complex.00045 RUNNING
+[05.03|22:07:08] JOB complex.00045 FINISHED
+[05.03|22:07:08] JOB complex.00045 SUCCESSFUL
+  #IRC  
+  EnergyTotal          
+  Disp                 
+  Elstat               
+  Int                  
+  OI                    
+  Pauli                
+  StrainTotal          
+  bondlength          
+  frag1Strain          
+  frag2Strain         
+
+  45    
+  -1.5796171841026965  
+  -0.1045231584639331  
+  -1.7331394349176403  
+  -1.8816521919074578  
+  -0.08831287598435493  
+  0.04432330320419413  
+  0.30203500780476134  
+  2.6686672757614387  
+  0.06003430666328313  
+  0.2420007011414782  
+
+[05.03|22:07:08] JOB frag1.00046 STARTED
+[05.03|22:07:08] Job frag1.00046 previously run as frag1.00030, using old results
+[05.03|22:07:08] JOB frag1.00046 COPIED
+[05.03|22:07:08] JOB frag2.00046 STARTED
+[05.03|22:07:08] Job frag2.00046 previously run as frag2.00046, using old results
+[05.03|22:07:08] JOB frag2.00046 COPIED
+[05.03|22:07:09] JOB complex.00046 STARTED
+[05.03|22:07:09] JOB complex.00046 RUNNING
+[05.03|22:08:06] JOB complex.00046 FINISHED
+[05.03|22:08:06] JOB complex.00046 SUCCESSFUL
+  #IRC  
+  EnergyTotal          
+  Disp                  
+  Elstat               
+  Int                  
+  OI                    
+  Pauli                
+  StrainTotal         
+  bondlength          
+  frag1Strain          
+  frag2Strain          
+
+  46    
+  -1.5022505463424731  
+  -0.09577824456652954  
+  -1.6667561622507503  
+  -1.8042855542375018  
+  -0.08102682521453271  
+  0.03927570054515845  
+  0.3020350078950287  
+  2.7520005990415095  
+  0.06003430666328313  
+  0.24200070123174555  
+
+[05.03|22:08:06] JOB frag1.00047 STARTED
+[05.03|22:08:06] Job frag1.00047 previously run as frag1.00030, using old results
+[05.03|22:08:06] JOB frag1.00047 COPIED
+[05.03|22:08:07] JOB frag2.00047 STARTED
+[05.03|22:08:07] Job frag2.00047 previously run as frag2.00047, using old results
+[05.03|22:08:07] JOB frag2.00047 COPIED
+[05.03|22:08:07] JOB complex.00047 STARTED
+[05.03|22:08:07] JOB complex.00047 RUNNING
+[05.03|22:09:02] JOB complex.00047 FINISHED
+[05.03|22:09:03] JOB complex.00047 SUCCESSFUL
+  #IRC  
+  EnergyTotal          
+  Disp                  
+  Elstat               
+  Int                 
+  OI                    
+  Pauli                
+  StrainTotal         
+  bondlength          
+  frag1Strain          
+  frag2Strain         
+
+  47    
+  -1.4294419967993925  
+  -0.08788112158443932  
+  -1.6037975770283959  
+  -1.731477004803788  
+  -0.07441062116239884  
+  0.03461233505683941  
+  0.3020350080043954  
+  2.8353339224690375  
+  0.06003430666328313  
+  0.2420007013411123  
+
+[05.03|22:09:03] JOB frag1.00048 STARTED
+[05.03|22:09:03] Job frag1.00048 previously run as frag1.00030, using old results
+[05.03|22:09:03] JOB frag1.00048 COPIED
+[05.03|22:09:03] JOB frag2.00048 STARTED
+[05.03|22:09:03] Job frag2.00048 previously run as frag2.00048, using old results
+[05.03|22:09:03] JOB frag2.00048 COPIED
+[05.03|22:09:04] JOB complex.00048 STARTED
+[05.03|22:09:04] JOB complex.00048 RUNNING
+[05.03|22:10:00] JOB complex.00048 FINISHED
+[05.03|22:10:01] JOB complex.00048 SUCCESSFUL
+  #IRC  
+  EnergyTotal          
+  Disp                  
+  Elstat               
+  Int                 
+  OI                    
+  Pauli                 
+  StrainTotal          
+  bondlength          
+  frag1Strain          
+  frag2Strain          
+
+  48    
+  -1.3608035282498063  
+  -0.08074052764208885  
+  -1.5439728985305181  
+  -1.662838536237376  
+  -0.06848092654999544  
+  0.030355832777897447  
+  0.30203500798756977  
+  2.9186672560392193  
+  0.06003430666328313  
+  0.24200070132428664  
+
+[05.03|22:10:01] JOB frag1.00049 STARTED
+[05.03|22:10:01] Job frag1.00049 previously run as frag1.00030, using old results
+[05.03|22:10:01] JOB frag1.00049 COPIED
+[05.03|22:10:01] JOB frag2.00049 STARTED
+[05.03|22:10:01] Job frag2.00049 previously run as frag2.00049, using old results
+[05.03|22:10:01] JOB frag2.00049 COPIED
+[05.03|22:10:01] JOB complex.00049 STARTED
+[05.03|22:10:01] JOB complex.00049 RUNNING
+[05.03|22:10:57] JOB complex.00049 FINISHED
+[05.03|22:10:57] JOB complex.00049 SUCCESSFUL
+  #IRC  
+  EnergyTotal          
+  Disp                 
+  Elstat               
+  Int                 
+  OI                    
+  Pauli                 
+  StrainTotal          
+  bondlength         
+  frag1Strain          
+  frag2Strain          
+
+  49    
+  -1.2957610676094113  
+  -0.0742755968855709  
+  -1.4871579224339988  
+  -1.597796075555599  
+  -0.06305344957361143  
+  0.026690907639137215  
+  0.30203500794618776  
+  3.002000579747466  
+  0.06003430666328313  
+  0.24200070128290463  
+
+[05.03|22:10:59] PLAMS run finished. Goodbye

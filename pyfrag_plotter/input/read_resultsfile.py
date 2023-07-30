@@ -21,8 +21,8 @@ def main():
     path_to_pyfrag_calculation_folder = "/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Scripting/local_packages/pyfrag_plotter/example/CGeN_Ethy"
     inputfile, resultsfile = get_pyfrag_files(path_to_pyfrag_calculation_folder)[0]
 
-    input_keys = read_inputfile(inputfile, "CGeN_Ethy")
-    # [print(key, value) for key, value in input_keys.items()]
+    input_keys = read_inputfile(inputfile)
+    [print(key, value) for key, value in input_keys.items()]
     results = read_data(resultsfile)
     print(results.head())
 

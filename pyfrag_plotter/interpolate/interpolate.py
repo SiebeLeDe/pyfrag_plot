@@ -1,7 +1,7 @@
 # Code that contains a class/function used for interpolating data from the PyFrag calculations
 # Siebe Lekanne Deprez | 4 Feb 2022
 from typing import Dict
-import pyfrag_plotter as pfp
+import pyfrag_plotter.main as pfp
 import plot_parameters as pp
 import numpy as np
 from os.path import join as j

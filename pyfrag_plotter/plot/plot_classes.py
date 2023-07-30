@@ -641,7 +641,7 @@ def set_plot_details(
     """
     Function that specifies plot options for making a shorter and cleaner code
     """
-    from pyfrag_plotter.pyfrag_plotter import irc_coord, irc_coords  # should be removed. This import is horrible and denotes a bad design (terrible coupling)
+    from pyfrag_plotter.main import irc_coord, irc_coords  # should be removed. This import is horrible and denotes a bad design (terrible coupling)
     ax = plt.gca()
 
     # Plot labels
@@ -666,7 +666,6 @@ def set_plot_details(
 
     # Draws a vertical line at the specified point
     if vline:
-        print(pp.vline)
         plt.vlines(
             vline,
             ax.get_ylim()[0],

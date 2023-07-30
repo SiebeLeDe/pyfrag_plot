@@ -3,7 +3,7 @@ import re
 from typing import Any, Callable, Dict, List, Sequence, Tuple, Union
 from pyfrag_plotter.file_func import get_pyfrag_files
 
-from pyfrag_plotter.pyfrag_errors import PyFragInputError
+from pyfrag_plotter.errors import PyFragInputError
 
 
 def _extract_pyfrag_section(filename: str) -> List[str]:
@@ -40,10 +40,10 @@ def _check_line_length(line: str, input_key: str, limits: Sequence[int]) -> List
     :return: list containing the values of the line
     :rtype: List[str]
     """
-    line_content: list[str] = line.split()
+    line_content: list[str] = re.split(r"\s+", line.strip())
 
     if len(line_content) not in limits:
-        raise PyFragInputError("Make sure to specify correct values", input_key)
+        raise PyFragInputError(f"Length of the {input_key} not correct. Make sure to specify the correct format", input_key)
     return line_content
 
 
@@ -251,15 +251,27 @@ def read_inputfile(inputfile: str) -> Dict[str, Any]:
                 counter[key] += 1
                 input_keys[f"{key}_{counter[key]}"] = func(line)
 
+    # Remove "_1" suffix from the keys if there is only one entry (to match the resultsfile.txt)
+    # Should not be necessary if the inputfile and resultsfile have matching formats
+    new_input_keys = {}
+    for key, value in input_keys.items():
+        if "_1" in key and counter[key.split("_")[0]] == 1:
+            new_key = key.split("_")[0]
+            new_input_keys[new_key] = value
+        else:
+            new_input_keys[key] = value
+    input_keys = new_input_keys
+
     # Add the name of the inputfile to the dictionary if it is not specified in the inputfile
     if "name" not in input_keys:
         input_keys["name"] = inputfile.split("/")[-1].split(".")[0]
+
     return input_keys
 
 
 def main():
     # path_to_pyfrag_results = r"C:\Users\siebb\VU_PhD\PhD\Scripting\local_packages\pyfrag_plotter\example\pyfrag_files"
-    path_to_pyfrag_results = r"/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Scripting/local_packages/pyfrag_plotter/example/"
+    path_to_pyfrag_results = r"/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Scripting/local_packages/pyfrag_plotter/example/ureas_di_O_Cs_all"
 
     inp = get_pyfrag_files(path_to_pyfrag_results)
     for inputfile, txtfile in inp:

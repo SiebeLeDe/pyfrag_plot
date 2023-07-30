@@ -1,6 +1,6 @@
 import pyfrag_plotter.input.read_inputfile as input_reader
 import pytest
-from pyfrag_plotter.pyfrag_errors import PyFragInputError
+from pyfrag_plotter.errors import PyFragInputError
 
 
 def test_check_line_length_valid():
@@ -15,7 +15,7 @@ def test_check_line_length_invalid():
     line = "bondlength 1 2 3 4"
     input_key = "bondlength"
     limits = (3, 4)
-    with pytest.raises(PyFragInputError, match="bondlength is not valid. Make sure to specify correct values"):
+    with pytest.raises(PyFragInputError, match="bondlength is not valid. Length of the bondlength not correct. Make sure to specify the correct format"):
         input_reader._check_line_length(line, input_key, limits)
 
 
