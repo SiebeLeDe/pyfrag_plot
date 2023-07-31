@@ -237,7 +237,7 @@ class InterpolatePyFragData:
                 outfile.write("System, MO pair, Gross pop (electrons), E MO1 (eV), E MO2 (eV), Energy gap (eV), Overlap (au), Stabilization [S²/\u03B5 x 100] (1/eV) \n")
                 for systemname, dic in self.interpolated_specialkeys.items():
                     try:
-                        pair = " & ".join(dic[f"#{i}"]["orb"]["pair"])
+                        pair = " & ".join(dic[f"#{i}"]["orb"]["pair"])  # type: ignore since I apply not consistent typing in this script
                     except KeyError:
                         try:
                             pair = dic[f"#{i}"]["ove"]["pair"]
@@ -246,7 +246,7 @@ class InterpolatePyFragData:
 
                     try:
                         pop = dic[f"#{i}"]["pop"]["data"]
-                        pop = [f"{value :.2f}" for value in pop]
+                        pop = [f"{value :.2f}" for value in pop]  # type: ignore since I apply not consistent typing in this script
                     except KeyError:
                         pop = [0, 0]
 

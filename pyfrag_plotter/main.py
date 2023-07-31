@@ -104,6 +104,8 @@ if __name__ == "__main__":
             # Initialises the plots with multiple systems
             multi_instance = MultiPlotter(j(output_dir, plot_type, plotfoldername), instances, (irc_coord, irc_coords))
 
+            interpolate_dist = 0.0
+            inst_interpolation = None
             if interpolate_option is not None:
                 if isinstance(interpolate_option, str):
                     interpolate_dist = multi_instance.get_max_peaklength() + 0.00001
@@ -174,7 +176,7 @@ if __name__ == "__main__":
                 outfile.write("\n")
 
             # Writes the interpolated data to the same output file
-            if interpolate_option is not None:
+            if interpolate_option is not None and inst_interpolation is not None:
                 inst_interpolation.print_interpolated_data(folder=j(output_dir, plot_type, plotfoldername))
             instances.clear()
             resultfiles.clear()
