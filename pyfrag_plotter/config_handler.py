@@ -120,8 +120,6 @@ def initialize_pyfrag_plotter(user_config_file: Optional[str] = None) -> None:
     Initializes the config file. Reads the standard config file provided in the module.
     May be overwritten by providing a config file.
     """
-    global config
-
     # Get the absolute path of the directory one level above the current directory
     current_dir = os.path.abspath(os.path.dirname(__file__))
 
