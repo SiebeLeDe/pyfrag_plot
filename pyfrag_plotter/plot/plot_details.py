@@ -28,13 +28,13 @@ def set_plot_details(
 
     # Specfies the y limits
     if y_lim is None:
-        default_y_lim = config.get("SHARED", "y_lim")
+        default_y_lim = config["config"].get("SHARED", "y_lim")
         plt.ylim(default_y_lim[0], default_y_lim[1])
     else:
         plt.ylim(y_lim[0], y_lim[1])
 
     # Plot x limits
-    x_lim = config.get("SHARED", "x_lim")
+    x_lim = config["config"].get("SHARED", "x_lim")
     plt.xlim(x_lim[0], x_lim[1])
 
     # Reverses the plot direction by reversing the x-axis
@@ -44,7 +44,7 @@ def set_plot_details(
 
     # Draws a vertical line at the specified point
     # First check for user input, else check for config file input
-    vline = config.get("SHARED", "vline")
+    vline = config["config"].get("SHARED", "vline")
     if not math.isclose(vline, 0.0):
         plt.vlines(
             vline,

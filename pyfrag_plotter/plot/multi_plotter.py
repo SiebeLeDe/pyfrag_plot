@@ -3,7 +3,7 @@ from os.path import join as opj
 from typing import List, Optional, Sequence, Tuple
 
 import matplotlib.pyplot as plt
-from attrs import define
+from attrs import define, field
 
 from pyfrag_plotter.config_handler import config
 from pyfrag_plotter.plot.plot_details import set_plot_details
@@ -14,9 +14,9 @@ from pyfrag_plotter.pyfrag_object import PyFragResultsObject
 class PlotInfo:
     irc_coord: str
     irc_coord_label: str
-    colours: List[str] = config.get("SHARED", "colours")
-    line_styles: List[str] = config.get("SHARED", "line_styles")
-    peak_type: Optional[str] = config.get("SHARED", "stat_point_type") if config.get("SHARED", "stat_point_type") != "none" else None
+    colours: List[str] = field(factory=lambda: config["config"].get("SHARED", "colours"))
+    line_styles: List[str] = field(factory=lambda: config["config"].get("SHARED", "line_styles"))
+    peak_type: Optional[str] = field(factory=lambda: config["config"].get("SHARED", "stat_point_type") if config.get("SHARED", "stat_point_type") != "none" else None)
 
 
 class MultiPlotter:
@@ -70,7 +70,7 @@ class MultiPlotter:
 
         # Get the keys to plot. If none are specified, plot all of them
         if keys is None:
-            asm_keys: List[str] = config.get("ASM", "ASM_keys")
+            asm_keys: List[str] = config["config"].get("ASM", "ASM_keys")
         else:
             asm_keys = keys
 
@@ -89,7 +89,7 @@ class MultiPlotter:
         """
         # Get the keys to plot. If none are specified, plot all of them
         if keys is None:
-            eda_keys: List[str] = config.get("EDA", "EDA_keys")
+            eda_keys: List[str] = config["config"].get("EDA", "EDA_keys")
         else:
             eda_keys = keys
 
@@ -108,7 +108,7 @@ class MultiPlotter:
         """
         # Get the keys to plot. If none are specified, plot all of them
         if keys is None:
-            extra_keys: List[str] = config.get("ASM", "ASM_strain_keys")
+            extra_keys: List[str] = config["config"].get("ASM", "ASM_strain_keys")
         else:
             extra_keys = keys
 

@@ -86,8 +86,8 @@ def trim_data(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         pd.DataFrame: trimmed dataframe
     """
-    energy_key = config.get("SHARED", "trim_key")
-    trim_parameter = config.get("SHARED", "plot_until")
+    energy_key = config["config"].get("SHARED", "trim_key")
+    trim_parameter = config["config"].get("SHARED", "plot_until")
 
     if trim_parameter in ["false", "0", "no"]:
         return df

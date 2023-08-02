@@ -6,7 +6,7 @@ import configparser as cp
 from typing import Optional, Dict, Callable, Any, List
 
 # Global variable that contains the config file
-config: Config = {}  # type: ignore because Config is not defined yet, but will be defined in the initialize_pyfrag_plotter function
+config: dict[str, Config] = {}  # type: ignore because Config is not defined yet, but will be defined in the initialize_pyfrag_plotter function
 
 
 def _get_str_key(config_parser: cp.ConfigParser, section: str, option: str) -> str:
@@ -83,13 +83,6 @@ key_to_function_mapping: Dict[str, Callable[..., Any]] = {
 }
 
 
-def get_config() -> Config:
-    """ Returns the initiated config instance. """
-    if config is None:
-        raise ValueError("Config file has not been initialized. Please call initialize_pyfrag_plotter first.")
-    return config
-
-
 class Config:
     """ Interface for the config file. This class overloads the get method of the ConfigParses class to ensure that the correct type is returned. """
 
@@ -136,7 +129,7 @@ def initialize_pyfrag_plotter(user_config_file: Optional[str] = None) -> None:
     if user_config_file is not None:
         config_parser.read(user_config_file)
 
-    config = Config(config_parser)
+    config["config"] = Config(config_parser)
     _initialize_plot_parameters()
 
 
@@ -158,17 +151,17 @@ def _initialize_plot_parameters() -> None:
     # print(font.get_name())
 
     # Figure size
-    plt.rcParams["figure.figsize"] = config.get("MATPLOTLIB", "fig_size")
+    plt.rcParams["figure.figsize"] = config["config"].get("MATPLOTLIB", "fig_size")
 
     # Font family
-    plt.rcParams["font.family"] = config.get("MATPLOTLIB", "font")
+    plt.rcParams["font.family"] = config["config"].get("MATPLOTLIB", "font")
 
     # Takes care of ticks starting at the edge of the screen
     plt.rcParams["axes.autolimit_mode"] = "round_numbers"
     plt.rcParams["axes.xmargin"] = 0.00
     plt.rcParams["axes.ymargin"] = 0.00
 
-    font_size = config.get("MATPLOTLIB", "font_size")
+    font_size = config["config"].get("MATPLOTLIB", "font_size")
 
     plt.rc("font", size=font_size)  # controls default text sizes
     plt.rc("axes", titlesize=font_size + 4)  # fontsize of the axes title

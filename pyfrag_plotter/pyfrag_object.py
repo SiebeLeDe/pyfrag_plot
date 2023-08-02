@@ -277,15 +277,15 @@ def create_pyfrag_object(results_data: pd.DataFrame, inputfile_data: Dict[str, A
     obj = PyFragResultsObject(inputfile_data.pop("name"))
 
     # The EDA , ASM, and ExtraStrain are always present in the output file
-    for key in config.get("EDA", "EDA_keys"):
+    for key in config["config"].get("EDA", "EDA_keys"):
         if key not in results_data:
             continue
         obj.eda[key] = results_data[key].to_numpy()
 
-    for key in config.get("ASM", "ASM_keys"):
+    for key in config["config"].get("ASM", "ASM_keys"):
         obj.asm[key] = results_data[key].to_numpy()
 
-    for key in config.get("ASM", "ASM_strain_keys"):
+    for key in config["config"].get("ASM", "ASM_strain_keys"):
         obj.extra_strain[key] = results_data[key].to_numpy()
 
     for key, value in inputfile_data.items():
