@@ -2,7 +2,7 @@ import os
 from typing import List, Tuple, Union
 
 
-def get_pyfrag_files(dirs: Union[list[str], str]) -> List[Tuple[str, str]]:
+def get_pyfrag_files(dirs: Union[List[str], str]) -> List[Tuple[str, str]]:
     """Searches for pyfrag input files and pyfrag txt files in the given folders and returns a list of tuples containing the absolute path to the pyfrag input file and the pyfrag txt file
 
     Args:
