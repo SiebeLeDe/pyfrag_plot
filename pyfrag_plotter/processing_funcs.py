@@ -1,5 +1,5 @@
 import math
-from typing import Any, Callable
+from typing import Any, Callable, Dict
 
 import pandas as pd
 
@@ -69,7 +69,7 @@ def _trim_data_int(df: pd.DataFrame, trim_option: int, energy_key: str) -> pd.Da
     return df
 
 
-overload_types: dict[Any, Callable[..., pd.DataFrame]] = {
+overload_types: Dict[Any, Callable[..., pd.DataFrame]] = {
     str: _trim_data_str,
     float: _trim_data_float,
     int: _trim_data_int,

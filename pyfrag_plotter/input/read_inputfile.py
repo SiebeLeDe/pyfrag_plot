@@ -184,7 +184,7 @@ def _read_orbitalenergy_line(line: str) -> Union[Tuple[str, str], Tuple[str, str
     return str(irrep1), str(frag1), str(index1)
 
 
-def _read_vdd_line(line: str) -> list[int]:
+def _read_vdd_line(line: str) -> List[int]:
     """Reads the line containing the "vdd" keyword. Correct formats are:
 
     vdd 1 2 3 4
