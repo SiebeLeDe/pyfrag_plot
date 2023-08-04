@@ -384,7 +384,7 @@ class MultiPlotter:
                 orbitalenergy_check = True
         return disp_check, overlap_check, population_check, orbitalenergy_check
 
-    def get_max_peaklength(self):
+    def get_max_peaklength(self) -> float:
         """
         Checks which system has the highest peak and return the coordinate corresponding to that peak
         """
