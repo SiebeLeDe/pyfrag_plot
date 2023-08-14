@@ -19,7 +19,7 @@ class PlotInfo:
     peak_type: Optional[str] = field(factory=lambda: config["config"].get("SHARED", "stat_point_type") if config.get("SHARED", "stat_point_type") != "none" else None)
 
 
-class MultiPlotter:
+class Plotter:
     def __init__(self, name: str, plot_dir: str, pyfrag_objects: Sequence[PyFragResultsObject], irc_coord: Sequence[str]):
         self.objects = pyfrag_objects
         self.path = opj(plot_dir, name)

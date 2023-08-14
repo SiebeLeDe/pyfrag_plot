@@ -93,12 +93,6 @@ class PyFragResultsObject:
     vdd: List[VDD] = field(factory=list)
     irrep: List[Irrep] = field(factory=list)
 
-    def check_presence_irc_coord(self) -> bool:
-        """ Checks whether a bondlength, angle or dihedral angle is specified in this class"""
-        if not any([self.bondlength, self.angle, self.dihedral]):
-            raise PyFragResultsObjectError("No bondlength, angle or dihedral angle is specified in this class")
-        return True
-
     def get_x_axis(self, irc_coord: str) -> Array1D[np.float64]:
         """ Returns the x-axis data for the specified IRC coordinate."""
         try:
