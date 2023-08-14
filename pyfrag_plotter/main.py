@@ -2,7 +2,7 @@ import os
 from os.path import join as j
 
 from typing import List, Dict
-import pyfrag_plotter.interpolate.interpolate as ip
+import pyfrag_plotter.interpolate_func.interpolate as ip
 import numpy as np
 import plot_parameters as pp
 from pyfrag_plotter.plot.plot_classes import MultiPlotter, SoloPlotter
