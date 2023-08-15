@@ -1,5 +1,6 @@
 # from os.path import join as opj
 import re
+import os
 from typing import Any, Callable, Dict, List, Sequence, Tuple, Union
 from pyfrag_plotter.file_func import get_pyfrag_files
 
@@ -264,7 +265,7 @@ def read_inputfile(inputfile: str) -> Dict[str, Any]:
 
     # Add the name of the inputfile to the dictionary if it is not specified in the inputfile
     if "name" not in input_keys:
-        input_keys["name"] = inputfile.split("/")[-1].split(".")[0]
+        input_keys["name"] = os.path.splitext(os.path.basename(inputfile))[0]
 
     return input_keys
 

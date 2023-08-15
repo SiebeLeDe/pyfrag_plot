@@ -4,11 +4,22 @@ from typing import List, Optional, Sequence, Tuple
 
 import matplotlib.pyplot as plt
 from attrs import define, field
+from scipy.interpolate import BSpline, make_interp_spline
+import numpy as np
 
 from pyfrag_plotter.config_handler import config
 from pyfrag_plotter.plot.plot_details import set_plot_details
 from pyfrag_plotter.pyfrag_object import PyFragResultsObject
 
+
+def interpolate_plot(x_axis, y_axis) -> Tuple[BSpline, BSpline]:
+    """ Function that aims to interpolate the data to a finer grid for plotting purposes using the scipy spline library"""
+    X_Y_Spline = make_interp_spline(x_axis, y_axis)
+
+    # Returns evenly spaced numbers over a specified interval.
+    X_ = np.linspace(x_axis.min(), x_axis.max(), 100)
+    Y_ = X_Y_Spline(X_)
+    return X_, Y_
 
 @define
 class PlotInfo:
@@ -50,16 +61,20 @@ class Plotter:
             for x_axis, colour, obj in zip(x_axes, self.plot_info.colours, self.objects):
                 standard_block = obj.__getattribute__(type)  # eda, asm or extra_strain
                 term_data = standard_block[term]
+                
+                # Interpolate the data (smoothening the plot)
+                interpolated_x_axis, interpolated_term_data = interpolate_plot(x_axis, term_data)
+                
                 # Plot the data
                 if i == 0:
-                    plt.plot(x_axis, term_data, label=obj.name, color=colour, linestyle=line_style)
+                    plt.plot(interpolated_x_axis, interpolated_term_data, label=obj.name, color=colour, linestyle=line_style)
 
                     if self.plot_info.peak_type is not None:
                         peak_index, peak_value = obj.get_peak_of_key(key=term, peak=self.plot_info.peak_type)
                         plt.scatter(x_axis[peak_index], peak_value, color=colour, s=50)
                         continue
 
-                plt.plot(x_axis, term_data, color=colour, linestyle=line_style)
+                plt.plot(interpolated_x_axis, interpolated_term_data, color=colour, linestyle=line_style)
 
     def plot_asm(self, keys: Optional[List[str]] = None):
         """ Plots the activation strain model terms. The user can specify which terms to plot, otherwise all of them are plotted

@@ -38,10 +38,10 @@ def set_plot_details(
     plt.xlim(x_lim[0], x_lim[1])
 
     # Reverses the plot direction by reversing the x-axis
-    reverse_x_axis = config.get("SHARED", "reverse_x_axis")
+    reverse_x_axis = config["config"].get("SHARED", "reverse_x_axis")
     if reverse_x_axis:
         ax.set_xlim(ax.get_xlim()[::-1])
-
+    
     # Draws a vertical line at the specified point
     # First check for user input, else check for config file input
     vline = config["config"].get("SHARED", "vline")

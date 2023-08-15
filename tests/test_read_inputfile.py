@@ -1,5 +1,5 @@
-import pyfrag_plotter.input.read_inputfile as input_reader
 import pytest
+import pyfrag_plotter.input.read_inputfile as input_reader
 from pyfrag_plotter.errors import PyFragInputError
 
 
