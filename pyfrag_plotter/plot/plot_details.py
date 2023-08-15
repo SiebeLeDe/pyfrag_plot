@@ -1,9 +1,28 @@
-from typing import Optional, Tuple
+from typing import Optional, Tuple, Sequence
 from matplotlib.ticker import MaxNLocator
 import matplotlib.pyplot as plt
 from pyfrag_plotter.config_handler import config
 import math
+from scipy.interpolate import BSpline, make_interp_spline
+import numpy as np
 
+
+def interpolate_plot(x_axis: np.ndarray, y_axis: np.ndarray, x_range: Optional[Sequence[float]] = None) -> Tuple[np.ndarray, BSpline]:
+    """ Function that aims to interpolate the data to a finer grid for plotting purposes using the scipy spline library"""
+    if x_range is None:
+        x_min, x_max = x_axis.min(), x_axis.max() 
+    else:
+        x_min, x_max = x_range[0], x_range[1]
+
+    mask = (x_axis >= x_min) & (x_axis <= x_max)
+    x_filtered = x_axis[mask]
+    y_filtered = y_axis[mask]
+    X_Y_Spline = make_interp_spline(x_filtered, y_filtered)
+
+    # Returns evenly spaced numbers over a specified interval.
+    X_ = np.linspace(x_min, x_max, 100)
+    Y_ = X_Y_Spline(X_)
+    return X_, Y_
 
 def set_plot_details(
     x_label: str = "\u0394r / \u00c5",
@@ -41,6 +60,13 @@ def set_plot_details(
     reverse_x_axis = config["config"].get("SHARED", "reverse_x_axis")
     if reverse_x_axis:
         ax.set_xlim(ax.get_xlim()[::-1])
+        
+    # Smoothens the plots in the specified range (x_lim) by interpolating the data using the scipy spline library
+    for line in ax.lines:
+        x, y = line.get_data()
+        x_range = ax.get_xlim()
+        X_, Y_ = interpolate_plot(x, y, x_range)
+        line.set_data(X_, Y_)
     
     # Draws a vertical line at the specified point
     # First check for user input, else check for config file input
