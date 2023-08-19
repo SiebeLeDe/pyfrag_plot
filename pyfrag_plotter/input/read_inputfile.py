@@ -2,7 +2,7 @@
 import re
 import os
 from typing import Any, Callable, Dict, List, Sequence, Tuple, Union
-from pyfrag_plotter.file_func import get_pyfrag_files
+from pyfrag_plotter.helper_funcs import get_pyfrag_files
 
 from pyfrag_plotter.errors import PyFragInputError
 
@@ -251,17 +251,6 @@ def read_inputfile(inputfile: str) -> Dict[str, Any]:
             if key.lower() in line.lower():
                 counter[key] += 1
                 input_keys[f"{key}_{counter[key]}"] = func(line)
-
-    # Remove "_1" suffix from the keys if there is only one entry (to match the resultsfile.txt)
-    # Should not be necessary if the inputfile and resultsfile have matching formats
-    new_input_keys = {}
-    for key, value in input_keys.items():
-        if "_1" in key and counter[key.split("_")[0]] == 1:
-            new_key = key.split("_")[0]
-            new_input_keys[new_key] = value
-        else:
-            new_input_keys[key] = value
-    input_keys = new_input_keys
 
     # Add the name of the inputfile to the dictionary if it is not specified in the inputfile
     if "name" not in input_keys:

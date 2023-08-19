@@ -302,7 +302,7 @@ def main():
 
     from pyfrag_plotter.input.read_inputfile import read_inputfile
     from pyfrag_plotter.input.read_resultsfile import read_data
-    from pyfrag_plotter.file_func import get_pyfrag_files
+    from pyfrag_plotter.helper_funcs import get_pyfrag_files
     from pyfrag_plotter.processing_funcs import trim_data
     # Next, specify the path to the pyfrag output directory and read in the input file and the output file
     pyfrag_dir = "/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Scripting/local_packages/pyfrag_plotter/example/CGeN_Ethy"
