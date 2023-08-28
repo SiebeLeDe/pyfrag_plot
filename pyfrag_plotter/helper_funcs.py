@@ -6,17 +6,17 @@ import inspect
 def replace_overlapping_keys(func):
     argspec = inspect.getfullargspec(func)
     kwargs_only = argspec.kwonlyargs
-    
+
     def wrapper(*args, **kwargs):
         # Find overlapping keys between kwargs and function arguments
         overlapping_keys = set(kwargs.keys()) & set(list(args) + kwargs_only)
-        
+
         # Replace overlapping keys with top-level input
         for key in overlapping_keys:
             kwargs[key] = argspec.annotations.get(key, type(kwargs[key]))(kwargs[key])
-        
+
         return func(*args, **kwargs)
-    
+
     return wrapper
 
 

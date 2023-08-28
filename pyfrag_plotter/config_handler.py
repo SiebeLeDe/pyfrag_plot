@@ -164,10 +164,10 @@ def _initialize_plot_parameters() -> None:
     plt.rc("font", size=font_size)  # controls default text sizes
     plt.rc("axes", titlesize=font_size)  # fontsize of the axes title
     plt.rc("axes", labelsize=font_size)  # fontsize of the x and y labels
-    plt.rc("xtick", labelsize=font_size)  # fontsize of the tick labels
-    plt.rc("ytick", labelsize=font_size)  # fontsize of the tick labels
-    plt.rc("legend", fontsize=font_size)  # legend fontsize
-    plt.rc("figure", titlesize=font_size)  # fontsize of the figure title
+    plt.rc("xtick", labelsize=font_size - 2)  # fontsize of the tick labels
+    plt.rc("ytick", labelsize=font_size - 2)  # fontsize of the tick labels
+    plt.rc("legend", fontsize=font_size - 4)  # legend fontsize
+    plt.rc("figure", titlesize=font_size + 4)  # fontsize of the figure title
 
 
 def main():
