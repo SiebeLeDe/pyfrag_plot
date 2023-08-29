@@ -14,6 +14,7 @@ from pyfrag_plotter.pyfrag_object import create_pyfrag_object
 from pyfrag_plotter.plot.plotter import Plotter
 from pyfrag_plotter.plot.plot_details import set_figure_details, set_axes_details
 
+
 # ------------------------------------------------------------------------------------------------------------- #
 # ---------------------------------------------- Functions ---------------------------------------------------- #
 # ------------------------------------------------------------------------------------------------------------- #
@@ -81,7 +82,7 @@ def plot_dimer_graph(plot_instances: Sequence[Plotter],
             plot_x_label = x_label
 
         plot_instance._standard_plot_routine(plot_type, plot_keys, ax)
-        set_axes_details(ax=ax, x_label=plot_x_label, y_label=plot_y_label, n_max_y_ticks=6, y_lim=[-25.0, 25.0])
+        set_axes_details(ax=ax, x_label=plot_x_label, y_label=plot_y_label, n_max_y_ticks=6, y_lim=(-25.0, 25.0))
         # ax.set_title(plot_instance.path.split("/")[-1])
 
         # Add the image to the top right corner of the subplot
@@ -125,7 +126,7 @@ def plot_trimer_graph(plot_instances: Sequence[Plotter],
             plot_x_label = x_label
 
         plot_instance._standard_plot_routine(plot_type, plot_keys, ax)
-        set_axes_details(ax=ax, x_label=plot_x_label, y_label=plot_y_label, n_max_y_ticks=4, y_lim=[-30.0, 30.0])
+        set_axes_details(ax=ax, x_label=plot_x_label, y_label=plot_y_label, n_max_y_ticks=4, y_lim=(-30.0, 30.0))
         # ax.set_title(plot_instance.path.split("/")[-1])
 
         # Add the image to the top right corner of the subplot
