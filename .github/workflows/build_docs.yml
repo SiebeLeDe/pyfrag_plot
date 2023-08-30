@@ -51,7 +51,7 @@ jobs:
         run: pip install plams
 
       - name: Run sphinx-apidoc
-        run: cd docs; sphinx-apidoc -f -o . .. ../setup.py
+        run: cd docs; sphinx-apidoc -f -o . ../pyfrag_plotter ../setup.py
         
       - name: Build the docs
         run: cd docs; make html
