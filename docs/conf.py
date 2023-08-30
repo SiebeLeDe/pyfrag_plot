@@ -36,6 +36,7 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx.ext.githubpages",
     "sphinx.ext.intersphinx",
+    'sphinx.ext.duration',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -46,6 +47,16 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
+autodoc_default_options = {
+    'autosummary': False,
+}
+
+modindex_common_prefix = ['pyfrag_plotter.']
+
+html_theme_options = {
+  "show_nav_level": 2,
+  "navigation_depth": 2,
+}
 
 # -- Options for HTML output -------------------------------------------------
 
