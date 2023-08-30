@@ -1,17 +1,26 @@
 from typing import Optional, Tuple, Sequence
-from matplotlib.ticker import MaxNLocator, FormatStrFormatter
+import math
+import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.figure
-import math
-from scipy.interpolate import BSpline, make_interp_spline
-import numpy as np
+from scipy.interpolate import make_interp_spline, BSpline
+from matplotlib.ticker import MaxNLocator, FormatStrFormatter
 
 from pyfrag_plotter.config_handler import config
 from pyfrag_plotter.helper_funcs import replace_overlapping_keys
 
 
 def interpolate_plot(x_axis: np.ndarray, y_axis: np.ndarray, x_range: Optional[Sequence[float]] = None) -> Tuple[np.ndarray, BSpline]:
-    """ Function that aims to interpolate the data to a finer grid for plotting purposes using the scipy spline library"""
+    """Interpolates the data to a finer grid for plotting purposes using the scipy spline library.
+
+    Args:
+        x_axis (np.ndarray): The x-axis data to interpolate.
+        y_axis (np.ndarray): The y-axis data to interpolate.
+        x_range (Optional[Sequence[float]], optional): The range of x-axis values to interpolate over. Defaults to None.
+
+    Returns:
+        Tuple[np.ndarray, np.ndarray]: The interpolated x-axis and y-axis data.
+    """
     if x_range is None:
         x_min, x_max = x_axis.min(), x_axis.max()
     else:
@@ -36,9 +45,16 @@ def set_figure_details(
     show_plot: bool = False,
     clear_plot: bool = False,
     tight_layout: bool = True,
-):
-    """
-    Function that specifies figure options for making a shorter and cleaner code
+) -> None:
+    """Specifies figure options for making a shorter and cleaner code.
+
+    Args:
+        fig (Optional[matplotlib.figure.Figure], optional): The figure to modify. Defaults to None.
+        title (Optional[str], optional): The title of the figure. Defaults to None.
+        savefig (Optional[str], optional): The filename to save the figure to. Defaults to None.
+        show_plot (bool, optional): Whether to show the plot. Defaults to False.
+        clear_plot (bool, optional): Whether to clear the plot. Defaults to False.
+        tight_layout (bool, optional): Whether to use tight layout. Defaults to True.
     """
     fig = plt.gcf() if fig is None else fig
 
@@ -69,9 +85,16 @@ def set_axes_details(
     y_lim: Optional[Tuple[float, float]] = None,
     n_max_x_ticks: int = 6,
     n_max_y_ticks: int = 5,
-):
-    """
-    Function that specifies axes options for making a shorter and cleaner code
+) -> None:
+    """Specifies axes options for making a shorter and cleaner code.
+
+    Args:
+        ax (Optional[plt.Axes], optional): The axes to modify. Defaults to None.
+        x_label (str, optional): The label for the x-axis. Defaults to "\u0394r / \u00c5" (dr / A).
+        y_label (str, optional): The label for the y-axis. Defaults to "\u0394$\it{E}$ / kcal mol$^{-1}$" (dE / kcal mol-1).
+        y_lim (Optional[Tuple[float, float]], optional): The y-axis limits. Defaults to None.
+        n_max_x_ticks (int, optional): The maximum number of x-axis ticks. Defaults to 6.
+        n_max_y_ticks (int, optional): The maximum number of y-axis ticks. Defaults to 5.
     """
     ax = plt.gca() if ax is None else ax
 

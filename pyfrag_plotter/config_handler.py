@@ -84,15 +84,38 @@ key_to_function_mapping: Dict[str, Callable[..., Any]] = {
 
 
 class Config:
-    """ Interface for the config file. This class overloads the get method of the ConfigParses class to ensure that the correct type is returned. """
+    """An interface for the config file.
 
+    This class overloads the get method of the ConfigParser class to ensure that the correct type is returned.
+
+    Attributes:
+        config_parser (ConfigParser): The ConfigParser instance that contains the configuration data.
+
+    """
     def __init__(self, config_parser) -> None:
+        """Initializes a new instance of the Config class.
+
+        Args:
+            config_parser (ConfigParser): The ConfigParser instance that contains the configuration data.
+
+        """
         self.config_parser: cp.ConfigParser = config_parser
 
     def get(self, section: str, option: str) -> Any:
-        """ IMPORTANT: only this method should be called when trying to get values from the config instance.
-        Returns the value of the option in the section.
-        It returns the value with the correct type.
+        """Gets the value of the specified option in the specified section.
+
+        This method returns the value with the correct type.
+
+        Args:
+            section (str): The name of the section that contains the option.
+            option (str): The name of the option to get.
+
+        Returns:
+            Any: The value of the option.
+
+        Raises:
+            ValueError: If the specified option is not a valid option.
+            ValueError: If the specified section is not a valid section.
 
         """
         if option not in key_to_function_mapping:
@@ -103,15 +126,28 @@ class Config:
 
         return key_to_function_mapping[option](self.config_parser, section, option)
 
+    @property
     def sections(self) -> List[str]:
-        """ Returns a list of the sections in the config file. """
+        """Gets a list of the sections in the config file.
+
+        Returns:
+            List[str]: A list of the sections in the config file.
+
+        """
         return self.config_parser.sections()
 
 
 def initialize_pyfrag_plotter(user_config_file: Optional[str] = None) -> None:
-    """
-    Initializes the config file. Reads the standard config file provided in the module.
-    May be overwritten by providing a config file.
+    """Initializes the PyFrag plotter configuration.
+
+    Reads the standard configuration file provided in the module. May be overwritten by providing a custom configuration file.
+
+    Args:
+        user_config_file (Optional[str]): The path to a custom configuration file. Defaults to None.
+
+    Returns:
+        None
+
     """
     # Get the absolute path of the directory one level above the current directory
     current_dir = os.path.abspath(os.path.dirname(__file__))
@@ -132,8 +168,10 @@ def initialize_pyfrag_plotter(user_config_file: Optional[str] = None) -> None:
 
 
 def _initialize_plot_parameters() -> None:
-    """
-    Applies plot-specific parameters to matplotlib.
+    """Applies plot-specific parameters to matplotlib.
+
+    This function sets various parameters for matplotlib, such as the figure size, font family, and font size.
+
     """
     import matplotlib.pyplot as plt
     # mpl.use("Agg")
@@ -168,16 +206,3 @@ def _initialize_plot_parameters() -> None:
     plt.rc("ytick", labelsize=font_size - 2)  # fontsize of the tick labels
     plt.rc("legend", fontsize=font_size - 4)  # legend fontsize
     plt.rc("figure", titlesize=font_size + 4)  # fontsize of the figure title
-
-
-def main():
-    path_to_extra_config = "/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Scripting/testing/extra_config.ini"
-    initialize_pyfrag_plotter(path_to_extra_config)
-
-    # eda = config.get("EDA", "EDA_keys")
-    interpol = config.get("SHARED", "interpolation_method")  # type: ignore
-    print(interpol)
-
-
-if __name__ == "__main__":
-    main()

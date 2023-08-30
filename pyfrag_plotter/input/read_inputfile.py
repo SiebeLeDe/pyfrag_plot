@@ -1,8 +1,6 @@
-# from os.path import join as opj
 import re
 import os
 from typing import Any, Callable, Dict, List, Sequence, Tuple, Union
-from pyfrag_plotter.helper_funcs import get_pyfrag_files
 
 from pyfrag_plotter.errors import PyFragInputError
 
@@ -28,18 +26,22 @@ def _extract_pyfrag_section(filename: str) -> List[str]:
 
 
 def _check_line_length(line: str, input_key: str, limits: Sequence[int]) -> List[str]:
-    """Checks if the line has the correct length for reading the specified input key. Raises an error if the line does not have the correct length.
-    Returns a list containing the values of the line.
+    """Checks if the line has the correct length for reading the specified input key.
 
-    :param line: line containing the keyword and the values
-    :type line: str
-    :param input_key: keyword to be read
-    :type input_key: str
-    :param limits: limits of the length of the line such as (3, 4) for bondlength and angle
-    :type limits: Sequence[int]
-    :raises PyFragInputError: if the line does not have the correct length
-    :return: list containing the values of the line
-    :rtype: List[str]
+    This function checks if the line has the correct length for reading the specified input key. If the line does not have the correct length, an error is raised.
+    The function returns a list containing the values of the line.
+
+    Args:
+        line (str): The line containing the keyword and the values.
+        input_key (str): The keyword to be read.
+        limits (Sequence[int]): The limits of the length of the line such as (3, 4) for bondlength and angle.
+
+    Raises:
+        PyFragInputError: If the line does not have the correct length.
+
+    Returns:
+        List[str]: A list containing the values of the line.
+
     """
     line_content: list[str] = re.split(r"\s+", line.strip())
 
@@ -49,14 +51,10 @@ def _check_line_length(line: str, input_key: str, limits: Sequence[int]) -> List
 
 
 def _read_bondlength_line(line: str) -> Tuple[int, int, float]:
-    """Reads the line containing the "bondlength" keyword. Correct format is:
+    """Reads the line containing the "bondlength" keyword. The correct format for the line is:
 
-    bondlength atom1 atom2 [bondlength] (optional).
+    bondlength atom1 atom2 [bondlength] (optional)
 
-    :param line: line to be read with the bondlength keyword
-    :type line: str
-    :return: Tuple containing the atom indices and the bondlength
-    :rtype: Tuple[int, int, float]
     """
     line_content: List[str] = _check_line_length(line, "bondlength", (3, 4))
 
@@ -71,14 +69,10 @@ def _read_bondlength_line(line: str) -> Tuple[int, int, float]:
 
 
 def _read_bondangle_line(line: str) -> Tuple[int, int, float]:
-    """Reads the line containing the "angle" keyword. Correct format is:
+    """Reads the line containing the "angle" keyword. The correct format for the line is:
 
-    angle atom1 atom2 [angle] (optional).
+    angle atom1 atom2 [angle] (optional)
 
-    :param line: line to be read with the angle keyword
-    :type line: str
-    :return: Tuple containing the atom indices and the bond angle
-    :rtype: Tuple[int, int, float]
     """
     line_content: List[str] = _check_line_length(line, "angle", (3, 4))
 
@@ -93,14 +87,10 @@ def _read_bondangle_line(line: str) -> Tuple[int, int, float]:
 
 
 def _read_dihedral_angle(line: str) -> Tuple[int, int, int, float]:
-    """Reads the line containing the "dihedral" keyword. Correct format is:
+    """Reads the line containing the "dihedral" keyword. The correct format for the line is:
 
     dihedral atom1 atom2 atom3 [dihedral_angle] (optional)
 
-    :param line: line to be read with the dihedral keyword
-    :type line: str
-    :return: Tuple containing the atom indices and the dihedral angle
-    :rtype: Tuple[int, int, int, float]
     """
     line_content: List[str] = _check_line_length(line, "dihedral", (4, 5))
 
@@ -115,16 +105,12 @@ def _read_dihedral_angle(line: str) -> Tuple[int, int, int, float]:
 
 
 def _read_overlap_line(line: str) -> Union[Tuple[str, str, str, str, str, str], Tuple[str, str, str, str]]:
-    """Reads the line containing the "overlap" keyword. Correct formats are:
+    """Reads the line containing the "overlap" keyword. The correct formats are:
 
     overlap frag1 HOMO frag2 LUMO
     overlap frag1 HOMO-1 frag2 LUMO+3
     overlap S frag1 5 AA frag2 4
 
-    :param line: line to be read with the population keyword
-    :type line: str
-    :return: tuple containing the MOs specified by the fragment, MO, and irrep (optional)
-    :rtype: Union[Tuple[str, str, str, str, str, str], Tuple[str, str, str, str]]
     """
     line_content: List[str] = _check_line_length(line, "overlap", (5, 7))
 
@@ -140,16 +126,12 @@ def _read_overlap_line(line: str) -> Union[Tuple[str, str, str, str, str, str], 
 
 
 def _read_population_line(line: str) -> Union[Tuple[str, str], Tuple[str, str, str]]:
-    """Reads the line containing the "population" keyword. Correct formats are:
+    """Reads the line containing the "population" keyword. The correct formats are:
 
     population frag1 HOMO
     population frag2 HOMO-1
     population AA frag2 5
 
-    :param line: line to be read with the population keyword
-    :type line: str
-    :return: tuple containign the fragment, MO, and irrep (optional)
-    :rtype: Union[Tuple[str, str], Tuple[str, str, str]]
     """
     line_content: List[str] = _check_line_length(line, "population", (3, 4))
 
@@ -163,16 +145,12 @@ def _read_population_line(line: str) -> Union[Tuple[str, str], Tuple[str, str, s
 
 
 def _read_orbitalenergy_line(line: str) -> Union[Tuple[str, str], Tuple[str, str, str]]:
-    """Reads the line containing the "orbitalenergy" keyword. Correct formats are:
+    """Reads the line containing the "orbitalenergy" keyword. The correct formats are:
 
     orbitalenergy frag1 HOMO
     orbitalenergy frag1 HOMO-2
     orbitalenergy AA frag2 5
 
-    :param line: line to be read with the orbitalenergy keyword
-    :type line: str
-    :return: tuple containign the fragment, MO, and irrep (optional)
-    :rtype: Union[Tuple[str, str], Tuple[str, str, str]]
     """
     line_content: List[str] = _check_line_length(line, "orbitalenergy", (3, 4))
 
@@ -186,16 +164,11 @@ def _read_orbitalenergy_line(line: str) -> Union[Tuple[str, str], Tuple[str, str
 
 
 def _read_vdd_line(line: str) -> List[int]:
-    """Reads the line containing the "vdd" keyword. Correct formats are:
+    """Reads the line containing the "vdd" keyword. The correct formats are:
 
     vdd 1 2 3 4
     vdd 3 6 8
 
-    :param line: line to be read with the vdd keyword
-    :type line: str
-    :raises PyFragInputError: when the entries (atom indices) are not integers
-    :return: list containing the atom indices
-    :rtype: list[int]
     """
     line_content: list[str] = line.split()
 
@@ -208,15 +181,11 @@ def _read_vdd_line(line: str) -> List[int]:
 
 
 def _read_irrep_line(line: str) -> str:
-    """Reads the line containing the "irrep" keyword. Correct formats are:
+    """Reads the line containing the "irrep" keyword. The correct formats are:
 
     irrepOI AA
     irrepOI E1:1
 
-    :param line: line to be read with the vdd keyword
-    :type line: str
-    :return: str containing the irrep
-    :rtype: str
     """
     line_content: List[str] = _check_line_length(line, "orbitalenergy", (2, 2))
 
@@ -237,9 +206,17 @@ read_functions: Dict[str, Callable] = {
 
 
 def read_inputfile(inputfile: str) -> Dict[str, Any]:
-    """
-    Takes as argument the inputfile for the pyfrag calculation
-    Extracts extra specifications such as orbitalenergy, overlap, population of a certain fragment and MO
+    """Extracts extra specifications from the PyFrag input file.
+
+    This function takes the PyFrag input file as an argument and extracts extra specifications such as orbitalenergy, overlap, population of a certain fragment and MO.
+    The function returns a dictionary containing the extracted specifications.
+
+    Args:
+        inputfile (str): The PyFrag input file.
+
+    Returns:
+        Dict[str, Any]: A dictionary containing the extracted specifications.
+
     """
     input_keys: Dict[str, Any] = {}
 
@@ -257,17 +234,3 @@ def read_inputfile(inputfile: str) -> Dict[str, Any]:
         input_keys["name"] = os.path.splitext(os.path.basename(inputfile))[0]
 
     return input_keys
-
-
-def main():
-    # path_to_pyfrag_results = r"C:\Users\siebb\VU_PhD\PhD\Scripting\local_packages\pyfrag_plotter\example\pyfrag_files"
-    path_to_pyfrag_results = r"/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Scripting/local_packages/pyfrag_plotter/example/ureas_di_O_Cs_all"
-
-    inp = get_pyfrag_files(path_to_pyfrag_results)
-    for inputfile, txtfile in inp:
-        processed_input = read_inputfile(inputfile)
-        print(processed_input)
-
-
-if __name__ == "__main__":
-    main()

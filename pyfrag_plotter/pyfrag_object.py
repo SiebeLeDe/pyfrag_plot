@@ -78,7 +78,25 @@ class Irrep:
 @define(slots=True)
 class PyFragResultsObject:
     """
-    Dataclass containing all the data of *one* pyfrag calculation
+    Attrs class containing all the data of one pyfrag calculation.
+
+    This class represents the results of a single PyFrag calculation.
+    It contains data for various properties such as EDA, ASM, extra strain, bond lengths, bond angles, dihedral angles, overlaps, populations, orbital energies, VDD, and irreps.
+
+    Attributes:
+        name (str): The name of the PyFrag calculation.
+        eda (OrderedDict[str, Array1D[np.float64]]): The EDA data for the PyFrag calculation.
+        asm (OrderedDict[str, Array1D[np.float64]]): The ASM data for the PyFrag calculation.
+        extra_strain (OrderedDict[str, Array1D[np.float64]]): The extra strain data for the PyFrag calculation.
+        bondlength (List[Bondlength]): The bond length data for the PyFrag calculation.
+        angle (List[BondAngle]): The bond angle data for the PyFrag calculation.
+        dihedral (List[DihedralAngle]): The dihedral angle data for the PyFrag calculation.
+        overlap (List[Overlap]): The overlap data for the PyFrag calculation.
+        population (List[Population]): The population data for the PyFrag calculation.
+        orbitalenergy (List[OrbitalEnergy]): The orbital energy data for the PyFrag calculation.
+        vdd (List[VDD]): The VDD data for the PyFrag calculation.
+        irrep (List[Irrep]): The irrep data for the PyFrag calculation.
+
     """
     name: str
     eda: OrderedDict[str, Array1D[np.float64]] = field(factory=dict)
@@ -259,14 +277,18 @@ key_to_func_mapping: dict[str, Callable[..., None]] = {
 
 
 def create_pyfrag_object(results_data: pd.DataFrame, inputfile_data: Dict[str, Any]) -> PyFragResultsObject:
-    """_summary_
+    """Creates a PyFragResultsObject from the given results data and input file data.
+
+    This function takes a pandas DataFrame containing the results file data and a dictionary containing the input file data and creates a PyFragResultsObject.
+    The PyFragResultsObject contains data for various properties such as EDA, ASM, extra strain, bond lengths, bond angles, dihedral angles, overlaps, populations, orbital energies, VDD, and irreps.
 
     Args:
-        results_data (pd.DataFrame): the data from the output file (i.e., the pyfrag_*.txt file)
-        inputfile_data (Dict[str, Any]): the keys from the input file such as bondlength, overlap, orbitalenergy, and more
+        results_data (pd.DataFrame): The data from the output file (i.e., the pyfrag_*.txt file).
+        inputfile_data (Dict[str, Any]): The keys from the input file such as bondlength, overlap, orbitalenergy, and more.
 
     Returns:
-        PyFragResultsObject: the dataclass containing all the data of *one* pyfrag calculation
+        PyFragResultsObject: The dataclass containing all the data of one PyFrag calculation.
+
     """
     obj = PyFragResultsObject(inputfile_data.pop("name"))
 
@@ -294,31 +316,3 @@ def create_pyfrag_object(results_data: pd.DataFrame, inputfile_data: Dict[str, A
             key_to_func_mapping[key](obj, data, *value)
 
     return obj
-
-
-def main():
-    from pyfrag_plotter.config_handler import initialize_pyfrag_plotter
-    initialize_pyfrag_plotter()
-
-    from pyfrag_plotter.input.read_inputfile import read_inputfile
-    from pyfrag_plotter.input.read_resultsfile import read_data
-    from pyfrag_plotter.helper_funcs import get_pyfrag_files
-    from pyfrag_plotter.processing_funcs import trim_data
-    # Next, specify the path to the pyfrag output directory and read in the input file and the output file
-    pyfrag_dir = "/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Scripting/local_packages/pyfrag_plotter/example/CGeN_Ethy"
-
-    inputfile, results_file = get_pyfrag_files([pyfrag_dir])[0]
-
-    # Read the input file
-    input_content = read_inputfile(inputfile)
-
-    # Read the output file
-    output_content = read_data(results_file)
-    output_content = trim_data(output_content)
-
-    obj = create_pyfrag_object(output_content, input_content)
-    print(obj)
-
-
-if __name__ == "__main__":
-    main()

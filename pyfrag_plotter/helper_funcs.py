@@ -1,9 +1,21 @@
 import os
-from typing import List, Tuple, Union
+from typing import List, Tuple, Union, Callable
 import inspect
 
 
-def replace_overlapping_keys(func):
+def replace_overlapping_keys(func: Callable) -> Callable:
+    """A decorator that replaces overlapping keys between kwargs and function arguments with top-level input.
+
+    This decorator is used to ensure that the correct input is used for a function when both positional arguments and keyword arguments are used.
+    It replaces overlapping keys between kwargs and function arguments with top-level input.
+
+    Args:
+        func (Callable): The function to decorate.
+
+    Returns:
+        Callable: The decorated function.
+
+    """
     argspec = inspect.getfullargspec(func)
     kwargs_only = argspec.kwonlyargs
 
@@ -24,14 +36,15 @@ def get_pyfrag_files(dirs: Union[List[str], str]) -> List[Tuple[str, str]]:
     """Searches for pyfrag input files and pyfrag txt files in the given folders and returns a list of tuples containing the absolute path to the pyfrag input file and the pyfrag txt file
 
     Args:
-        *args (str): absolute paths to the folders containing the pyfrag input files
+        dirs (Union[List[str], str]): The absolute paths to the folders containing the pyfrag input files.
 
     Raises:
-        FileNotFoundError: when the pyfrag input file or pyfrag txt file could not be found in the same folder
-        FileNotFoundError: when the returned list is empty
+        FileNotFoundError: If the pyfrag input file or pyfrag txt file could not be found in the same folder.
+        FileNotFoundError: If the returned list is empty.
 
     Returns:
-        pyfrag_files (list of tuples(str, str)): list of tuples containing the absolute path to the pyfrag input file and the pyfrag txt file
+        List[Tuple[str, str]]: A list of tuples containing the absolute path to the pyfrag input file and the pyfrag txt file.
+
     """
     if isinstance(dirs, str):
         dirs = [dirs]

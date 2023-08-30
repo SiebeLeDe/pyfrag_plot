@@ -60,8 +60,8 @@ def plot_multiple_graphs(
     savefig, path_to_images=None,
     plot_type="asm",
     plot_keys=["Int"],
-    x_label="r$_{X \cdot\cdot\cdot H}$ / Å",
-    y_label="\u0394$\it{E}$ / kcal mol$^{-1}$",
+    x_label="r$_{X \cdot\cdot\cdot H}$ / Å",  # type: ignore # noqa: W605 since it is a LaTeX string
+    y_label="\u0394$\it{E}$ / kcal mol$^{-1}$",  # type: ignore # noqa: W605 since it is a LaTeX string
     n_max_y_ticks=5,
     y_lim=(-25.0, 25.0),
     image_zoom=0.065
@@ -115,7 +115,7 @@ plot_dir = "/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmster
 # irc_coord = ("bondlength_1", "r - r$_{eq}$ / Å")
 # irc_coord = ("bondlength_2", "r$_{cm}$ / Å")
 # irc_coord = ("bondlength_3", "$\Delta$r$_{X \cdot\cdot\cdot H}$ / Å")
-irc_coord = ("bondlength_4", "r$_{X \cdot\cdot\cdot H}$ / Å")
+irc_coord = ("bondlength_4", "r$_{X \cdot\cdot\cdot H}$ / Å")   # type: ignore # noqa: W605 since it is a LaTeX string
 
 path_to_images = "/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Projects/Squaramides/Pics&Coords/png_without_border"
 # path_to_images = r"C:\Users\siebb\VU_PhD\PhD\Projects\Squaramides\pyfrag_results"
@@ -182,8 +182,8 @@ path_to_trimer_images = [os.path.join(path_to_images, image + ".png") for image 
 shared_keywords: dict[str, Any] = {
     "plot_type": "asm",
     "plot_keys": ["Int"],
-    "x_label": "r$_{X \cdot\cdot\cdot H}$ / Å",
-    "y_label": "\u0394$\it{E}$ / kcal mol$^{-1}$",
+    "x_label": "r$_{X \cdot\cdot\cdot H}$ / Å",  # type: ignore # noqa: W605 since it is a LaTeX string
+    "y_label": "\u0394$\it{E}$ / kcal mol$^{-1}$",   # type: ignore # noqa: W605 since it is a LaTeX string
     "n_max_y_ticks": 4,
 }
 

@@ -7,7 +7,23 @@ import scipy as sp
 
 
 def interpolate_data(input_data: Union[PyFragResultsObject, pd.DataFrame], irc_coord: str, point: float) -> Dict[str, float]:
-    """ Interface function for interpolating data that can be in the format of a PyFragResultsObject or a pandas DataFrame"""
+    """Interpolates data that can be in the format of a PyFragResultsObject or a pandas DataFrame.
+
+    This function takes input data in the format of a PyFragResultsObject or a pandas DataFrame and interpolates the data at a specified point along the x-axis.
+    The interpolated data is returned as a dictionary.
+
+    Args:
+        input_data (Union[PyFragResultsObject, pd.DataFrame]): The input data to interpolate.
+        irc_coord (str): The name of the x-axis coordinate to interpolate along.
+        point (float): The point along the x-axis to interpolate at.
+
+    Raises:
+        TypeError: If the input data is not a PyFragResultsObject or a pandas DataFrame.
+
+    Returns:
+        Dict[str, float]: A dictionary containing the interpolated data.
+
+    """
     if isinstance(input_data, PyFragResultsObject):
         return _interpolate_pyfrag_object(input_data, irc_coord, point)
     elif isinstance(input_data, pd.DataFrame):
@@ -17,6 +33,19 @@ def interpolate_data(input_data: Union[PyFragResultsObject, pd.DataFrame], irc_c
 
 
 def _interpolate_pyfrag_object(obj: PyFragResultsObject, irc_coord: str, point: float):
+    """Interpolates data from a PyFragResultsObject at a specified point along the x-axis.
+
+    This function takes a PyFragResultsObject and interpolates the data at a specified point along the x-axis. The interpolated data is returned as a dictionary.
+
+    Args:
+        obj (PyFragResultsObject): The PyFragResultsObject to interpolate.
+        irc_coord (str): The name of the x-axis coordinate to interpolate along.
+        point (float): The point along the x-axis to interpolate at.
+
+    Returns:
+        Dict[str, float]: A dictionary containing the interpolated data.
+
+    """
     # Get the x-axis
     ret_dict: Dict[str, float] = {}
     x_axis = obj.get_x_axis(irc_coord)
@@ -40,6 +69,19 @@ def _interpolate_pyfrag_object(obj: PyFragResultsObject, irc_coord: str, point: 
 
 
 def _interpolate_dataframe(df: pd.DataFrame, irc_coord: str, point: float):
+    """Interpolates data from a pandas DataFrame at a specified point along the x-axis.
+
+    This function takes a pandas DataFrame and interpolates the data at a specified point along the x-axis. The interpolated data is stored in the DataFrame.
+
+    Args:
+        df (pd.DataFrame): The pandas DataFrame to interpolate.
+        irc_coord (str): The name of the x-axis coordinate to interpolate along.
+        point (float): The point along the x-axis to interpolate at.
+
+    Raises:
+        NotImplementedError: If the function is called, as interpolation of dataframes is not yet implemented.
+
+    """
     raise NotImplementedError("Interpolation of dataframes is not yet implemented")
     # First, determine the x-axis
     x_axis = df[irc_coord] = df[irc_coord]

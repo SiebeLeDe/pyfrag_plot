@@ -1,5 +1,5 @@
 import math
-from typing import Any, Callable, Dict
+from typing import Any, Callable, Dict, Optional, Union
 
 import pandas as pd
 
@@ -12,18 +12,7 @@ from pyfrag_plotter.errors import PyFragResultsProcessingError
 # ====================================================================================================
 
 def _trim_data_str(df: pd.DataFrame, trim_option: str, energy_key: str) -> pd.DataFrame:
-    """Trims the dataframe up to either the minimum or maximum energy value (dEint)
-
-    Args:
-        df (pd.DataFrame): dataframe to trim
-        trim_option (str, optional): Either "min" or "max"
-
-    Raises:
-        PyFragResultsProcessingError: if trim_option is not "min" or "max"
-
-    Returns:
-        pd.DataFrame: trimmed dataframe
-    """
+    """Private function that performs the actual trimming of the dataframe with a string trim_option"""
     trim_option = trim_option.lower()
     options = ["min", "max"]
 
@@ -41,53 +30,46 @@ def _trim_data_str(df: pd.DataFrame, trim_option: str, energy_key: str) -> pd.Da
 
 
 def _trim_data_float(df: pd.DataFrame, trim_option: float, energy_key: str) -> pd.DataFrame:
-    """Trims the dataframe up to the nearest specified energy value (dEint)
-
-    Args:
-        df (pd.DataFrame): dataframe to trim
-        trim_option (float): energy value (dEint) to trim up to
-
-    Returns:
-        pd.DataFrame: trimmed dataframe
-    """
+    """Private function that performs the actual trimming of the dataframe with a float trim_option"""
     index = (df[energy_key] - trim_option).abs().idxmin()
     df = df.loc[:index]
     return df
 
 
 def _trim_data_int(df: pd.DataFrame, trim_option: int, energy_key: str) -> pd.DataFrame:
-    """Trims the dataframe up to the specified number of rows
-
-    Args:
-        df (pd.DataFrame): dataframe to trim
-        trim_option (int): index number of row to trim up to
-
-    Returns:
-        pd.DataFrame: trimmed dataframe
-    """
+    """Private function that performs the actual trimming of the dataframe with a integer trim_option"""
     df = df.iloc[:trim_option]
     return df
 
 
-overload_types: Dict[Any, Callable[..., pd.DataFrame]] = {
+_overload_types: Dict[Any, Callable[..., pd.DataFrame]] = {
     str: _trim_data_str,
     float: _trim_data_float,
     int: _trim_data_int,
 }
 
 
-def trim_data(df: pd.DataFrame) -> pd.DataFrame:
-    """'Overloaded' function to trim the dataframe based on the type of the trim_parameter
+def trim_data(df: pd.DataFrame, trim_parameter: Optional[Union[str, float, int]] = None, trim_key: Optional[str] = None) -> pd.DataFrame:
+    """'Overloaded' function to trim the dataframe based on the type of the trim_parameter.
+
+    This function trims the given dataframe based on the type of the trim_parameter.
+    The trim_parameter is read from the configuration file and can be either a string ("min", "max"), integer (IRC point), or float (energy value).
+    The function returns the trimmed dataframe.
 
     Args:
-        df (pd.DataFrame): dataframe to trim
-        trim_parameter (Union[str, float, int]): parameter to trim the dataframe with (either a string, integer, or float)
+        df (pd.DataFrame): The dataframe to trim.
+        trim_parameter (Optional[Union[str, float, int]]): The parameter to use for trimming. Defaults to None.
+        trim_key (Optional[str]): The key to use for reading the trim_parameter from the configuration file. Defaults to None.
+
+    Raises:
+        PyFragResultsProcessingError: If the trim_parameter is not a valid type.
 
     Returns:
-        pd.DataFrame: trimmed dataframe
+        pd.DataFrame: The trimmed dataframe.
+
     """
-    energy_key = config["config"].get("SHARED", "trim_key")
-    trim_parameter = config["config"].get("SHARED", "plot_until")
+    trim_key = config["config"].get("SHARED", "trim_key") if trim_key is None else trim_key
+    trim_parameter = config["config"].get("SHARED", "plot_until") if trim_parameter is None else trim_parameter
 
     if trim_parameter in ["false", "0", "no"]:
         return df
@@ -95,9 +77,9 @@ def trim_data(df: pd.DataFrame) -> pd.DataFrame:
     if not isinstance(trim_parameter, (str, float, int)):
         raise PyFragResultsProcessingError(section="trim_data", message=f"trim_parameter {trim_parameter} is not a valid type. Valid types are str, float, and int")
 
-    for key, value in overload_types.items():
+    for key, value in _overload_types.items():
         if isinstance(trim_parameter, key):
-            return value(df, trim_parameter, energy_key)
+            return value(df, trim_parameter, trim_key)
 
     return df
 
@@ -107,13 +89,16 @@ def trim_data(df: pd.DataFrame) -> pd.DataFrame:
 # ====================================================================================================
 
 def remove_dispersion_term(df: pd.DataFrame) -> pd.DataFrame:
-    """ Removes the dispersion term from the dataframe if it is 0.0 everywhere.
+    """Removes the dispersion term from the dataframe if it is 0.0 everywhere.
+
+    This function takes a pandas DataFrame containing the results file data and removes the dispersion term if it is 0.0 everywhere. The function returns the modified DataFrame.
 
     Args:
-        df (pd.DataFrame): dataframe containing the resultsfile data
+        df (pd.DataFrame): The DataFrame containing the results file data.
 
     Returns:
-        pd.DataFrame: dataframe without the dispersion term if it is 0.0 everywhere
+        pd.DataFrame: The modified DataFrame without the dispersion term if it is 0.0 everywhere.
+
     """
     if "Disp" not in df.columns:
         return df
