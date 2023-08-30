@@ -1,7 +1,7 @@
-TCutility
-=========
+pyfrag_plot
+===========
 
 .. toctree::
    :maxdepth: 4
 
-   TCutility
+   pyfrag_plot

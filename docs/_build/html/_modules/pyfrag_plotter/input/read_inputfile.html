@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyfrag_plotter.input.read_inputfile &mdash; PyFragPlotter 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=f6245a2f"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            PyFragPlotter
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../general.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">pyfrag_plot</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyFragPlotter</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">pyfrag_plotter.input.read_inputfile</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for pyfrag_plotter.input.read_inputfile</h1><div class="highlight"><pre>
+<span></span><span class="c1"># from os.path import join as opj</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">pyfrag_plotter.helper_funcs</span> <span class="kn">import</span> <span class="n">get_pyfrag_files</span>
+
+<span class="kn">from</span> <span class="nn">pyfrag_plotter.errors</span> <span class="kn">import</span> <span class="n">PyFragInputError</span>
+
+
+<span class="k">def</span> <span class="nf">_extract_pyfrag_section</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+    <span class="n">start_index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">end_index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\s*PyFrag\s*$&quot;</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">):</span>
+            <span class="n">start_index</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\s*PyFrag END\s*$&quot;</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">):</span>
+            <span class="n">end_index</span> <span class="o">=</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span>
+            <span class="k">break</span>
+
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">index</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="p">(</span><span class="n">start_index</span><span class="p">,</span> <span class="n">end_index</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Could not find PyFrag section in file. Check if the lines &#39;PyFrag&#39; and &#39;PyFrag END&#39; are present in the file.&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">lines</span><span class="p">[</span><span class="n">start_index</span><span class="p">:</span><span class="n">end_index</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">_check_line_length</span><span class="p">(</span><span class="n">line</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">input_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">limits</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Checks if the line has the correct length for reading the specified input key. Raises an error if the line does not have the correct length.</span>
+<span class="sd">    Returns a list containing the values of the line.</span>
+
+<span class="sd">    :param line: line containing the keyword and the values</span>
+<span class="sd">    :type line: str</span>
+<span class="sd">    :param input_key: keyword to be read</span>
+<span class="sd">    :type input_key: str</span>
+<span class="sd">    :param limits: limits of the length of the line such as (3, 4) for bondlength and angle</span>
+<span class="sd">    :type limits: Sequence[int]</span>
+<span class="sd">    :raises PyFragInputError: if the line does not have the correct length</span>
+<span class="sd">    :return: list containing the values of the line</span>
+<span class="sd">    :rtype: List[str]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">line_content</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line_content</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">limits</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">PyFragInputError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Length of the </span><span class="si">{</span><span class="n">input_key</span><span class="si">}</span><span class="s2"> not correct. Make sure to specify the correct format&quot;</span><span class="p">,</span> <span class="n">input_key</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">line_content</span>
+
+
+<span class="k">def</span> <span class="nf">_read_bondlength_line</span><span class="p">(</span><span class="n">line</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads the line containing the &quot;bondlength&quot; keyword. Correct format is:</span>
+
+<span class="sd">    bondlength atom1 atom2 [bondlength] (optional).</span>
+
+<span class="sd">    :param line: line to be read with the bondlength keyword</span>
+<span class="sd">    :type line: str</span>
+<span class="sd">    :return: Tuple containing the atom indices and the bondlength</span>
+<span class="sd">    :rtype: Tuple[int, int, float]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">line_content</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">_check_line_length</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="s2">&quot;bondlength&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+    <span class="c1"># Bondlength has not been specified</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line_content</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">atom1</span><span class="p">,</span> <span class="n">atom2</span> <span class="o">=</span> <span class="n">line_content</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">atom1</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">atom2</span><span class="p">),</span> <span class="mf">0.0</span>
+
+    <span class="c1"># Bondlength has been specified</span>
+    <span class="n">atom1</span><span class="p">,</span> <span class="n">atom2</span><span class="p">,</span> <span class="n">bondlength</span> <span class="o">=</span> <span class="n">line_content</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">atom1</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">atom2</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">bondlength</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_read_bondangle_line</span><span class="p">(</span><span class="n">line</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads the line containing the &quot;angle&quot; keyword. Correct format is:</span>
+
+<span class="sd">    angle atom1 atom2 [angle] (optional).</span>
+
+<span class="sd">    :param line: line to be read with the angle keyword</span>
+<span class="sd">    :type line: str</span>
+<span class="sd">    :return: Tuple containing the atom indices and the bond angle</span>
+<span class="sd">    :rtype: Tuple[int, int, float]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">line_content</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">_check_line_length</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="s2">&quot;angle&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+    <span class="c1"># Two atoms without angle</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line_content</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">atom1</span><span class="p">,</span> <span class="n">atom2</span> <span class="o">=</span> <span class="n">line_content</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">atom1</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">atom2</span><span class="p">),</span> <span class="mf">0.0</span>
+
+    <span class="c1"># Two atoms with angle</span>
+    <span class="n">atom1</span><span class="p">,</span> <span class="n">atom2</span><span class="p">,</span> <span class="n">angle</span> <span class="o">=</span> <span class="n">line_content</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">atom1</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">atom2</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_read_dihedral_angle</span><span class="p">(</span><span class="n">line</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads the line containing the &quot;dihedral&quot; keyword. Correct format is:</span>
+
+<span class="sd">    dihedral atom1 atom2 atom3 [dihedral_angle] (optional)</span>
+
+<span class="sd">    :param line: line to be read with the dihedral keyword</span>
+<span class="sd">    :type line: str</span>
+<span class="sd">    :return: Tuple containing the atom indices and the dihedral angle</span>
+<span class="sd">    :rtype: Tuple[int, int, int, float]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">line_content</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">_check_line_length</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="s2">&quot;dihedral&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+    <span class="c1"># Three atoms without angle</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line_content</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="n">atom1</span><span class="p">,</span> <span class="n">atom2</span><span class="p">,</span> <span class="n">atom3</span> <span class="o">=</span> <span class="n">line_content</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">atom1</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">atom2</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">atom3</span><span class="p">),</span> <span class="mf">0.0</span>
+
+    <span class="c1"># Three atoms with angle</span>
+    <span class="n">atom1</span><span class="p">,</span> <span class="n">atom2</span><span class="p">,</span> <span class="n">atom3</span><span class="p">,</span> <span class="n">dihedral_angle</span> <span class="o">=</span> <span class="n">line_content</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">atom1</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">atom2</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">atom3</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">dihedral_angle</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_read_overlap_line</span><span class="p">(</span><span class="n">line</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads the line containing the &quot;overlap&quot; keyword. Correct formats are:</span>
+
+<span class="sd">    overlap frag1 HOMO frag2 LUMO</span>
+<span class="sd">    overlap frag1 HOMO-1 frag2 LUMO+3</span>
+<span class="sd">    overlap S frag1 5 AA frag2 4</span>
+
+<span class="sd">    :param line: line to be read with the population keyword</span>
+<span class="sd">    :type line: str</span>
+<span class="sd">    :return: tuple containing the MOs specified by the fragment, MO, and irrep (optional)</span>
+<span class="sd">    :rtype: Union[Tuple[str, str, str, str, str, str], Tuple[str, str, str, str]]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">line_content</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">_check_line_length</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="s2">&quot;overlap&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+
+    <span class="c1"># Two fragments, two MOs (HOMO/LUMO kind), no irreps</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line_content</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="n">frag1</span><span class="p">,</span> <span class="n">MO1</span><span class="p">,</span> <span class="n">frag2</span><span class="p">,</span> <span class="n">MO2</span> <span class="o">=</span> <span class="n">line_content</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+        <span class="c1"># Check if the fragments are strings and are named frag1 and frag2</span>
+        <span class="k">assert</span> <span class="n">frag1</span> <span class="o">==</span> <span class="s2">&quot;frag1&quot;</span> <span class="ow">and</span> <span class="n">frag2</span> <span class="o">==</span> <span class="s2">&quot;frag2&quot;</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">frag1</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">MO1</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">frag2</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">MO2</span><span class="p">)</span>
+
+    <span class="n">irrep1</span><span class="p">,</span> <span class="n">frag1</span><span class="p">,</span> <span class="n">index1</span><span class="p">,</span> <span class="n">irrep2</span><span class="p">,</span> <span class="n">frag2</span><span class="p">,</span> <span class="n">index2</span> <span class="o">=</span> <span class="n">line_content</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">irrep1</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">frag1</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">index1</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">irrep2</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">frag2</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">index2</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_read_population_line</span><span class="p">(</span><span class="n">line</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads the line containing the &quot;population&quot; keyword. Correct formats are:</span>
+
+<span class="sd">    population frag1 HOMO</span>
+<span class="sd">    population frag2 HOMO-1</span>
+<span class="sd">    population AA frag2 5</span>
+
+<span class="sd">    :param line: line to be read with the population keyword</span>
+<span class="sd">    :type line: str</span>
+<span class="sd">    :return: tuple containign the fragment, MO, and irrep (optional)</span>
+<span class="sd">    :rtype: Union[Tuple[str, str], Tuple[str, str, str]]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">line_content</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">_check_line_length</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="s2">&quot;population&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+    <span class="c1"># Two fragments, two MOs (HOMO/LUMO kind), no irreps</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line_content</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">frag1</span><span class="p">,</span> <span class="n">MO1</span><span class="p">,</span>  <span class="o">=</span> <span class="n">line_content</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">frag1</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">MO1</span><span class="p">)</span>
+
+    <span class="n">irrep1</span><span class="p">,</span> <span class="n">frag1</span><span class="p">,</span> <span class="n">index1</span> <span class="o">=</span> <span class="n">line_content</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">irrep1</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">frag1</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">index1</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_read_orbitalenergy_line</span><span class="p">(</span><span class="n">line</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads the line containing the &quot;orbitalenergy&quot; keyword. Correct formats are:</span>
+
+<span class="sd">    orbitalenergy frag1 HOMO</span>
+<span class="sd">    orbitalenergy frag1 HOMO-2</span>
+<span class="sd">    orbitalenergy AA frag2 5</span>
+
+<span class="sd">    :param line: line to be read with the orbitalenergy keyword</span>
+<span class="sd">    :type line: str</span>
+<span class="sd">    :return: tuple containign the fragment, MO, and irrep (optional)</span>
+<span class="sd">    :rtype: Union[Tuple[str, str], Tuple[str, str, str]]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">line_content</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">_check_line_length</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="s2">&quot;orbitalenergy&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+    <span class="c1"># Two fragments, two MOs (HOMO/LUMO kind), no irreps</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line_content</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">frag1</span><span class="p">,</span> <span class="n">MO1</span><span class="p">,</span>  <span class="o">=</span> <span class="n">line_content</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">frag1</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">MO1</span><span class="p">)</span>
+
+    <span class="n">irrep1</span><span class="p">,</span> <span class="n">frag1</span><span class="p">,</span> <span class="n">index1</span> <span class="o">=</span> <span class="n">line_content</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">irrep1</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">frag1</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">index1</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_read_vdd_line</span><span class="p">(</span><span class="n">line</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads the line containing the &quot;vdd&quot; keyword. Correct formats are:</span>
+
+<span class="sd">    vdd 1 2 3 4</span>
+<span class="sd">    vdd 3 6 8</span>
+
+<span class="sd">    :param line: line to be read with the vdd keyword</span>
+<span class="sd">    :type line: str</span>
+<span class="sd">    :raises PyFragInputError: when the entries (atom indices) are not integers</span>
+<span class="sd">    :return: list containing the atom indices</span>
+<span class="sd">    :rtype: list[int]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">line_content</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">all</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">atom_index</span><span class="p">)</span> <span class="k">for</span> <span class="n">atom_index</span> <span class="ow">in</span> <span class="n">line_content</span><span class="p">[</span><span class="mi">1</span><span class="p">:]])</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">PyFragInputError</span><span class="p">(</span><span class="s2">&quot;Make sure to specify the vdd charges with spaces in between the indices&quot;</span><span class="p">,</span> <span class="s2">&quot;vdd&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">atom_index</span><span class="p">)</span> <span class="k">for</span> <span class="n">atom_index</span> <span class="ow">in</span> <span class="n">line_content</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+
+
+<span class="k">def</span> <span class="nf">_read_irrep_line</span><span class="p">(</span><span class="n">line</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads the line containing the &quot;irrep&quot; keyword. Correct formats are:</span>
+
+<span class="sd">    irrepOI AA</span>
+<span class="sd">    irrepOI E1:1</span>
+
+<span class="sd">    :param line: line to be read with the vdd keyword</span>
+<span class="sd">    :type line: str</span>
+<span class="sd">    :return: str containing the irrep</span>
+<span class="sd">    :rtype: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">line_content</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">_check_line_length</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="s2">&quot;orbitalenergy&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+    <span class="n">irrep</span> <span class="o">=</span> <span class="n">line_content</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">irrep</span>
+
+
+<span class="n">read_functions</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;bondlength&quot;</span><span class="p">:</span> <span class="n">_read_bondlength_line</span><span class="p">,</span>
+    <span class="s2">&quot;angle&quot;</span><span class="p">:</span> <span class="n">_read_bondangle_line</span><span class="p">,</span>
+    <span class="s2">&quot;dihedral&quot;</span><span class="p">:</span> <span class="n">_read_dihedral_angle</span><span class="p">,</span>
+    <span class="s2">&quot;overlap&quot;</span><span class="p">:</span> <span class="n">_read_overlap_line</span><span class="p">,</span>
+    <span class="s2">&quot;population&quot;</span><span class="p">:</span> <span class="n">_read_population_line</span><span class="p">,</span>
+    <span class="s2">&quot;orbitalenergy&quot;</span><span class="p">:</span> <span class="n">_read_orbitalenergy_line</span><span class="p">,</span>
+    <span class="s2">&quot;vdd&quot;</span><span class="p">:</span> <span class="n">_read_vdd_line</span><span class="p">,</span>
+    <span class="s2">&quot;irrep&quot;</span><span class="p">:</span> <span class="n">_read_irrep_line</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="read_inputfile"><a class="viewcode-back" href="../../../pyfrag_plotter.input.html#pyfrag_plotter.input.read_inputfile.read_inputfile">[docs]</a><span class="k">def</span> <span class="nf">read_inputfile</span><span class="p">(</span><span class="n">inputfile</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Takes as argument the inputfile for the pyfrag calculation</span>
+<span class="sd">    Extracts extra specifications such as orbitalenergy, overlap, population of a certain fragment and MO</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">input_keys</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="n">pyfrag_section</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">_extract_pyfrag_section</span><span class="p">(</span><span class="n">inputfile</span><span class="p">)</span>
+
+    <span class="n">counter</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">read_functions</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">pyfrag_section</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">read_functions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+                <span class="n">counter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">input_keys</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">counter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+    <span class="c1"># Add the name of the inputfile to the dictionary if it is not specified in the inputfile</span>
+    <span class="k">if</span> <span class="s2">&quot;name&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">input_keys</span><span class="p">:</span>
+        <span class="n">input_keys</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">inputfile</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">input_keys</span></div>
+
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../../pyfrag_plotter.input.html#pyfrag_plotter.input.read_inputfile.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># path_to_pyfrag_results = r&quot;C:\Users\siebb\VU_PhD\PhD\Scripting\local_packages\pyfrag_plotter\example\pyfrag_files&quot;</span>
+    <span class="n">path_to_pyfrag_results</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Scripting/local_packages/pyfrag_plotter/example/ureas_di_O_Cs_all&quot;</span>
+
+    <span class="n">inp</span> <span class="o">=</span> <span class="n">get_pyfrag_files</span><span class="p">(</span><span class="n">path_to_pyfrag_results</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">inputfile</span><span class="p">,</span> <span class="n">txtfile</span> <span class="ow">in</span> <span class="n">inp</span><span class="p">:</span>
+        <span class="n">processed_input</span> <span class="o">=</span> <span class="n">read_inputfile</span><span class="p">(</span><span class="n">inputfile</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">processed_input</span><span class="p">)</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, SiebeLeDe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

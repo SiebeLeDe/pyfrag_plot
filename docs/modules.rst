@@ -1,7 +1,7 @@
-pyfrag_plotter
-==============
+pyfrag_plot
+===========
 
 .. toctree::
    :maxdepth: 4
 
-   pyfrag_plotter
+   pyfrag_plot

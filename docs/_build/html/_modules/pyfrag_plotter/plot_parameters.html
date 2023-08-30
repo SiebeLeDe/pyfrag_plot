@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyfrag_plotter.plot_parameters &mdash; PyFragPlotter 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=f6245a2f"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            PyFragPlotter
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general.html">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">pyfrag_plot</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">PyFragPlotter</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">pyfrag_plotter.plot_parameters</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for pyfrag_plotter.plot_parameters</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Script that specifies general plot parameters used in the pyfrag_plotter.py file</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;Agg&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="initialize_plot_parameters"><a class="viewcode-back" href="../../pyfrag_plotter.html#pyfrag_plotter.plot_parameters.initialize_plot_parameters">[docs]</a><span class="k">def</span> <span class="nf">initialize_plot_parameters</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Applies plot-specific parameters for the the PlotClasses.py file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Get a list of available fonts of matplotlib</span>
+    <span class="c1"># import matplotlib.font_manager</span>
+    <span class="c1"># flist = matplotlib.font_manager.get_fontconfig_fonts()</span>
+    <span class="c1"># names = [matplotlib.font_manager.FontProperties(fname=fname).get_name() for fname in flist]</span>
+    <span class="c1"># print(names)</span>
+
+    <span class="c1"># mp.font_manager._rebuild()</span>
+    <span class="c1"># font = fp.FontProperties(fname=r&quot;C:\\Windows\\Fonts\\Helvetica Regulier.ttf&quot;)</span>
+    <span class="c1"># print(font.get_name())</span>
+
+    <span class="c1"># Figure size</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+
+    <span class="c1"># Fontsize</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;font.family&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Arial&quot;</span><span class="p">]</span>
+
+    <span class="c1"># Takes care of ticks starting at the edge of the screen</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;axes.autolimit_mode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;round_numbers&quot;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;axes.xmargin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.00</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;axes.ymargin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.00</span>
+
+    <span class="n">SMALL_SIZE</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="n">MEDIUM_SIZE</span> <span class="o">=</span> <span class="mi">25</span>
+    <span class="n">BIGGER_SIZE</span> <span class="o">=</span> <span class="mi">29</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;font&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">MEDIUM_SIZE</span><span class="p">)</span>  <span class="c1"># controls default text sizes</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;axes&quot;</span><span class="p">,</span> <span class="n">titlesize</span><span class="o">=</span><span class="n">BIGGER_SIZE</span><span class="p">)</span>  <span class="c1"># fontsize of the axes title</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;axes&quot;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">BIGGER_SIZE</span><span class="p">)</span>  <span class="c1"># fontsize of the x and y labels</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;xtick&quot;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">MEDIUM_SIZE</span><span class="p">)</span>  <span class="c1"># fontsize of the tick labels</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;ytick&quot;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">MEDIUM_SIZE</span><span class="p">)</span>  <span class="c1"># fontsize of the tick labels</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;legend&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">SMALL_SIZE</span><span class="p">)</span>  <span class="c1"># legend fontsize</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;figure&quot;</span><span class="p">,</span> <span class="n">titlesize</span><span class="o">=</span><span class="n">SMALL_SIZE</span><span class="p">)</span>  <span class="c1"># fontsize of the figure title</span></div>
+
+
+<span class="c1"># Plot parameters</span>
+<span class="n">EDA_keys</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Int&quot;</span><span class="p">,</span> <span class="s2">&quot;Elstat&quot;</span><span class="p">,</span> <span class="s2">&quot;OI&quot;</span><span class="p">,</span> <span class="s2">&quot;Pauli&quot;</span><span class="p">,</span> <span class="s2">&quot;Disp&quot;</span><span class="p">]</span>
+<span class="n">EDA_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Eint&quot;</span><span class="p">,</span> <span class="s2">&quot;Velstat&quot;</span><span class="p">,</span> <span class="s2">&quot;Eoi&quot;</span><span class="p">,</span> <span class="s2">&quot;Epauli&quot;</span><span class="p">,</span> <span class="s2">&quot;Edisp&quot;</span><span class="p">]</span>
+<span class="n">EDA_styles</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;solid&quot;</span><span class="p">,</span> <span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="s2">&quot;dotted&quot;</span><span class="p">,</span> <span class="s2">&quot;dashdot&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">]</span>
+
+<span class="n">ASM_keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Int&#39;</span><span class="p">]</span>
+<span class="c1"># ASM_keys = [&quot;EnergyTotal&quot;, &quot;Int&quot;, &quot;StrainTotal&quot;, &quot;frag1Strain&quot;, &quot;frag2Strain&quot;]</span>
+<span class="n">ASM_strain_keys</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;StrainTotal&quot;</span><span class="p">,</span> <span class="s2">&quot;frag1Strain&quot;</span><span class="p">,</span> <span class="s2">&quot;frag2Strain&quot;</span><span class="p">]</span>
+<span class="n">ASM_names</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;</span><span class="se">\u0394</span><span class="s2">Ebond&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;</span><span class="se">\u0394</span><span class="s2">Eint&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;</span><span class="se">\u0394</span><span class="s2">Estrain&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;</span><span class="se">\u0394</span><span class="s2">Estrain&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;</span><span class="se">\u0394</span><span class="s2">Estrain1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;</span><span class="se">\u0394</span><span class="s2">Estrain2&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">ASM_styles</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;solid&quot;</span><span class="p">,</span> <span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="s2">&quot;dotted&quot;</span><span class="p">,</span> <span class="s2">&quot;dashdot&quot;</span><span class="p">]</span>
+
+<span class="n">solo_col</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;orange&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;green&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;yellow&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;lime&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;gold&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;brown&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;fuchsia&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;chalcs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">],</span>  <span class="c1"># [(248/256, 37/256, 0/256), (213/256, 199/256, 17/256), (250/256, 165/256, 1/256)],</span>
+    <span class="s2">&quot;orbs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">],</span>  <span class="c1"># &quot;orange&quot;, &quot;green&quot;, &quot;yellow&quot;, &quot;lime&quot;, &quot;gold&quot;],</span>
+    <span class="s2">&quot;extra&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">],</span>  <span class="c1"># &quot;brown&quot;, &quot;fuchsia&quot;],</span>
+<span class="p">}</span>
+
+<span class="n">sub_colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">]</span>
+<span class="n">styles</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;solid&quot;</span><span class="p">,</span> <span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="s2">&quot;dotted&quot;</span><span class="p">,</span> <span class="s2">&quot;dashdot&quot;</span><span class="p">]</span>
+
+<span class="c1"># Unit conversion</span>
+<span class="n">har_eV_ratio</span> <span class="o">=</span> <span class="mf">27.211</span>  <span class="c1"># 1 hartree = 27.211 eV</span>
+
+<span class="c1"># Outlier threshold for cleaning up data (outliers originate from a restricted calculation that should have been unrestricted)</span>
+<span class="n">outlier_threshold</span> <span class="o">=</span> <span class="mi">70</span>  <span class="c1"># kcal/mol</span>
+
+<span class="c1"># y limits for all plots</span>
+<span class="n">ASM_ylim</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>  <span class="c1"># [-80, 80]</span>
+<span class="n">strain_ylim</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="n">EDA_ylim</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+
+<span class="c1"># x limits for all plots</span>
+<span class="n">xlim</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
+
+<span class="c1"># Determines if a vertical line should be plotted (mostly used for visualizing the interpolation line)</span>
+<span class="n">vline</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># stationary point, searching for a minimum or maximum</span>
+<span class="n">stat_point</span> <span class="o">=</span> <span class="s2">&quot;min&quot;</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, SiebeLeDe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
