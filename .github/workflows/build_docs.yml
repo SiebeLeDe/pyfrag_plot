@@ -44,8 +44,8 @@ jobs:
         run: pip install sphinx
 
       - name: Install sphinx theme
-        # run: pip install pydata-sphinx-theme
-        run: pip install sphinxjp.themes.dotted
+        run: pip install pydata-sphinx-theme
+        # run: pip install sphinxjp.themes.dotted
 
       - name: Install other dependencies
         run: pip install plams
