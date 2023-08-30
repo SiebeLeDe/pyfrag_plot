@@ -55,14 +55,14 @@ class Plotter:
 
                 # Plot the data
                 if i == 0:
-                    ax.plot(x_axis, term_data, label=obj.name, color=colour, linestyle=line_style)
+                    ax.plot(x_axis, term_data, label=obj.name, color=colour, linestyle=line_style, zorder=1)
 
                     if self.plot_info.peak_type is not None:
                         peak_index, peak_value = obj.get_peak_of_key(key=term, peak=self.plot_info.peak_type)
-                        ax.scatter(x_axis[peak_index], peak_value, color=colour, s=50)
+                        ax.scatter(x_axis[peak_index], peak_value, color=colour, s=50, zorder=2)
                         continue
 
-                ax.plot(x_axis, term_data, color=colour, linestyle=line_style)
+                ax.plot(x_axis, term_data, color=colour, linestyle=line_style, zorder=1)
 
     def plot_asm(self, keys: Optional[List[str]] = None, **kwargs):
         """ Plots the activation strain model terms. The user can specify which terms to plot, otherwise all of them are plotted

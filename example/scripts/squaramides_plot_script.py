@@ -88,7 +88,7 @@ def plot_dimer_graph(plot_instances: Sequence[Plotter],
         # Add the image to the top right corner of the subplot
         img = plt.imread(image_path)
         imagebox = OffsetImage(img, zoom=0.065)
-        ab = AnnotationBbox(imagebox, xy=(0.70, 0.80), xycoords='axes fraction', frameon=False, zorder=5)
+        ab = AnnotationBbox(imagebox, xy=(0.70, 0.80), xycoords='axes fraction', frameon=False, zorder=0)
         ax.add_artist(ab)
 
     # Set the key-specific plot details
@@ -132,7 +132,7 @@ def plot_trimer_graph(plot_instances: Sequence[Plotter],
         # Add the image to the top right corner of the subplot
         img = plt.imread(image_path)
         imagebox = OffsetImage(img, zoom=0.092)
-        ab = AnnotationBbox(imagebox, xy=(0.70, 0.80), xycoords='axes fraction', frameon=False, zorder=1)
+        ab = AnnotationBbox(imagebox, xy=(0.70, 0.80), xycoords='axes fraction', frameon=False, zorder=0)
         ax.add_artist(ab)
 
     # Set the key-specific plot details
