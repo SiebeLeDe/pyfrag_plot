@@ -5,6 +5,10 @@ Scripts for plotting pyfrag calculations using the input and text files created 
 First clone the github page and move to the directory. Then install it locally in your python environment with
 ``pip install -e .``
 
+## Docs
+
+Link to the documentation: https://siebelede.github.io/pyfrag_plot/
+
 ## PyFrag inputfile order
 
 Code that analyzes and plots data from pyfrag calculations

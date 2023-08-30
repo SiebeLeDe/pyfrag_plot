@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pyfrag_plot &mdash; PyFragPlotter 0.0.1 documentation</title>
+  <title>pyfrag_plotter &mdash; PyFragPlotter 0.0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pyfrag_plot package" href="pyfrag_plot.html" />
+    <link rel="next" title="pyfrag_plotter package" href="pyfrag_plotter.html" />
     <link rel="prev" title="General" href="general.html" /> 
 </head>
 
@@ -45,8 +45,8 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="general.html">General</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">pyfrag_plot</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pyfrag_plot.html">pyfrag_plot package</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">pyfrag_plotter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.html">pyfrag_plotter package</a></li>
 </ul>
 </li>
 </ul>
@@ -65,7 +65,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">pyfrag_plot</li>
+      <li class="breadcrumb-item active">pyfrag_plotter</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/modules.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -75,38 +75,75 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pyfrag-plot">
-<h1>pyfrag_plot<a class="headerlink" href="#pyfrag-plot" title="Permalink to this heading"></a></h1>
+  <section id="pyfrag-plotter">
+<h1>pyfrag_plotter<a class="headerlink" href="#pyfrag-plotter" title="Permalink to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pyfrag_plot.html">pyfrag_plot package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pyfrag_plot.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pyfrag_plot.pyfrag_plotter.html">pyfrag_plot.pyfrag_plotter package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pyfrag_plot.pyfrag_plotter.html#subpackages">Subpackages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyfrag_plot.pyfrag_plotter.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyfrag_plot.pyfrag_plotter.html#pyfrag-plot-pyfrag-plotter-config-handler-module">pyfrag_plot.pyfrag_plotter.config_handler module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyfrag_plot.pyfrag_plotter.html#pyfrag-plot-pyfrag-plotter-errors-module">pyfrag_plot.pyfrag_plotter.errors module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyfrag_plot.pyfrag_plotter.html#pyfrag-plot-pyfrag-plotter-helper-funcs-module">pyfrag_plot.pyfrag_plotter.helper_funcs module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyfrag_plot.pyfrag_plotter.html#pyfrag-plot-pyfrag-plotter-interpolate-module">pyfrag_plot.pyfrag_plotter.interpolate module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyfrag_plot.pyfrag_plotter.html#pyfrag-plot-pyfrag-plotter-main-module">pyfrag_plot.pyfrag_plotter.main module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyfrag_plot.pyfrag_plotter.html#pyfrag-plot-pyfrag-plotter-plot-parameters-module">pyfrag_plot.pyfrag_plotter.plot_parameters module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyfrag_plot.pyfrag_plotter.html#pyfrag-plot-pyfrag-plotter-processing-funcs-module">pyfrag_plot.pyfrag_plotter.processing_funcs module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyfrag_plot.pyfrag_plotter.html#pyfrag-plot-pyfrag-plotter-pyfrag-object-module">pyfrag_plot.pyfrag_plotter.pyfrag_object module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyfrag_plot.pyfrag_plotter.html#module-contents">Module contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyfrag_plotter.html">pyfrag_plotter package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.input.html">pyfrag_plotter.input package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.input.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.input.html#module-pyfrag_plotter.input.read_inputfile">pyfrag_plotter.input.read_inputfile module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.input.html#module-pyfrag_plotter.input.read_resultsfile">pyfrag_plotter.input.read_resultsfile module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.input.html#module-pyfrag_plotter.input">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="pyfrag_plot.tests.html">pyfrag_plot.tests package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pyfrag_plot.tests.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyfrag_plot.tests.html#pyfrag-plot-tests-test-config-module">pyfrag_plot.tests.test_config module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyfrag_plot.tests.html#pyfrag-plot-tests-test-get-pyfrag-files-module">pyfrag_plot.tests.test_get_pyfrag_files module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyfrag_plot.tests.html#pyfrag-plot-tests-test-processing-data-module">pyfrag_plot.tests.test_processing_data module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyfrag_plot.tests.html#pyfrag-plot-tests-test-read-inputfile-module">pyfrag_plot.tests.test_read_inputfile module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyfrag_plot.tests.html#module-contents">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.interpolate_func.html">pyfrag_plotter.interpolate_func package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.interpolate_func.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.interpolate_func.html#pyfrag-plotter-interpolate-func-interpolate-module">pyfrag_plotter.interpolate_func.interpolate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.interpolate_func.html#module-pyfrag_plotter.interpolate_func">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.plot.html">pyfrag_plotter.plot package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#module-pyfrag_plotter.plot.plot_classes">pyfrag_plotter.plot.plot_classes module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#pyfrag-plotter-plot-plot-details-module">pyfrag_plotter.plot.plot_details module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#pyfrag-plotter-plot-plotter-module">pyfrag_plotter.plot.plotter module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#module-pyfrag_plotter.plot">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.printer.html">pyfrag_plotter.printer package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.printer.html#module-pyfrag_plotter.printer">Module contents</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="pyfrag_plot.html#module-contents">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.html#module-pyfrag_plotter.config_handler">pyfrag_plotter.config_handler module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.config_handler.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.config_handler.Config.get"><code class="docutils literal notranslate"><span class="pre">Config.get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.config_handler.Config.sections"><code class="docutils literal notranslate"><span class="pre">Config.sections()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.config_handler.initialize_pyfrag_plotter"><code class="docutils literal notranslate"><span class="pre">initialize_pyfrag_plotter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.config_handler.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.html#module-pyfrag_plotter.errors">pyfrag_plotter.errors module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.errors.PyFragConfigError"><code class="docutils literal notranslate"><span class="pre">PyFragConfigError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.errors.PyFragInputError"><code class="docutils literal notranslate"><span class="pre">PyFragInputError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.errors.PyFragResultsObjectError"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObjectError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.errors.PyFragResultsProcessingError"><code class="docutils literal notranslate"><span class="pre">PyFragResultsProcessingError</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.html#module-pyfrag_plotter.helper_funcs">pyfrag_plotter.helper_funcs module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.helper_funcs.get_pyfrag_files"><code class="docutils literal notranslate"><span class="pre">get_pyfrag_files()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.helper_funcs.replace_overlapping_keys"><code class="docutils literal notranslate"><span class="pre">replace_overlapping_keys()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.html#pyfrag-plotter-interpolate-module">pyfrag_plotter.interpolate module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.html#pyfrag-plotter-main-module">pyfrag_plotter.main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.html#module-pyfrag_plotter.plot_parameters">pyfrag_plotter.plot_parameters module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.plot_parameters.initialize_plot_parameters"><code class="docutils literal notranslate"><span class="pre">initialize_plot_parameters()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.html#module-pyfrag_plotter.processing_funcs">pyfrag_plotter.processing_funcs module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.processing_funcs.remove_dispersion_term"><code class="docutils literal notranslate"><span class="pre">remove_dispersion_term()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.processing_funcs.trim_data"><code class="docutils literal notranslate"><span class="pre">trim_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.html#pyfrag-plotter-pyfrag-object-module">pyfrag_plotter.pyfrag_object module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.html#module-pyfrag_plotter">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -118,7 +155,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="general.html" class="btn btn-neutral float-left" title="General" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="pyfrag_plot.html" class="btn btn-neutral float-right" title="pyfrag_plot package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="pyfrag_plotter.html" class="btn btn-neutral float-right" title="pyfrag_plotter package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
