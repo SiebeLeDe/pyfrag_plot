@@ -137,7 +137,7 @@ def set_axes_details(
     ax.spines["bottom"].set_linewidth(1.5)
 
     # Adds more spacing between ticks and the labels
-    ax.tick_params(pad=7)
+    ax.tick_params(pad=6)
 
     # Plots the legend at the right side of the plot
     # ax.legend(bbox_to_anchor=(0,1.02,1,0.2), loc="lower left", mode="expand")

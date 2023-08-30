@@ -11,7 +11,7 @@ Welcome to PyFragPlotter's documentation!
    :caption: Contents:
 
    general
-   plotter
+   modules
 
 Indices and tables
 ==================

@@ -37,7 +37,7 @@ class Plotter:
 # ------------------------------ ASM, EDA and ASM extra strain plotting routines ------------------------------ #
 # ------------------------------------------------------------------------------------------------------------- #
 
-    def _standard_plot_routine(self, type: str, keys: Sequence[str], ax: Optional[plt.Axes] = None):
+    def standard_plot_routine(self, type: str, keys: Sequence[str], ax: Optional[plt.Axes] = None):
         """The plot routine for the EDA, ASM and extra strain plots
 
         Args:
@@ -59,7 +59,7 @@ class Plotter:
 
                     if self.plot_info.peak_type is not None:
                         peak_index, peak_value = obj.get_peak_of_key(key=term, peak=self.plot_info.peak_type)
-                        ax.scatter(x_axis[peak_index], peak_value, color=colour, s=50, zorder=2)
+                        ax.scatter(x_axis[peak_index], peak_value, color=colour, s=45, zorder=2)
                         continue
 
                 ax.plot(x_axis, term_data, color=colour, linestyle=line_style, zorder=1)
@@ -79,7 +79,7 @@ class Plotter:
         else:
             asm_keys = keys
 
-        self._standard_plot_routine("asm", asm_keys, ax)
+        self.standard_plot_routine("asm", asm_keys, ax)
 
         # Set the key-specific plot details
         set_axes_details(ax=ax, x_label=self.plot_info.irc_coord_label)
@@ -104,7 +104,7 @@ class Plotter:
         else:
             eda_keys = keys
 
-        self._standard_plot_routine("eda", eda_keys)
+        self.standard_plot_routine("eda", eda_keys)
 
         # Set the key-specific plot details
         set_axes_details(ax=ax, x_label=self.plot_info.irc_coord_label)
@@ -128,7 +128,7 @@ class Plotter:
         else:
             extra_keys = keys
 
-        self._standard_plot_routine("extra_strain", extra_keys)
+        self.standard_plot_routine("extra_strain", extra_keys)
 
         # Set the key-specific plot details
         set_axes_details(ax=ax, x_label=self.plot_info.irc_coord_label)

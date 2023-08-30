@@ -1,7 +1,7 @@
 # Plots the figures for the squaramides paper (dimer and trimer)
 
 import os
-from typing import List, Sequence, Optional
+from typing import Any, List, Sequence
 import matplotlib.pyplot as plt
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 
@@ -55,59 +55,18 @@ def plot_individual_graphs(plot_instances: Sequence[Plotter]):
         plt.show()
 
 
-def plot_dimer_graph(plot_instances: Sequence[Plotter],
-                     savefig: str,
-                     path_to_images: Optional[Sequence[str]] = None):
-    """ Plots the dimer graphs for the squaramides paper"""
-
-    plot_type = "asm"
-    plot_keys = ["Int"]
-    x_label: str = "r$_{X \cdot\cdot\cdot H}$ / Å"
-    y_label: str = "\u0394$\it{E}$ / kcal mol$^{-1}$"
-
-    num_figs = len(plot_instances)
-    num_rows = (num_figs - 1) // 3 + 1
-    num_cols = min(num_figs, 3)
-    image_paths: Sequence[str] = [] if path_to_images is None else path_to_images
-
-    fig, axes = plt.subplots(nrows=num_rows, ncols=num_cols, figsize=(num_cols * 5, num_rows * 3), sharey="row", sharex="col", squeeze=False)
-
-    for i, (plot_instance, ax, image_path) in enumerate(zip(plot_instances, axes.flatten(), image_paths)):
-        plot_y_label = ""
-        plot_x_label = ""
-        if i % num_cols == 0:
-            plot_y_label = y_label
-
-        if i // num_cols == num_rows - 1:
-            plot_x_label = x_label
-
-        plot_instance._standard_plot_routine(plot_type, plot_keys, ax)
-        set_axes_details(ax=ax, x_label=plot_x_label, y_label=plot_y_label, n_max_y_ticks=6, y_lim=(-25.0, 25.0))
-        # ax.set_title(plot_instance.path.split("/")[-1])
-
-        # Add the image to the top right corner of the subplot
-        img = plt.imread(image_path)
-        imagebox = OffsetImage(img, zoom=0.065)
-        ab = AnnotationBbox(imagebox, xy=(0.70, 0.80), xycoords='axes fraction', frameon=False, zorder=0)
-        ax.add_artist(ab)
-
-    # Set the key-specific plot details
-    set_figure_details(fig=fig,
-                       title=f"Combined_{'_'.join(plot_keys)}",
-                       tight_layout=False,
-                       savefig=savefig,
-                       )
-
-
-def plot_trimer_graph(plot_instances: Sequence[Plotter],
-                      savefig: str,
-                      path_to_images: Optional[Sequence[str]] = None):
-    """ Plots the dimer graphs for the squaramides paper"""
-
-    plot_type = "asm"
-    plot_keys = ["Int"]
-    x_label: str = "r$_{X \cdot\cdot\cdot H}$ / Å"
-    y_label: str = "\u0394$\it{E}$ / kcal mol$^{-1}$"
+def plot_multiple_graphs(
+    plot_instances,
+    savefig, path_to_images=None,
+    plot_type="asm",
+    plot_keys=["Int"],
+    x_label="r$_{X \cdot\cdot\cdot H}$ / Å",
+    y_label="\u0394$\it{E}$ / kcal mol$^{-1}$",
+    n_max_y_ticks=5,
+    y_lim=(-25.0, 25.0),
+    image_zoom=0.065
+):
+    """Plots the dimer and trimer graphs for the squaramides paper"""
 
     num_figs = len(plot_instances)
     num_rows = (num_figs - 1) // 3 + 1
@@ -125,13 +84,13 @@ def plot_trimer_graph(plot_instances: Sequence[Plotter],
         if i // num_cols == num_rows - 1:
             plot_x_label = x_label
 
-        plot_instance._standard_plot_routine(plot_type, plot_keys, ax)
-        set_axes_details(ax=ax, x_label=plot_x_label, y_label=plot_y_label, n_max_y_ticks=4, y_lim=(-30.0, 30.0))
-        # ax.set_title(plot_instance.path.split("/")[-1])
+        plot_instance.standard_plot_routine(plot_type, plot_keys, ax)
+
+        set_axes_details(ax=ax, x_label=plot_x_label, y_label=plot_y_label, n_max_y_ticks=n_max_y_ticks, y_lim=y_lim)
 
         # Add the image to the top right corner of the subplot
         img = plt.imread(image_path)
-        imagebox = OffsetImage(img, zoom=0.092)
+        imagebox = OffsetImage(img, zoom=image_zoom)
         ab = AnnotationBbox(imagebox, xy=(0.70, 0.80), xycoords='axes fraction', frameon=False, zorder=0)
         ax.add_artist(ab)
 
@@ -210,22 +169,36 @@ trimer_images = [
 # Initialize the pyfrag plotter module (deals with config settings)
 initialize_pyfrag_plotter()
 
+# Create the plot instances
 dimer_instances = create_plot_instances(dimer_systems)
 trimer_instances = create_plot_instances(trimer_systems)
+
+path_to_dimer_images = [os.path.join(path_to_images, image + ".png") for image in dimer_images]
+path_to_trimer_images = [os.path.join(path_to_images, image + ".png") for image in trimer_images]
 
 # print("Plotting the individual graphs")
 # plot_individual_graphs(plot_instances=plot_instances)
 
+shared_keywords: dict[str, Any] = {
+    "plot_type": "asm",
+    "plot_keys": ["Int"],
+    "x_label": "r$_{X \cdot\cdot\cdot H}$ / Å",
+    "y_label": "\u0394$\it{E}$ / kcal mol$^{-1}$",
+    "n_max_y_ticks": 4,
+}
+
+dimer_specific_keywords = {
+    "y_lim": (-20.0, 20.0),
+    "image_zoom": 0.065,
+}
+
+trimer_specific_keywords = {
+    "y_lim": (-30.0, 30.0),
+    "image_zoom": 0.092,
+}
+
+print("Plot directory: ", plot_dir)
 print("Plotting the dimer graph")
-plot_dimer_graph(plot_instances=dimer_instances,
-                 savefig=os.path.join(plot_dir, "dimer_graph.png"),
-                 path_to_images=[os.path.join(path_to_images, f"{image}.png") for image in dimer_images]
-                 )
-
+plot_multiple_graphs(dimer_instances, os.path.join(plot_dir, "dimer_graph.png"), path_to_dimer_images, **shared_keywords, **dimer_specific_keywords)
 print("Plotting the trimer graph")
-plot_trimer_graph(plot_instances=trimer_instances,
-                  savefig=os.path.join(plot_dir, "trimer_graph.png"),
-                  path_to_images=[os.path.join(path_to_images, f"{image}.png") for image in trimer_images]
-                  )
-
-plt.show()
+plot_multiple_graphs(trimer_instances, os.path.join(plot_dir, "trimer_graph.png"), path_to_trimer_images, **shared_keywords, **trimer_specific_keywords)
