@@ -74,6 +74,7 @@
 
 
 <div class="viewcode-block" id="PyFragInputError"><a class="viewcode-back" href="../../pyfrag_plotter.html#pyfrag_plotter.errors.PyFragInputError">[docs]</a><span class="k">class</span> <span class="nc">PyFragInputError</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An error that occurs when the PyFrag input is invalid.&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> is not valid. </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span>
@@ -82,6 +83,7 @@
 
 
 <div class="viewcode-block" id="PyFragResultsProcessingError"><a class="viewcode-back" href="../../pyfrag_plotter.html#pyfrag_plotter.errors.PyFragResultsProcessingError">[docs]</a><span class="k">class</span> <span class="nc">PyFragResultsProcessingError</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An error that occurs when processing PyFrag results.&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">section</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">section</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Error in </span><span class="si">{</span><span class="n">section</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span>
@@ -90,6 +92,7 @@
 
 
 <div class="viewcode-block" id="PyFragConfigError"><a class="viewcode-back" href="../../pyfrag_plotter.html#pyfrag_plotter.errors.PyFragConfigError">[docs]</a><span class="k">class</span> <span class="nc">PyFragConfigError</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An error that occurs when the PyFrag configuration is invalid.&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Error in </span><span class="si">{</span><span class="n">section</span><span class="si">}</span><span class="s2">. Pyfrag_plotter is not initialized. Please call initialize_pyfrag_plotter() first.&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
@@ -97,6 +100,7 @@
 
 
 <div class="viewcode-block" id="PyFragResultsObjectError"><a class="viewcode-back" href="../../pyfrag_plotter.html#pyfrag_plotter.errors.PyFragResultsObjectError">[docs]</a><span class="k">class</span> <span class="nc">PyFragResultsObjectError</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An error that occurs when a PyFrag results object is invalid.&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span></div>
 </pre></div>

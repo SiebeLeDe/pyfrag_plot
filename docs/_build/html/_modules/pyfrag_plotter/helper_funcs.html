@@ -71,11 +71,23 @@
              
   <h1>Source code for pyfrag_plotter.helper_funcs</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Callable</span>
 <span class="kn">import</span> <span class="nn">inspect</span>
 
 
-<div class="viewcode-block" id="replace_overlapping_keys"><a class="viewcode-back" href="../../pyfrag_plotter.html#pyfrag_plotter.helper_funcs.replace_overlapping_keys">[docs]</a><span class="k">def</span> <span class="nf">replace_overlapping_keys</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+<div class="viewcode-block" id="replace_overlapping_keys"><a class="viewcode-back" href="../../pyfrag_plotter.html#pyfrag_plotter.helper_funcs.replace_overlapping_keys">[docs]</a><span class="k">def</span> <span class="nf">replace_overlapping_keys</span><span class="p">(</span><span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A decorator that replaces overlapping keys between kwargs and function arguments with top-level input.</span>
+
+<span class="sd">    This decorator is used to ensure that the correct input is used for a function when both positional arguments and keyword arguments are used.</span>
+<span class="sd">    It replaces overlapping keys between kwargs and function arguments with top-level input.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        func (Callable): The function to decorate.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Callable: The decorated function.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">argspec</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getfullargspec</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
     <span class="n">kwargs_only</span> <span class="o">=</span> <span class="n">argspec</span><span class="o">.</span><span class="n">kwonlyargs</span>
 
@@ -96,14 +108,15 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Searches for pyfrag input files and pyfrag txt files in the given folders and returns a list of tuples containing the absolute path to the pyfrag input file and the pyfrag txt file</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        *args (str): absolute paths to the folders containing the pyfrag input files</span>
+<span class="sd">        dirs (Union[List[str], str]): The absolute paths to the folders containing the pyfrag input files.</span>
 
 <span class="sd">    Raises:</span>
-<span class="sd">        FileNotFoundError: when the pyfrag input file or pyfrag txt file could not be found in the same folder</span>
-<span class="sd">        FileNotFoundError: when the returned list is empty</span>
+<span class="sd">        FileNotFoundError: If the pyfrag input file or pyfrag txt file could not be found in the same folder.</span>
+<span class="sd">        FileNotFoundError: If the returned list is empty.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        pyfrag_files (list of tuples(str, str)): list of tuples containing the absolute path to the pyfrag input file and the pyfrag txt file</span>
+<span class="sd">        List[Tuple[str, str]]: A list of tuples containing the absolute path to the pyfrag input file and the pyfrag txt file.</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dirs</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
         <span class="n">dirs</span> <span class="o">=</span> <span class="p">[</span><span class="n">dirs</span><span class="p">]</span>

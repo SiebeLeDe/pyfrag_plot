@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pyfrag_plotter.interpolate_func package" href="pyfrag_plotter.interpolate_func.html" />
+    <link rel="next" title="pyfrag_plotter.plot package" href="pyfrag_plotter.plot.html" />
     <link rel="prev" title="pyfrag_plotter package" href="pyfrag_plotter.html" /> 
 </head>
 
@@ -85,35 +85,37 @@
 <section id="module-pyfrag_plotter.input.read_inputfile">
 <span id="pyfrag-plotter-input-read-inputfile-module"></span><h2>pyfrag_plotter.input.read_inputfile module<a class="headerlink" href="#module-pyfrag_plotter.input.read_inputfile" title="Permalink to this heading"></a></h2>
 <dl class="py function">
-<dt class="sig sig-object py" id="pyfrag_plotter.input.read_inputfile.main">
-<span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyfrag_plotter/input/read_inputfile.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.input.read_inputfile.main" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="pyfrag_plotter.input.read_inputfile.read_inputfile">
 <span class="sig-name descname"><span class="pre">read_inputfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputfile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pyfrag_plotter/input/read_inputfile.html#read_inputfile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.input.read_inputfile.read_inputfile" title="Permalink to this definition"></a></dt>
-<dd><p>Takes as argument the inputfile for the pyfrag calculation
-Extracts extra specifications such as orbitalenergy, overlap, population of a certain fragment and MO</p>
+<dd><p>Extracts extra specifications from the PyFrag input file.</p>
+<p>This function takes the PyFrag input file as an argument and extracts extra specifications such as orbitalenergy, overlap, population of a certain fragment and MO.
+The function returns a dictionary containing the extracted specifications.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inputfile</strong> (<em>str</em>) – The PyFrag input file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing the extracted specifications.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[str, Any]</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
 <section id="module-pyfrag_plotter.input.read_resultsfile">
 <span id="pyfrag-plotter-input-read-resultsfile-module"></span><h2>pyfrag_plotter.input.read_resultsfile module<a class="headerlink" href="#module-pyfrag_plotter.input.read_resultsfile" title="Permalink to this heading"></a></h2>
 <dl class="py function">
-<dt class="sig sig-object py" id="pyfrag_plotter.input.read_resultsfile.main">
-<span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyfrag_plotter/input/read_resultsfile.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.input.read_resultsfile.main" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="pyfrag_plotter.input.read_resultsfile.read_data">
 <span class="sig-name descname"><span class="pre">read_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datafile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/pyfrag_plotter/input/read_resultsfile.html#read_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.input.read_resultsfile.read_data" title="Permalink to this definition"></a></dt>
-<dd><p>A simple function to read the pyfrag output file (with “.txt” extension)</p>
+<dd><p>A function to read the pyfrag output file (with “.txt” extension) and return a pandas dataframe.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>datafile</strong> (<em>str</em>) – path to the datafile</p>
+<dd class="field-odd"><p><strong>datafile</strong> (<em>str</em>) – The path to the datafile.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>pandas dataframe containing the data with #IRC steps as index</p>
+<dd class="field-even"><p>A pandas dataframe containing the data with #IRC steps as index.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pd.DataFrame</p>
@@ -132,7 +134,7 @@ Extracts extra specifications such as orbitalenergy, overlap, population of a ce
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="pyfrag_plotter.html" class="btn btn-neutral float-left" title="pyfrag_plotter package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="pyfrag_plotter.interpolate_func.html" class="btn btn-neutral float-right" title="pyfrag_plotter.interpolate_func package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="pyfrag_plotter.plot.html" class="btn btn-neutral float-right" title="pyfrag_plotter.plot package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

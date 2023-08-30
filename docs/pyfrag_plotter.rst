@@ -8,9 +8,7 @@ Subpackages
    :maxdepth: 4
 
    pyfrag_plotter.input
-   pyfrag_plotter.interpolate_func
    pyfrag_plotter.plot
-   pyfrag_plotter.printer
 
 Submodules
 ----------
@@ -43,22 +41,6 @@ pyfrag\_plotter.interpolate module
 ----------------------------------
 
 .. automodule:: pyfrag_plotter.interpolate
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-pyfrag\_plotter.main module
----------------------------
-
-.. automodule:: pyfrag_plotter.main
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-pyfrag\_plotter.plot\_parameters module
----------------------------------------
-
-.. automodule:: pyfrag_plotter.plot_parameters
    :members:
    :undoc-members:
    :show-inheritance:

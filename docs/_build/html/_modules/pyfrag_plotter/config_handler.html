@@ -156,15 +156,38 @@
 
 
 <div class="viewcode-block" id="Config"><a class="viewcode-back" href="../../pyfrag_plotter.html#pyfrag_plotter.config_handler.Config">[docs]</a><span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Interface for the config file. This class overloads the get method of the ConfigParses class to ensure that the correct type is returned. &quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An interface for the config file.</span>
 
+<span class="sd">    This class overloads the get method of the ConfigParser class to ensure that the correct type is returned.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        config_parser (ConfigParser): The ConfigParser instance that contains the configuration data.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_parser</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initializes a new instance of the Config class.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            config_parser (ConfigParser): The ConfigParser instance that contains the configuration data.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">config_parser</span><span class="p">:</span> <span class="n">cp</span><span class="o">.</span><span class="n">ConfigParser</span> <span class="o">=</span> <span class="n">config_parser</span>
 
 <div class="viewcode-block" id="Config.get"><a class="viewcode-back" href="../../pyfrag_plotter.html#pyfrag_plotter.config_handler.Config.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">option</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; IMPORTANT: only this method should be called when trying to get values from the config instance.</span>
-<span class="sd">        Returns the value of the option in the section.</span>
-<span class="sd">        It returns the value with the correct type.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the value of the specified option in the specified section.</span>
+
+<span class="sd">        This method returns the value with the correct type.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            section (str): The name of the section that contains the option.</span>
+<span class="sd">            option (str): The name of the option to get.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Any: The value of the option.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If the specified option is not a valid option.</span>
+<span class="sd">            ValueError: If the specified section is not a valid section.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">option</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">key_to_function_mapping</span><span class="p">:</span>
@@ -175,15 +198,28 @@
 
         <span class="k">return</span> <span class="n">key_to_function_mapping</span><span class="p">[</span><span class="n">option</span><span class="p">](</span><span class="bp">self</span><span class="o">.</span><span class="n">config_parser</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Config.sections"><a class="viewcode-back" href="../../pyfrag_plotter.html#pyfrag_plotter.config_handler.Config.sections">[docs]</a>    <span class="k">def</span> <span class="nf">sections</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns a list of the sections in the config file. &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_parser</span><span class="o">.</span><span class="n">sections</span><span class="p">()</span></div></div>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sections</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets a list of the sections in the config file.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[str]: A list of the sections in the config file.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_parser</span><span class="o">.</span><span class="n">sections</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="initialize_pyfrag_plotter"><a class="viewcode-back" href="../../pyfrag_plotter.html#pyfrag_plotter.config_handler.initialize_pyfrag_plotter">[docs]</a><span class="k">def</span> <span class="nf">initialize_pyfrag_plotter</span><span class="p">(</span><span class="n">user_config_file</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Initializes the config file. Reads the standard config file provided in the module.</span>
-<span class="sd">    May be overwritten by providing a config file.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Initializes the PyFrag plotter configuration.</span>
+
+<span class="sd">    Reads the standard configuration file provided in the module. May be overwritten by providing a custom configuration file.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        user_config_file (Optional[str]): The path to a custom configuration file. Defaults to None.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Get the absolute path of the directory one level above the current directory</span>
     <span class="n">current_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
@@ -204,8 +240,10 @@
 
 
 <span class="k">def</span> <span class="nf">_initialize_plot_parameters</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Applies plot-specific parameters to matplotlib.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Applies plot-specific parameters to matplotlib.</span>
+
+<span class="sd">    This function sets various parameters for matplotlib, such as the figure size, font family, and font size.</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
     <span class="c1"># mpl.use(&quot;Agg&quot;)</span>
@@ -240,19 +278,6 @@
     <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;ytick&quot;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">font_size</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># fontsize of the tick labels</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;legend&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">font_size</span> <span class="o">-</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># legend fontsize</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;figure&quot;</span><span class="p">,</span> <span class="n">titlesize</span><span class="o">=</span><span class="n">font_size</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># fontsize of the figure title</span>
-
-
-<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../pyfrag_plotter.html#pyfrag_plotter.config_handler.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">path_to_extra_config</span> <span class="o">=</span> <span class="s2">&quot;/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Scripting/testing/extra_config.ini&quot;</span>
-    <span class="n">initialize_pyfrag_plotter</span><span class="p">(</span><span class="n">path_to_extra_config</span><span class="p">)</span>
-
-    <span class="c1"># eda = config.get(&quot;EDA&quot;, &quot;EDA_keys&quot;)</span>
-    <span class="n">interpol</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SHARED&quot;</span><span class="p">,</span> <span class="s2">&quot;interpolation_method&quot;</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">interpol</span><span class="p">)</span></div>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
 </pre></div>
 
            </div>

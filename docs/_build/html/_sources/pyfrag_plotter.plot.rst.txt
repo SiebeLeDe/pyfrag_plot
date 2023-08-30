@@ -4,14 +4,6 @@ pyfrag\_plotter.plot package
 Submodules
 ----------
 
-pyfrag\_plotter.plot.plot\_classes module
------------------------------------------
-
-.. automodule:: pyfrag_plotter.plot.plot_classes
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 pyfrag\_plotter.plot.plot\_details module
 -----------------------------------------
 
