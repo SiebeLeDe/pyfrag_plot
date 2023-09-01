@@ -128,6 +128,13 @@
                 
 
                     <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../usage.html">
+                        Usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../modules.html">
                         pyfrag_plotter
                       </a>
@@ -209,6 +216,13 @@ document.write(`
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../general.html">
                         General
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../usage.html">
+                        Usage
                       </a>
                     </li>
                 
@@ -321,7 +335,7 @@ document.write(`
 <span class="sd">        df: A pandas DataFrame containing the results file data.</span>
 <span class="sd">        trim_option: An optional argument specifying how to trim the data. Can be &quot;max&quot;, &quot;min&quot;, &quot;x_limits&quot;, or None.</span>
 <span class="sd">        trim_key: An optional argument specifying the key to use for trimming the data. Can be &quot;EnergyTotal&quot; or None.</span>
-<span class="sd">        irc_coord: An optional argument specifying the IRC coordinate to use for trimming the data. Can be &quot;x&quot; or &quot;y&quot;, or None.</span>
+<span class="sd">        trim_key: An optional argument specifying the IRC coordinate to use for trimming the data. Can be &quot;x&quot; or &quot;y&quot;, or None.</span>
 <span class="sd">        *args: Additional positional arguments.</span>
 
 <span class="sd">    Returns:</span>
@@ -377,27 +391,27 @@ document.write(`
     <span class="k">return</span> <span class="n">df</span>
 
 
-<span class="k">def</span> <span class="nf">_trim_data_sequence</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">trim_option</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">irc_coord</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">_trim_data_sequence</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">trim_option</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">trim_key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Private function that performs the actual trimming of the dataframe with a sequence trim_option&quot;&quot;&quot;</span>
 
     <span class="n">x_limits</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SHARED&quot;</span><span class="p">,</span> <span class="s2">&quot;x_limits&quot;</span><span class="p">))</span> <span class="k">if</span> <span class="n">trim_option</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">trim_option</span>
     <span class="n">reverse_axis</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SHARED&quot;</span><span class="p">,</span> <span class="s2">&quot;reverse_x_axis&quot;</span><span class="p">))</span>
 
-    <span class="k">if</span> <span class="n">irc_coord</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">irc_coord</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;bondlength_1&quot;</span>
-        <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;irc_coord </span><span class="si">{</span><span class="n">irc_coord</span><span class="si">}</span><span class="s2"> is not correct. Valid options are bondlength_x, angle_x, or dihedral_x. Using default value </span><span class="si">{</span><span class="n">irc_coord</span><span class="si">}</span><span class="s2"> WHICH MAY NOT BE PRESENT.&quot;</span>
+    <span class="k">if</span> <span class="n">trim_key</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">trim_key</span> <span class="o">=</span> <span class="s2">&quot;bondlength_1&quot;</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;trim_key </span><span class="si">{</span><span class="n">trim_key</span><span class="si">}</span><span class="s2"> is not correct. Valid options are bondlength_x, angle_x, or dihedral_x. Using default value </span><span class="si">{</span><span class="n">trim_key</span><span class="si">}</span><span class="s2"> WHICH MAY NOT BE PRESENT.&quot;</span>
         <span class="k">raise</span> <span class="n">PyFragResultsProcessingWarning</span><span class="p">(</span><span class="n">section</span><span class="o">=</span><span class="s2">&quot;trim_data_sequence&quot;</span><span class="p">,</span>
                                              <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x_limits</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">x_limits</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">x_limits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">x_limits</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
         <span class="k">raise</span> <span class="n">PyFragResultsProcessingError</span><span class="p">(</span><span class="n">section</span><span class="o">=</span><span class="s2">&quot;trim_data_sequence&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Invalid x_limits </span><span class="si">{</span><span class="n">x_limits</span><span class="si">}</span><span class="s2"> specified in the configuration file.&quot;</span><span class="p">)</span>
 
-    <span class="n">x_data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">irc_coord</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>  <span class="c1"># type: ignore since it is a numpy array</span>
+    <span class="n">x_data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">trim_key</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>  <span class="c1"># type: ignore since it is a numpy array</span>
     <span class="n">x_min</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">x_data</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">x_limits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">x_max</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">x_data</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">x_limits</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">x_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">x_data</span> <span class="o">&gt;=</span> <span class="n">x_min</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x_data</span> <span class="o">&lt;=</span> <span class="n">x_max</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">x_indices</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">PyFragResultsProcessingError</span><span class="p">(</span><span class="n">section</span><span class="o">=</span><span class="s2">&quot;trim_data_sequence&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;No data points within the specified x limits </span><span class="si">{</span><span class="n">x_limits</span><span class="si">}</span><span class="s2"> for key </span><span class="si">{</span><span class="n">irc_coord</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">PyFragResultsProcessingError</span><span class="p">(</span><span class="n">section</span><span class="o">=</span><span class="s2">&quot;trim_data_sequence&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;No data points within the specified x limits </span><span class="si">{</span><span class="n">x_limits</span><span class="si">}</span><span class="s2"> for key </span><span class="si">{</span><span class="n">trim_key</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">reverse_axis</span><span class="p">:</span>
         <span class="n">x_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(([</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x_indices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)],</span> <span class="n">x_indices</span><span class="p">,</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">x_data</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x_indices</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]))</span>

@@ -130,6 +130,13 @@
                     </li>
                 
 
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="usage.html">
+                        Usage
+                      </a>
+                    </li>
+                
+
                     <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="modules.html">
                         pyfrag_plotter
@@ -220,6 +227,13 @@ document.write(`
                     </li>
                 
 
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="usage.html">
+                        Usage
+                      </a>
+                    </li>
+                
+
                     <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="modules.html">
                         pyfrag_plotter
@@ -257,8 +271,6 @@ document.write(`
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">pyfrag_plotter package</a><input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.input.html">pyfrag_plotter.input package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.interpolate.html">pyfrag_plotter.interpolate package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.interpolate_func.html">pyfrag_plotter.interpolate_func package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.plot.html">pyfrag_plotter.plot package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.printer.html">pyfrag_plotter.printer package</a></li>
 </ul>
@@ -337,14 +349,6 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.input.html#module-pyfrag_plotter.input">Module contents</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pyfrag_plotter.interpolate.html">pyfrag_plotter.interpolate package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.interpolate.html#module-pyfrag_plotter.interpolate">Module contents</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pyfrag_plotter.interpolate_func.html">pyfrag_plotter.interpolate_func package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.interpolate_func.html#module-pyfrag_plotter.interpolate_func">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pyfrag_plotter.plot.html">pyfrag_plotter.plot package</a><ul>
@@ -526,8 +530,8 @@ It replaces overlapping keys between kwargs and function arguments with top-leve
 </dd></dl>
 
 </section>
-<section id="module-pyfrag_plotter.interpolate">
-<span id="pyfrag-plotter-interpolate-module"></span><h2>pyfrag_plotter.interpolate module<a class="headerlink" href="#module-pyfrag_plotter.interpolate" title="Permalink to this heading">#</a></h2>
+<section id="pyfrag-plotter-interpolate-module">
+<h2>pyfrag_plotter.interpolate module<a class="headerlink" href="#pyfrag-plotter-interpolate-module" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="module-pyfrag_plotter.processing_funcs">
 <span id="pyfrag-plotter-processing-funcs-module"></span><h2>pyfrag_plotter.processing_funcs module<a class="headerlink" href="#module-pyfrag_plotter.processing_funcs" title="Permalink to this heading">#</a></h2>
@@ -541,7 +545,7 @@ It replaces overlapping keys between kwargs and function arguments with top-leve
 <li><p><strong>df</strong> – A pandas DataFrame containing the results file data.</p></li>
 <li><p><strong>trim_option</strong> – An optional argument specifying how to trim the data. Can be “max”, “min”, “x_limits”, or None.</p></li>
 <li><p><strong>trim_key</strong> – An optional argument specifying the key to use for trimming the data. Can be “EnergyTotal” or None.</p></li>
-<li><p><strong>irc_coord</strong> – An optional argument specifying the IRC coordinate to use for trimming the data. Can be “x” or “y”, or None.</p></li>
+<li><p><strong>trim_key</strong> – An optional argument specifying the IRC coordinate to use for trimming the data. Can be “x” or “y”, or None.</p></li>
 <li><p><strong>*args</strong> – Additional positional arguments.</p></li>
 </ul>
 </dd>
@@ -698,7 +702,7 @@ The function returns the trimmed dataframe.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.helper_funcs.replace_overlapping_keys"><code class="docutils literal notranslate"><span class="pre">replace_overlapping_keys()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pyfrag_plotter.interpolate">pyfrag_plotter.interpolate module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag-plotter-interpolate-module">pyfrag_plotter.interpolate module</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pyfrag_plotter.processing_funcs">pyfrag_plotter.processing_funcs module</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.processing_funcs.process_results_file"><code class="docutils literal notranslate"><span class="pre">process_results_file()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.processing_funcs.remove_dispersion_term"><code class="docutils literal notranslate"><span class="pre">remove_dispersion_term()</span></code></a></li>
