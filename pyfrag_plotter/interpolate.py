@@ -1,9 +1,41 @@
 """ Module that contains functions for interpolating data """
+from typing import Dict, Optional, Sequence, Tuple, Union
+
+import numpy as np
+import pandas as pd
+import scipy as sp
+from scipy.interpolate import BSpline, make_interp_spline
 
 from pyfrag_plotter.pyfrag_object import PyFragResultsObject
-import pandas as pd
-from typing import Union, Dict
-import scipy as sp
+from pyfrag_plotter.config_handler import config
+
+
+def interpolate_plot(x_axis: np.ndarray, y_axis: np.ndarray, x_range: Optional[Sequence[float]] = None) -> Tuple[np.ndarray, BSpline]:
+    """Interpolates the data to a finer grid for plotting purposes using the scipy spline library.
+
+    Args:
+        x_axis (np.ndarray): The x-axis data to interpolate.
+        y_axis (np.ndarray): The y-axis data to interpolate.
+        x_range (Optional[Sequence[float]], optional): The range of x-axis values to interpolate over. Defaults to None.
+
+    Returns:
+        Tuple[np.ndarray, np.ndarray]: The interpolated x-axis and y-axis data.
+    """
+    n_interpolation_points = config["config"].get("SHARED", "n_interpolation_points")
+    if x_range is None:
+        x_min, x_max = x_axis.min(), x_axis.max()
+    else:
+        x_min, x_max = x_range[0], x_range[1]
+
+    mask = (x_axis >= x_min) & (x_axis <= x_max)
+    x_filtered = x_axis[mask]
+    y_filtered = y_axis[mask]
+    X_Y_Spline = make_interp_spline(x_filtered, y_filtered)
+
+    # Returns evenly spaced numbers over a specified interval.
+    X_ = np.linspace(x_min, x_max, n_interpolation_points)
+    Y_ = X_Y_Spline(X_)
+    return X_, Y_
 
 
 def interpolate_data(input_data: Union[PyFragResultsObject, pd.DataFrame], irc_coord: str, point: float) -> Dict[str, float]:

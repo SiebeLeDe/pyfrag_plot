@@ -63,11 +63,12 @@ key_to_function_mapping: Dict[str, Callable[..., Any]] = {
     "colours": _get_list_str_key,
     "line_styles": _get_list_str_key,
     "outlier_threshold": _get_float_key,
-    "plot_until": _get_any_key,
+    "trim_option": _get_any_key,
     "vline": _get_float_key,
     "trim_key": _get_str_key,
     "reverse_x_axis": _get_boolean_key,
     "stat_point_type": _get_str_key,
+    "n_interpolation_points": _get_int_key,
 
     # EDA keys
     "EDA_keys": _get_list_str_key,
@@ -92,6 +93,7 @@ class Config:
         config_parser (ConfigParser): The ConfigParser instance that contains the configuration data.
 
     """
+
     def __init__(self, config_parser) -> None:
         """Initializes a new instance of the Config class.
 
@@ -111,7 +113,7 @@ class Config:
             option (str): The name of the option to get.
 
         Returns:
-            Any: The value of the option.
+            ret_variable (Any): The value of the specified option in the specified section.
 
         Raises:
             ValueError: If the specified option is not a valid option.
@@ -124,7 +126,8 @@ class Config:
         if section not in self.config_parser:
             raise ValueError(f"Section '{section}' is not a valid section. Note that sections are case sensitive.")
 
-        return key_to_function_mapping[option](self.config_parser, section, option)
+        ret_variable = key_to_function_mapping[option](self.config_parser, section, option)
+        return ret_variable
 
     @property
     def sections(self) -> List[str]:

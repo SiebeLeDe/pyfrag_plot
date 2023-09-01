@@ -9,17 +9,51 @@ from pyfrag_plotter.config_handler import initialize_pyfrag_plotter
 from pyfrag_plotter.helper_funcs import get_pyfrag_files
 from pyfrag_plotter.input.read_inputfile import read_inputfile
 from pyfrag_plotter.input.read_resultsfile import read_data
-from pyfrag_plotter.processing_funcs import trim_data, remove_dispersion_term
+from pyfrag_plotter.processing_funcs import process_results_file
 from pyfrag_plotter.pyfrag_object import create_pyfrag_object
 from pyfrag_plotter.plot.plotter import Plotter
 from pyfrag_plotter.plot.plot_details import set_figure_details, set_axes_details
+
+from functools import wraps
+import time
+
+# ------------------------------------------------------------------------------------------------------------- #
+# -------------------------------------------- Path parameters ------------------------------------------------ #
+# ------------------------------------------------------------------------------------------------------------- #
+
+
+base_results_path = "/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Projects/Squaramides/pyfrag_results"
+# base_results_path = r"C:\Users\siebb\VU_PhD\PhD\Projects\Squaramides\pyfrag_results"
+
+plot_dir = "/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Projects/Squaramides/Plots"
+# plot_dir = r"C:\Users\siebb\VU_PhD\PhD\Projects\Squaramides\Plots"
+
+# irc_coord = ("bondlength_1", "r - r$_{eq}$ / Å")
+# irc_coord = ("bondlength_2", "r$_{cm}$ / Å")
+# irc_coord = ("bondlength_3", "$\Delta$r$_{X \cdot\cdot\cdot H}$ / Å")
+irc_coord = ("bondlength_4", "r$_{X \cdot\cdot\cdot H}$ / Å")   # type: ignore # noqa: W605 since it is a LaTeX string
+
+path_to_images = "/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Projects/Squaramides/Pics&Coords/png_without_border"
+# path_to_images = r"C:\Users\siebb\VU_PhD\PhD\Projects\Squaramides\pyfrag_results"
 
 
 # ------------------------------------------------------------------------------------------------------------- #
 # ---------------------------------------------- Functions ---------------------------------------------------- #
 # ------------------------------------------------------------------------------------------------------------- #
 
+def timeit(func):
+    @wraps(func)
+    def timeit_wrapper(*args, **kwargs):
+        start_time = time.perf_counter()
+        result = func(*args, **kwargs)
+        end_time = time.perf_counter()
+        total_time = end_time - start_time
+        print(f'Function {func.__name__} Took {total_time:.4f} seconds')
+        return result
+    return timeit_wrapper
 
+
+@timeit
 def create_plot_instances(systems: dict[str, List[str]]) -> List[Plotter]:
     """ Creates the plot instances for the given systems """
     plot_instances = []
@@ -36,8 +70,7 @@ def create_plot_instances(systems: dict[str, List[str]]) -> List[Plotter]:
         output_contents = [read_data(results_file) for results_file in results_files]
 
         # Process output contents
-        output_contents = [trim_data(output_content) for output_content in output_contents]
-        output_contents = [remove_dispersion_term(output_content) for output_content in output_contents]
+        output_contents = [process_results_file(output_content, trim_key=irc_coord[0], trim_option="x_lim") for output_content in output_contents]
 
         # Next, make the pyfrag objects
         objs = [create_pyfrag_object(output_content, input_content) for output_content, input_content in zip(output_contents, input_contents)]
@@ -55,9 +88,11 @@ def plot_individual_graphs(plot_instances: Sequence[Plotter]):
         plt.show()
 
 
+@timeit
 def plot_multiple_graphs(
-    plot_instances,
-    savefig, path_to_images=None,
+    plot_instances: Sequence[Plotter],
+    savefig: str,
+    path_to_images=None,
     plot_type="asm",
     plot_keys=["Int"],
     x_label="r$_{X \cdot\cdot\cdot H}$ / Å",  # type: ignore # noqa: W605 since it is a LaTeX string
@@ -101,27 +136,8 @@ def plot_multiple_graphs(
                        savefig=savefig,
                        )
 
-
-# ------------------------------------------------------------------------------------------------------------- #
-# -------------------------------------------- Path parameters ------------------------------------------------ #
-# ------------------------------------------------------------------------------------------------------------- #
-
-base_results_path = "/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Projects/Squaramides/pyfrag_results"
-# base_results_path = r"C:\Users\siebb\VU_PhD\PhD\Projects\Squaramides\pyfrag_results"
-
-plot_dir = "/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Projects/Squaramides/Plots"
-# plot_dir = r"C:\Users\siebb\VU_PhD\PhD\Projects\Squaramides\Plots"
-
-# irc_coord = ("bondlength_1", "r - r$_{eq}$ / Å")
-# irc_coord = ("bondlength_2", "r$_{cm}$ / Å")
-# irc_coord = ("bondlength_3", "$\Delta$r$_{X \cdot\cdot\cdot H}$ / Å")
-irc_coord = ("bondlength_4", "r$_{X \cdot\cdot\cdot H}$ / Å")   # type: ignore # noqa: W605 since it is a LaTeX string
-
-path_to_images = "/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Projects/Squaramides/Pics&Coords/png_without_border"
-# path_to_images = r"C:\Users\siebb\VU_PhD\PhD\Projects\Squaramides\pyfrag_results"
-
-
 # -------------------------------------------- Dimer Data ---------------------------------------------------- #
+
 
 dimer_systems: dict[str, List[str]] = {
     "O_di_ureas": ["ureas_di_O_Cs_all", "ureas_di_O_Cs_sigma", "ureas_di_O_Cs_pi"],
@@ -182,7 +198,7 @@ path_to_trimer_images = [os.path.join(path_to_images, image + ".png") for image 
 shared_keywords: dict[str, Any] = {
     "plot_type": "asm",
     "plot_keys": ["Int"],
-    "x_label": "r$_{X \cdot\cdot\cdot H}$ / Å",  # type: ignore # noqa: W605 since it is a LaTeX string
+    "x_label": "r$_{X ••• H}$ / Å",  # type: ignore # noqa: W605 since it is a LaTeX string
     "y_label": "\u0394$\it{E}$ / kcal mol$^{-1}$",   # type: ignore # noqa: W605 since it is a LaTeX string
     "n_max_y_ticks": 4,
 }

@@ -1,40 +1,12 @@
-from typing import Optional, Tuple, Sequence
+from typing import Optional, Tuple
 import math
-import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.figure
-from scipy.interpolate import make_interp_spline, BSpline
 from matplotlib.ticker import MaxNLocator, FormatStrFormatter
 
 from pyfrag_plotter.config_handler import config
 from pyfrag_plotter.helper_funcs import replace_overlapping_keys
-
-
-def interpolate_plot(x_axis: np.ndarray, y_axis: np.ndarray, x_range: Optional[Sequence[float]] = None) -> Tuple[np.ndarray, BSpline]:
-    """Interpolates the data to a finer grid for plotting purposes using the scipy spline library.
-
-    Args:
-        x_axis (np.ndarray): The x-axis data to interpolate.
-        y_axis (np.ndarray): The y-axis data to interpolate.
-        x_range (Optional[Sequence[float]], optional): The range of x-axis values to interpolate over. Defaults to None.
-
-    Returns:
-        Tuple[np.ndarray, np.ndarray]: The interpolated x-axis and y-axis data.
-    """
-    if x_range is None:
-        x_min, x_max = x_axis.min(), x_axis.max()
-    else:
-        x_min, x_max = x_range[0], x_range[1]
-
-    mask = (x_axis >= x_min) & (x_axis <= x_max)
-    x_filtered = x_axis[mask]
-    y_filtered = y_axis[mask]
-    X_Y_Spline = make_interp_spline(x_filtered, y_filtered)
-
-    # Returns evenly spaced numbers over a specified interval.
-    X_ = np.linspace(x_min, x_max, 100)
-    Y_ = X_Y_Spline(X_)
-    return X_, Y_
+from pyfrag_plotter.interpolate import interpolate_plot
 
 
 @replace_overlapping_keys
