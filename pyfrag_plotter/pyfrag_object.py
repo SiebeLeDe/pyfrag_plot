@@ -157,18 +157,7 @@ def _add_dihedralangle(obj: PyFragResultsObject, data: Array1D[np.float64], *dih
 
 
 def _add_overlap(obj: PyFragResultsObject, data: Array1D[np.float64], *overlap_info) -> None:
-    """ Adds an Overlap object to the PyFragResultsObject object. Two possible formats:
-    1. frag1 HOMO frag2 LUMO
-    1. S frag1 5 AA frag2 4
-
-    Args:
-        obj (PyFragResultsObject): instance to which the overlap is appended to
-        data (Array1D[np.float64]): the results from the PyFrag calculation along the IRC path for this overlap key
-        overlap_info: frag1 and frag2 with the orbital index and optionally the irrep.
-
-    Returns:
-        None
-    """
+    """ Adds an Overlap object to the PyFragResultsObject object. """
     if len(overlap_info) == 4:
         overlap_obj = Overlap(frag1_orb=overlap_info[1],
                               frag2_orb=overlap_info[3],
@@ -185,18 +174,7 @@ def _add_overlap(obj: PyFragResultsObject, data: Array1D[np.float64], *overlap_i
 
 
 def _add_population(obj: PyFragResultsObject, data: Array1D[np.float64], *population_info):
-    """ Adds an Population object to the PyFragResultsObject object. Two possible formats:
-    1. frag1 HOMO
-    1. S frag1 5
-
-    Args:
-        obj (PyFragResultsObject): instance to which the population is appended to
-        data (Array1D[np.float64]): the results from the PyFrag calculation along the IRC path for this population key
-        population_info: frag1 and frag2 with the orbital index and optionally the irrep.
-
-    Returns:
-        None
-    """
+    """ Adds an Population object to the PyFragResultsObject object. """
     if len(population_info) == 2:
         pop_obj = Population(frag=population_info[0], orbital=population_info[1], data=data)
     else:
@@ -209,18 +187,7 @@ def _add_population(obj: PyFragResultsObject, data: Array1D[np.float64], *popula
 
 
 def _add_orbitalenergy(obj: PyFragResultsObject, data: Array1D[np.float64], *orbenergy_info):
-    """ Adds an OrbitalEnergy object to the PyFragResultsObject object. Two possible formats:
-    1. frag1 HOMO
-    1. S frag1 5
-
-    Args:
-        obj (PyFragResultsObject): instance to which the population is appended to
-        data (Array1D[np.float64]): the results from the PyFrag calculation along the IRC path for this orbitalenergy key
-        orbenergy_info: frag1 and frag2 with the orbital index and optionally the irrep.
-
-    Returns:
-        None
-    """
+    """ Adds an OrbitalEnergy object to the PyFragResultsObject object. """
     if len(orbenergy_info) == 2:
         orb_energy_obj = OrbitalEnergy(frag=orbenergy_info[0], orbital=orbenergy_info[1], data=data)
     else:
@@ -233,32 +200,14 @@ def _add_orbitalenergy(obj: PyFragResultsObject, data: Array1D[np.float64], *orb
 
 
 def _add_vdd(obj: PyFragResultsObject, data: Array1D[np.float64], vdd_index: str):
-    """ Adds an OrbitalEnergy object to the PyFragResultsObject object.
-
-    Args:
-        obj (PyFragResultsObject): instance to which the population is appended to
-        data (Array1D[np.float64]): the results from the PyFrag calculation along the IRC path for this vdd key
-        vdd_index: the atom index to which the VDD data belongs to
-
-    Returns:
-        None
-    """
+    """ Adds an OrbitalEnergy object to the PyFragResultsObject object. """
     vdd_obj = VDD(atom=int(vdd_index), data=data)
     obj.vdd.append(vdd_obj)
     return
 
 
 def _add_irrep(obj: PyFragResultsObject, data: Array1D[np.float64], irrep: str):
-    """ Adds an OrbitalEnergy object to the PyFragResultsObject object.
-
-    Args:
-        obj (PyFragResultsObject): instance to which the population is appended to
-        data (Array1D[np.float64]): the results from the PyFrag calculation along the IRC path for this vdd key
-        vdd_index: the atom index to which the VDD data belongs to
-
-    Returns:
-        None
-    """
+    """ Adds an OrbitalEnergy object to the PyFragResultsObject object. """
     irrep_obj = Irrep(irrep=irrep, data=data)
     obj.irrep.append(irrep_obj)
     return

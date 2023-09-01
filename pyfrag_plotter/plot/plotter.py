@@ -1,4 +1,3 @@
-from __future__ import annotations
 import os
 from os.path import join as opj
 from typing import List, Optional, Sequence, Tuple
@@ -55,6 +54,7 @@ class Plotter:
             Plots the population of the orbitals.
 
     """
+
     def __init__(self, name: str, plot_dir: str, pyfrag_objects: Sequence[PyFragResultsObject], irc_coord: Sequence[str]):
         """Initializes a new Plotter object with the given name, output directory, PyFragResultsObject objects, and IRC coordinate.
 
@@ -191,10 +191,11 @@ class Plotter:
 
         # Set the key-specific plot details
         set_axes_details(ax=ax, x_label=self.plot_info.irc_coord_label)
-        set_figure_details(fig=fig,
-                           title=f"Strain_{'_'.join(extra_keys)}",
-                           savefig=opj(self.path, f"ASM_{'_'.join(extra_keys)}.png",)
-                           )
+        set_figure_details(
+            fig=fig,
+            title=f"Strain_{'_'.join(extra_keys)}",
+            savefig=opj(self.path, f"ASM_{'_'.join(extra_keys)}.png",)
+        )
         return fig, ax
 
 # ------------------------------------------------------------------------------------------------------------- #
