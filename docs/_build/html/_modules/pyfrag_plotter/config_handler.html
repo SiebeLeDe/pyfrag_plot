@@ -361,11 +361,12 @@ document.write(`
     <span class="s2">&quot;colours&quot;</span><span class="p">:</span> <span class="n">_get_list_str_key</span><span class="p">,</span>
     <span class="s2">&quot;line_styles&quot;</span><span class="p">:</span> <span class="n">_get_list_str_key</span><span class="p">,</span>
     <span class="s2">&quot;outlier_threshold&quot;</span><span class="p">:</span> <span class="n">_get_float_key</span><span class="p">,</span>
-    <span class="s2">&quot;plot_until&quot;</span><span class="p">:</span> <span class="n">_get_any_key</span><span class="p">,</span>
+    <span class="s2">&quot;trim_option&quot;</span><span class="p">:</span> <span class="n">_get_any_key</span><span class="p">,</span>
     <span class="s2">&quot;vline&quot;</span><span class="p">:</span> <span class="n">_get_float_key</span><span class="p">,</span>
     <span class="s2">&quot;trim_key&quot;</span><span class="p">:</span> <span class="n">_get_str_key</span><span class="p">,</span>
     <span class="s2">&quot;reverse_x_axis&quot;</span><span class="p">:</span> <span class="n">_get_boolean_key</span><span class="p">,</span>
     <span class="s2">&quot;stat_point_type&quot;</span><span class="p">:</span> <span class="n">_get_str_key</span><span class="p">,</span>
+    <span class="s2">&quot;n_interpolation_points&quot;</span><span class="p">:</span> <span class="n">_get_int_key</span><span class="p">,</span>
 
     <span class="c1"># EDA keys</span>
     <span class="s2">&quot;EDA_keys&quot;</span><span class="p">:</span> <span class="n">_get_list_str_key</span><span class="p">,</span>
@@ -390,6 +391,7 @@ document.write(`
 <span class="sd">        config_parser (ConfigParser): The ConfigParser instance that contains the configuration data.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_parser</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Initializes a new instance of the Config class.</span>
 
@@ -409,7 +411,7 @@ document.write(`
 <span class="sd">            option (str): The name of the option to get.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            Any: The value of the option.</span>
+<span class="sd">            ret_variable (Any): The value of the specified option in the specified section.</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            ValueError: If the specified option is not a valid option.</span>
@@ -422,7 +424,8 @@ document.write(`
         <span class="k">if</span> <span class="n">section</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_parser</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Section &#39;</span><span class="si">{</span><span class="n">section</span><span class="si">}</span><span class="s2">&#39; is not a valid section. Note that sections are case sensitive.&quot;</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">key_to_function_mapping</span><span class="p">[</span><span class="n">option</span><span class="p">](</span><span class="bp">self</span><span class="o">.</span><span class="n">config_parser</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span></div>
+        <span class="n">ret_variable</span> <span class="o">=</span> <span class="n">key_to_function_mapping</span><span class="p">[</span><span class="n">option</span><span class="p">](</span><span class="bp">self</span><span class="o">.</span><span class="n">config_parser</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ret_variable</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sections</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>

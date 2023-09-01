@@ -382,10 +382,10 @@ document.write(`
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The value of the option.</p>
+<dd class="field-even"><p>The value of the specified option in the specified section.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Any</p>
+<dd class="field-odd"><p>ret_variable (Any)</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
@@ -458,6 +458,13 @@ document.write(`
 <p>An error that occurs when processing PyFrag results.</p>
 </dd></dl>
 
+<dl class="py exception">
+<dt class="sig sig-object py" id="pyfrag_plotter.errors.PyFragResultsProcessingWarning">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PyFragResultsProcessingWarning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">section</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyfrag_plotter/errors.html#PyFragResultsProcessingWarning"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.errors.PyFragResultsProcessingWarning" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Warning</span></code></p>
+<p>An error that occurs when processing PyFrag results.</p>
+</dd></dl>
+
 </section>
 <section id="module-pyfrag_plotter.helper_funcs">
 <span id="pyfrag-plotter-helper-funcs-module"></span><h2>pyfrag_plotter.helper_funcs module<a class="headerlink" href="#module-pyfrag_plotter.helper_funcs" title="Permalink to this heading">#</a></h2>
@@ -510,6 +517,29 @@ It replaces overlapping keys between kwargs and function arguments with top-leve
 <section id="module-pyfrag_plotter.processing_funcs">
 <span id="pyfrag-plotter-processing-funcs-module"></span><h2>pyfrag_plotter.processing_funcs module<a class="headerlink" href="#module-pyfrag_plotter.processing_funcs" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
+<dt class="sig sig-object py" id="pyfrag_plotter.processing_funcs.process_results_file">
+<span class="sig-name descname"><span class="pre">process_results_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_option</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/pyfrag_plotter/processing_funcs.html#process_results_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.processing_funcs.process_results_file" title="Permalink to this definition">#</a></dt>
+<dd><p>Processes the results file data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> – A pandas DataFrame containing the results file data.</p></li>
+<li><p><strong>trim_option</strong> – An optional argument specifying how to trim the data. Can be “max”, “min”, “x_limits”, or None.</p></li>
+<li><p><strong>trim_key</strong> – An optional argument specifying the key to use for trimming the data. Can be “EnergyTotal” or None.</p></li>
+<li><p><strong>irc_coord</strong> – An optional argument specifying the IRC coordinate to use for trimming the data. Can be “x” or “y”, or None.</p></li>
+<li><p><strong>*args</strong> – Additional positional arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pandas DataFrame containing the processed results file data.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pyfrag_plotter.errors.PyFragResultsProcessingError" title="pyfrag_plotter.errors.PyFragResultsProcessingError"><strong>PyFragResultsProcessingError</strong></a> – If an error occurs during processing.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="pyfrag_plotter.processing_funcs.remove_dispersion_term">
 <span class="sig-name descname"><span class="pre">remove_dispersion_term</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/pyfrag_plotter/processing_funcs.html#remove_dispersion_term"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.processing_funcs.remove_dispersion_term" title="Permalink to this definition">#</a></dt>
 <dd><p>Removes the dispersion term from the dataframe if it is 0.0 everywhere.</p>
@@ -528,22 +558,40 @@ It replaces overlapping keys between kwargs and function arguments with top-leve
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="pyfrag_plotter.processing_funcs.remove_outliers">
+<span class="sig-name descname"><span class="pre">remove_outliers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/pyfrag_plotter/processing_funcs.html#remove_outliers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.processing_funcs.remove_outliers" title="Permalink to this definition">#</a></dt>
+<dd><p>Removes outliers from the dataframe.</p>
+<p>This function takes a pandas DataFrame containing the results file data and removes outliers from the dataframe. The function returns the modified DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pd.DataFrame</em>) – The DataFrame containing the results file data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The modified DataFrame without outliers.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="pyfrag_plotter.processing_funcs.trim_data">
-<span class="sig-name descname"><span class="pre">trim_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_parameter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/pyfrag_plotter/processing_funcs.html#trim_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.processing_funcs.trim_data" title="Permalink to this definition">#</a></dt>
-<dd><p>‘Overloaded’ function to trim the dataframe based on the type of the trim_parameter.</p>
-<p>This function trims the given dataframe based on the type of the trim_parameter.
-The trim_parameter is read from the configuration file and can be either a string (“min”, “max”), integer (IRC point), or float (energy value).
+<span class="sig-name descname"><span class="pre">trim_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_option</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/pyfrag_plotter/processing_funcs.html#trim_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.processing_funcs.trim_data" title="Permalink to this definition">#</a></dt>
+<dd><p>‘Overloaded’ function to trim (shorten) the dataframe based on the type of the trim_option.</p>
+<p>This function trims the given dataframe based on the type of the trim_option.
+The trim_option can be either a string (“min”, “max”), integer (IRC point), float (energy value), or a sequence (x_limits such as (1.0, 3.0))). If none provided, it is read from the config file.
 The function returns the trimmed dataframe.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The dataframe to trim.</p></li>
-<li><p><strong>trim_parameter</strong> (<em>Optional</em><em>[</em><em>Union</em><em>[</em><em>str</em><em>, </em><em>float</em><em>, </em><em>int</em><em>]</em><em>]</em>) – The parameter to use for trimming. Defaults to None.</p></li>
-<li><p><strong>trim_key</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – The key to use for reading the trim_parameter from the configuration file. Defaults to None.</p></li>
+<li><p><strong>trim_option</strong> (<em>Optional</em><em>[</em><em>Union</em><em>[</em><em>str</em><em>, </em><em>float</em><em>, </em><em>int</em><em>]</em><em>]</em>) – The parameter to use for trimming. Defaults to None.</p></li>
+<li><p><strong>trim_key</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – The key to use for reading the trim_option. Defaults to None.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="#pyfrag_plotter.errors.PyFragResultsProcessingError" title="pyfrag_plotter.errors.PyFragResultsProcessingError"><strong>PyFragResultsProcessingError</strong></a> – If the trim_parameter is not a valid type.</p>
+<dd class="field-even"><p><a class="reference internal" href="#pyfrag_plotter.errors.PyFragResultsProcessingError" title="pyfrag_plotter.errors.PyFragResultsProcessingError"><strong>PyFragResultsProcessingError</strong></a> – If the trim_option is not a valid type.</p>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The trimmed dataframe.</p>
@@ -627,6 +675,7 @@ The function returns the trimmed dataframe.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.errors.PyFragInputError"><code class="docutils literal notranslate"><span class="pre">PyFragInputError</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.errors.PyFragResultsObjectError"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObjectError</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.errors.PyFragResultsProcessingError"><code class="docutils literal notranslate"><span class="pre">PyFragResultsProcessingError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.errors.PyFragResultsProcessingWarning"><code class="docutils literal notranslate"><span class="pre">PyFragResultsProcessingWarning</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pyfrag_plotter.helper_funcs">pyfrag_plotter.helper_funcs module</a><ul class="nav section-nav flex-column">
@@ -636,7 +685,9 @@ The function returns the trimmed dataframe.</p>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag-plotter-interpolate-module">pyfrag_plotter.interpolate module</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pyfrag_plotter.processing_funcs">pyfrag_plotter.processing_funcs module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.processing_funcs.process_results_file"><code class="docutils literal notranslate"><span class="pre">process_results_file()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.processing_funcs.remove_dispersion_term"><code class="docutils literal notranslate"><span class="pre">remove_dispersion_term()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.processing_funcs.remove_outliers"><code class="docutils literal notranslate"><span class="pre">remove_outliers()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.processing_funcs.trim_data"><code class="docutils literal notranslate"><span class="pre">trim_data()</span></code></a></li>
 </ul>
 </li>
