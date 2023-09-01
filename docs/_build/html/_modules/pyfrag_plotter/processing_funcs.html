@@ -371,7 +371,7 @@ document.write(`
     <span class="k">return</span> <span class="n">df</span>
 
 
-<span class="k">def</span> <span class="nf">_trim_data_int</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">trim_option</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">_trim_data_int</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">trim_option</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">energy_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Private function that performs the actual trimming of the dataframe with a integer trim_option&quot;&quot;&quot;</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">trim_option</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">df</span>
@@ -417,16 +417,16 @@ document.write(`
 
 
 <div class="viewcode-block" id="trim_data"><a class="viewcode-back" href="../../pyfrag_plotter.html#pyfrag_plotter.processing_funcs.trim_data">[docs]</a><span class="k">def</span> <span class="nf">trim_data</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">trim_option</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">trim_key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;&#39;Overloaded&#39; function to trim (shorten) the dataframe based on the type of the trim_option.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;&#39;Overloaded&#39; function to trim the dataframe based on the type of the trim_option.</span>
 
 <span class="sd">    This function trims the given dataframe based on the type of the trim_option.</span>
-<span class="sd">    The trim_option can be either a string (&quot;min&quot;, &quot;max&quot;), integer (IRC point), float (energy value), or a sequence (x_limits such as (1.0, 3.0))). If none provided, it is read from the config file.</span>
+<span class="sd">    The trim_option is read from the configuration file and can be either a string (&quot;min&quot;, &quot;max&quot;), integer (IRC point), float (energy value), or a sequence (x_limits such as (1.0, 3.0))).</span>
 <span class="sd">    The function returns the trimmed dataframe.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        df (pd.DataFrame): The dataframe to trim.</span>
-<span class="sd">        trim_option (Optional[Union[str, float, int]]): The parameter to use for trimming. Defaults to None.</span>
-<span class="sd">        trim_key (Optional[str]): The key to use for reading the trim_option. Defaults to None.</span>
+<span class="sd">        trim_parameter (Optional[Union[str, float, int]]): The parameter to use for trimming. Defaults to None.</span>
+<span class="sd">        trim_key (Optional[str]): The key to use for reading the trim_parameter from the configuration file. Defaults to None.</span>
 
 <span class="sd">    Raises:</span>
 <span class="sd">        PyFragResultsProcessingError: If the trim_option is not a valid type.</span>
