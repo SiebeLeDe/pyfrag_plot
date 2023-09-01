@@ -37,6 +37,7 @@ extensions = [
     "sphinx.ext.githubpages",
     "sphinx.ext.intersphinx",
     'sphinx.ext.duration',
+    "sphinx.ext.autosummary",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -46,10 +47,6 @@ templates_path = ['_templates']
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
-
-autodoc_default_options = {
-    'autosummary': False,
-}
 
 modindex_common_prefix = ['pyfrag_plotter.']
 
@@ -62,7 +59,7 @@ html_theme_options = {
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'pydata_sphinx_theme'
 
 
 # Add any paths that contain custom static files (such as style sheets) here,

@@ -73,7 +73,7 @@ def _trim_data_float(df: pd.DataFrame, trim_option: float, energy_key: str) -> p
     return df
 
 
-def _trim_data_int(df: pd.DataFrame, trim_option: int, *args) -> pd.DataFrame:
+def _trim_data_int(df: pd.DataFrame, trim_option: int, energy_key: str) -> pd.DataFrame:
     """Private function that performs the actual trimming of the dataframe with a integer trim_option"""
     df = df.iloc[:trim_option]
     return df
@@ -127,9 +127,8 @@ def trim_data(df: pd.DataFrame, trim_option: Optional[Union[str, float, int, Seq
 
     Args:
         df (pd.DataFrame): The dataframe to trim.
-        trim_option (Optional[Union[str, float, int]]): The parameter to use for trimming. Defaults to None.
-        trim_key (Optional[str]): The key to use for reading the trim_option from the configuration file. Defaults to None.
-        irc_coord (Optional[str]): The IRC coordinate to use for trimming. Defaults to None.
+        trim_parameter (Optional[Union[str, float, int]]): The parameter to use for trimming. Defaults to None.
+        trim_key (Optional[str]): The key to use for reading the trim_parameter from the configuration file. Defaults to None.
 
     Raises:
         PyFragResultsProcessingError: If the trim_option is not a valid type.
