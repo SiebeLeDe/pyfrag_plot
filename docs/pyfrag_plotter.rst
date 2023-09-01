@@ -8,7 +8,10 @@ Subpackages
    :maxdepth: 4
 
    pyfrag_plotter.input
+   pyfrag_plotter.interpolate
+   pyfrag_plotter.interpolate_func
    pyfrag_plotter.plot
+   pyfrag_plotter.printer
 
 Submodules
 ----------
