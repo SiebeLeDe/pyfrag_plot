@@ -23,7 +23,7 @@ def process_results_file(
         df: A pandas DataFrame containing the results file data.
         trim_option: An optional argument specifying how to trim the data. Can be "max", "min", "x_limits", or None.
         trim_key: An optional argument specifying the key to use for trimming the data. Can be "EnergyTotal" or None.
-        irc_coord: An optional argument specifying the IRC coordinate to use for trimming the data. Can be "x" or "y", or None.
+        trim_key: An optional argument specifying the IRC coordinate to use for trimming the data. Can be "x" or "y", or None.
         *args: Additional positional arguments.
 
     Returns:
@@ -79,27 +79,27 @@ def _trim_data_int(df: pd.DataFrame, trim_option: int, energy_key: str) -> pd.Da
     return df
 
 
-def _trim_data_sequence(df: pd.DataFrame, trim_option: Optional[Sequence[float]] = None, irc_coord: Optional[str] = None) -> pd.DataFrame:
+def _trim_data_sequence(df: pd.DataFrame, trim_option: Optional[Sequence[float]] = None, trim_key: Optional[str] = None) -> pd.DataFrame:
     """ Private function that performs the actual trimming of the dataframe with a sequence trim_option"""
 
     x_limits: Sequence[float] = tuple(config["config"].get("SHARED", "x_limits")) if trim_option is None else trim_option
     reverse_axis = bool(config["config"].get("SHARED", "reverse_x_axis"))
 
-    if irc_coord is None:
-        irc_coord: str = "bondlength_1"
-        message = f"irc_coord {irc_coord} is not correct. Valid options are bondlength_x, angle_x, or dihedral_x. Using default value {irc_coord} WHICH MAY NOT BE PRESENT."
+    if trim_key is None:
+        trim_key = "bondlength_1"
+        message = f"trim_key {trim_key} is not correct. Valid options are bondlength_x, angle_x, or dihedral_x. Using default value {trim_key} WHICH MAY NOT BE PRESENT."
         raise PyFragResultsProcessingWarning(section="trim_data_sequence",
                                              message=message)
 
     if not isinstance(x_limits, Sequence) or len(x_limits) != 2 or x_limits[0] >= x_limits[1]:
         raise PyFragResultsProcessingError(section="trim_data_sequence", message=f"Invalid x_limits {x_limits} specified in the configuration file.")
 
-    x_data: np.ndarray = df[irc_coord].values  # type: ignore since it is a numpy array
+    x_data: np.ndarray = df[trim_key].values  # type: ignore since it is a numpy array
     x_min = max(x_data.min(), x_limits[0])
     x_max = min(x_data.max(), x_limits[1])
     x_indices = np.where((x_data >= x_min) & (x_data <= x_max))[0]
     if x_indices.size == 0:
-        raise PyFragResultsProcessingError(section="trim_data_sequence", message=f"No data points within the specified x limits {x_limits} for key {irc_coord}.")
+        raise PyFragResultsProcessingError(section="trim_data_sequence", message=f"No data points within the specified x limits {x_limits} for key {trim_key}.")
 
     if not reverse_axis:
         x_indices = np.concatenate(([max(0, x_indices[0] - 1)], x_indices, [min(x_data.size - 1, x_indices[-1] + 1)]))
