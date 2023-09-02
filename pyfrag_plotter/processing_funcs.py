@@ -15,7 +15,7 @@ def process_results_file(
         df: pd.DataFrame,
         trim_option: Optional[Union[str, float, int, Sequence]] = None,
         trim_key: Optional[str] = None,
-        *args,
+        outlier_threshold: Optional[float] = None,
 ) -> pd.DataFrame:
     """Processes the results file data.
 
@@ -40,7 +40,7 @@ def process_results_file(
     df = trim_data(df, trim_option, trim_key)
 
     # Remove outliers
-    df = remove_outliers(df)
+    df = remove_outliers(df, outlier_threshold)
 
     return df
 
@@ -188,7 +188,7 @@ def remove_dispersion_term(df: pd.DataFrame) -> pd.DataFrame:
 # Removing Outliers ==================================================================================
 # ====================================================================================================
 
-def remove_outliers(df: pd.DataFrame) -> pd.DataFrame:
+def remove_outliers(df: pd.DataFrame, outlier_threshold: Optional[float] = None) -> pd.DataFrame:
     """Removes outliers from the dataframe.
 
     This function takes a pandas DataFrame containing the results file data and removes outliers from the dataframe. The function returns the modified DataFrame.
@@ -200,11 +200,15 @@ def remove_outliers(df: pd.DataFrame) -> pd.DataFrame:
         pd.DataFrame: The modified DataFrame without outliers.
 
     """
-    # Calculate the difference between each value and its neighbors
+    outlier_threshold = config["config"].get("SHARED", "remove_outliers") if outlier_threshold is None else outlier_threshold
+
+    # Calculate the difference between each value and its two nearest neighbors from both ends
     diff = df["EnergyTotal"].diff().abs()
+    diff_forward = df["EnergyTotal"].diff(periods=2).abs()
+    diff_backward = df["EnergyTotal"].iloc[::-1].diff(periods=2).abs().iloc[::-1]
 
     # Identify the outliers
-    outliers = diff > 70
+    outliers = (diff > outlier_threshold) & (diff_forward > outlier_threshold) & (diff_backward > outlier_threshold)
 
     # Remove the outliers
     df = df[~outliers]

@@ -1,11 +1,13 @@
 import pandas as pd
 import pytest
-from pyfrag_plotter.processing_funcs import _trim_data_float, _trim_data_int, _trim_data_str, remove_dispersion_term
+from pyfrag_plotter.processing_funcs import _trim_data_float, _trim_data_int, _trim_data_str, remove_dispersion_term, remove_outliers
 from pyfrag_plotter.errors import PyFragResultsProcessingError
+
+OUTLIER_THRESHOLD = 50
 
 
 @pytest.fixture
-def test_df():
+def regular_df():
     return pd.DataFrame({
         "EnergyTotal": [
             0.40939,
@@ -24,35 +26,59 @@ def test_df():
             -33.61639,
             -36.88992,
             -37.21977]
-        }
+    }
     )
 
 
-def test_trim_data_float(test_df):
-    result = _trim_data_float(test_df, 10.0, "EnergyTotal")
+@pytest.fixture
+def df_with_outliers():
+    return pd.DataFrame({
+        "EnergyTotal": [
+            0.40939,
+            9.56754,
+            15.22111,
+            17.08688,
+            160.07092,
+            100.03672,
+            40.79637,
+            24.08829,
+            23.96248,
+            13.28778,
+            0.34548,
+            -6.09441,
+            -100.56811,
+            -160.61639,
+            -36.88992,
+            -37.21977]
+    }
+    )
+
+
+def test_trim_data_float(regular_df):
+    result = _trim_data_float(regular_df, 10.0, "EnergyTotal")
     assert len(result) == 2
     assert result["EnergyTotal"].max() <= 10.0
 
 
-def test_trim_data_int(test_df):
-    result = _trim_data_int(test_df, 3, "EnergyTotal")
+def test_trim_data_int(regular_df):
+    result = _trim_data_int(regular_df, 3, "EnergyTotal")
     assert len(result) == 3
 
 
-def test_trim_data_str_min(test_df):
-    result = _trim_data_str(test_df, "min", "EnergyTotal")
+def test_trim_data_str_min(regular_df):
+    result = _trim_data_str(regular_df, "min", "EnergyTotal")
     assert len(result) == 16
 
 
-def test_trim_data_str_max(test_df):
-    result = _trim_data_str(test_df, "max", "EnergyTotal")
+def test_trim_data_str_max(regular_df):
+    result = _trim_data_str(regular_df, "max", "EnergyTotal")
     assert len(result) == 8
     assert result["EnergyTotal"].iloc[-1] == result["EnergyTotal"].max()
 
 
-def test_trim_data_str_false(test_df):
+def test_trim_data_str_false(regular_df):
     with pytest.raises(PyFragResultsProcessingError):
-        _trim_data_str(test_df, "invalid", "EnergyTotal")
+        _trim_data_str(regular_df, "invalid", "EnergyTotal")
 
 
 def test_remove_dispersion_term_with_dispersion():
@@ -90,3 +116,35 @@ def test_remove_dispersion_term_with_single_row_dataframe():
     })
     expected_df = df.drop(columns=["Disp"])
     assert remove_dispersion_term(df).equals(expected_df)
+
+
+def test_remove_outliers_values(df_with_outliers):
+    # Check that the outliers have been removed
+    expected = pd.DataFrame({
+        "EnergyTotal": [
+            0.40939,
+            9.56754,
+            15.22111,
+            17.08688,
+            40.79637,
+            24.08829,
+            23.96248,
+            13.28778,
+            0.34548,
+            -6.09441,
+            -36.88992,
+            -37.21977]
+    }
+    )
+    result = remove_outliers(df_with_outliers, OUTLIER_THRESHOLD)["EnergyTotal"]
+    expected = expected["EnergyTotal"].reset_index(drop=True)
+    result = result.reset_index(drop=True)
+    # Not checking the index type because the index type of the expected and result Series are different
+    pd.testing.assert_series_equal(result, expected)
+
+
+def test_remove_outliers_length(df_with_outliers):
+    # Check that the length of the resulting DataFrame is correct
+    expected_length = len(df_with_outliers) - 4
+    result_length = len(remove_outliers(df_with_outliers, OUTLIER_THRESHOLD))
+    assert result_length == expected_length
