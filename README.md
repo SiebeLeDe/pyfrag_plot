@@ -1,3 +1,6 @@
+[![Documentation](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/build_docs.yml/badge.svg)](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/build_docs.yml) [![Testing](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/test.yml/badge.svg)](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/test.yml)
+
+
 # PyFrag Plotter
 
 Scripts for plotting pyfrag calculations using the input and text files created by [PyFrag](https://pyfragdocument.readthedocs.io/en/latest/install.html)
