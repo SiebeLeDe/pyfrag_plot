@@ -327,7 +327,7 @@ document.write(`
         <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
         <span class="n">trim_option</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">trim_key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+        <span class="n">outlier_threshold</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Processes the results file data.</span>
 
@@ -352,7 +352,7 @@ document.write(`
     <span class="n">df</span> <span class="o">=</span> <span class="n">trim_data</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">trim_option</span><span class="p">,</span> <span class="n">trim_key</span><span class="p">)</span>
 
     <span class="c1"># Remove outliers</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">remove_outliers</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">remove_outliers</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">outlier_threshold</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">df</span></div>
 
@@ -500,7 +500,7 @@ document.write(`
 <span class="c1"># Removing Outliers ==================================================================================</span>
 <span class="c1"># ====================================================================================================</span>
 
-<div class="viewcode-block" id="remove_outliers"><a class="viewcode-back" href="../../pyfrag_plotter.html#pyfrag_plotter.processing_funcs.remove_outliers">[docs]</a><span class="k">def</span> <span class="nf">remove_outliers</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<div class="viewcode-block" id="remove_outliers"><a class="viewcode-back" href="../../pyfrag_plotter.html#pyfrag_plotter.processing_funcs.remove_outliers">[docs]</a><span class="k">def</span> <span class="nf">remove_outliers</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">outlier_threshold</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Removes outliers from the dataframe.</span>
 
 <span class="sd">    This function takes a pandas DataFrame containing the results file data and removes outliers from the dataframe. The function returns the modified DataFrame.</span>
@@ -512,11 +512,15 @@ document.write(`
 <span class="sd">        pd.DataFrame: The modified DataFrame without outliers.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># Calculate the difference between each value and its neighbors</span>
+    <span class="n">outlier_threshold</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SHARED&quot;</span><span class="p">,</span> <span class="s2">&quot;remove_outliers&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">outlier_threshold</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">outlier_threshold</span>
+
+    <span class="c1"># Calculate the difference between each value and its two nearest neighbors from both ends</span>
     <span class="n">diff</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;EnergyTotal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>
+    <span class="n">diff_forward</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;EnergyTotal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">periods</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>
+    <span class="n">diff_backward</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;EnergyTotal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">periods</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
     <span class="c1"># Identify the outliers</span>
-    <span class="n">outliers</span> <span class="o">=</span> <span class="n">diff</span> <span class="o">&gt;</span> <span class="mi">70</span>
+    <span class="n">outliers</span> <span class="o">=</span> <span class="p">(</span><span class="n">diff</span> <span class="o">&gt;</span> <span class="n">outlier_threshold</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">diff_forward</span> <span class="o">&gt;</span> <span class="n">outlier_threshold</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">diff_backward</span> <span class="o">&gt;</span> <span class="n">outlier_threshold</span><span class="p">)</span>
 
     <span class="c1"># Remove the outliers</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">outliers</span><span class="p">]</span>
