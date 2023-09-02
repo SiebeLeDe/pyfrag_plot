@@ -11,13 +11,10 @@ Here's an example of how to use pyfrag_plotter:
 
 .. code-block:: python
 
-    from pyfragplotter import initialize_pyfrag_plotter, plot_pyfrag, plot_pyfrags
+    from pyfrag_plotter.config import initialize_pyfrag_plotter
 
-    initialize_pyfragplotter('config.ini')
+    initialize_pyfrag_plotter('path_to_config_file')
 
-    plot_pyfrag('pyfrag_1')
-
-    plot_pyfrags(['pyfrag_1', 'pyfrag_2', 'pyfrag_3'])
 
 In this example, we first call :func:`pyfrag_plotter.config.initialize_pyfrag_plotter` function with the path to the config file. This sets up the necessary variables for making the plots. We then call the plot_pyfrag function with the ID of the PyFrag directory we want to plot. This function reads the .txt and .in files from the PyFrag directory, extracts the necessary data, and makes the plot according to the settings specified in the config file.
 
