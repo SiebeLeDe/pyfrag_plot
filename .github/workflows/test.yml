@@ -1,4 +1,4 @@
-name: pyfrag_plotter
+name: Testing
 
 on: [push]
 
