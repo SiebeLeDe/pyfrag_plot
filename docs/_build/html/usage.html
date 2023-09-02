@@ -315,9 +315,9 @@ document.write(`
                   
   <section id="usage">
 <span id="id1"></span><h1>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">#</a></h1>
-<p>pyfragplotter is a Python package that can be used to make plots from PyFrag directories containing the .txt (resultsfile) and .in file (inputfile).</p>
-<p>To use pyfragplotter, you need to have a config file and call the pyfrag_plotter.config.initialize_pyfrag_plotter function. The config file should contain the necessary information about the PyFrag directories and the plot settings. The function reads the config file and sets up the necessary variables for making the plots.</p>
-<p>Here’s an example of how to use pyfragplotter:</p>
+<p>pyfrag_plotter is a Python package that can be used to make plots from PyFrag directories containing the .txt (resultsfile) and .in file (inputfile).</p>
+<p>To use pyfragplotter, you need to have a config file and call the :func: <cite>pyfrag_plotter.config.initialize_pyfrag_plotter</cite> function. The config file should contain the necessary information about the PyFrag directories and the plot settings. The function reads the config file and sets up the necessary variables for making the plots. For an exanple of the config file, see :ref: <cite>../../pyfrag_plotter/config.ini</cite>.</p>
+<p>Here’s an example of how to use pyfrag_plotter:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyfragplotter</span> <span class="kn">import</span> <span class="n">initialize_pyfrag_plotter</span><span class="p">,</span> <span class="n">plot_pyfrag</span><span class="p">,</span> <span class="n">plot_pyfrags</span>
 
 <span class="n">initialize_pyfragplotter</span><span class="p">(</span><span class="s1">&#39;config.ini&#39;</span><span class="p">)</span>
@@ -327,7 +327,7 @@ document.write(`
 <span class="n">plot_pyfrags</span><span class="p">([</span><span class="s1">&#39;pyfrag_1&#39;</span><span class="p">,</span> <span class="s1">&#39;pyfrag_2&#39;</span><span class="p">,</span> <span class="s1">&#39;pyfrag_3&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>In this example, we first call the pyfrag_plotter.config.initialize_pyfrag_plotter function with the path to the config file. This sets up the necessary variables for making the plots. We then call the plot_pyfrag function with the ID of the PyFrag directory we want to plot. This function reads the .txt and .in files from the PyFrag directory, extracts the necessary data, and makes the plot according to the settings specified in the config file.</p>
+<p>In this example, we first call :func: <cite>pyfrag_plotter.config.initialize_pyfrag_plotter</cite> function with the path to the config file. This sets up the necessary variables for making the plots. We then call the plot_pyfrag function with the ID of the PyFrag directory we want to plot. This function reads the .txt and .in files from the PyFrag directory, extracts the necessary data, and makes the plot according to the settings specified in the config file.</p>
 <p>Note that you can customize the plot settings in the config file, such as the plot type, color scheme, and axis labels. You can also plot multiple PyFrag directories at once by calling the plot_pyfrags function with a list of PyFrag IDs.</p>
 </section>
 
