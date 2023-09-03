@@ -1,12 +1,19 @@
 """ Module that combines the data from inputfile and outputfile into a PyFragResultsObject object """
-from typing import Annotated, Any, Dict, Literal, Optional, TypeVar, Callable, List, Tuple
-from pyfrag_plotter.errors import PyFragResultsObjectError
-from pyfrag_plotter.config_handler import config
+from collections import OrderedDict
+from typing import (Annotated, Any, Callable, Dict, List, Literal, Optional,
+                    Tuple, TypeVar)
+
 import numpy as np
 import numpy.typing as npt
 import pandas as pd
 from attrs import define, field
-from collections import OrderedDict
+
+from pyfrag_plotter.config_handler import config
+from pyfrag_plotter.errors import PyFragResultsObjectError
+from pyfrag_plotter.input.pyfrag_files import get_pyfrag_files
+from pyfrag_plotter.input.read_inputfile import read_inputfile
+from pyfrag_plotter.input.read_resultsfile import read_results_file
+from pyfrag_plotter.processing_funcs import process_results_file
 
 # Type alias for 1D numpy array with variable length but with a fixed dtype (np.float64)
 DType = TypeVar("DType", bound=np.generic)
@@ -225,7 +232,7 @@ key_to_func_mapping: dict[str, Callable[..., None]] = {
 }
 
 
-def create_pyfrag_object(results_data: pd.DataFrame, inputfile_data: Dict[str, Any]) -> PyFragResultsObject:
+def create_pyfrag_object_from_processed_files(results_data: pd.DataFrame, inputfile_data: Dict[str, Any]) -> PyFragResultsObject:
     """Creates a PyFragResultsObject from the given results data and input file data.
 
     This function takes a pandas DataFrame containing the results file data and a dictionary containing the input file data and creates a PyFragResultsObject.
@@ -263,5 +270,19 @@ def create_pyfrag_object(results_data: pd.DataFrame, inputfile_data: Dict[str, A
 
         if key in key_to_func_mapping:
             key_to_func_mapping[key](obj, data, *value)
+
+    return obj
+
+
+def create_pyfrag_object_from_dir(results_dir: str, **kwargs) -> PyFragResultsObject:
+
+    input_file, output_file = get_pyfrag_files(results_dir)
+
+    inputfile_data = read_inputfile(input_file)
+
+    results_data = read_results_file(output_file)
+    results_data = process_results_file(results_data, **kwargs)
+
+    obj = create_pyfrag_object_from_processed_files(results_data, inputfile_data)
 
     return obj

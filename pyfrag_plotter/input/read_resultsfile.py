@@ -1,17 +1,17 @@
 import pandas as pd
 
 
-def read_data(datafile: str) -> pd.DataFrame:
+def read_results_file(results_file: str) -> pd.DataFrame:
     """
     A function to read the pyfrag output file (with ".txt" extension) and return a pandas dataframe.
 
     Args:
-        datafile (str): The path to the datafile.
+        results_file (str): The path to the results file (.txt).
 
     Returns:
         pd.DataFrame: A pandas dataframe containing the data with #IRC steps as index.
     """
-    df = pd.read_csv(datafile, header=0, delim_whitespace=True, dtype=float, index_col=0)
+    df = pd.read_csv(results_file, header=0, delim_whitespace=True, dtype=float, index_col=0)
 
     # if there is only one bondlength, rename it to bondlength_1
     if 'bondlength' in df.columns and not any(col.startswith('bondlength_') for col in df.columns):

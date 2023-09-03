@@ -6,11 +6,7 @@ import matplotlib.pyplot as plt
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 
 from pyfrag_plotter.config_handler import initialize_pyfrag_plotter
-from pyfrag_plotter.helper_funcs import get_pyfrag_files
-from pyfrag_plotter.input.read_inputfile import read_inputfile
-from pyfrag_plotter.input.read_resultsfile import read_data
-from pyfrag_plotter.processing_funcs import process_results_file
-from pyfrag_plotter.pyfrag_object import create_pyfrag_object
+from pyfrag_plotter.pyfrag_object import create_pyfrag_object_from_dir
 from pyfrag_plotter.plot.plotter import Plotter
 from pyfrag_plotter.plot.plot_details import set_figure_details, set_axes_details
 
@@ -22,19 +18,19 @@ import time
 # ------------------------------------------------------------------------------------------------------------- #
 
 
-# base_results_path = "/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Projects/Squaramides/pyfrag_results"
-base_results_path = r"C:\Users\siebb\VU_PhD\PhD\Projects\Squaramides\pyfrag_results"
+base_results_path = r"/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Projects/Squaramides/pyfrag_results"
+# base_results_path = r"C:\Users\siebb\VU_PhD\PhD\Projects\Squaramides\pyfrag_results"
 
-# plot_dir = "/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Projects/Squaramides/Plots"
-plot_dir = r"C:\Users\siebb\VU_PhD\PhD\Projects\Squaramides\Plots"
+plot_dir = r"/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Projects/Squaramides/Plots"
+# plot_dir = r"C:\Users\siebb\VU_PhD\PhD\Projects\Squaramides\Plots"
 
 # irc_coord = ("bondlength_1", "r - r$_{eq}$ / Å")
 # irc_coord = ("bondlength_2", "r$_{cm}$ / Å")
 # irc_coord = ("bondlength_3", "$\Delta$r$_{X \cdot\cdot\cdot H}$ / Å")
 irc_coord = ("bondlength_4", "r$_{X \cdot\cdot\cdot H}$ / Å")   # type: ignore # noqa: W605 since it is a LaTeX string
 
-# path_to_images = "/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Projects/Squaramides/Pics&Coords/png_without_border"
-path_to_images = r"C:\Users\siebb\VU_PhD\PhD\Projects\Squaramides\Pics&Coords/png_without_border"
+path_to_images = r"/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Projects/Squaramides/Pics&Coords/png_without_border"
+# path_to_images = r"C:\Users\siebb\VU_PhD\PhD\Projects\Squaramides\Pics&Coords/png_without_border"
 
 # ------------------------------------------------------------------------------------------------------------- #
 # ---------------------------------------------- Functions ---------------------------------------------------- #
@@ -48,7 +44,7 @@ def timeit(func):
         result = func(*args, **kwargs)
         end_time = time.perf_counter()
         total_time = end_time - start_time
-        print(f'Function {func.__name__} Took {total_time:.4f} seconds')
+        print(f'Function {func.__name__} took {total_time:.4f} seconds')
         return result
     return timeit_wrapper
 
@@ -60,20 +56,13 @@ def create_plot_instances(systems: dict[str, List[str]]) -> List[Plotter]:
 
     # Get the pyfrag input file and pyfrag output file
     pyfrag_dirs = {name: [os.path.join(base_results_path, dir) for dir in dirs] for name, dirs in systems.items()}
-    pyfrag_files = {name: get_pyfrag_files(pyfrag_dir) for name, pyfrag_dir in pyfrag_dirs.items()}
 
     # Make the plot instances
-    for name, pyfrag_file_list in pyfrag_files.items():
+    for name, folders in pyfrag_dirs.items():
         print(f"Making plot instance for {name}")
-        input_files, results_files = zip(*pyfrag_file_list)
-        input_contents = [read_inputfile(input_file) for input_file in input_files]
-        output_contents = [read_data(results_file) for results_file in results_files]
 
-        # Process output contents
-        output_contents = [process_results_file(output_content, trim_key=irc_coord[0], trim_option="x_lim") for output_content in output_contents]
-
-        # Next, make the pyfrag objects
-        objs = [create_pyfrag_object(output_content, input_content) for output_content, input_content in zip(output_contents, input_contents)]
+        # First, make the pyfrag objects with arguments for processing the functions (trimming data, removing dispersion term, and removing outliers)
+        objs = [create_pyfrag_object_from_dir(folder, trim_option="x_lim", trim_key=irc_coord[0]) for folder in folders]
 
         # Next, make the Plotter
         plot_instances.append(Plotter(name, plot_dir, objs, irc_coord))
@@ -185,12 +174,13 @@ trimer_images = [
 # Initialize the pyfrag plotter module (deals with config settings)
 initialize_pyfrag_plotter()
 
+path_to_dimer_images = [os.path.join(path_to_images, image + ".png") for image in dimer_images]
+path_to_trimer_images = [os.path.join(path_to_images, image + ".png") for image in trimer_images]
+
 # Create the plot instances
 dimer_instances = create_plot_instances(dimer_systems)
 trimer_instances = create_plot_instances(trimer_systems)
 
-path_to_dimer_images = [os.path.join(path_to_images, image + ".png") for image in dimer_images]
-path_to_trimer_images = [os.path.join(path_to_images, image + ".png") for image in trimer_images]
 
 # print("Plotting the individual graphs")
 # plot_individual_graphs(plot_instances=plot_instances)
