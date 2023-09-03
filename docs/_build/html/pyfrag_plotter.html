@@ -340,12 +340,16 @@ document.write(`
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pyfrag_plotter.input.html">pyfrag_plotter.input package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.input.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.input.html#module-pyfrag_plotter.input.pyfrag_files">pyfrag_plotter.input.pyfrag_files module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.input.html#pyfrag_plotter.input.pyfrag_files.get_pyfrag_files"><code class="docutils literal notranslate"><span class="pre">get_pyfrag_files()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.input.html#module-pyfrag_plotter.input.read_inputfile">pyfrag_plotter.input.read_inputfile module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.input.html#pyfrag_plotter.input.read_inputfile.read_inputfile"><code class="docutils literal notranslate"><span class="pre">read_inputfile()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.input.html#module-pyfrag_plotter.input.read_resultsfile">pyfrag_plotter.input.read_resultsfile module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.input.html#pyfrag_plotter.input.read_resultsfile.read_data"><code class="docutils literal notranslate"><span class="pre">read_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.input.html#pyfrag_plotter.input.read_resultsfile.read_results_file"><code class="docutils literal notranslate"><span class="pre">read_results_file()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.input.html#module-pyfrag_plotter.input">Module contents</a></li>
@@ -485,51 +489,6 @@ document.write(`
 </dd></dl>
 
 </section>
-<section id="module-pyfrag_plotter.helper_funcs">
-<span id="pyfrag-plotter-helper-funcs-module"></span><h2>pyfrag_plotter.helper_funcs module<a class="headerlink" href="#module-pyfrag_plotter.helper_funcs" title="Permalink to this heading">#</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="pyfrag_plotter.helper_funcs.get_pyfrag_files">
-<span class="sig-name descname"><span class="pre">get_pyfrag_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dirs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pyfrag_plotter/helper_funcs.html#get_pyfrag_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.helper_funcs.get_pyfrag_files" title="Permalink to this definition">#</a></dt>
-<dd><p>Searches for pyfrag input files and pyfrag txt files in the given folders and returns a list of tuples containing the absolute path to the pyfrag input file and the pyfrag txt file</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>dirs</strong> (<em>Union</em><em>[</em><em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>str</em><em>]</em>) – The absolute paths to the folders containing the pyfrag input files.</p>
-</dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>FileNotFoundError</strong> – If the pyfrag input file or pyfrag txt file could not be found in the same folder.</p></li>
-<li><p><strong>FileNotFoundError</strong> – If the returned list is empty.</p></li>
-</ul>
-</dd>
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>A list of tuples containing the absolute path to the pyfrag input file and the pyfrag txt file.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>List[Tuple[str, str]]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pyfrag_plotter.helper_funcs.replace_overlapping_keys">
-<span class="sig-name descname"><span class="pre">replace_overlapping_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span></span></span><a class="reference internal" href="_modules/pyfrag_plotter/helper_funcs.html#replace_overlapping_keys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.helper_funcs.replace_overlapping_keys" title="Permalink to this definition">#</a></dt>
-<dd><p>A decorator that replaces overlapping keys between kwargs and function arguments with top-level input.</p>
-<p>This decorator is used to ensure that the correct input is used for a function when both positional arguments and keyword arguments are used.
-It replaces overlapping keys between kwargs and function arguments with top-level input.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>func</strong> (<em>Callable</em>) – The function to decorate.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The decorated function.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Callable</p>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
 <section id="pyfrag-plotter-interpolate-module">
 <h2>pyfrag_plotter.interpolate module<a class="headerlink" href="#pyfrag-plotter-interpolate-module" title="Permalink to this heading">#</a></h2>
 </section>
@@ -569,6 +528,27 @@ It replaces overlapping keys between kwargs and function arguments with top-leve
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The modified DataFrame without the dispersion term if it is 0.0 everywhere.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyfrag_plotter.processing_funcs.remove_duplicate_x_values_dataframe">
+<span class="sig-name descname"><span class="pre">remove_duplicate_x_values_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/pyfrag_plotter/processing_funcs.html#remove_duplicate_x_values_dataframe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.processing_funcs.remove_duplicate_x_values_dataframe" title="Permalink to this definition">#</a></dt>
+<dd><p>Removes rows with duplicate x-axis values from a pandas DataFrame. This is necessary since otherwise the interpolation will fail.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The DataFrame to remove duplicates from.</p></li>
+<li><p><strong>x_axis_key</strong> (<em>str</em>) – The name of the column containing the x-axis values.</p></li>
+<li><p><strong>y_axis_key</strong> (<em>str</em>) – The name of the column containing the y-axis values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The modified DataFrame with duplicates removed.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pd.DataFrame</p>
@@ -697,15 +677,11 @@ The function returns the trimmed dataframe.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.errors.PyFragResultsProcessingWarning"><code class="docutils literal notranslate"><span class="pre">PyFragResultsProcessingWarning</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pyfrag_plotter.helper_funcs">pyfrag_plotter.helper_funcs module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.helper_funcs.get_pyfrag_files"><code class="docutils literal notranslate"><span class="pre">get_pyfrag_files()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.helper_funcs.replace_overlapping_keys"><code class="docutils literal notranslate"><span class="pre">replace_overlapping_keys()</span></code></a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag-plotter-interpolate-module">pyfrag_plotter.interpolate module</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pyfrag_plotter.processing_funcs">pyfrag_plotter.processing_funcs module</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.processing_funcs.process_results_file"><code class="docutils literal notranslate"><span class="pre">process_results_file()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.processing_funcs.remove_dispersion_term"><code class="docutils literal notranslate"><span class="pre">remove_dispersion_term()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.processing_funcs.remove_duplicate_x_values_dataframe"><code class="docutils literal notranslate"><span class="pre">remove_duplicate_x_values_dataframe()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.processing_funcs.remove_outliers"><code class="docutils literal notranslate"><span class="pre">remove_outliers()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.processing_funcs.trim_data"><code class="docutils literal notranslate"><span class="pre">trim_data()</span></code></a></li>
 </ul>

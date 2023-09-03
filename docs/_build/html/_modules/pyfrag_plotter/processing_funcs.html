@@ -345,11 +345,14 @@ document.write(`
 <span class="sd">        PyFragResultsProcessingError: If an error occurs during processing.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># Remove the dispersion term if it is 0.0 everywhere</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">remove_dispersion_term</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-
     <span class="c1"># Trim the data</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">trim_data</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">trim_option</span><span class="p">,</span> <span class="n">trim_key</span><span class="p">)</span>
+
+    <span class="c1"># Remove duplicate x values</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">remove_duplicate_x_values_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+    <span class="c1"># Remove the dispersion term if it is 0.0 everywhere</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">remove_dispersion_term</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
     <span class="c1"># Remove outliers</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">remove_outliers</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">outlier_threshold</span><span class="p">)</span>
@@ -361,16 +364,16 @@ document.write(`
 <span class="c1"># ====================================================================================================</span>
 
 
-<span class="k">def</span> <span class="nf">_trim_data_str</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">trim_option</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">energy_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">_trim_data_str</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">trim_option</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">trim_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Private function that performs the actual trimming of the dataframe with a string trim_option&quot;&quot;&quot;</span>
     <span class="n">trim_option</span> <span class="o">=</span> <span class="n">trim_option</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
     <span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">]</span>
 
     <span class="k">if</span> <span class="n">trim_option</span> <span class="o">==</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span>
-        <span class="n">max_index</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">energy_key</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+        <span class="n">max_index</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">trim_key</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
         <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="n">max_index</span><span class="p">]</span>
     <span class="k">elif</span> <span class="n">trim_option</span> <span class="o">==</span> <span class="s2">&quot;min&quot;</span><span class="p">:</span>
-        <span class="n">min_index</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">energy_key</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+        <span class="n">min_index</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">trim_key</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
         <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="n">min_index</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">PyFragResultsProcessingError</span><span class="p">(</span><span class="n">section</span><span class="o">=</span><span class="s2">&quot;trim_data_str&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;trim_option </span><span class="si">{</span><span class="n">trim_option</span><span class="si">}</span><span class="s2"> is not valid. Valid options are </span><span class="si">{</span><span class="n">options</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -378,14 +381,15 @@ document.write(`
     <span class="k">return</span> <span class="n">df</span>
 
 
-<span class="k">def</span> <span class="nf">_trim_data_float</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">trim_option</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">energy_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">_trim_data_float</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">trim_option</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">trim_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Private function that performs the actual trimming of the dataframe with a float trim_option&quot;&quot;&quot;</span>
-    <span class="n">index</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">energy_key</span><span class="p">]</span> <span class="o">-</span> <span class="n">trim_option</span><span class="p">)</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">trim_key</span><span class="p">]</span> <span class="o">-</span> <span class="n">trim_option</span><span class="p">)</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">trim_key</span><span class="p">])</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="n">index</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">df</span>
 
 
-<span class="k">def</span> <span class="nf">_trim_data_int</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">trim_option</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">energy_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">_trim_data_int</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">trim_option</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">trim_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Private function that performs the actual trimming of the dataframe with a integer trim_option&quot;&quot;&quot;</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">trim_option</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">df</span>
@@ -460,7 +464,6 @@ document.write(`
         <span class="n">trim_option</span> <span class="o">=</span> <span class="n">trim_option</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">trim_option</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;x_lim&quot;</span><span class="p">,</span> <span class="s2">&quot;xlim&quot;</span><span class="p">,</span> <span class="s2">&quot;x_limits&quot;</span><span class="p">,</span> <span class="s2">&quot;xlimits&quot;</span><span class="p">]:</span>
             <span class="n">trim_option</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SHARED&quot;</span><span class="p">,</span> <span class="s2">&quot;x_lim&quot;</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">df</span>
 
     <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">_overload_types</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">trim_option</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
@@ -512,7 +515,7 @@ document.write(`
 <span class="sd">        pd.DataFrame: The modified DataFrame without outliers.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">outlier_threshold</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SHARED&quot;</span><span class="p">,</span> <span class="s2">&quot;remove_outliers&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">outlier_threshold</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">outlier_threshold</span>
+    <span class="n">outlier_threshold</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SHARED&quot;</span><span class="p">,</span> <span class="s2">&quot;outlier_threshold&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">outlier_threshold</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">outlier_threshold</span>
 
     <span class="c1"># Calculate the difference between each value and its two nearest neighbors from both ends</span>
     <span class="n">diff</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;EnergyTotal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>
@@ -525,6 +528,35 @@ document.write(`
     <span class="c1"># Remove the outliers</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">outliers</span><span class="p">]</span>
 
+    <span class="k">return</span> <span class="n">df</span></div>
+
+<span class="c1"># ====================================================================================================</span>
+<span class="c1"># Removing duplicate x values ========================================================================</span>
+<span class="c1"># ====================================================================================================</span>
+
+
+<div class="viewcode-block" id="remove_duplicate_x_values_dataframe"><a class="viewcode-back" href="../../pyfrag_plotter.html#pyfrag_plotter.processing_funcs.remove_duplicate_x_values_dataframe">[docs]</a><span class="k">def</span> <span class="nf">remove_duplicate_x_values_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Removes rows with duplicate x-axis values from a pandas DataFrame. This is necessary since otherwise the interpolation will fail.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df (pd.DataFrame): The DataFrame to remove duplicates from.</span>
+<span class="sd">        x_axis_key (str): The name of the column containing the x-axis values.</span>
+<span class="sd">        y_axis_key (str): The name of the column containing the y-axis values.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pd.DataFrame: The modified DataFrame with duplicates removed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">x_axis_keys</span> <span class="o">=</span> <span class="p">[</span><span class="n">key</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;bondlength_&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;angle_&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;dihedral_&quot;</span><span class="p">)]</span>
+
+    <span class="c1"># Remove duplicate rows</span>
+    <span class="k">for</span> <span class="n">x_axis_key</span> <span class="ow">in</span> <span class="n">x_axis_keys</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="n">x_axis_key</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="s2">&quot;last&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Reset the index of the DataFrame</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Return the modified DataFrame</span>
     <span class="k">return</span> <span class="n">df</span></div>
 </pre></div>
 

@@ -30,14 +30,6 @@ pyfrag\_plotter.errors module
    :undoc-members:
    :show-inheritance:
 
-pyfrag\_plotter.helper\_funcs module
-------------------------------------
-
-.. automodule:: pyfrag_plotter.helper_funcs
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 pyfrag\_plotter.interpolate module
 ----------------------------------
 

@@ -4,6 +4,14 @@ pyfrag\_plotter.input package
 Submodules
 ----------
 
+pyfrag\_plotter.input.pyfrag\_files module
+------------------------------------------
+
+.. automodule:: pyfrag_plotter.input.pyfrag_files
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 pyfrag\_plotter.input.read\_inputfile module
 --------------------------------------------
 
