@@ -1,12 +1,42 @@
-from typing import Optional, Tuple
+import inspect
 import math
-import matplotlib.pyplot as plt
+from typing import Callable, Optional, Tuple
+
 import matplotlib.figure
-from matplotlib.ticker import MaxNLocator, FormatStrFormatter
+import matplotlib.pyplot as plt
+from matplotlib.ticker import FormatStrFormatter, MaxNLocator
 
 from pyfrag_plotter.config_handler import config
-from pyfrag_plotter.helper_funcs import replace_overlapping_keys
 from pyfrag_plotter.interpolate import interpolate_plot
+
+
+def replace_overlapping_keys(func: Callable) -> Callable:
+    """A decorator that replaces overlapping keys between kwargs and function arguments with top-level input.
+
+    This decorator is used to ensure that the correct input is used for a function when both positional arguments and keyword arguments are used.
+    It replaces overlapping keys between kwargs and function arguments with top-level input.
+
+    Args:
+        func (Callable): The function to decorate.
+
+    Returns:
+        Callable: The decorated function.
+
+    """
+    argspec = inspect.getfullargspec(func)
+    kwargs_only = argspec.kwonlyargs
+
+    def wrapper(*args, **kwargs):
+        # Find overlapping keys between kwargs and function arguments
+        overlapping_keys = set(kwargs.keys()) & set(list(args) + kwargs_only)
+
+        # Replace overlapping keys with top-level input
+        for key in overlapping_keys:
+            kwargs[key] = argspec.annotations.get(key, type(kwargs[key]))(kwargs[key])
+
+        return func(*args, **kwargs)
+
+    return wrapper
 
 
 @replace_overlapping_keys
@@ -93,7 +123,7 @@ def set_axes_details(
     # Smoothens the plots in the specified range (x_lim) by interpolating the data using the scipy spline library
     for line in ax.lines:
         x, y = line.get_data()
-        X_, Y_ = interpolate_plot(x, y, x_lim)
+        X_, Y_ = interpolate_plot(x, y)
         line.set_data(X_, Y_)
 
     # Draws a vertical line at the specified point

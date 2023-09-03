@@ -65,6 +65,7 @@ class Plotter:
             irc_coord (Sequence[str]): The IRC coordinate to plot on the x-axis and the label for the x-axis.
 
         """
+        self.name = name
         self.objects = pyfrag_objects
         self.path = opj(plot_dir, name)
         self.plot_info = PlotInfo(irc_coord=irc_coord[0], irc_coord_label=irc_coord[1])

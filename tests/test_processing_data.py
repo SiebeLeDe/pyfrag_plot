@@ -1,6 +1,6 @@
 import pandas as pd
 import pytest
-from pyfrag_plotter.processing_funcs import _trim_data_float, _trim_data_int, _trim_data_str, remove_dispersion_term, remove_outliers
+from pyfrag_plotter.processing_funcs import _trim_data_float, _trim_data_int, _trim_data_str, remove_dispersion_term, remove_outliers, remove_duplicate_x_values_dataframe
 from pyfrag_plotter.errors import PyFragResultsProcessingError
 
 OUTLIER_THRESHOLD = 50
@@ -148,3 +148,59 @@ def test_remove_outliers_length(df_with_outliers):
     expected_length = len(df_with_outliers) - 4
     result_length = len(remove_outliers(df_with_outliers, OUTLIER_THRESHOLD))
     assert result_length == expected_length
+
+
+def test_remove_duplicate_x_values_dataframe_no_duplicates():
+    # Test the function with a DataFrame that has no duplicates
+    df = pd.DataFrame({
+        "bondlength_1": [1, 2, 3],
+        "energy": [10, 20, 30]
+    })
+    expected_df = df.copy()
+    assert remove_duplicate_x_values_dataframe(df).equals(expected_df)
+
+
+def test_remove_duplicate_x_values_dataframe_with_duplicates():
+    # Test the function with a DataFrame that has duplicates
+    df = pd.DataFrame({
+        "bondlength_1": [1, 2, 2, 3],
+        "energy": [10, 20, 25, 30]
+    })
+    expected_df = pd.DataFrame({
+        "bondlength_1": [1, 2, 3],
+        "energy": [10, 25, 30]
+    })
+    assert remove_duplicate_x_values_dataframe(df).equals(expected_df)
+
+
+def test_remove_duplicate_x_values_dataframe_multiple_x_axes():
+    # Test the function with a DataFrame that has multiple x-axis columns
+    df = pd.DataFrame({
+        "bondlength_1": [1, 2, 2, 3],
+        "angle_1": [10, 20, 25, 30],
+        "energy": [100, 200, 250, 300]
+    })
+    expected_df = pd.DataFrame({
+        "bondlength_1": [1, 2, 3],
+        "angle_1": [10, 25, 30],
+        "energy": [100, 250, 300]
+    })
+    print(remove_duplicate_x_values_dataframe(df))
+    assert remove_duplicate_x_values_dataframe(df).equals(expected_df)
+
+
+def test_remove_duplicate_x_values_dataframe_empty_dataframe():
+    # Test the function with an empty DataFrame
+    df = pd.DataFrame()
+    expected_df = pd.DataFrame()
+    assert remove_duplicate_x_values_dataframe(df).equals(expected_df)
+
+
+def test_remove_duplicate_x_values_dataframe_single_row_dataframe():
+    # Test the function with a DataFrame that has a single row
+    df = pd.DataFrame({
+        "bondlength_1": [1],
+        "energy": [10]
+    })
+    expected_df = df.copy()
+    assert remove_duplicate_x_values_dataframe(df).equals(expected_df)

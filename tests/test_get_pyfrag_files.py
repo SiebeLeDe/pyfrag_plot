@@ -1,7 +1,7 @@
 import os
 import tempfile
 import pytest
-from pyfrag_plotter.helper_funcs import get_pyfrag_files
+from pyfrag_plotter.input.pyfrag_files import get_pyfrag_files
 
 
 @pytest.fixture
@@ -17,8 +17,8 @@ def temp_dir():
 
 def test_get_pyfrag_files_with_valid_inputfiles(temp_dir: str):
     pyfrag_files = get_pyfrag_files(temp_dir)
-    assert len(pyfrag_files) == 1
-    assert (os.path.join(temp_dir, 'file1.in'), os.path.join(temp_dir, 'pyfrag_file1.txt')) in pyfrag_files
+    assert len(pyfrag_files) == 2
+    assert (os.path.join(temp_dir, 'file1.in'), os.path.join(temp_dir, 'pyfrag_file1.txt')) == pyfrag_files
 
 
 def test_get_pyfrag_files_empty_dir():

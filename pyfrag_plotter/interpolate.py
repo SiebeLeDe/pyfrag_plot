@@ -38,6 +38,26 @@ def interpolate_plot(x_axis: np.ndarray, y_axis: np.ndarray, x_range: Optional[S
     return X_, Y_
 
 
+def remove_duplicate_x_values(x: np.ndarray, y: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
+    """Removes duplicate x-axis values from the input arrays.
+
+    Args:
+        x (np.ndarray): The x-axis data.
+        y (np.ndarray): The y-axis data.
+
+    Returns:
+        Tuple[np.ndarray, np.ndarray]: The modified x-axis and y-axis data with duplicates removed.
+    """
+    # Find indices of unique x-axis values
+    _, unique_indices = np.unique(x, return_index=True)
+
+    # Sort the indices to ensure that the x-axis values are in increasing order
+    unique_indices = np.sort(unique_indices)
+
+    # Return the modified x-axis and y-axis data
+    return x[unique_indices], y[unique_indices]
+
+
 def interpolate_data(input_data: Union[PyFragResultsObject, pd.DataFrame], irc_coord: str, point: float) -> Dict[str, float]:
     """Interpolates data that can be in the format of a PyFragResultsObject or a pandas DataFrame.
 

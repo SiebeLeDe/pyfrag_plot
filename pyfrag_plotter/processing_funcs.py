@@ -33,11 +33,14 @@ def process_results_file(
         PyFragResultsProcessingError: If an error occurs during processing.
 
     """
-    # Remove the dispersion term if it is 0.0 everywhere
-    df = remove_dispersion_term(df)
-
     # Trim the data
     df = trim_data(df, trim_option, trim_key)
+
+    # Remove duplicate x values
+    df = remove_duplicate_x_values_dataframe(df)
+
+    # Remove the dispersion term if it is 0.0 everywhere
+    df = remove_dispersion_term(df)
 
     # Remove outliers
     df = remove_outliers(df, outlier_threshold)
@@ -49,16 +52,16 @@ def process_results_file(
 # ====================================================================================================
 
 
-def _trim_data_str(df: pd.DataFrame, trim_option: str, energy_key: str) -> pd.DataFrame:
+def _trim_data_str(df: pd.DataFrame, trim_option: str, trim_key: str) -> pd.DataFrame:
     """Private function that performs the actual trimming of the dataframe with a string trim_option"""
     trim_option = trim_option.lower().strip()
     options = ["min", "max"]
 
     if trim_option == "max":
-        max_index = df[energy_key].idxmax()
+        max_index = df[trim_key].idxmax()
         df = df.loc[:max_index]
     elif trim_option == "min":
-        min_index = df[energy_key].idxmin()
+        min_index = df[trim_key].idxmin()
         df = df.loc[:min_index]
     else:
         raise PyFragResultsProcessingError(section="trim_data_str", message=f"trim_option {trim_option} is not valid. Valid options are {options}")
@@ -66,14 +69,15 @@ def _trim_data_str(df: pd.DataFrame, trim_option: str, energy_key: str) -> pd.Da
     return df
 
 
-def _trim_data_float(df: pd.DataFrame, trim_option: float, energy_key: str) -> pd.DataFrame:
+def _trim_data_float(df: pd.DataFrame, trim_option: float, trim_key: str) -> pd.DataFrame:
     """Private function that performs the actual trimming of the dataframe with a float trim_option"""
-    index = (df[energy_key] - trim_option).abs().idxmin()
+    index = (df[trim_key] - trim_option).abs().idxmin()
+    print(df[trim_key])
     df = df.loc[:index]
     return df
 
 
-def _trim_data_int(df: pd.DataFrame, trim_option: int, energy_key: str) -> pd.DataFrame:
+def _trim_data_int(df: pd.DataFrame, trim_option: int, trim_key: str) -> pd.DataFrame:
     """Private function that performs the actual trimming of the dataframe with a integer trim_option"""
     df = df.iloc[:trim_option]
     return df
@@ -148,7 +152,6 @@ def trim_data(df: pd.DataFrame, trim_option: Optional[Union[str, float, int, Seq
         trim_option = trim_option.lower().strip()
         if trim_option in ["x_lim", "xlim", "x_limits", "xlimits"]:
             trim_option = tuple(config["config"].get("SHARED", "x_lim"))
-        return df
 
     for key, value in _overload_types.items():
         if isinstance(trim_option, key):
@@ -200,7 +203,7 @@ def remove_outliers(df: pd.DataFrame, outlier_threshold: Optional[float] = None)
         pd.DataFrame: The modified DataFrame without outliers.
 
     """
-    outlier_threshold = config["config"].get("SHARED", "remove_outliers") if outlier_threshold is None else outlier_threshold
+    outlier_threshold = config["config"].get("SHARED", "outlier_threshold") if outlier_threshold is None else outlier_threshold
 
     # Calculate the difference between each value and its two nearest neighbors from both ends
     diff = df["EnergyTotal"].diff().abs()
@@ -213,4 +216,33 @@ def remove_outliers(df: pd.DataFrame, outlier_threshold: Optional[float] = None)
     # Remove the outliers
     df = df[~outliers]
 
+    return df
+
+# ====================================================================================================
+# Removing duplicate x values ========================================================================
+# ====================================================================================================
+
+
+def remove_duplicate_x_values_dataframe(df: pd.DataFrame) -> pd.DataFrame:
+    """Removes rows with duplicate x-axis values from a pandas DataFrame. This is necessary since otherwise the interpolation will fail.
+
+    Args:
+        df (pd.DataFrame): The DataFrame to remove duplicates from.
+        x_axis_key (str): The name of the column containing the x-axis values.
+        y_axis_key (str): The name of the column containing the y-axis values.
+
+    Returns:
+        pd.DataFrame: The modified DataFrame with duplicates removed.
+    """
+
+    x_axis_keys = [key for key in df.columns if key.startswith("bondlength_") or key.startswith("angle_") or key.startswith("dihedral_")]
+
+    # Remove duplicate rows
+    for x_axis_key in x_axis_keys:
+        df = df.drop_duplicates(subset=x_axis_key, keep="last")
+
+    # Reset the index of the DataFrame
+    df = df.reset_index(drop=True)
+
+    # Return the modified DataFrame
     return df
