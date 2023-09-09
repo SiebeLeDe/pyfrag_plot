@@ -5,7 +5,7 @@ Usage
 
 pyfrag_plotter is a Python package that can be used to make plots from PyFrag directories containing the .txt (resultsfile) and .in file (inputfile).
 
-To use pyfragplotter, you need to have a config file and call the :func:`pyfrag_plotter.config.initialize_pyfrag_plotter` function. The config file should contain the necessary information about the PyFrag directories and the plot settings. The function reads the config file and sets up the necessary variables for making the plots. For an exanple of the config file, see :ref:`../../pyfrag_plotter/config.ini`.
+To use pyfragplotter, you need to have a config file and call the |init| function. The config file should contain the necessary information about the PyFrag directories and the plot settings. The function reads the config file and sets up the necessary variables for making the plots. For an exanple of the config file, see :ref:`../../pyfrag_plotter/config.ini`.
 
 Here's an example of how to use pyfrag_plotter:
 
