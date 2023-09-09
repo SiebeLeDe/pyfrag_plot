@@ -12,7 +12,7 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../plotter'))
+sys.path.insert(0, os.path.abspath('../'))
 
 
 # -- Project information -----------------------------------------------------
@@ -73,5 +73,4 @@ add_module_names = False
 # Replace function / class names with alias
 rst_epilog = """
 .. |init| replace:: :func:`~pyfrag_plot.pyfrag_plotter.config_handler.initialize_pyfrag_plotter`
-   :trim:
 """
