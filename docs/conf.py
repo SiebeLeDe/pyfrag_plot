@@ -69,3 +69,9 @@ html_static_path = ['_static']
 
 # Don't show the pyfrag_plotter module name in the documentation
 add_module_names = False
+
+# Replace function / class names with alias
+rst_epilog = """
+.. |init| replace:: :func:`~pyfrag_plot.pyfrag_plotter.config_handler.initialize_pyfrag_plotter`
+   :trim:
+"""
