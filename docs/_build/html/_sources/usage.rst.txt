@@ -15,7 +15,14 @@ Here's an example of how to use pyfrag_plotter:
 
     initialize_pyfrag_plotter('path_to_config_file')
 
+Creating the PyFragResultsObject
+=====
 
-In this example, we first call :func:`pyfrag_plotter.config.initialize_pyfrag_plotter` function with the path to the config file. This sets up the necessary variables for making the plots. We then call the plot_pyfrag function with the ID of the PyFrag directory we want to plot. This function reads the .txt and .in files from the PyFrag directory, extracts the necessary data, and makes the plot according to the settings specified in the config file.
+In this example, we first call |init| function with the path to the config file. This sets up the necessary variables for making the plots. We then create a PyFragResultsObject by specifying a directory containing the input (.in) and results (.txt) file. This function reads the .txt and .in files from the directory, processes the data such as triming, removing outliers, removing dispersion term, and more. The resulting object can now be used to generate plots. 
 
-Note that you can customize the plot settings in the config file, such as the plot type, color scheme, and axis labels. You can also plot multiple PyFrag directories at once by calling the plot_pyfrags function with a list of PyFrag IDs.
+Note that you can customize the plot settings in the config file, such as the plot type, color scheme, and axis labels.
+
+Generating Plots
+=====
+
+Using the PyFragResultsObject, plots can be made. For this, the Plotter class is initialized through passing PyFragResultsObjects. Now plots can be made by calling plot.asm method for instance. 
