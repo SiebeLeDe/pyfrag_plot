@@ -275,6 +275,21 @@ def create_pyfrag_object_from_processed_files(results_data: pd.DataFrame, inputf
 
 
 def create_pyfrag_object_from_dir(results_dir: str, **kwargs) -> PyFragResultsObject:
+    """Creates a PyFragResultsObject from the results in a directory.
+
+    Args:
+        results_dir (str): The path to the directory containing the PyFrag results files.
+        **kwargs: Additional keyword arguments to pass to the `process_results_file` function. These are:
+            trim_parameter (Optional[Union[str, float, int]]): The parameter to use for trimming. Defaults to none.
+            trim_key (Optional[str]): The key to use for reading the trim_parameter from the configuration file. Defaults to the "EnergyTotal" column.
+            outlier_threshold: (Optional[float]): The threshold to use for removing outliers. If none is specified, the threshold from the configuration file is used. Defaults to None.
+
+    Returns:
+        PyFragResultsObject: A PyFragResultsObject containing the processed PyFrag results.
+
+    This function reads the PyFrag input and output files from the given directory, processes the output file using the `process_results_file` function with any additional keyword arguments provided.
+    Creates a PyFragResultsObject from the processed results and input data using the `create_pyfrag_object_from_processed_files` function.
+    """
 
     input_file, output_file = get_pyfrag_files(results_dir)
 

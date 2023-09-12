@@ -1,6 +1,6 @@
 import inspect
 import math
-from typing import Callable, Optional, Tuple
+from typing import Callable, Optional, Tuple, Sequence
 
 import matplotlib.figure
 import matplotlib.pyplot as plt
@@ -8,6 +8,12 @@ from matplotlib.ticker import FormatStrFormatter, MaxNLocator
 
 from pyfrag_plotter.config_handler import config
 from pyfrag_plotter.interpolate import interpolate_plot
+
+TERM_LABELS: dict[str, str] = {
+    "EnergyTotal": "$\Delta$E",
+    "Int": "$\Delta$E$_{int}$",
+    "StrainTotal": "$\Delta$E$_{strain}$",
+}
 
 
 def replace_overlapping_keys(func: Callable) -> Callable:
@@ -87,6 +93,7 @@ def set_axes_details(
     y_lim: Optional[Tuple[float, float]] = None,
     n_max_x_ticks: int = 6,
     n_max_y_ticks: int = 5,
+    line_style_labels: Optional[Sequence[str]] = None,
 ) -> None:
     """Specifies axes options for making a shorter and cleaner code.
 
@@ -118,7 +125,7 @@ def set_axes_details(
     # Reverses the plot direction by reversing the x-axis
     reverse_x_axis = config["config"].get("SHARED", "reverse_x_axis")
     if reverse_x_axis:
-        ax.set_xlim(ax.get_xlim()[::-1])
+        ax.set_xlim(ax.get_xlim()[::-1][0], ax.get_xlim()[1])
 
     # Smoothens the plots in the specified range (x_lim) by interpolating the data using the scipy spline library
     for line in ax.lines:
@@ -164,6 +171,22 @@ def set_axes_details(
     # Adds more spacing between ticks and the labels
     ax.tick_params(pad=6)
 
-    # Plots the legend at the right side of the plot
-    # ax.legend(bbox_to_anchor=(0,1.02,1,0.2), loc="lower left", mode="expand")
-    # ax.legend(frameon=False)
+    # Plots the legend below the title showing the system names
+    first_legend = ax.legend(frameon=False)
+    ax.add_artist(first_legend)
+
+    # Plots another legend for multiple linestyles for the same system
+    if line_style_labels is not None:
+        lines = ax.lines
+        n_systems = len(lines) // len(line_style_labels)
+        lines = [ax.lines[i] for i in range(0, len(lines), n_systems)]
+        labels = [TERM_LABELS[label] for label in line_style_labels]
+        [line.set_label(label) for line, label in zip(lines, labels)]
+        [print(line.get_label()) for line in lines]
+        second_legend = ax.legend(
+            handles=lines,
+            loc="upper center",
+            ncol=n_systems,
+            frameon=False,
+        )
+        ax.add_artist(second_legend)

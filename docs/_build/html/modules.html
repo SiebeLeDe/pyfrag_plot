@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 
 
@@ -6,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>pyfrag_plotter &#8212; PyFragPlotter 0.0.1 documentation</title>
   
@@ -28,15 +29,17 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=8df938ec"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'modules';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -345,8 +348,8 @@ document.write(`
 </li>
 <li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.plot.html">pyfrag_plotter.plot package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#pyfrag-plotter-plot-plot-details-module">pyfrag_plotter.plot.plot_details module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#pyfrag-plotter-plot-plotter-module">pyfrag_plotter.plot.plotter module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#module-pyfrag_plotter.plot.plot_details">pyfrag_plotter.plot.plot_details module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#module-pyfrag_plotter.plot.plotter">pyfrag_plotter.plot.plotter module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#module-pyfrag_plotter.plot">Module contents</a></li>
 </ul>
 </li>
@@ -357,34 +360,11 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.html#module-pyfrag_plotter.config_handler">pyfrag_plotter.config_handler module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.config_handler.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.config_handler.Config.config_parser"><code class="docutils literal notranslate"><span class="pre">Config.config_parser</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.config_handler.Config.get"><code class="docutils literal notranslate"><span class="pre">Config.get()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.config_handler.Config.sections"><code class="docutils literal notranslate"><span class="pre">Config.sections</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.config_handler.initialize_pyfrag_plotter"><code class="docutils literal notranslate"><span class="pre">initialize_pyfrag_plotter()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.html#module-pyfrag_plotter.errors">pyfrag_plotter.errors module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.errors.PyFragConfigError"><code class="docutils literal notranslate"><span class="pre">PyFragConfigError</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.errors.PyFragInputError"><code class="docutils literal notranslate"><span class="pre">PyFragInputError</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.errors.PyFragResultsObjectError"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObjectError</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.errors.PyFragResultsProcessingError"><code class="docutils literal notranslate"><span class="pre">PyFragResultsProcessingError</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.errors.PyFragResultsProcessingWarning"><code class="docutils literal notranslate"><span class="pre">PyFragResultsProcessingWarning</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.html#pyfrag-plotter-interpolate-module">pyfrag_plotter.interpolate module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.html#module-pyfrag_plotter.processing_funcs">pyfrag_plotter.processing_funcs module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.processing_funcs.process_results_file"><code class="docutils literal notranslate"><span class="pre">process_results_file()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.processing_funcs.remove_dispersion_term"><code class="docutils literal notranslate"><span class="pre">remove_dispersion_term()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.processing_funcs.remove_duplicate_x_values_dataframe"><code class="docutils literal notranslate"><span class="pre">remove_duplicate_x_values_dataframe()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.processing_funcs.remove_outliers"><code class="docutils literal notranslate"><span class="pre">remove_outliers()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.html#pyfrag_plotter.processing_funcs.trim_data"><code class="docutils literal notranslate"><span class="pre">trim_data()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.html#pyfrag-plotter-pyfrag-object-module">pyfrag_plotter.pyfrag_object module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.html#module-pyfrag_plotter.config_handler">pyfrag_plotter.config_handler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.html#module-pyfrag_plotter.errors">pyfrag_plotter.errors module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.html#module-pyfrag_plotter.interpolate">pyfrag_plotter.interpolate module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.html#module-pyfrag_plotter.processing_funcs">pyfrag_plotter.processing_funcs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.html#module-pyfrag_plotter.pyfrag_object">pyfrag_plotter.pyfrag_object module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.html#module-pyfrag_plotter">Module contents</a></li>
 </ul>
 </li>
@@ -473,7 +453,7 @@ document.write(`
       
         <div class="footer-item">
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     <br/>
   </p>
 </div>

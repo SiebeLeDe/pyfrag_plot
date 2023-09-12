@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 
 from pyfrag_plotter.config_handler import config
-from pyfrag_plotter.errors import PyFragResultsProcessingError, PyFragResultsProcessingWarning
+from pyfrag_plotter.errors import PyFragResultsProcessingError
 
 # ====================================================================================================
 # Main Processing Function   =========================================================================
@@ -55,6 +55,9 @@ def process_results_file(
 def _trim_data_str(df: pd.DataFrame, trim_option: str, trim_key: str) -> pd.DataFrame:
     """Private function that performs the actual trimming of the dataframe with a string trim_option"""
     trim_option = trim_option.lower().strip()
+
+    if trim_option in ["false", "none"]:
+        return df
     options = ["min", "max"]
 
     if trim_option == "max":
@@ -72,7 +75,6 @@ def _trim_data_str(df: pd.DataFrame, trim_option: str, trim_key: str) -> pd.Data
 def _trim_data_float(df: pd.DataFrame, trim_option: float, trim_key: str) -> pd.DataFrame:
     """Private function that performs the actual trimming of the dataframe with a float trim_option"""
     index = (df[trim_key] - trim_option).abs().idxmin()
-    print(df[trim_key])
     df = df.loc[:index]
     return df
 
@@ -83,17 +85,15 @@ def _trim_data_int(df: pd.DataFrame, trim_option: int, trim_key: str) -> pd.Data
     return df
 
 
-def _trim_data_sequence(df: pd.DataFrame, trim_option: Optional[Sequence[float]] = None, trim_key: Optional[str] = None) -> pd.DataFrame:
+def _trim_data_sequence(df: pd.DataFrame, trim_option: Sequence[float], trim_key: str) -> pd.DataFrame:
     """ Private function that performs the actual trimming of the dataframe with a sequence trim_option"""
 
-    x_limits: Sequence[float] = tuple(config["config"].get("SHARED", "x_limits")) if trim_option is None else trim_option
+    x_limits = trim_option
     reverse_axis = bool(config["config"].get("SHARED", "reverse_x_axis"))
 
-    if trim_key is None:
+    if not (trim_key.startswith("bondlength_") or trim_key.startswith("angle_") or trim_key.startswith("dihedral_")):
+        print(f"trim_key {trim_key} is not valid. Valid options are bondlength_x, angle_x, and dihedral_x. Proceeding with bondlength_1.")
         trim_key = "bondlength_1"
-        message = f"trim_key {trim_key} is not correct. Valid options are bondlength_x, angle_x, or dihedral_x. Using default value {trim_key} WHICH MAY NOT BE PRESENT."
-        raise PyFragResultsProcessingWarning(section="trim_data_sequence",
-                                             message=message)
 
     if not isinstance(x_limits, Sequence) or len(x_limits) != 2 or x_limits[0] >= x_limits[1]:
         raise PyFragResultsProcessingError(section="trim_data_sequence", message=f"Invalid x_limits {x_limits} specified in the configuration file.")

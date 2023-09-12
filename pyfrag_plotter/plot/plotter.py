@@ -26,7 +26,7 @@ class PlotInfo:
     irc_coord_label: str
     colours: List[str] = field(factory=lambda: config["config"].get("SHARED", "colours"))
     line_styles: List[str] = field(factory=lambda: config["config"].get("SHARED", "line_styles"))
-    peak_type: Optional[str] = field(factory=lambda: config["config"].get("SHARED", "stat_point_type") if config.get("SHARED", "stat_point_type") != "none" else None)
+    peak_type: Optional[str] = field(factory=lambda: config["config"].get("SHARED", "stat_point_type") if config["config"].get("SHARED", "stat_point_type") != "none" else None)
 
 
 class Plotter:
@@ -133,7 +133,7 @@ class Plotter:
         self.standard_plot_routine("asm", asm_keys, ax)
 
         # Set the key-specific plot details
-        set_axes_details(ax=ax, x_label=self.plot_info.irc_coord_label)
+        set_axes_details(ax=ax, x_label=self.plot_info.irc_coord_label, line_style_labels=asm_keys)
         set_figure_details(fig=fig,
                            title=f"ASM_{'_'.join(asm_keys)}",
                            savefig=opj(self.path, f"ASM_{'_'.join(asm_keys)}.png",)
