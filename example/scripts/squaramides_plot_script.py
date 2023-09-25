@@ -18,19 +18,19 @@ import time
 # ------------------------------------------------------------------------------------------------------------- #
 
 
-base_results_path = r"/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Projects/Squaramides/pyfrag_results"
-# base_results_path = r"C:\Users\siebb\VU_PhD\PhD\Projects\Squaramides\pyfrag_results"
+# base_results_path = r"/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Projects/Squaramides/pyfrag_results"
+base_results_path = r"C:\Users\siebb\VU_PhD\PhD\Projects\Squaramides\pyfrag_results"
 
-plot_dir = r"/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Projects/Squaramides/Plots"
-# plot_dir = r"C:\Users\siebb\VU_PhD\PhD\Projects\Squaramides\Plots"
+# plot_dir = r"/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Projects/Squaramides/Plots"
+plot_dir = r"C:\Users\siebb\VU_PhD\PhD\Projects\Squaramides\Plots"
 
 # irc_coord = ("bondlength_1", "r - r$_{eq}$ / Å")
 # irc_coord = ("bondlength_2", "r$_{cm}$ / Å")
 # irc_coord = ("bondlength_3", "$\Delta$r$_{X \cdot\cdot\cdot H}$ / Å")
 irc_coord = ("bondlength_4", "r$_{X \cdot\cdot\cdot H}$ / Å")   # type: ignore # noqa: W605 since it is a LaTeX string
 
-path_to_images = r"/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Projects/Squaramides/Pics&Coords/png_without_border"
-# path_to_images = r"C:\Users\siebb\VU_PhD\PhD\Projects\Squaramides\Pics&Coords/png_without_border"
+# path_to_images = r"/Users/siebeld/Library/CloudStorage/OneDrive-VrijeUniversiteitAmsterdam/PhD/Projects/Squaramides/Pics&Coords/png_without_border"
+path_to_images = r"C:\Users\siebb\VU_PhD\PhD\Projects\Squaramides\Pics&Coords/png_without_border"
 
 # ------------------------------------------------------------------------------------------------------------- #
 # ---------------------------------------------- Functions ---------------------------------------------------- #

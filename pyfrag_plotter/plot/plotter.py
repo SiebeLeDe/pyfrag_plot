@@ -92,7 +92,6 @@ class Plotter:
         """
         ax = plt.gca() if ax is None else ax
         x_axes = [obj.get_x_axis(self.plot_info.irc_coord) for obj in self.objects]
-
         for i, (line_style, term) in enumerate(zip(self.plot_info.line_styles, keys)):
             for x_axis, colour, obj in zip(x_axes, self.plot_info.colours, self.objects):
                 standard_block = obj.__getattribute__(type)  # eda, asm or extra_strain
@@ -133,14 +132,13 @@ class Plotter:
         self.standard_plot_routine("asm", asm_keys, ax)
 
         # Set the key-specific plot details
-        set_axes_details(ax=ax, x_label=self.plot_info.irc_coord_label, line_style_labels=asm_keys)
+        set_axes_details(ax=ax, x_label=self.plot_info.irc_coord_label, line_style_legend=asm_keys, **kwargs)
         set_figure_details(fig=fig,
                            title=f"ASM_{'_'.join(asm_keys)}",
-                           savefig=opj(self.path, f"ASM_{'_'.join(asm_keys)}.png",)
-                           )
+                           savefig=opj(self.path, f"ASM_{'_'.join(asm_keys)}.png"),)
         return fig, ax
 
-    def plot_eda(self, keys: Optional[List[str]] = None):
+    def plot_eda(self, keys: Optional[List[str]] = None, **kwargs):
         """Plots the energy decomposition terms. The user can specify which terms to plot, otherwise all of them are plotted.
 
         Args:
@@ -162,14 +160,13 @@ class Plotter:
         self.standard_plot_routine("eda", eda_keys)
 
         # Set the key-specific plot details
-        set_axes_details(ax=ax, x_label=self.plot_info.irc_coord_label)
+        set_axes_details(ax=ax, x_label=self.plot_info.irc_coord_label, line_style_legend=eda_keys, **kwargs)
         set_figure_details(fig=fig,
                            title=f"EDA_{'_'.join(eda_keys)}",
-                           savefig=opj(self.path, f"ASM_{'_'.join(eda_keys)}.png",)
-                           )
+                           savefig=opj(self.path, f"EDA_{'_'.join(eda_keys)}.png"),)
         return fig, ax
 
-    def plot_extra_strain(self, keys: Optional[List[str]] = None):
+    def plot_extra_strain(self, keys: Optional[List[str]] = None, **kwargs):
         """Plots the extra strain terms. The user can specify which terms to plot, otherwise all of them are plotted.
 
         Args:
@@ -191,11 +188,11 @@ class Plotter:
         self.standard_plot_routine("extra_strain", extra_keys)
 
         # Set the key-specific plot details
-        set_axes_details(ax=ax, x_label=self.plot_info.irc_coord_label)
+        set_axes_details(ax=ax, x_label=self.plot_info.irc_coord_label, **kwargs)
         set_figure_details(
             fig=fig,
             title=f"Strain_{'_'.join(extra_keys)}",
-            savefig=opj(self.path, f"ASM_{'_'.join(extra_keys)}.png",)
+            savefig=opj(self.path, f"ASM_{'_'.join(extra_keys)}.png"),
         )
         return fig, ax
 

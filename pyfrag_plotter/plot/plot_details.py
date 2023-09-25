@@ -10,9 +10,13 @@ from pyfrag_plotter.config_handler import config
 from pyfrag_plotter.interpolate import interpolate_plot
 
 TERM_LABELS: dict[str, str] = {
-    "EnergyTotal": "$\Delta$E",
-    "Int": "$\Delta$E$_{int}$",
-    "StrainTotal": "$\Delta$E$_{strain}$",
+    "EnergyTotal": "$\Delta$E",  # type: ignore # noqa: W605 since it is a LaTeX string
+    "Int": "$\Delta$E$_{int}$",  # type: ignore # noqa: W605 since it is a LaTeX string
+    "StrainTotal": "$\Delta$E$_{strain}$",  # type: ignore # noqa: W605 since it is a LaTeX string
+    "Elstat": "$\Delta$V$_{elstat}$",  # type: ignore # noqa: W605 since it is a LaTeX string
+    "Pauli": "$\Delta$E$_{Pauli}$",  # type: ignore # noqa: W605 since it is a LaTeX string
+    "OI": "$\Delta$E$_{oi}$",  # type: ignore # noqa: W605 since it is a LaTeX string
+    "Disp": "$\Delta$E$_{disp}$",  # type: ignore # noqa: W605 since it is a LaTeX string
 }
 
 
@@ -93,17 +97,20 @@ def set_axes_details(
     y_lim: Optional[Tuple[float, float]] = None,
     n_max_x_ticks: int = 6,
     n_max_y_ticks: int = 5,
-    line_style_labels: Optional[Sequence[str]] = None,
+    plot_legend: bool = True,
+    line_style_legend: Optional[Sequence[str]] = None,
 ) -> None:
     """Specifies axes options for making a shorter and cleaner code.
 
     Args:
-        ax (Optional[plt.Axes], optional): The axes to modify. Defaults to None.
-        x_label (str, optional): The label for the x-axis. Defaults to "\u0394r / \u00c5" (dr / A).
-        y_label (str, optional): The label for the y-axis. Defaults to "\u0394$\it{E}$ / kcal mol$^{-1}$" (dE / kcal mol-1).
-        y_lim (Optional[Tuple[float, float]], optional): The y-axis limits. Defaults to None.
-        n_max_x_ticks (int, optional): The maximum number of x-axis ticks. Defaults to 6.
-        n_max_y_ticks (int, optional): The maximum number of y-axis ticks. Defaults to 5.
+        **ax (Optional[plt.Axes], optional): The axes to modify. Defaults to None.
+        **x_label (str, optional): The label for the x-axis. Defaults to "\u0394r / \u00c5" (dr / A).
+        **y_label (str, optional): The label for the y-axis. Defaults to "\u0394$\it{E}$ / kcal mol$^{-1}$" (dE / kcal mol-1).
+        **y_lim (Optional[Tuple[float, float]], optional): The y-axis limits. Defaults to None.
+        **n_max_x_ticks (int, optional): The maximum number of x-axis ticks. Defaults to 6.
+        **n_max_y_ticks (int, optional): The maximum number of y-axis ticks. Defaults to 5.
+        **plot_legend (bool, optional): Whether to plot the legend. Defaults to True.
+        **line_style_legend (Optional[Sequence[str]], optional): The legend for the line styles. Defaults to None.
     """
     ax = plt.gca() if ax is None else ax
 
@@ -172,21 +179,21 @@ def set_axes_details(
     ax.tick_params(pad=6)
 
     # Plots the legend below the title showing the system names
-    first_legend = ax.legend(frameon=False)
-    ax.add_artist(first_legend)
+    if plot_legend:
+        system_name_legend = ax.legend(frameon=False)
+        ax.add_artist(system_name_legend)
 
     # Plots another legend for multiple linestyles for the same system
-    if line_style_labels is not None:
+    if line_style_legend is not None:
         lines = ax.lines
-        n_systems = len(lines) // len(line_style_labels)
+        n_systems = len(lines) // len(line_style_legend)
         lines = [ax.lines[i] for i in range(0, len(lines), n_systems)]
-        labels = [TERM_LABELS[label] for label in line_style_labels]
+        labels = [TERM_LABELS[label] for label in line_style_legend]
         [line.set_label(label) for line, label in zip(lines, labels)]
-        [print(line.get_label()) for line in lines]
         second_legend = ax.legend(
             handles=lines,
             loc="upper center",
-            ncol=n_systems,
+            ncol=len(line_style_legend),
             frameon=False,
         )
         ax.add_artist(second_legend)
