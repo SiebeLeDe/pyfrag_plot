@@ -16,7 +16,8 @@ Link to the documentation: https://siebelede.github.io/pyfrag_plot/
 
 Code that analyzes and plots data from pyfrag calculations
 
-Make sure that the order of the keys involving overlap, orbitalenergy and population are in the same order:
+> [!IMPORTANT]
+> Make sure that the order of the keys involving overlap, orbitalenergy and population are in the same order
 
 ### Overlap order
 
@@ -47,3 +48,34 @@ population A frag1 25
 population A frag2 9  
 population A frag2 8  
 population A frag1 26  
+
+<!-- (Purpose)
+
+Authors
+Siebe & Simone
+
+License (ook LICENSE file toevoegen)
+MIT License
+
+Recommended citation
+https://coderefinery.github.io/social-coding/software-citation/ 
+[Author], [Author], [Title], [Jaartal] etc. 
+
+Copy-paste-able example to get started
+Opties: 
+- Linken 
+- Code integreren
+
+Dependencies and their versions or version ranges
+
+Installation instructions
+
+Tutorials covering key functionality
+
+Reference documentation (e.g. API) covering all functionality
+
+How do you want to be asked questions (mailing list or forum or chat or issue tracker)
+
+Possibly a FAQ section
+
+Contribution guide -->
