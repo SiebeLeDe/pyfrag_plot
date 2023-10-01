@@ -8,7 +8,6 @@ import numpy.typing as npt
 import pandas as pd
 from attrs import define, field
 
-from pyfrag_plotter.config_handler import config
 from pyfrag_plotter.errors import PyFragResultsObjectError
 from pyfrag_plotter.input.pyfrag_files import get_pyfrag_files
 from pyfrag_plotter.input.read_inputfile import read_inputfile
@@ -25,7 +24,6 @@ class Bondlength:
     atom1: int
     atom2: int
     bondlength: float
-    data: Array1D[np.float64]
 
 
 @define(slots=True)
@@ -33,7 +31,6 @@ class BondAngle:
     atom1: int
     atom2: int
     bondangle: float
-    data: Array1D[np.float64]
 
 
 @define(slots=True)
@@ -42,14 +39,12 @@ class DihedralAngle:
     atom2: int
     atom3: int
     dihedralangle: float
-    data: Array1D[np.float64]
 
 
 @define(slots=True)
 class Overlap:
     frag1_orb: str
     frag2_orb: str
-    data: Array1D[np.float64]
     frag1_irrep: Optional[str] = None
     frag2_irrep: Optional[str] = None
 
@@ -58,7 +53,6 @@ class Overlap:
 class Population:
     orbital: float
     frag: int
-    data: Array1D[np.float64]
     irrep: Optional[str] = None
 
 
@@ -66,20 +60,17 @@ class Population:
 class OrbitalEnergy:
     orbital: float
     frag: int
-    data: Array1D[np.float64]
     irrep: Optional[str] = None
 
 
 @define(slots=True)
 class VDD:
     atom: int
-    data: Array1D[np.float64]
 
 
 @define(slots=True)
 class Irrep:
     irrep: str
-    data: Array1D[np.float64]
 
 
 @define(slots=True)
@@ -87,13 +78,12 @@ class PyFragResultsObject:
     """
     Attrs class containing all the data of one pyfrag calculation.
 
-    This class represents the results of a single PyFrag calculation.
-    It contains data for various properties such as EDA, ASM, extra strain, bond lengths, bond angles, dihedral angles, overlaps, populations, orbital energies, VDD, and irreps.
+    It combines the data from the output file (i.e., the pyfrag_*.txt file) through binding a pandas DataFrame to the class, and the data from the input file through binding specific attributes.
+    Examples of the specific attributes are bond lengths, bond angles, dihedral angles, overlaps, populations, orbital energies, VDD, and irreps.
 
     Attributes:
         name (str): The name of the PyFrag calculation.
-        eda (OrderedDict[str, Array1D[np.float64]]): The EDA data for the PyFrag calculation.
-        asm (OrderedDict[str, Array1D[np.float64]]): The ASM data for the PyFrag calculation.
+        dataframe (pd.DataFrame): The data from the output file (i.e., the pyfrag_*.txt file).
         extra_strain (OrderedDict[str, Array1D[np.float64]]): The extra strain data for the PyFrag calculation.
         bondlength (List[Bondlength]): The bond length data for the PyFrag calculation.
         angle (List[BondAngle]): The bond angle data for the PyFrag calculation.
@@ -106,8 +96,7 @@ class PyFragResultsObject:
 
     """
     name: str
-    eda: OrderedDict[str, Array1D[np.float64]] = field(factory=dict)
-    asm: OrderedDict[str, Array1D[np.float64]] = field(factory=dict)
+    dataframe: pd.DataFrame
     extra_strain: OrderedDict[str, Array1D[np.float64]] = field(factory=dict)
     bondlength: List[Bondlength] = field(factory=list)
     angle: List[BondAngle] = field(factory=list)
@@ -118,106 +107,77 @@ class PyFragResultsObject:
     vdd: List[VDD] = field(factory=list)
     irrep: List[Irrep] = field(factory=list)
 
+    def get_data_of_key(self, key: str) -> Array1D[np.float64]:
+        return self.dataframe[key].to_numpy()
+
     def get_x_axis(self, irc_coord: str) -> Array1D[np.float64]:
         """ Returns the x-axis data for the specified IRC coordinate."""
-        try:
-            irc_coord, index = irc_coord.split("_")
-        except ValueError:
-            index = 1
-        return self.__getattribute__(irc_coord)[int(index)-1].data
+        return self.dataframe[irc_coord].to_numpy()
 
     def get_peak_of_key(self, key: str, peak: str = "max") -> Tuple[int, float]:
         """ Returns the index and corresponding peak value of the specified key. The peak can be either the maximum or minimum value. """
-        if key in ["bondlength", "angle", "dihedral", "overlap", "population", "orbitalenergy", "vdd", "irrep"]:
-            try:
-                key, index = key.split("_")
-                data: Array1D[np.float64] = self.__getattribute__(key)[int(index)-1].data
-            except ValueError:
-                data: Array1D[np.float64] = self.__getattribute__(key)[1].data
-        elif key in {**self.eda, **self.asm, **self.extra_strain}.keys():
-            merged_dicts = {**self.eda, **self.asm, **self.extra_strain}
-            data = merged_dicts[key]
-        else:
-            raise PyFragResultsObjectError(f"Key '{key}' not found in any attribute of PyFragResultsObject")
+        if key not in self.dataframe.columns:
+            raise PyFragResultsObjectError(f"Key '{key}' not found in PyFragResultsObject. Available keys are: {self.dataframe.columns}")
+
+        data_of_key = self.dataframe[key].to_numpy()
 
         if peak == "max":
-            return int(data.argmax()), data.max()
-        return int(data.argmin()), data.min()
+            return int(data_of_key.argmax()), data_of_key.max()
+        return int(data_of_key.argmin()), data_of_key.min()
 
 
-def _add_bondlength(obj: PyFragResultsObject, data: Array1D[np.float64], *bond_info) -> None:
-    bondlength_obj = Bondlength(atom1=bond_info[0], atom2=bond_info[1], bondlength=bond_info[2], data=data)
+def _add_bondlength(obj: PyFragResultsObject, *bond_info) -> None:
+    bondlength_obj = Bondlength(atom1=bond_info[0], atom2=bond_info[1], bondlength=bond_info[2])
     obj.bondlength.append(bondlength_obj)
 
 
-def _add_bondangle(obj: PyFragResultsObject, data: Array1D[np.float64], *bondangle_info) -> None:
-    bondangle_obj = BondAngle(atom1=bondangle_info[0], atom2=bondangle_info[1], bondangle=bondangle_info[2], data=data)
+def _add_bondangle(obj: PyFragResultsObject, *bondangle_info) -> None:
+    bondangle_obj = BondAngle(atom1=bondangle_info[0], atom2=bondangle_info[1], bondangle=bondangle_info[2])
     obj.angle.append(bondangle_obj)
 
 
-def _add_dihedralangle(obj: PyFragResultsObject, data: Array1D[np.float64], *dihedralangle_info) -> None:
-    dihedral_obj = DihedralAngle(atom1=dihedralangle_info[0],
-                                 atom2=dihedralangle_info[1],
-                                 atom3=dihedralangle_info[2],
-                                 dihedralangle=dihedralangle_info[3], data=data)
+def _add_dihedralangle(obj: PyFragResultsObject, *dihedralangle_info) -> None:
+    dihedral_obj = DihedralAngle(atom1=dihedralangle_info[0], atom2=dihedralangle_info[1], atom3=dihedralangle_info[2], dihedralangle=dihedralangle_info[3])
     obj.dihedral.append(dihedral_obj)
 
 
-def _add_overlap(obj: PyFragResultsObject, data: Array1D[np.float64], *overlap_info) -> None:
+def _add_overlap(obj: PyFragResultsObject, *overlap_info) -> None:
     """ Adds an Overlap object to the PyFragResultsObject object. """
     if len(overlap_info) == 4:
-        overlap_obj = Overlap(frag1_orb=overlap_info[1],
-                              frag2_orb=overlap_info[3],
-                              data=data)
-
+        overlap_obj = Overlap(frag1_orb=overlap_info[1], frag2_orb=overlap_info[3], )
     else:
-        overlap_obj = Overlap(frag1_irrep=overlap_info[0],
-                              frag1_orb=overlap_info[2],
-                              frag2_irrep=overlap_info[3],
-                              frag2_orb=overlap_info[5],
-                              data=data)
+        overlap_obj = Overlap(frag1_irrep=overlap_info[0], frag1_orb=overlap_info[2], frag2_irrep=overlap_info[3], frag2_orb=overlap_info[5], )
     obj.overlap.append(overlap_obj)
-    return
 
 
-def _add_population(obj: PyFragResultsObject, data: Array1D[np.float64], *population_info):
+def _add_population(obj: PyFragResultsObject, *population_info):
     """ Adds an Population object to the PyFragResultsObject object. """
     if len(population_info) == 2:
-        pop_obj = Population(frag=population_info[0], orbital=population_info[1], data=data)
+        pop_obj = Population(frag=population_info[0], orbital=population_info[1])
     else:
-        pop_obj = Population(frag=population_info[1],
-                             orbital=population_info[0],
-                             irrep=population_info[2],
-                             data=data)
+        pop_obj = Population(frag=population_info[1], orbital=population_info[0], irrep=population_info[2],)
     obj.population.append(pop_obj)
-    return
 
 
-def _add_orbitalenergy(obj: PyFragResultsObject, data: Array1D[np.float64], *orbenergy_info):
+def _add_orbitalenergy(obj: PyFragResultsObject, *orbenergy_info):
     """ Adds an OrbitalEnergy object to the PyFragResultsObject object. """
     if len(orbenergy_info) == 2:
-        orb_energy_obj = OrbitalEnergy(frag=orbenergy_info[0], orbital=orbenergy_info[1], data=data)
+        orb_energy_obj = OrbitalEnergy(frag=orbenergy_info[0], orbital=orbenergy_info[1])
     else:
-        orb_energy_obj = OrbitalEnergy(frag=orbenergy_info[1],
-                                       orbital=orbenergy_info[0],
-                                       irrep=orbenergy_info[2],
-                                       data=data)
+        orb_energy_obj = OrbitalEnergy(frag=orbenergy_info[1], orbital=orbenergy_info[0], irrep=orbenergy_info[2],)
     obj.orbitalenergy.append(orb_energy_obj)
-    return
 
 
-def _add_vdd(obj: PyFragResultsObject, data: Array1D[np.float64], vdd_index: str):
+def _add_vdd(obj: PyFragResultsObject, vdd_index: str):
     """ Adds an OrbitalEnergy object to the PyFragResultsObject object. """
-    vdd_obj = VDD(atom=int(vdd_index), data=data)
+    vdd_obj = VDD(atom=int(vdd_index))
     obj.vdd.append(vdd_obj)
-    return
 
 
-def _add_irrep(obj: PyFragResultsObject, data: Array1D[np.float64], irrep: str):
+def _add_irrep(obj: PyFragResultsObject, irrep: str):
     """ Adds an OrbitalEnergy object to the PyFragResultsObject object. """
-    irrep_obj = Irrep(irrep=irrep, data=data)
+    irrep_obj = Irrep(irrep=irrep)
     obj.irrep.append(irrep_obj)
-    return
 
 
 key_to_func_mapping: dict[str, Callable[..., None]] = {
@@ -245,37 +205,31 @@ def create_pyfrag_object_from_processed_files(results_data: pd.DataFrame, inputf
     Returns:
         PyFragResultsObject: The dataclass containing all the data of one PyFrag calculation.
 
+    Note: standard terms such "Int", "EnergyTotal", "StrainTotal", "Elstat", "Pauli", "OI", and "Disp" are automatically added to the PyFragResultsObject.
+    Non-standard terms such as "bondlength", "overlap", "orbitalenergy", and more are added to the PyFragResultsObject by using the key_to_func_mapping dictionary.
     """
-    obj = PyFragResultsObject(inputfile_data.pop("name"))
-
-    # The EDA , ASM, and ExtraStrain are always present in the output file
-    for key in config["config"].get("EDA", "EDA_keys"):
-        if key not in results_data:
-            continue
-        obj.eda[key] = results_data[key].to_numpy()
-
-    for key in config["config"].get("ASM", "ASM_keys"):
-        obj.asm[key] = results_data[key].to_numpy()
-
-    for key in config["config"].get("ASM", "ASM_strain_keys"):
-        obj.extra_strain[key] = results_data[key].to_numpy()
+    obj = PyFragResultsObject(inputfile_data.pop("name"), results_data)
 
     for key, value in inputfile_data.items():
-        data = results_data[key].to_numpy()
 
+        # For non-standard terms such as overlap_[x], bondlength_[x] the term is split on the underscore
+        # The first part (e.g., "overlap") determines which kind of instance of the corresponding class should be created
+        # The second part (e.g., "x") is to keep track of the relative order
         try:
             key = key.split("_")[0]
         except Exception:
             pass
 
+        # For both standard and non-standard terms the key is used to call the corresponding function in the key_to_func_mapping dictionary
         if key in key_to_func_mapping:
-            key_to_func_mapping[key](obj, data, *value)
+            key_to_func_mapping[key](obj, *value)
 
     return obj
 
 
 def create_pyfrag_object_from_dir(results_dir: str, **kwargs) -> PyFragResultsObject:
-    """Creates a PyFragResultsObject from the results in a directory.
+    """Creates a PyFragResultsObject from the results in a directory. 
+    This function provides a shortcut for creating a PyFragResultsObject from the results in a directory by processing and creating the PyFragResultsObject in one function.
 
     Args:
         results_dir (str): The path to the directory containing the PyFrag results files.

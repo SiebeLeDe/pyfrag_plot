@@ -17,8 +17,6 @@ TERM_LABELS: dict[str, str] = {
     "Pauli": "$\Delta$E$_{Pauli}$",  # type: ignore # noqa: W605 since it is a LaTeX string
     "OI": "$\Delta$E$_{oi}$",  # type: ignore # noqa: W605 since it is a LaTeX string
     "Disp": "$\Delta$E$_{disp}$",  # type: ignore # noqa: W605 since it is a LaTeX string
-    "frag1Strain": "$\Delta$E$_{strain,frag1}$",  # type: ignore # noqa: W605 since it is a LaTeX string
-    "frag2Strain": "$\Delta$E$_{strain,frag2}$",  # type: ignore # noqa: W605 since it is a LaTeX string
 }
 
 
