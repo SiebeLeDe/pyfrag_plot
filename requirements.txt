@@ -3,3 +3,4 @@ numpy
 pandas
 matplotlib
 myst_parser
+pydata_sphinx_theme
