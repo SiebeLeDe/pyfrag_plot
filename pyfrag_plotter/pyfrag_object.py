@@ -1,7 +1,7 @@
 """ Module that combines the data from inputfile and outputfile into a PyFragResultsObject object """
 from collections import OrderedDict
-from typing import (Annotated, Any, Callable, Dict, List, Literal, Optional,
-                    Tuple, TypeVar)
+from typing import (Annotated, Any, Callable, Dict, List, Literal, Optional, Protocol, Sequence,
+                    Tuple, TypeVar, Union)
 
 import numpy as np
 import numpy.typing as npt
@@ -18,12 +18,61 @@ from pyfrag_plotter.processing_funcs import process_results_file
 DType = TypeVar("DType", bound=np.generic)
 Array1D = Annotated[npt.NDArray[DType], Literal[1]]
 
+# The following dictionary is used to map the standard terms to a nice-looking label, given by a LaTeX string
+TERM_LABELS: dict[str, str] = {
+    "EnergyTotal": "$\Delta$E",  # type: ignore # noqa: W605 since it is a LaTeX string
+    "Int": "$\Delta$E$_{int}$",  # type: ignore # noqa: W605 since it is a LaTeX string
+    "StrainTotal": "$\Delta$E$_{strain}$",  # type: ignore # noqa: W605 since it is a LaTeX string
+    "Elstat": "$\Delta$V$_{elstat}$",  # type: ignore # noqa: W605 since it is a LaTeX string
+    "Pauli": "$\Delta$E$_{Pauli}$",  # type: ignore # noqa: W605 since it is a LaTeX string
+    "OI": "$\Delta$E$_{oi}$",  # type: ignore # noqa: W605 since it is a LaTeX string
+    "Disp": "$\Delta$E$_{disp}$",  # type: ignore # noqa: W605 since it is a LaTeX string
+    "frag1Strain": "$\Delta$E$_{strain,frag1}$",  # type: ignore # noqa: W605 since it is a LaTeX string
+    "frag2Strain": "$\Delta$E$_{strain,frag2}$",  # type: ignore # noqa: W605 since it is a LaTeX string
+}
+
+# The following dictionary makes sure that the headers in the .txt file are mapped to the correct attribute in the PyFragResultsObject
+pyfrag_id_to_attribute_id_mapping: dict[str, str] = {
+    "bondlength": "bondlength",
+    "angle": "angle",
+    "dihedral": "dihedral",
+    "overlap": "overlap",
+    "population": "population",
+    "orbitalenergy": "orbitalenergy",
+    "vdd": "vdd",
+    "IrrepOI": "irrep",
+}
+
+
+@define
+class Property(Protocol):
+    """ Base class for all properties using the Protocol functionality of python.
+    "Properties" are classes that inheret from this class, which are:
+        - Bondlength
+        - BondAngle
+        - DihedralAngle
+        - Overlap
+        - Population
+        - OrbitalEnergy
+        - VDD
+        - Irrep
+    """
+
+    @property
+    def label(self) -> str:
+        """ Abstract method to be further specified in the individual classes. Returns the label for the property. """
+        ...
+
 
 @define(slots=True)
-class Bondlength:
+class Bondlength(Property):
     atom1: int
     atom2: int
     bondlength: float
+
+    def label(self) -> str:
+        """ Returns the label for the bond length property. """
+        return f"r {self.atom1}-{self.atom2}"
 
 
 @define(slots=True)
@@ -31,6 +80,10 @@ class BondAngle:
     atom1: int
     atom2: int
     bondangle: float
+
+    def label(self) -> str:
+        """ Returns the label for the bond angle property. """
+        return f"$\Theta${self.atom1}-{self.atom2}"
 
 
 @define(slots=True)
@@ -40,6 +93,10 @@ class DihedralAngle:
     atom3: int
     dihedralangle: float
 
+    def label(self) -> str:
+        """ Returns the label for the bond length property. """
+        return f"r {self.atom1}-{self.atom2}-{self.atom3}"
+
 
 @define(slots=True)
 class Overlap:
@@ -48,12 +105,24 @@ class Overlap:
     frag1_irrep: Optional[str] = None
     frag2_irrep: Optional[str] = None
 
+    def label(self) -> str:
+        """ Returns the label for the overlap property. """
+        if self.frag1_irrep is None:
+            return f"S {self.frag1_orb}-{self.frag2_orb}"
+        return f"S {self.frag1_irrep} {self.frag1_orb}-{self.frag2_irrep} {self.frag2_orb}"
+
 
 @define(slots=True)
 class Population:
     orbital: float
     frag: int
     irrep: Optional[str] = None
+
+    def label(self) -> str:
+        """ Returns the label for the population property. """
+        if self.irrep is None:
+            return f"Pop {self.frag} {self.orbital}"
+        return f"Pop {self.frag} {self.orbital} {self.irrep}"
 
 
 @define(slots=True)
@@ -62,15 +131,29 @@ class OrbitalEnergy:
     frag: int
     irrep: Optional[str] = None
 
+    def label(self) -> str:
+        """ Returns the label for the orbital energy property. """
+        if self.irrep is None:
+            return f"$\epsilon$ {self.frag} {self.orbital}"
+        return f"$\epsilon$ {self.frag} {self.orbital} {self.irrep}"
+
 
 @define(slots=True)
 class VDD:
     atom: int
 
+    def label(self) -> str:
+        """ Returns the label for the VDD property. """
+        return f"VDD {self.atom}"
+
 
 @define(slots=True)
 class Irrep:
     irrep: str
+
+    def label(self) -> str:
+        """ Returns the label for the irrep property. """
+        return f"{self.irrep}"
 
 
 @define(slots=True)
@@ -108,7 +191,32 @@ class PyFragResultsObject:
     irrep: List[Irrep] = field(factory=list)
 
     def get_data_of_key(self, key: str) -> Array1D[np.float64]:
+        """ Returns the data found in the dataframe (from the .txt file) of the specified key."""
         return self.dataframe[key].to_numpy()
+
+    def get_plot_labels(self, keys: Union[Sequence[str], str]) -> Sequence[str]:
+        """ Returns the labels of the specified keys. There are two types of keys that should be handled differently:
+        1. Standard terms such as "Int", "EnergyTotal", "StrainTotal", "Elstat", "Pauli", "OI", and "Disp"
+        2. Non-standard terms such as "bondlength", "overlap", "orbitalenergy", and more. 
+
+        The former ones are handled by the TERM_LABELS dictionary, while the latter ones are handled by the label() method of the corresponding class.
+        """
+        if isinstance(keys, str):
+            keys = [keys]
+
+        labels = []
+        for key in keys:
+            if key in TERM_LABELS:
+                labels.append(TERM_LABELS[key])
+            else:
+                # IrrepOI_1 -> IrrepOI, 1
+                key, index = key.split("_")
+                # IrrepOI, 1 -> irrep, 1
+                key = pyfrag_id_to_attribute_id_mapping[key]
+                # irrep, 1 -> irrep[1], which is an instance of the Irrep class and part of the irrep attribute list of the PyFragResultsObject
+                labels.append(getattr(self, key)[int(index)-1].label())
+
+        return labels
 
     def get_x_axis(self, irc_coord: str) -> Array1D[np.float64]:
         """ Returns the x-axis data for the specified IRC coordinate."""

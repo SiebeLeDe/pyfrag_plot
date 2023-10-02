@@ -9,18 +9,6 @@ from matplotlib.ticker import FormatStrFormatter, MaxNLocator
 from pyfrag_plotter.config_handler import config
 from pyfrag_plotter.interpolate import interpolate_plot
 
-TERM_LABELS: dict[str, str] = {
-    "EnergyTotal": "$\Delta$E",  # type: ignore # noqa: W605 since it is a LaTeX string
-    "Int": "$\Delta$E$_{int}$",  # type: ignore # noqa: W605 since it is a LaTeX string
-    "StrainTotal": "$\Delta$E$_{strain}$",  # type: ignore # noqa: W605 since it is a LaTeX string
-    "Elstat": "$\Delta$V$_{elstat}$",  # type: ignore # noqa: W605 since it is a LaTeX string
-    "Pauli": "$\Delta$E$_{Pauli}$",  # type: ignore # noqa: W605 since it is a LaTeX string
-    "OI": "$\Delta$E$_{oi}$",  # type: ignore # noqa: W605 since it is a LaTeX string
-    "Disp": "$\Delta$E$_{disp}$",  # type: ignore # noqa: W605 since it is a LaTeX string
-    "frag1Strain": "$\Delta$E$_{strain,frag1}$",  # type: ignore # noqa: W605 since it is a LaTeX string
-    "frag2Strain": "$\Delta$E$_{strain,frag2}$",  # type: ignore # noqa: W605 since it is a LaTeX string
-}
-
 
 def replace_overlapping_keys(func: Callable) -> Callable:
     """A decorator that replaces overlapping keys between kwargs and function arguments with top-level input.
@@ -39,14 +27,20 @@ def replace_overlapping_keys(func: Callable) -> Callable:
     kwargs_only = argspec.kwonlyargs
 
     def wrapper(*args, **kwargs):
-        # Find overlapping keys between kwargs and function arguments
-        overlapping_keys = set(kwargs.keys()) & set(list(args) + kwargs_only)
+        # First get the valid keys (i.e. keys that are also function arguments)
+        valid_kwargs = kwargs.copy()
+        for key in kwargs:
+            if key not in argspec.args:
+                valid_kwargs.pop(key)
+
+        # Then, find overlapping keys between the valid keys from the kwargs and function arguments
+        overlapping_keys = set(valid_kwargs) & set(list(args) + kwargs_only)
 
         # Replace overlapping keys with top-level input
         for key in overlapping_keys:
-            kwargs[key] = argspec.annotations.get(key, type(kwargs[key]))(kwargs[key])
+            valid_kwargs[key] = argspec.annotations.get(key, type(valid_kwargs[key]))(valid_kwargs[key])
 
-        return func(*args, **kwargs)
+        return func(*args, **valid_kwargs)
 
     return wrapper
 
@@ -100,7 +94,7 @@ def set_axes_details(
     n_max_x_ticks: int = 6,
     n_max_y_ticks: int = 5,
     plot_legend: bool = True,
-    line_style_legend: Optional[Sequence[str]] = None,
+    line_style_labels: Optional[Sequence[str]] = None,
 ) -> None:
     """Specifies axes options for making a shorter and cleaner code.
 
@@ -112,7 +106,7 @@ def set_axes_details(
         **n_max_x_ticks (int, optional): The maximum number of x-axis ticks. Defaults to 6.
         **n_max_y_ticks (int, optional): The maximum number of y-axis ticks. Defaults to 5.
         **plot_legend (bool, optional): Whether to plot the legend. Defaults to True.
-        **line_style_legend (Optional[Sequence[str]], optional): The legend for the line styles. Defaults to None.
+        **line_style_labels (Optional[Sequence[str]], optional): The legend for the line styles. Defaults to None.
     """
     ax = plt.gca() if ax is None else ax
 
@@ -186,16 +180,18 @@ def set_axes_details(
         ax.add_artist(system_name_legend)
 
     # Plots another legend for multiple linestyles for the same system
-    if line_style_legend is not None:
+    # It gets the lines and overwrites the labels with the line_style_labels
+    if line_style_labels is not None:
         lines = ax.lines
-        n_systems = len(lines) // len(line_style_legend)
+        n_systems = len(lines) // len(line_style_labels)
         lines = [ax.lines[i] for i in range(0, len(lines), n_systems)]
-        labels = [TERM_LABELS[label] for label in line_style_legend]
-        [line.set_label(label) for line, label in zip(lines, labels)]
+
+        # Overwrite the labels
+        [line.set_label(label) for line, label in zip(lines, line_style_labels)]
         second_legend = ax.legend(
             handles=lines,
             loc="upper center",
-            ncol=len(line_style_legend),
+            ncol=len(line_style_labels)//2,
             frameon=False,
         )
         ax.add_artist(second_legend)

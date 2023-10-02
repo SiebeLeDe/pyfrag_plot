@@ -144,6 +144,11 @@ def trim_data(df: pd.DataFrame, trim_option: Optional[Union[str, float, int, Seq
     trim_key = config["config"].get("SHARED", "trim_key") if trim_key is None else trim_key
     trim_option = config["config"].get("SHARED", "trim_option") if trim_option is None else trim_option
 
+    # Sometimes, users might specify a trim_key in the config file that is not in the dataframe
+    if trim_key not in df.columns:
+        raise PyFragResultsProcessingError(section="trim_data", message=f"trim_key {trim_key} is not a valid key. Check if 'trim_key' in the config file is correct.")
+
+    # Check if the trim_option is a valid type such as a string, float, or integer
     if not isinstance(trim_option, (str, float, int, Sequence)):
         raise PyFragResultsProcessingError(section="trim_data", message=f"trim_option {trim_option} is not a valid type. Valid types are str, float, and int")
 

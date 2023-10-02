@@ -108,7 +108,7 @@ def plot_multiple_graphs(
         if i // num_cols == num_rows - 1:
             plot_x_label = x_label
 
-        plot_instance.standard_plot_routine(plot_type, plot_keys, ax)
+        plot_instance.standard_plot_routine(plot_keys, ax)
 
         set_axes_details(ax=ax, x_label=plot_x_label, y_label=plot_y_label, n_max_y_ticks=n_max_y_ticks, y_lim=y_lim)
 

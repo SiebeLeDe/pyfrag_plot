@@ -20,7 +20,7 @@ def plot_logger(log_level=logging.INFO):
             start_time = time.time()
             result = func(*args, **kwargs)
             end_time = time.time()
-            logging.log(log_level, f"Plot function {func.__name__} called. Execution time: {end_time - start_time:.2f} seconds. Plot location: {result}")
+            logging.log(log_level, f"Plot function {func.__name__} called. Execution time: {end_time - start_time:.2f} seconds.")
             return result
         return wrapper
     return decorator
@@ -85,14 +85,16 @@ class Plotter:
         self.objects = pyfrag_objects
         self.path = opj(plot_dir, name)
         self.plot_info = PlotInfo(irc_coord=irc_coord[0], irc_coord_label=irc_coord[1])
-        self._check_output_dir()
 
     def __enter__(self):
         """For using the class with an "with" statment.
+
         It checks if the specified directory exists for making plots.
-        If not, creates it (and any parent directories)."""
+        If not, creates it (and any parent directories).
+        """
         if not os.path.isdir(self.path):
             os.makedirs(self.path)
+        return self
 
     def __exit__(self, exc_type, exc_value, traceback):
         """Makes sure to close the plotter object and remove the plot directory if it's empty."""
@@ -101,7 +103,6 @@ class Plotter:
             os.rmdir(self.path)
 
     def _check_output_dir(self):
-
         if not os.path.isdir(self.path):
             os.makedirs(self.path)
 
@@ -157,13 +158,18 @@ class Plotter:
         else:
             asm_keys = keys
 
+        # Plot the keys
         self.standard_plot_routine(asm_keys, ax)
 
+        # Since the same keys are plotted for all objects, we can just use the first object to get the labels
+        labels = self.objects[0].get_plot_labels(asm_keys)
+
         # Set the key-specific plot details
-        set_axes_details(ax=ax, x_label=self.plot_info.irc_coord_label, line_style_legend=asm_keys, **kwargs)
+        set_axes_details(ax=ax, x_label=self.plot_info.irc_coord_label, line_style_labels=labels, **kwargs)
         set_figure_details(fig=fig,
                            title=f"ASM_{'_'.join(asm_keys)}",
-                           savefig=opj(self.path, f"ASM_{'_'.join(asm_keys)}.png"),)
+                           savefig=opj(self.path, f"ASM_{'_'.join(asm_keys)}.png"),
+                           line_style_labels=labels)
         return fig, ax
 
     @plot_logger()
@@ -188,8 +194,11 @@ class Plotter:
 
         self.standard_plot_routine(eda_keys, ax)
 
+        # Since the same keys are plotted for all objects, we can just use the first object to get the labels
+        labels = self.objects[0].get_plot_labels(eda_keys)
+
         # Set the key-specific plot details
-        set_axes_details(ax=ax, x_label=self.plot_info.irc_coord_label, line_style_legend=eda_keys, **kwargs)
+        set_axes_details(ax=ax, x_label=self.plot_info.irc_coord_label, line_style_labels=labels, **kwargs)
         set_figure_details(fig=fig,
                            title=f"EDA_{'_'.join(eda_keys)}",
                            savefig=opj(self.path, f"EDA_{'_'.join(eda_keys)}.png"),)
@@ -211,18 +220,21 @@ class Plotter:
 
         # Get the keys to plot. If none are specified, plot all of them
         if keys is None:
-            extra_keys: List[str] = config["config"].get("ASM", "ASM_strain_keys")
+            extra_strain_keys: List[str] = config["config"].get("ASM", "ASM_strain_keys")
         else:
-            extra_keys = keys
+            extra_strain_keys = keys
 
-        self.standard_plot_routine(extra_keys, ax)
+        self.standard_plot_routine(extra_strain_keys, ax)
+
+        # Since the same keys are plotted for all objects, we can just use the first object to get the labels
+        labels = self.objects[0].get_plot_labels(extra_strain_keys)
 
         # Set the key-specific plot details
-        set_axes_details(ax=ax, x_label=self.plot_info.irc_coord_label, **kwargs)
+        set_axes_details(ax=ax, x_label=self.plot_info.irc_coord_label, line_style_labels=labels, **kwargs)
         set_figure_details(
             fig=fig,
-            title=f"Strain_{'_'.join(extra_keys)}",
-            savefig=opj(self.path, f"ASM_{'_'.join(extra_keys)}.png"),
+            title=f"Strain_{'_'.join(extra_strain_keys)}",
+            savefig=opj(self.path, f"ASM_{'_'.join(extra_strain_keys)}.png"),
         )
         return fig, ax
 
@@ -268,3 +280,30 @@ class Plotter:
         # set_plot_details(savefig=opj(self.path, "population.png"),
         #                 title="Population",
         #                 x_label=self.plot_info.irc_coord_label)
+
+    @plot_logger()
+    def plot_arbitrary_keys(self, title: str, keys: List[str], **kwargs):
+        """Arbitrary plotting function for plotting any key (or a combination of) in the PyFragResultsObject object.
+
+        Args:
+            keys (Optional[List[str]], optional): Keys that are plotted. Defaults to None (plot all keys).
+            **kwargs: Additional keyword arguments to pass to the function.
+
+        Returns:
+            fig (plt.Figure): The figure object.
+            ax (plt.Axes): The axes object.
+
+        """
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+
+        self.standard_plot_routine(keys, ax)
+
+        labels = self.objects[0].get_plot_labels(keys)
+
+        # Set the key-specific plot details
+        set_axes_details(ax=ax, x_label=self.plot_info.irc_coord_label, line_style_labels=labels, **kwargs)
+        set_figure_details(fig=fig,
+                           title=title,
+                           savefig=opj(self.path, f"{'_'.join(keys)}.png"),)
+        return fig, ax

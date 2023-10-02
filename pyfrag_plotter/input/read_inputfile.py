@@ -180,7 +180,7 @@ def _read_vdd_line(line: str) -> List[int]:
     return [int(atom_index) for atom_index in line_content[1:]]
 
 
-def _read_irrep_line(line: str) -> str:
+def _read_irrep_line(line: str) -> List[str]:
     """Reads the line containing the "irrep" keyword. The correct formats are:
 
     irrepOI AA
@@ -190,7 +190,7 @@ def _read_irrep_line(line: str) -> str:
     line_content: List[str] = _check_line_length(line, "orbitalenergy", (2, 2))
 
     irrep = line_content[1]
-    return irrep
+    return [irrep]
 
 
 read_functions: Dict[str, Callable] = {
