@@ -103,19 +103,13 @@ def _interpolate_pyfrag_object(obj: PyFragResultsObject, irc_coord: str, point: 
     x_axis = obj.get_x_axis(irc_coord)
 
     # Interpolate eda, asm, and extra strain keys
-    for key, value in {**obj.eda, **obj.asm, **obj.extra_strain}.items():
+
+    for key in obj.dataframe.columns:
         # Get the y-axis
-        y_axis = value
+        y_axis = obj.dataframe[key]
+
         # Interpolate
-        ret_dict[key] = float(sp.interpolate.interp1d(x_axis, y_axis)(point))
-
-    for key in ["overlap", "population", "orbitalenergy", "vdd", "irrep"]:
-        for i, entry in enumerate(obj.__getattribute__(key)):
-            # Get the y-axis
-            y_axis = entry.data
-
-            # Interpolate
-            ret_dict[f"{key}_{i+1}"] = float(sp.interpolate.interp1d(x_axis, y_axis)(point))
+        ret_dict[key] = sp.interpolate.interp1d(x_axis, y_axis)(point)
 
     return ret_dict
 
