@@ -64,8 +64,8 @@ class Property(Protocol):
         ...
 
 
-@define(slots=True)
-class Bondlength(Property):
+@define
+class Bondlength:
     atom1: int
     atom2: int
     bondlength: float
@@ -75,7 +75,7 @@ class Bondlength(Property):
         return f"r {self.atom1}-{self.atom2}"
 
 
-@define(slots=True)
+@define
 class BondAngle:
     atom1: int
     atom2: int
@@ -86,7 +86,7 @@ class BondAngle:
         return f"$\Theta${self.atom1}-{self.atom2}"
 
 
-@define(slots=True)
+@define
 class DihedralAngle:
     atom1: int
     atom2: int
@@ -98,7 +98,7 @@ class DihedralAngle:
         return f"r {self.atom1}-{self.atom2}-{self.atom3}"
 
 
-@define(slots=True)
+@define
 class Overlap:
     frag1_orb: str
     frag2_orb: str
@@ -112,7 +112,7 @@ class Overlap:
         return f"S {self.frag1_irrep} {self.frag1_orb}-{self.frag2_irrep} {self.frag2_orb}"
 
 
-@define(slots=True)
+@define
 class Population:
     orbital: float
     frag: int
@@ -125,7 +125,7 @@ class Population:
         return f"Pop {self.frag} {self.orbital} {self.irrep}"
 
 
-@define(slots=True)
+@define
 class OrbitalEnergy:
     orbital: float
     frag: int
@@ -138,7 +138,7 @@ class OrbitalEnergy:
         return f"$\epsilon$ {self.frag} {self.orbital} {self.irrep}"
 
 
-@define(slots=True)
+@define
 class VDD:
     atom: int
 
@@ -147,7 +147,7 @@ class VDD:
         return f"VDD {self.atom}"
 
 
-@define(slots=True)
+@define
 class Irrep:
     irrep: str
 
@@ -156,7 +156,7 @@ class Irrep:
         return f"{self.irrep}"
 
 
-@define(slots=True)
+@define
 class PyFragResultsObject:
     """
     Attrs class containing all the data of one pyfrag calculation.
