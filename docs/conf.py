@@ -72,5 +72,5 @@ add_module_names = False
 
 # Replace function / class names with alias
 rst_epilog = """
-.. |init| replace:: :func:`~pyfrag_plot.pyfrag_plotter.config_handler.initialize_pyfrag_plotter`
+.. |init| replace:: :func:`pyfrag_plotter.config_handler.initialize_pyfrag_plotter`
 """
