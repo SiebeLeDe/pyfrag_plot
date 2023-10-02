@@ -23,10 +23,6 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install -e .
-        
-      - name: Install dependencies
-        run: |
-          pip install sphinx myst_parser numpy matplotlib
           
       - name: Sphinx build
         run: |
