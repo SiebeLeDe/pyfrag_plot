@@ -2,5 +2,4 @@ sphinx
 numpy
 pandas
 matplotlib
-sphinx_rtd_theme
 myst_parser
