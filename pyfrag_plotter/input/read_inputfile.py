@@ -43,7 +43,7 @@ def _check_line_length(line: str, input_key: str, limits: Sequence[int]) -> List
         List[str]: A list containing the values of the line.
 
     """
-    line_content: list[str] = re.split(r"\s+", line.strip())
+    line_content: list[str] = re.split(r"\s*[#!;:]\s*", line.strip())[0].split()
 
     if len(line_content) not in limits:
         raise PyFragInputError(f"Length of the {input_key} not correct. Make sure to specify the correct format", input_key)
@@ -170,8 +170,7 @@ def _read_vdd_line(line: str) -> List[int]:
     vdd 3 6 8
 
     """
-    line_content: list[str] = line.split()
-
+    line_content: list[str] = re.split(r"\s*[#!;:]\s*", line.strip())[0].split()
     try:
         all([int(atom_index) for atom_index in line_content[1:]])
     except ValueError:

@@ -98,18 +98,18 @@ def test_read_orbitalenergy_line_two_fragments_one_MO():
 
 
 def test_read_orbitalenergy_line_with_irrep():
-    line = "orbitalenergy AA frag2 5"
+    line = "ORBITALENERGY AA frag2 5"
     expected_output = ("AA", "frag2", "5")
     assert input_reader._read_orbitalenergy_line(line) == expected_output
 
 
 def test_read_vdd_line():
-    line = "vdd 1 2 3 4"
+    line = "vdd 1 2 3 4 #A comment"
     expected_output = [1, 2, 3, 4]
     assert input_reader._read_vdd_line(line) == expected_output
 
 
 def test_read_irrep_line():
-    line = "irrepOI AA"
-    expected_output = "AA"
+    line = "  irrepOI        AA #Hello"
+    expected_output = ["AA"]
     assert input_reader._read_irrep_line(line) == expected_output
