@@ -51,8 +51,8 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 modindex_common_prefix = ['pyfrag_plotter.']
 
 html_theme_options = {
-  "show_nav_level": 2,
-  "navigation_depth": 2,
+    "show_nav_level": 2,
+    "navigation_depth": 2,
 }
 
 # -- Options for HTML output -------------------------------------------------
@@ -72,5 +72,5 @@ add_module_names = False
 
 # Replace function / class names with alias
 rst_epilog = """
-.. |init| replace:: :func:`initialize_pyfrag_plotter`
+.. |init| replace:: :func:`pyfrag_plotter.config_handler.initialize_pyfrag_plotter`
 """
