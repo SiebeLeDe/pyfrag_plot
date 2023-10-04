@@ -6,7 +6,7 @@ import matplotlib.figure
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FormatStrFormatter, MaxNLocator
 
-from pyfrag_plotter.config_handler import config
+from pyfrag_plotter import config
 from pyfrag_plotter.interpolate import interpolate_plot
 
 
@@ -116,17 +116,17 @@ def set_axes_details(
 
     # Specfies the y limits
     if y_lim is None:
-        default_y_lim = config["config"].get("SHARED", "y_lim")
+        default_y_lim = config.get("SHARED", "y_lim")
         ax.set_ylim(default_y_lim[0], default_y_lim[1])
     else:
         ax.set_ylim(y_lim[0], y_lim[1])
 
     # Plot x limits
-    x_lim = config["config"].get("SHARED", "x_lim")
+    x_lim = config.get("SHARED", "x_lim")
     ax.set_xlim(x_lim[0], x_lim[1])
 
     # Reverses the plot direction by reversing the x-axis
-    reverse_x_axis = config["config"].get("SHARED", "reverse_x_axis")
+    reverse_x_axis = config.get("SHARED", "reverse_x_axis")
     if reverse_x_axis:
         ax.set_xlim(ax.get_xlim()[::-1][0], ax.get_xlim()[1])
 
@@ -138,7 +138,7 @@ def set_axes_details(
 
     # Draws a vertical line at the specified point
     # First check for user input, else check for config file input
-    vline = config["config"].get("SHARED", "vline")
+    vline = config.get("SHARED", "vline")
     if not math.isclose(vline, 0.0):
         ax.vlines(
             vline,

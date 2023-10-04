@@ -3,8 +3,8 @@ from typing import Any, Callable, Dict, Optional, Sequence, Union
 import numpy as np
 import pandas as pd
 
-from pyfrag_plotter.config_handler import config
-from pyfrag_plotter.errors import PyFragResultsProcessingError
+from pyfrag_plotter import config
+from pyfrag_plotter.errors import PyFragResultsProcessingError, PyFragResultsProcessingWarning
 
 # ====================================================================================================
 # Main Processing Function   =========================================================================
@@ -58,7 +58,6 @@ def _trim_data_str(df: pd.DataFrame, trim_option: str, trim_key: str) -> pd.Data
 
     if trim_option in ["false", "none"]:
         return df
-    options = ["min", "max"]
 
     if trim_option == "max":
         max_index = df[trim_key].idxmax()
@@ -66,8 +65,6 @@ def _trim_data_str(df: pd.DataFrame, trim_option: str, trim_key: str) -> pd.Data
     elif trim_option == "min":
         min_index = df[trim_key].idxmin()
         df = df.loc[:min_index]
-    else:
-        raise PyFragResultsProcessingError(section="trim_data_str", message=f"trim_option {trim_option} is not valid. Valid options are {options}")
 
     return df
 
@@ -89,21 +86,22 @@ def _trim_data_sequence(df: pd.DataFrame, trim_option: Sequence[float], trim_key
     """ Private function that performs the actual trimming of the dataframe with a sequence trim_option"""
 
     x_limits = trim_option
-    reverse_axis = bool(config["config"].get("SHARED", "reverse_x_axis"))
+    reverse_axis = bool(config.get("SHARED", "reverse_x_axis"))
 
     if not (trim_key.startswith("bondlength_") or trim_key.startswith("angle_") or trim_key.startswith("dihedral_")):
-        print(f"trim_key {trim_key} is not valid. Valid options are bondlength_x, angle_x, and dihedral_x. Proceeding with bondlength_1.")
+        PyFragResultsProcessingWarning(section="_trim_data_sequence",
+                                       message=f"trim_key {trim_key} is not valid. Valid options are bondlength_x, angle_x, and dihedral_x. Proceeding with bondlength_1.")
         trim_key = "bondlength_1"
 
     if not isinstance(x_limits, Sequence) or len(x_limits) != 2 or x_limits[0] >= x_limits[1]:
-        raise PyFragResultsProcessingError(section="trim_data_sequence", message=f"Invalid x_limits {x_limits} specified in the configuration file.")
+        raise PyFragResultsProcessingError(key="trim_data_sequence", message=f"Invalid x_limits {x_limits} specified in the configuration file.")
 
     x_data: np.ndarray = df[trim_key].values  # type: ignore since it is a numpy array
     x_min = max(x_data.min(), x_limits[0])
     x_max = min(x_data.max(), x_limits[1])
     x_indices = np.where((x_data >= x_min) & (x_data <= x_max))[0]
     if x_indices.size == 0:
-        raise PyFragResultsProcessingError(section="trim_data_sequence", message=f"No data points within the specified x limits {x_limits} for key {trim_key}.")
+        raise PyFragResultsProcessingError(key="trim_data_sequence", message=f"No data points within the specified x limits {x_limits} for key {trim_key}.")
 
     if not reverse_axis:
         x_indices = np.concatenate(([max(0, x_indices[0] - 1)], x_indices, [min(x_data.size - 1, x_indices[-1] + 1)]))
@@ -141,22 +139,22 @@ def trim_data(df: pd.DataFrame, trim_option: Optional[Union[str, float, int, Seq
         pd.DataFrame: The trimmed dataframe.
 
     """
-    trim_key = config["config"].get("SHARED", "trim_key") if trim_key is None else trim_key
-    trim_option = config["config"].get("SHARED", "trim_option") if trim_option is None else trim_option
+    trim_key = config.get("SHARED", "trim_key") if trim_key is None else trim_key
+    trim_option = config.get("SHARED", "trim_option") if trim_option is None else trim_option
 
     # Sometimes, users might specify a trim_key in the config file that is not in the dataframe
     if trim_key not in df.columns:
-        raise PyFragResultsProcessingError(section="trim_data", message=f"trim_key {trim_key} is not a valid key. Check if 'trim_key' in the config file is correct.")
+        raise PyFragResultsProcessingError(key="trim_data", message=f"trim_key {trim_key} is not a valid key. Check if 'trim_key' in the config file is correct.")
 
     # Check if the trim_option is a valid type such as a string, float, or integer
     if not isinstance(trim_option, (str, float, int, Sequence)):
-        raise PyFragResultsProcessingError(section="trim_data", message=f"trim_option {trim_option} is not a valid type. Valid types are str, float, and int")
+        raise PyFragResultsProcessingError(key="trim_data", message=f"trim_option {trim_option} is not a valid type. Valid types are str, float, and int")
 
     # Handle the case where the trim_option is a string but needs to be converted to a sequence (i.e. x_lim)
     if isinstance(trim_option, str):
         trim_option = trim_option.lower().strip()
         if trim_option in ["x_lim", "xlim", "x_limits", "xlimits"]:
-            trim_option = tuple(config["config"].get("SHARED", "x_lim"))
+            trim_option = tuple(config.get("SHARED", "x_lim"))
 
     for key, value in _overload_types.items():
         if isinstance(trim_option, key):
@@ -208,7 +206,7 @@ def remove_outliers(df: pd.DataFrame, outlier_threshold: Optional[float] = None)
         pd.DataFrame: The modified DataFrame without outliers.
 
     """
-    outlier_threshold = config["config"].get("SHARED", "outlier_threshold") if outlier_threshold is None else outlier_threshold
+    outlier_threshold = config.get("SHARED", "outlier_threshold") if outlier_threshold is None else outlier_threshold
 
     # Calculate the difference between each value and its two nearest neighbors from both ends
     diff = df["EnergyTotal"].diff().abs()

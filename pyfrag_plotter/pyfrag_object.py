@@ -32,7 +32,7 @@ TERM_LABELS: dict[str, str] = {
 }
 
 # The following dictionary makes sure that the headers in the .txt file are mapped to the correct attribute in the PyFragResultsObject
-pyfrag_id_to_attribute_id_mapping: dict[str, str] = {
+pyfrag_headers_id_to_attribute_id_mapping: dict[str, str] = {
     "bondlength": "bondlength",
     "angle": "angle",
     "dihedral": "dihedral",
@@ -66,6 +66,7 @@ class Property(Protocol):
 
 @define
 class Bondlength:
+    """ Attrs class for the bond length property containing the atoms indices and the bond length."""
     atom1: int
     atom2: int
     bondlength: float
@@ -77,17 +78,19 @@ class Bondlength:
 
 @define
 class BondAngle:
+    """ Attrs class for the bond angle property containing the atoms indices and the bond angle."""
     atom1: int
     atom2: int
     bondangle: float
 
     def label(self) -> str:
         """ Returns the label for the bond angle property. """
-        return f"$\Theta${self.atom1}-{self.atom2}"
+        return f"$\Theta${self.atom1}-{self.atom2}"  # type: ignore # noqa: W605 since it is a LaTeX string
 
 
 @define
 class DihedralAngle:
+    """ Attrs class for the dihedral angle property containing the atoms indices and the dihedral angle."""
     atom1: int
     atom2: int
     atom3: int
@@ -100,6 +103,7 @@ class DihedralAngle:
 
 @define
 class Overlap:
+    """ Attrs class for the overlap property containing the orbitals and irreps of the two fragments. """
     frag1_orb: str
     frag2_orb: str
     frag1_irrep: Optional[str] = None
@@ -114,6 +118,7 @@ class Overlap:
 
 @define
 class Population:
+    """ Attrs class for the population property containing the orbitals and irreps of the two fragments."""
     orbital: float
     frag: int
     irrep: Optional[str] = None
@@ -127,6 +132,7 @@ class Population:
 
 @define
 class OrbitalEnergy:
+    """ Attrs class for the orbital energy property containing the orbitals and irreps of the two fragments."""
     orbital: float
     frag: int
     irrep: Optional[str] = None
@@ -134,8 +140,8 @@ class OrbitalEnergy:
     def label(self) -> str:
         """ Returns the label for the orbital energy property. """
         if self.irrep is None:
-            return f"$\epsilon$ {self.frag} {self.orbital}"
-        return f"$\epsilon$ {self.frag} {self.orbital} {self.irrep}"
+            return f"$\epsilon$ {self.frag} {self.orbital}"  # type: ignore # noqa: W605 since it is a LaTeX string
+        return f"$\epsilon$ {self.frag} {self.orbital} {self.irrep}"  # type: ignore # noqa: W605 since it is a LaTeX string
 
 
 @define
@@ -197,7 +203,7 @@ class PyFragResultsObject:
     def get_plot_labels(self, keys: Union[Sequence[str], str]) -> Sequence[str]:
         """ Returns the labels of the specified keys. There are two types of keys that should be handled differently:
         1. Standard terms such as "Int", "EnergyTotal", "StrainTotal", "Elstat", "Pauli", "OI", and "Disp"
-        2. Non-standard terms such as "bondlength", "overlap", "orbitalenergy", and more. 
+        2. Non-standard terms such as "bondlength", "overlap", "orbitalenergy", and more.
 
         The former ones are handled by the TERM_LABELS dictionary, while the latter ones are handled by the label() method of the corresponding class.
         """
@@ -212,7 +218,7 @@ class PyFragResultsObject:
                 # IrrepOI_1 -> IrrepOI, 1
                 key, index = key.split("_")
                 # IrrepOI, 1 -> irrep, 1
-                key = pyfrag_id_to_attribute_id_mapping[key]
+                key = pyfrag_headers_id_to_attribute_id_mapping[key]
                 # irrep, 1 -> irrep[1], which is an instance of the Irrep class and part of the irrep attribute list of the PyFragResultsObject
                 labels.append(getattr(self, key)[int(index)-1].label())
 
@@ -336,7 +342,7 @@ def create_pyfrag_object_from_processed_files(results_data: pd.DataFrame, inputf
 
 
 def create_pyfrag_object_from_dir(results_dir: str, **kwargs) -> PyFragResultsObject:
-    """Creates a PyFragResultsObject from the results in a directory. 
+    """Creates a PyFragResultsObject from the results in a directory.
     This function provides a shortcut for creating a PyFragResultsObject from the results in a directory by processing and creating the PyFragResultsObject in one function.
 
     Args:

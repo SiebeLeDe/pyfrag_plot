@@ -1,7 +1,7 @@
 import pytest
 import os
 from configparser import ConfigParser
-from pyfrag_plotter.config_handler import Config, key_to_function_mapping
+from pyfrag_plotter.config.config_handler import Config, config_key_to_function_mapping
 
 current_dir = os.path.abspath(os.path.dirname(__file__))
 package_path = os.path.abspath(os.path.join(current_dir, os.pardir))
@@ -38,7 +38,7 @@ def test_default_section_exists(config):
 def test_default_section_right_keys(config):
     # For debugging: error if the default section does not contain all the keys
     default_section = config.config_parser.defaults()
-    required_keys = [key.lower() for key in key_to_function_mapping.keys()]
+    required_keys = [key.lower() for key in config_key_to_function_mapping.keys()]
     for key in default_section:
         assert key in required_keys
 

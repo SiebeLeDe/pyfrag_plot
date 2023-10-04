@@ -7,7 +7,7 @@ import time
 import matplotlib.pyplot as plt
 from attrs import define, field
 
-from pyfrag_plotter.config_handler import config
+from pyfrag_plotter import config
 from pyfrag_plotter.plot.plot_details import set_figure_details, set_axes_details
 from pyfrag_plotter.pyfrag_object import PyFragResultsObject
 
@@ -40,9 +40,9 @@ class PlotInfo:
     """
     irc_coord: str
     irc_coord_label: str
-    colours: List[str] = field(factory=lambda: config["config"].get("SHARED", "colours"))
-    line_styles: List[str] = field(factory=lambda: config["config"].get("SHARED", "line_styles"))
-    peak_type: Optional[str] = field(factory=lambda: config["config"].get("SHARED", "stat_point_type") if config["config"].get("SHARED", "stat_point_type") != "none" else None)
+    colours: List[str] = field(factory=lambda: config.get("SHARED", "colours"))
+    line_styles: List[str] = field(factory=lambda: config.get("SHARED", "line_styles"))
+    peak_type: Optional[str] = field(factory=lambda: config.get("SHARED", "stat_point_type") if config.get("SHARED", "stat_point_type") != "none" else None)
 
 
 class Plotter:
@@ -54,10 +54,6 @@ class Plotter:
         plot_info (PlotInfo): An instance of the PlotInfo class.
 
     Methods:
-        __init__(self, name: str, plot_dir: str, pyfrag_objects: Sequence[PyFragResultsObject], irc_coord: Sequence[str]):
-            Initializes a new Plotter object with the given name, output directory, PyFragResultsObject objects, and IRC coordinate.
-        _check_output_dir(self):
-            Checks if the directory exists, if not, creates it (and any parent directories).
         standard_plot_routine(self, type: str, keys: Sequence[str], ax: Optional[plt.Axes] = None):
             The plot routine for the EDA, ASM and extra strain plots.
         plot_asm(self, keys: Optional[List[str]] = None, **kwargs):
@@ -101,10 +97,6 @@ class Plotter:
         dir_content = os.listdir(self.path)
         if len(dir_content) == 0:
             os.rmdir(self.path)
-
-    def _check_output_dir(self):
-        if not os.path.isdir(self.path):
-            os.makedirs(self.path)
 
 # ------------------------------------------------------------------------------------------------------------- #
 # ------------------------------ ASM, EDA and ASM extra strain plotting routines ------------------------------ #
@@ -154,7 +146,7 @@ class Plotter:
 
         # Get the keys to plot. If none are specified, plot all of them
         if keys is None:
-            asm_keys: List[str] = config["config"].get("ASM", "ASM_keys")
+            asm_keys: List[str] = config.get("ASM", "ASM_keys")
         else:
             asm_keys = keys
 
@@ -188,7 +180,7 @@ class Plotter:
 
         # Get the keys to plot. If none are specified, plot all of them
         if keys is None:
-            eda_keys: List[str] = config["config"].get("EDA", "EDA_keys")
+            eda_keys: List[str] = config.get("EDA", "EDA_keys")
         else:
             eda_keys = keys
 
@@ -220,7 +212,7 @@ class Plotter:
 
         # Get the keys to plot. If none are specified, plot all of them
         if keys is None:
-            extra_strain_keys: List[str] = config["config"].get("ASM", "ASM_strain_keys")
+            extra_strain_keys: List[str] = config.get("ASM", "ASM_strain_keys")
         else:
             extra_strain_keys = keys
 

@@ -7,7 +7,7 @@ import scipy as sp
 from scipy.interpolate import BSpline, make_interp_spline
 
 from pyfrag_plotter.pyfrag_object import PyFragResultsObject
-from pyfrag_plotter.config_handler import config
+from pyfrag_plotter import config
 
 
 def interpolate_plot(x_axis: np.ndarray, y_axis: np.ndarray, x_range: Optional[Sequence[float]] = None) -> Tuple[np.ndarray, BSpline]:
@@ -21,7 +21,7 @@ def interpolate_plot(x_axis: np.ndarray, y_axis: np.ndarray, x_range: Optional[S
     Returns:
         Tuple[np.ndarray, np.ndarray]: The interpolated x-axis and y-axis data.
     """
-    n_interpolation_points = config["config"].get("SHARED", "n_interpolation_points")
+    n_interpolation_points = config.get("SHARED", "n_interpolation_points")
     if x_range is None:
         x_min, x_max = x_axis.min(), x_axis.max()
     else:
