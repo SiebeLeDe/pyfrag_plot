@@ -12,8 +12,7 @@ Welcome to PyFragPlotter's documentation!
 
    general
    usage
-   modules
-   api/*
+   api/modules
 
 Indices and tables
 ==================
