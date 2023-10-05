@@ -99,14 +99,14 @@ def set_axes_details(
     """Specifies axes options for making a shorter and cleaner code.
 
     Args:
-        **ax (Optional[plt.Axes], optional): The axes to modify. Defaults to None.
-        **x_label (str, optional): The label for the x-axis. Defaults to "\u0394r / \u00c5" (dr / A).
-        **y_label (str, optional): The label for the y-axis. Defaults to "\u0394$\it{E}$ / kcal mol$^{-1}$" (dE / kcal mol-1).
-        **y_lim (Optional[Tuple[float, float]], optional): The y-axis limits. Defaults to None.
-        **n_max_x_ticks (int, optional): The maximum number of x-axis ticks. Defaults to 6.
-        **n_max_y_ticks (int, optional): The maximum number of y-axis ticks. Defaults to 5.
-        **plot_legend (bool, optional): Whether to plot the legend. Defaults to True.
-        **line_style_labels (Optional[Sequence[str]], optional): The legend for the line styles. Defaults to None.
+        ax (Optional[plt.Axes], optional): The axes to modify. Defaults to None.
+        x_label (str, optional): The label for the x-axis. Defaults to "\u0394r / \u00c5" (dr / A).
+        y_label (str, optional): The label for the y-axis. Defaults to "\u0394$\it{E}$ / kcal mol$^{-1}$" (dE / kcal mol-1).
+        y_lim (Optional[Tuple[float, float]], optional): The y-axis limits. Defaults to None.
+        n_max_x_ticks (int, optional): The maximum number of x-axis ticks. Defaults to 6.
+        n_max_y_ticks (int, optional): The maximum number of y-axis ticks. Defaults to 5.
+        plot_legend (bool, optional): Whether to plot the legend. Defaults to True.
+        line_style_labels (Optional[Sequence[str]], optional): The legend for the line styles. Defaults to None.
     """
     ax = plt.gca() if ax is None else ax
 

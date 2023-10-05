@@ -23,8 +23,7 @@ def process_results_file(
         df: A pandas DataFrame containing the results file data.
         trim_option: An optional argument specifying how to trim the data. Can be "max", "min", "x_limits", or None.
         trim_key: An optional argument specifying the key to use for trimming the data. Can be "EnergyTotal" or None.
-        trim_key: An optional argument specifying the IRC coordinate to use for trimming the data. Can be "x" or "y", or None.
-        *args: Additional positional arguments.
+        outlier_threshold: An optional argument specifying the threshold for removing outliers. Can be a float or None.
 
     Returns:
         A pandas DataFrame containing the processed results file data.
