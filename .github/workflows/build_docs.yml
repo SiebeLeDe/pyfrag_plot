@@ -27,6 +27,7 @@ jobs:
 
       - name: Sphinx build
         run: |
+          echo pwd
           sphinx-build . ./_build
           
 
