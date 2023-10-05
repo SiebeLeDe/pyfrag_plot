@@ -47,8 +47,15 @@ def _initialize_plot_parameters() -> None:
     This function sets various parameters for matplotlib, such as the figure size, font family, and font size.
 
     """
-    import matplotlib.pyplot as plt
-    # mpl.use("Agg")
+    import matplotlib as mpl
+
+    # In some occations matplotlib cannot use the interactive backend, so we try to use the non-interactive backend
+    try:
+        mpl.use("TkAgg")
+        import matplotlib.pyplot as plt
+    except ImportError:
+        mpl.use("Agg")
+        import matplotlib.pyplot as plt
 
     # Get a list of available fonts of matplotlib
     # import matplotlib.font_manager
