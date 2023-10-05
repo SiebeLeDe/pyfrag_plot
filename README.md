@@ -1,6 +1,6 @@
 # PyFrag Plotter
 
-[![Documentation](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/build_docs.yml/badge.svg)](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/build_docs.yml) [![Testing](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/test.yml/badge.svg)](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/test.yml)
+[![Documentation](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/build_docs.yml/badge.svg)](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/build_docs.yml) [![Testing](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/test.yml/badge.svg)](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/test.yml) [![PyPI](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/pypi-publish.yml/badge.svg)](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/pypi-publish.yml)
 
 ## Introduction
 
