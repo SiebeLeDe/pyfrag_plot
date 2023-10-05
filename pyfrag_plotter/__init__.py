@@ -79,4 +79,4 @@ def _initialize_plot_parameters() -> None:
     plt.rc("xtick", labelsize=font_size - 2)  # fontsize of the tick labels
     plt.rc("ytick", labelsize=font_size - 2)  # fontsize of the tick labels
     plt.rc("legend", fontsize=font_size - 7)  # legend fontsize
-    plt.rc("figure", titlesize=font_size + 4)  # fontsize of the figure title
+    plt.rc("figure", titlesize=font_size + 2)  # fontsize of the figure title

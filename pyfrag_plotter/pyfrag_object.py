@@ -40,7 +40,7 @@ pyfrag_headers_id_to_attribute_id_mapping: dict[str, str] = {
     "population": "population",
     "orbitalenergy": "orbitalenergy",
     "vdd": "vdd",
-    "IrrepOI": "irrep",
+    "irrepOI": "irrep",
 }
 
 

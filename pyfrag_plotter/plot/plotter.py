@@ -81,7 +81,6 @@ class Plotter:
         It checks if the specified directory exists for making plots.
         If not, creates it (and any parent directories).
         """
-        print(self.path)
         if not os.path.isdir(self.path):
             os.makedirs(self.path)
         return self

@@ -223,10 +223,16 @@ def read_inputfile(inputfile: str) -> Dict[str, Any]:
 
     counter = {key: 0 for key in read_functions}
     for line in pyfrag_section:
+
+        # Property keys such as bondlength, angle, dihedral, overlap, population, orbitalenergy, vdd
         for key, func in read_functions.items():
             if key.lower() in line.lower():
                 counter[key] += 1
                 input_keys[f"{key}_{counter[key]}"] = func(line)
+
+        # Special keys such as name
+        if "name" in line.lower():
+            input_keys["name"] = line.split()[1]
 
     # Add the name of the inputfile to the dictionary if it is not specified in the inputfile
     if "name" not in input_keys:
