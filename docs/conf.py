@@ -55,6 +55,11 @@ html_theme_options = {
     "navigation_depth": 2,
 }
 
+
+autodoc_default_options = {
+    'show-inheritance': True,
+}
+
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
