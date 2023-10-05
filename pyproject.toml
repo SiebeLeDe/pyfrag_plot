@@ -19,11 +19,11 @@ classifiers = [
 ]
 
 [[project.authors]]
-author = "Siebe Lekanne Deprez"
+name = "Siebe Lekanne Deprez"
 email = "s.j.lekanne.deprez@vu.nl"
 
 [[project.maintainers]]
-author = "Siebe Lekanne Deprez"
+name = "Siebe Lekanne Deprez"
 email = "s.j.lekanne.deprez@vu.nl"
 
 [project.license]
