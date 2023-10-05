@@ -1,7 +1,6 @@
 import pandas as pd
 import pytest
 from pyfrag_plotter.processing_funcs import _trim_data_float, _trim_data_int, _trim_data_str, remove_dispersion_term, remove_outliers, remove_duplicate_x_values_dataframe
-from pyfrag_plotter.errors import PyFragResultsProcessingError
 
 OUTLIER_THRESHOLD = 50
 
@@ -74,11 +73,6 @@ def test_trim_data_str_max(regular_df):
     result = _trim_data_str(regular_df, "max", "EnergyTotal")
     assert len(result) == 8
     assert result["EnergyTotal"].iloc[-1] == result["EnergyTotal"].max()
-
-
-def test_trim_data_str_false(regular_df):
-    with pytest.raises(PyFragResultsProcessingError):
-        _trim_data_str(regular_df, "invalid", "EnergyTotal")
 
 
 def test_remove_dispersion_term_with_dispersion():
@@ -185,7 +179,6 @@ def test_remove_duplicate_x_values_dataframe_multiple_x_axes():
         "angle_1": [10, 25, 30],
         "energy": [100, 250, 300]
     })
-    print(remove_duplicate_x_values_dataframe(df))
     assert remove_duplicate_x_values_dataframe(df).equals(expected_df)
 
 

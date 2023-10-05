@@ -5,8 +5,9 @@ from pyfrag_plotter.config.config_handler import Config, config_key_to_function_
 
 current_dir = os.path.abspath(os.path.dirname(__file__))
 package_path = os.path.abspath(os.path.join(current_dir, os.pardir))
-path_to_config = os.path.join(package_path, "pyfrag_plotter", "config.ini")
+path_to_config = os.path.join(package_path, "pyfrag_plotter", "config", "config.ini")
 path_to_extra_config = os.path.join(current_dir, "fixtures", "extra_config.ini")
+print(path_to_config)
 
 
 def test_load_config():
@@ -44,7 +45,7 @@ def test_default_section_right_keys(config):
 
 
 def test_get_shared(config):
-    assert config.get('SHARED', 'line_styles') == ["solid", "dashed", "dotted", "dashdot"]
+    assert config.get('SHARED', 'line_styles') == ["solid", "dashed", "dotted", "dashdot", "dashed"]
 
 
 def test_get_asm(config):

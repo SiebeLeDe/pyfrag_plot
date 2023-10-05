@@ -158,5 +158,4 @@ class Config:
         """
         for config_keys in self.content.values():
             for config_key, value_of_config_key in config_keys.items():
-                print(config_key, value_of_config_key)
                 validate_config_key(config_key, value_of_config_key, list(config_key_to_function_mapping.keys()))

@@ -230,6 +230,6 @@ def read_inputfile(inputfile: str) -> Dict[str, Any]:
 
     # Add the name of the inputfile to the dictionary if it is not specified in the inputfile
     if "name" not in input_keys:
-        input_keys["name"] = os.path.splitext(os.path.basename(inputfile))[0]
+        input_keys["name"] = os.path.dirname(inputfile).split(os.sep)[-1]
 
     return input_keys

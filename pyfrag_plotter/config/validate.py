@@ -29,7 +29,6 @@ def _check_key_has_correct_value(key: str, value: Any) -> None:
 
     # If the key is present, check if the value is in the list of allowed values
     allowed_values_for_key = ALLOWED_VALUES[key]
-    print(key, value, allowed_values_for_key)
 
     # For strings, check if the value is in the list of allowed values
     if value is isinstance(value, str):

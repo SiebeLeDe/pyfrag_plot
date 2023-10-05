@@ -162,10 +162,8 @@ def set_axes_details(
     ax.yaxis.set_major_locator(MaxNLocator(n_max_y_ticks))
 
     # Removes the top en right border of the graph
-    right_side = ax.spines["top"]
-    top_side = ax.spines["right"]
-    right_side.set_visible(False)
-    top_side.set_visible(False)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
 
     # Makes the x and y axis wider
     ax.spines["left"].set_linewidth(1.5)
@@ -179,19 +177,19 @@ def set_axes_details(
         system_name_legend = ax.legend(frameon=False)
         ax.add_artist(system_name_legend)
 
-    # Plots another legend for multiple linestyles for the same system
-    # It gets the lines and overwrites the labels with the line_style_labels
-    if line_style_labels is not None:
-        lines = ax.lines
-        n_systems = len(lines) // len(line_style_labels)
-        lines = [ax.lines[i] for i in range(0, len(lines), n_systems)]
+        # Plots another legend for multiple linestyles for the same system
+        # It gets the lines and overwrites the labels with the line_style_labels
+        if line_style_labels is not None:
+            lines = ax.lines
+            n_systems = len(lines) // len(line_style_labels)
+            lines = [ax.lines[i] for i in range(0, len(lines), n_systems)]
 
-        # Overwrite the labels
-        [line.set_label(label) for line, label in zip(lines, line_style_labels)]
-        second_legend = ax.legend(
-            handles=lines,
-            loc="upper center",
-            ncol=len(line_style_labels)//2,
-            frameon=False,
-        )
-        ax.add_artist(second_legend)
+            # Overwrite the labels
+            [line.set_label(label) for line, label in zip(lines, line_style_labels)]
+            second_legend = ax.legend(
+                handles=lines,
+                loc="upper center",
+                ncol=len(line_style_labels)//2 if len(line_style_labels) > 2 else 1,
+                frameon=False,
+            )
+            ax.add_artist(second_legend)

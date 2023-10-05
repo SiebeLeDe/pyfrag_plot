@@ -20,7 +20,7 @@ def plot_logger(log_level=logging.INFO):
             start_time = time.time()
             result = func(*args, **kwargs)
             end_time = time.time()
-            logging.log(log_level, f"Plot function {func.__name__} called. Execution time: {end_time - start_time:.2f} seconds.")
+            logging.log(log_level, f"Plotting with {func.__name__}. Time taken: {end_time - start_time:.2f} seconds.")
             return result
         return wrapper
     return decorator
@@ -49,6 +49,7 @@ class Plotter:
     """Main class for plotting the results of the PyFrag calculations.
 
     Attributes:
+        name (str): The name of the plotter object.
         objects (Sequence[PyFragResultsObject]): A list of PyFragResultsObject objects.
         path (str): The directory to save the plots to.
         plot_info (PlotInfo): An instance of the PlotInfo class.
@@ -65,18 +66,10 @@ class Plotter:
         plot_population(self, keys: Optional[Tuple[List[str]]] = None):
             Plots the population of the orbitals.
 
+    Note: The plotter object can be used with a "with" statement to ensure that the plot directory is removed if it's empty.
     """
 
     def __init__(self, name: str, plot_dir: str, pyfrag_objects: Sequence[PyFragResultsObject], irc_coord: Sequence[str]):
-        """Initializes a new Plotter object with the given name, output directory, PyFragResultsObject objects, and IRC coordinate.
-
-        Args:
-            name (str): The name of the plotter object.
-            plot_dir (str): The directory to save the plots to.
-            pyfrag_objects (Sequence[PyFragResultsObject]): A list of PyFragResultsObject objects.
-            irc_coord (Sequence[str]): The IRC coordinate to plot on the x-axis and the label for the x-axis.
-
-        """
         self.name = name
         self.objects = pyfrag_objects
         self.path = opj(plot_dir, name)
@@ -88,15 +81,18 @@ class Plotter:
         It checks if the specified directory exists for making plots.
         If not, creates it (and any parent directories).
         """
+        print(self.path)
         if not os.path.isdir(self.path):
             os.makedirs(self.path)
         return self
 
     def __exit__(self, exc_type, exc_value, traceback):
-        """Makes sure to close the plotter object and remove the plot directory if it's empty."""
-        dir_content = os.listdir(self.path)
-        if len(dir_content) == 0:
-            os.rmdir(self.path)
+        """ Makes sure to close the plotter object and remove the plot directory if it's empty. """
+        for root, dirs, files in os.walk(self.path, topdown=False):
+            for dir in dirs:
+                dir_path = os.path.join(root, dir)
+                if len(os.listdir(dir_path)) == 0:
+                    os.rmdir(dir_path)
 
 # ------------------------------------------------------------------------------------------------------------- #
 # ------------------------------ ASM, EDA and ASM extra strain plotting routines ------------------------------ #
@@ -161,7 +157,8 @@ class Plotter:
         set_figure_details(fig=fig,
                            title=f"ASM_{'_'.join(asm_keys)}",
                            savefig=opj(self.path, f"ASM_{'_'.join(asm_keys)}.png"),
-                           line_style_labels=labels)
+                           line_style_labels=labels,
+                           **kwargs)
         return fig, ax
 
     @plot_logger()
@@ -193,7 +190,9 @@ class Plotter:
         set_axes_details(ax=ax, x_label=self.plot_info.irc_coord_label, line_style_labels=labels, **kwargs)
         set_figure_details(fig=fig,
                            title=f"EDA_{'_'.join(eda_keys)}",
-                           savefig=opj(self.path, f"EDA_{'_'.join(eda_keys)}.png"),)
+                           savefig=opj(self.path, f"EDA_{'_'.join(eda_keys)}.png"),
+                           **kwargs
+                           )
         return fig, ax
 
     @plot_logger()
@@ -227,6 +226,7 @@ class Plotter:
             fig=fig,
             title=f"Strain_{'_'.join(extra_strain_keys)}",
             savefig=opj(self.path, f"ASM_{'_'.join(extra_strain_keys)}.png"),
+            **kwargs
         )
         return fig, ax
 
@@ -297,5 +297,6 @@ class Plotter:
         set_axes_details(ax=ax, x_label=self.plot_info.irc_coord_label, line_style_labels=labels, **kwargs)
         set_figure_details(fig=fig,
                            title=title,
-                           savefig=opj(self.path, f"{'_'.join(keys)}.png"),)
+                           savefig=opj(self.path, f"{'_'.join(keys)}.png"),
+                           **kwargs)
         return fig, ax

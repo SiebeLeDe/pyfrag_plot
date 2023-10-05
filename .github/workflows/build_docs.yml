@@ -22,10 +22,14 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install -e .
           
+      - name: Run sphinx-apidoc
+        run: cd docs; sphinx-apidoc -f -o . ./api ../setup.py
+
       - name: Sphinx build
         run: |
-          sphinx-build docs docs/_build
+          sphinx-build . ./_build
           
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
