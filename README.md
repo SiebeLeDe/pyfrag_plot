@@ -2,6 +2,11 @@
 
 [![Documentation](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/build_docs.yml/badge.svg)](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/build_docs.yml) [![Testing](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/test.yml/badge.svg)](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/test.yml) [![PyPI](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/pypi-publish.yml/badge.svg)](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/pypi-publish.yml)
 
+```{eval-rst}
+.. image:: https://badge.fury.io/py/pyfrag-plotter.svg
+    :target: https://badge.fury.io/py/pyfrag-plotter.svg
+```
+
 ## Introduction
 
 The package contains python scripts that can be used to plot the results of pyfrag calculations (see the [PyFrag program](https://pyfragdocument.readthedocs.io/en/latest/install.html)). PyFrag is a program written at the Vrije Universieit Amsterdam to analyze reaction coordinates of reactions using quantum mechanical software. The analysis methods consist of the ["Activation Strain Model"](https://www.nature.com/articles/s41596-019-0265-0) and ["Energy Decomposition Analysis"](https://onlinelibrary.wiley.com/doi/10.1002/9780470125922.ch1). The package is still in development as of 2023 and will be updated regularly.
