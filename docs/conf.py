@@ -68,9 +68,16 @@ html_theme = 'pydata_sphinx_theme'
 html_static_path = ['_static']
 
 # Don't show the pyfrag_plotter module name in the documentation
-add_module_names = False
+add_module_names = True
 
 # Replace function / class names with alias
 rst_epilog = """
 .. |init| replace:: :func:`pyfrag_plotter.config_handler.initialize_pyfrag_plotter`
+.. |validate| replace:: :func:`pyfrag_plotter.config_handler.validate_config`
+.. |get| replace:: :func:`pyfrag_plotter.config_handler.get_config`
+.. |process| replace:: :func:`pyfrag_plotter.processing_funcs.process_results_file`
+.. |ax_details| replace:: :func:`pyfrag_plotter.plot.plot_details.set_axes_details`
+.. |fig_details| replace:: :func:`pyfrag_plotter.plot.plot_details.set_figure_details`
+.. |pyfrag_obj| replace:: :class:`pyfrag_plotter.pyfrag_object.PyFragResultsObject`
+.. |obj_from_dir| replace:: :func:`pyfrag_plotter.pyfrag_object.create_pyfrag_object_from_dir`
 """

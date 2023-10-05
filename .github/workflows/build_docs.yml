@@ -27,8 +27,7 @@ jobs:
 
       - name: Sphinx build
         run: |
-          pwd
-          sphinx-build . ./_build
+          cd docs; sphinx-build . ./_build
           
 
       - name: Deploy to GitHub Pages
