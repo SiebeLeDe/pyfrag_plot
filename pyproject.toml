@@ -2,12 +2,12 @@
 requires = ["setuptools==63.4.3", "wheel"]
 build-backend = "setuptools"
 
-[project]
-dynamic = ["dependencies"]
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
+version = {command = "git describe --tags --long --dirty", replace = "-dirty", match = "v(.*)"}
 
-
+[project]
+dynamic = ["dependencies", "version"]
 name = "pyfrag_plotter"
 authors = [
   { name="SiebeLeDe", email="s.j.lekanne.deprez@vu.nl" },
@@ -22,4 +22,3 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-dynamic = ["version"]
