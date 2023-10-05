@@ -13,8 +13,7 @@ authors = [
   { name="SiebeLeDe", email="s.j.lekanne.deprez@vu.nl" },
 ]
 description = "Package for plotting pyfrag calculations using the AMS driver and plams"
-documentation = "https://siebelede.github.io/pyfrag_plot/"
-repository = "https://github.com/SiebeLeDe/pyfrag_plot"
+url = "https://github.com/SiebeLeDe/pyfrag_plot"
 readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [
