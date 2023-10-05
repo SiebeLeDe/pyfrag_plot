@@ -32,13 +32,3 @@ text = "MIT License"
 [project.urls]
 repository = "https://github.com/SiebeLeDe/pyfrag_plot"
 documentation = "https://siebelede.github.io/pyfrag_plot/"
-
-[project.optional-dependencies]
-doc = [
-    "sphinx>=3.5.4",
-    "pydata_sphinx_theme>=0.6.3",
-    "myst_parser>=0.15.1",
-]
-dev = [
-    "pytest",
-]
