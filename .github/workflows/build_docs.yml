@@ -23,7 +23,7 @@ jobs:
           pip install -e .
           
       - name: Run sphinx-apidoc
-        run: cd docs; sphinx-apidoc -f -o . ./api ../setup.py
+        run: cd docs; sphinx-apidoc -f -o ./api . ../setup.py
 
       - name: Sphinx build
         run: |
