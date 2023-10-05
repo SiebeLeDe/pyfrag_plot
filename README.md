@@ -1,11 +1,8 @@
 # PyFrag Plotter
 
-[![Documentation](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/build_docs.yml/badge.svg)](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/build_docs.yml) [![Testing](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/test.yml/badge.svg)](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/test.yml) [![PyPI](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/pypi-publish.yml/badge.svg)](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/pypi-publish.yml)
+[![Documentation](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/build_docs.yml/badge.svg)](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/build_docs.yml) [![Testing](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/test.yml/badge.svg)](https://github.com/SiebeLeDe/pyfrag_plot/actions/workflows/test.yml)
 
-```{eval-rst}
-.. image:: https://badge.fury.io/py/pyfrag-plotter.svg
-    :target: https://badge.fury.io/py/pyfrag-plotter.svg
-```
+[![PyPI version](https://badge.fury.io/py/pyfrag-plotter.svg)](https://badge.fury.io/py/pyfrag-plotter) [![PyPI pyversions](https://img.shields.io/pypi/pyversions/pyfrag-plotter.svg)](https://pypi.python.org/pypi/pyfrag-plotter/) [![PyPI license](https://img.shields.io/pypi/l/pyfrag-plotter.svg)](https://pypi.python.org/pypi/pyfrag-plotter/) [![PyPI status](https://img.shields.io/pypi/status/pyfrag-plotter.svg)](https://pypi.python.org/pypi/pyfrag-plotter/)
 
 ## Introduction
 
