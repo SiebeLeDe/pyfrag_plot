@@ -22,7 +22,7 @@ There are several ways to install the package. The package is still in developme
 - [x] JupyterNotebook: Run the following command in the jupyter notebook:
 ``!pip install -e .``
 
-- [ ] PyPI: ``pip install pyfrag_plot``
+- [x] PyPI: ``pip install pyfrag_plotter``
 
 ## Simple script
 
