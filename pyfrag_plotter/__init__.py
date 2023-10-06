@@ -32,12 +32,15 @@ def initialize_pyfrag_plotter(user_config_file: Optional[str] = None) -> None:
     # Read the default config file
     config_parser = cp.ConfigParser()
     config_parser.read(config_file)
-    config.overwrite_config(config_parser)
 
     # Read the user config file if provided and overwrite the config file
     if user_config_file is not None:
         config_parser.read(user_config_file)
-        config.overwrite_config(config_parser)
+
+    # Finally, check if all config keys are valid
+    # This it to make it easier for providing user-friendly error messages
+    config.overwrite_config(config_parser)
+    config.validate_config()
 
     _initialize_plot_parameters()
 

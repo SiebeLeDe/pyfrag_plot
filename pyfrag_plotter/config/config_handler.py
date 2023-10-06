@@ -93,7 +93,6 @@ class Config:
 
     def __init__(self, config_parser) -> None:
         self.config_parser: cp.ConfigParser = config_parser
-        self.validate_config()
 
     def get(self, section: str, option: str) -> Any:
         """Gets the value of the specified option in the specified section.
@@ -144,7 +143,6 @@ class Config:
     def overwrite_config(self, config_parser: cp.ConfigParser):
         """ Overwrites the current config parser with a new config parser. This is used to overwrite the default config parser with a user-specified config parser with the |init| function."""
         self.config_parser = config_parser
-        self.validate_config()
 
     def validate_config(self):
         """ Validates all available config keys. It checks whether:
