@@ -2,26 +2,13 @@ import pytest
 import os
 from configparser import ConfigParser
 from pyfrag_plotter.config.config_handler import Config, config_key_to_function_mapping
+from pyfrag_plotter.errors import PyFragConfigValidationError
 
 current_dir = os.path.abspath(os.path.dirname(__file__))
 package_path = os.path.abspath(os.path.join(current_dir, os.pardir))
 path_to_config = os.path.join(package_path, "pyfrag_plotter", "config", "config.ini")
 path_to_extra_config = os.path.join(current_dir, "fixtures", "extra_config.ini")
-print(path_to_config)
-
-
-def test_load_config():
-    config_parser = ConfigParser()
-    config_parser.read(path_to_config)
-    config_inst = Config(config_parser)
-    assert config_inst.get('EDA', 'EDA_keys') == ['Int', 'Elstat', 'OI', 'Pauli', 'Disp']
-
-
-def test_load_extra_config():
-    config_parser = ConfigParser()
-    config_parser.read(path_to_extra_config)
-    config_inst = Config(config_parser)
-    assert config_inst.get('EDA', 'EDA_keys') == ['Int', 'Elstat', 'OI', 'Pauli']
+path_to_invalid_config = os.path.join(current_dir, "fixtures", "invalid_config.ini")
 
 
 @pytest.fixture
@@ -29,6 +16,51 @@ def config():
     config_parser = ConfigParser()
     config_parser.read(path_to_config)
     return Config(config_parser)
+
+
+@pytest.fixture
+def config_with_invalid_default_section():
+    config_parser = ConfigParser()
+    config_parser.read(path_to_invalid_config)
+    return Config(config_parser)
+
+
+def test_load_config():
+    config_parser = ConfigParser()
+    config_parser.read(path_to_config)
+    config_inst = Config(config_parser)
+    assert config_inst.get('EDA', 'eda_keys') == ['Int', 'Elstat', 'OI', 'Pauli', 'Disp']
+
+
+def test_load_extra_config():
+    config_parser = ConfigParser()
+    config_parser.read(path_to_extra_config)
+    config_inst = Config(config_parser)
+    assert config_inst.get('EDA', 'eda_keys') == ['Int', 'Elstat', 'OI', 'Pauli']
+
+
+def test_config_validation():
+    config_parser = ConfigParser()
+    config_parser.read(path_to_config)
+    config_inst = Config(config_parser)
+    config_inst.validate_config()
+
+
+def test_config_validation_false_default_config_missing_key():
+    config_parser = ConfigParser()
+    config_parser.read(path_to_invalid_config)
+    config_inst = Config(config_parser)
+    with pytest.raises(PyFragConfigValidationError):
+        config_inst.validate_config()
+
+
+def test_config_validation_invalid_key_value():
+    config_parser = ConfigParser()
+    config_parser.read(path_to_config)
+    config_inst = Config(config_parser)
+    config_inst.config_parser['SHARED']['trim_option'] = 'invalid_value'
+    with pytest.raises(ValueError):
+        config_inst.validate_config()
 
 
 def test_default_section_exists(config):
@@ -49,7 +81,7 @@ def test_get_shared(config):
 
 
 def test_get_asm(config):
-    assert config.get('ASM', 'ASM_strain_keys') == ['StrainTotal', 'frag1Strain', 'frag2Strain']
+    assert config.get('ASM', 'asm_strain_keys') == ['StrainTotal', 'frag1Strain', 'frag2Strain']
 
 
 def test_get_matplotlib(config):

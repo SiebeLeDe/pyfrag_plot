@@ -4,6 +4,7 @@ import re
 import configparser as cp
 from typing import Dict, Callable, Any, List
 from pyfrag_plotter.config.validate import validate_config_key
+from pyfrag_plotter.errors import PyFragConfigValidationError
 
 
 def _get_str_key(config_parser: cp.ConfigParser, section: str, option: str) -> str:
@@ -68,11 +69,11 @@ config_key_to_function_mapping: Dict[str, Callable[..., Any]] = {
     "n_interpolation_points": _get_int_key,
 
     # EDA keys
-    "EDA_keys": _get_list_str_key,
+    "eda_keys": _get_list_str_key,
 
     # ASM keys
-    "ASM_keys": _get_list_str_key,
-    "ASM_strain_keys": _get_list_str_key,
+    "asm_keys": _get_list_str_key,
+    "asm_strain_keys": _get_list_str_key,
 
     # Matplotlib keys
     "fig_size": _get_list_float_key,
@@ -154,6 +155,12 @@ class Config:
 
         Note: it uses the |validate| function from the validate module.
         """
+        # First checks whether all required keys are present
+        config_keys = [key for key in self.config_parser.defaults().keys()]
+        if not all([key in config_keys for key in config_key_to_function_mapping.keys()]):
+            raise PyFragConfigValidationError(f"Not all required keys are present in the config file. Please check if these keys are specified {list(config_key_to_function_mapping.keys())}.")
+
+        # Then check every key-value pair
         for config_keys in self.content.values():
             for config_key, value_of_config_key in config_keys.items():
                 validate_config_key(config_key, value_of_config_key, list(config_key_to_function_mapping.keys()))

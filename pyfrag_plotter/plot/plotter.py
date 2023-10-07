@@ -54,18 +54,6 @@ class Plotter:
         path (str): The directory to save the plots to.
         plot_info (PlotInfo): An instance of the PlotInfo class.
 
-    Methods:
-        standard_plot_routine(self, type: str, keys: Sequence[str], ax: Optional[plt.Axes] = None):
-            The plot routine for the EDA, ASM and extra strain plots.
-        plot_asm(self, keys: Optional[List[str]] = None, **kwargs):
-            Plots the activation strain model terms. The user can specify which terms to plot, otherwise all of them are plotted.
-        plot_eda(self, keys: Optional[List[str]] = None):
-            Plots the energy decomposition terms. The user can specify which terms to plot, otherwise all of them are plotted.
-        plot_extra_strain(self, keys: Optional[List[str]] = None):
-            Plots the extra strain terms. The user can specify which terms to plot, otherwise all of them are plotted.
-        plot_population(self, keys: Optional[Tuple[List[str]]] = None):
-            Plots the population of the orbitals.
-
     Note: The plotter object can be used with a "with" statement to ensure that the plot directory is removed if it's empty.
     """
 
@@ -141,7 +129,7 @@ class Plotter:
 
         # Get the keys to plot. If none are specified, plot all of them
         if keys is None:
-            asm_keys: List[str] = config.get("ASM", "ASM_keys")
+            asm_keys: List[str] = config.get("ASM", "asm_keys")
         else:
             asm_keys = keys
 
@@ -176,7 +164,7 @@ class Plotter:
 
         # Get the keys to plot. If none are specified, plot all of them
         if keys is None:
-            eda_keys: List[str] = config.get("EDA", "EDA_keys")
+            eda_keys: List[str] = config.get("EDA", "asm_keys")
         else:
             eda_keys = keys
 
@@ -210,7 +198,7 @@ class Plotter:
 
         # Get the keys to plot. If none are specified, plot all of them
         if keys is None:
-            extra_strain_keys: List[str] = config.get("ASM", "ASM_strain_keys")
+            extra_strain_keys: List[str] = config.get("ASM", "asm_strain_keys")
         else:
             extra_strain_keys = keys
 
