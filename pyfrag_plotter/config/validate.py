@@ -4,6 +4,7 @@ from pyfrag_plotter.errors import PyFragConfigValidationError
 
 
 ALLOWED_VALUES: Dict[str, Sequence[Any]] = {
+    "log_level": ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
     "trim_option": ["min", "max", "x_lim", "false"],
     "reverse_x_axis": ["false", "true"],
     "stat_point_type": ["min", "max", "none"],
@@ -19,7 +20,7 @@ def _check_if_key_is_valid_key(key: str, validation_keys: Sequence[str]) -> None
         raise PyFragConfigValidationError(f"Key '{key}' is not present in the config file. Please check the config file.", key=key)
 
 
-def _check_if_key_has_allowed_value(key: str, value: Any) -> None:
+def _check_if_key_has_allowed_value(key: list | str, value: Any) -> None:
     """ Validates whether the user has specified an appropriate value in config file """
 
     # Check if the key is present in the ALLOWED_VALUES dictionary.
@@ -66,10 +67,8 @@ def validate_config_key(key: str, value: Any, validation_keys: Sequence[str]) ->
     key = key.lower()
     validation_keys = [validation_key.lower() for validation_key in validation_keys]
 
-    if key == "trim_option":
-        print(key, value)
-        # Check if all required keys are present
-        _check_if_key_is_valid_key(key, validation_keys)
+    # Check if all required keys are present
+    _check_if_key_is_valid_key(key, validation_keys)
 
-        # Check if all keys have the appropriate value
-        _check_if_key_has_allowed_value(key, value)
+    # Check if all keys have the appropriate value
+    _check_if_key_has_allowed_value(key, value)

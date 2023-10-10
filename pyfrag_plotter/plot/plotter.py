@@ -11,8 +11,6 @@ from pyfrag_plotter import config
 from pyfrag_plotter.plot.plot_details import set_figure_details, set_axes_details
 from pyfrag_plotter.pyfrag_object import PyFragResultsObject
 
-logging.basicConfig(level=logging.INFO)
-
 
 def plot_logger(log_level=logging.INFO):
     def decorator(func):

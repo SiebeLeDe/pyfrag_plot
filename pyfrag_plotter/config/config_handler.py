@@ -56,6 +56,7 @@ def _get_any_key(config_parser: cp.ConfigParser, section: str, option: str) -> A
 
 config_key_to_function_mapping: Dict[str, Callable[..., Any]] = {
     # Shared keys
+    "log_level": _get_str_key,
     "x_lim": _get_list_float_key,
     "y_lim": _get_list_float_key,
     "colours": _get_list_str_key,
@@ -112,6 +113,7 @@ class Config:
             ValueError: If the specified section is not a valid section.
 
         """
+        option = option.lower()
         if option not in config_key_to_function_mapping:
             raise ValueError(f"Option '{option}' is not a valid option. Valid options are {list(config_key_to_function_mapping.keys())}.\nPlease check the config file.")
 
@@ -161,6 +163,7 @@ class Config:
             raise PyFragConfigValidationError(f"Not all required keys are present in the config file. Please check if these keys are specified {list(config_key_to_function_mapping.keys())}.")
 
         # Then check every key-value pair
-        for config_keys in self.content.values():
-            for config_key, value_of_config_key in config_keys.items():
-                validate_config_key(config_key, value_of_config_key, list(config_key_to_function_mapping.keys()))
+        for section, config_keys in self.content.items():
+            for config_key in config_keys:
+                typed_value_of_config_key = config_key_to_function_mapping[config_key](self.config_parser, section, config_key)
+                validate_config_key(config_key, typed_value_of_config_key, list(config_key_to_function_mapping.keys()))

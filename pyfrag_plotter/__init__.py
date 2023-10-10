@@ -2,6 +2,7 @@ from pyfrag_plotter.config.config_handler import Config
 import os
 import configparser as cp
 from typing import Optional
+import logging
 
 
 # Global variable that contains the config file. It is first empty, but will be filled in the |init| function
@@ -42,6 +43,8 @@ def initialize_pyfrag_plotter(user_config_file: Optional[str] = None) -> None:
     config.overwrite_config(config_parser)
     config.validate_config()
 
+    # Initialize the log level and plot parameters
+    logging.basicConfig(level=config.get("SHARED", "log_level"))
     _initialize_plot_parameters()
 
 
