@@ -19,7 +19,7 @@ Here's an example of how to initialize the program:
 
     initialize_pyfrag_plotter('path_to_config_file')
 
-Creating the |results_object|
+Creating the PyFragResultsObject
 =============================
 
 Now that we have initialized the program, we can read the files (.txt and .in) that are present in the pyfag directory. The most straightforward method is to use the |obj_from_dir| function that loads the files, processes these (e.g. removing Dispersion term if zero everywhere, trim data, remove outliers, and more)
@@ -33,11 +33,11 @@ Note: here we assume that you already have specified the paths to the PyFrag dir
 Creating a Plotter instance
 ===========================
 
-The next step is to convert the |results_object| to a Plotter instance. The latter is able to plot the data contained in the |O|. This is done by passing the |results_object| to the Plotter class. The Plotter class contains methods to make plots. The Plotter class also contains a method to make a plot for all PyFragResultsObjects that are passed to the Plotter class. This is done by calling the |plot_all| method.
+The next step is to convert the |results_object| to a Plotter instance. The latter is able to plot the data contained in the PyFragResultsObject. This is done by passing the PyFragResultsObject to the Plotter class. The Plotter class contains methods such as `plot_asm`, `plot_eda`, and more to make plots.
 
 .. code-block:: python
 
-    plot_inst = Plotter(name="O_tri_ureas", plot_dir=plot_dir, pyfrag_objects=objs, irc_coord=("bondlength_1",  "r - r$_{eq}$ / Å"))
+    plot_inst = Plotter(name="example_plots", plot_dir=plot_dir, pyfrag_objects=objs, irc_coord=("bondlength_1",  "r - r$_{eq}$ / Å"))
 
 
 Generating Plots
@@ -63,13 +63,22 @@ Example Plots and further information
 
 Here are example images:
 
+- ASM plot with `tight_layout` enabled and `y_lim` set to [-20, 20]
+
 .. image:: _static/ASM_EnergyTotal_Int_StrainTotal.png
-    :alt: ASM plot with tight_layout enabled and y_lim set to [-20, 20]
+    :width: 400
+    :alt: ASM plot with `tight_layout` enabled and `y_lim` set to [-20, 20]
+
+- ASM plot with only the EnergyTotal term (with `inst.plot_asm(keys=["EnergyTotal"]))
 
 .. image:: _static/ASM_EnergyTotal.png
-    :alt: ASM plot with only the EnergyTotal term (with inst.plot_asm(keys=["EnergyTotal"]))
+    :width: 400
+    :alt: ASM plot with only the EnergyTotal term (with `inst.plot_asm(keys=["EnergyTotal"]))
+
+- EDA plot with all keys (with `inst.plot_eda()`)
 
 .. image:: _static/EDA_Int_Pauli_Elstat_OI.png
-    :alt: EDA plot with all keys (with inst.plot_eda())
+    :width: 400
+    :alt: EDA plot with all keys (with `inst.plot_eda()`)
 
-For more examples, `Visit the example folder <https://github.com/SiebeLeDe/pyfrag_plot/tree/main/example>`_.
+For more examples, `visit the example folder <https://github.com/SiebeLeDe/pyfrag_plot/tree/main/example>`_.

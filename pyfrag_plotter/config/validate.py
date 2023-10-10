@@ -1,5 +1,5 @@
 """ Module for validating the inputs of the config file """
-from typing import Dict, Any, Sequence
+from typing import Dict, Any, Sequence, Union, List
 from pyfrag_plotter.errors import PyFragConfigValidationError
 
 
@@ -20,7 +20,7 @@ def _check_if_key_is_valid_key(key: str, validation_keys: Sequence[str]) -> None
         raise PyFragConfigValidationError(f"Key '{key}' is not present in the config file. Please check the config file.", key=key)
 
 
-def _check_if_key_has_allowed_value(key: list | str, value: Any) -> None:
+def _check_if_key_has_allowed_value(key: Union[List, str], value: Any) -> None:
     """ Validates whether the user has specified an appropriate value in config file """
 
     # Check if the key is present in the ALLOWED_VALUES dictionary.
