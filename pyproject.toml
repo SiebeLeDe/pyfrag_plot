@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 dependencies = {file = ["requirements.txt"]}
 
 [project]
-dynamic = ["dependencies"]
+dynamic = ["dependencies", "version"]
 name = "pyfrag_plotter"
 description = "Package for plotting pyfrag calculations using the AMS driver and plams"
 readme = "README.md"
