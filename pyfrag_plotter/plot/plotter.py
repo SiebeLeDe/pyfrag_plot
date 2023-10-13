@@ -162,7 +162,7 @@ class Plotter:
 
         # Get the keys to plot. If none are specified, plot all of them
         if keys is None:
-            eda_keys: List[str] = config.get("EDA", "asm_keys")
+            eda_keys: List[str] = config.get("EDA", "eda_keys")
         else:
             eda_keys = keys
 
