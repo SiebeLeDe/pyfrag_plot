@@ -36,7 +36,7 @@ Tutorials covering key functionality can be found in the [example folder](exampl
 
 Siebe Lekanne Deprez, PhD student at the Vrije Universiteit Amsterdam (VU) working in the theoretical chemistry department.
 
-## License (ook LICENSE file toevoegen)
+## License
 
 This package is licensed under the [MIT License](LICENSE.txt).
 
