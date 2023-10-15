@@ -128,7 +128,7 @@ def set_axes_details(
     # Reverses the plot direction by reversing the x-axis
     reverse_x_axis = config.get("SHARED", "reverse_x_axis")
     if reverse_x_axis:
-        ax.set_xlim(ax.get_xlim()[::-1][0], ax.get_xlim()[1])
+        ax.set_xlim(ax.get_xlim()[::-1][0], ax.get_xlim()[0])
 
     # Smoothens the plots in the specified range (x_lim) by interpolating the data using the scipy spline library
     for line in ax.lines:

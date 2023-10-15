@@ -55,3 +55,7 @@ class PyFragResultsObjectError(PyFragError):
 
 class PyFragConfigValidationError(PyFragError):
     """An error that occurs when the PyFrag config is invalid."""
+
+
+class PyFragInterpolationError(PyFragError):
+    """An error that occurs when interpolating data."""

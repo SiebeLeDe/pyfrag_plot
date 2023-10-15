@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 import scipy as sp
 from scipy.interpolate import BSpline, make_interp_spline
+from pyfrag_plotter.errors import PyFragInterpolationError
 
 from pyfrag_plotter.pyfrag_object import PyFragResultsObject
 from pyfrag_plotter import config
@@ -22,15 +23,20 @@ def interpolate_plot(x_axis: np.ndarray, y_axis: np.ndarray, x_range: Optional[S
         Tuple[np.ndarray, np.ndarray]: The interpolated x-axis and y-axis data.
     """
     n_interpolation_points = config.get("SHARED", "n_interpolation_points")
+    reverse_axis = config.get("SHARED", "reverse_x_axis")
     if x_range is None:
         x_min, x_max = x_axis.min(), x_axis.max()
     else:
         x_min, x_max = x_range[0], x_range[1]
 
     mask = (x_axis >= x_min) & (x_axis <= x_max)
-    x_filtered = x_axis[mask]
-    y_filtered = y_axis[mask]
-    X_Y_Spline = make_interp_spline(x_filtered, y_filtered)
+    x_filtered = x_axis[mask] if not reverse_axis else x_axis[mask][::-1]
+    y_filtered = y_axis[mask] if not reverse_axis else y_axis[mask][::-1]
+
+    try:
+        X_Y_Spline = make_interp_spline(x_filtered, y_filtered, k=3)
+    except ValueError as e:
+        raise PyFragInterpolationError(f"Error: {e}\nThe data could not be interpolated. This is likely due to the data not strictly increasing. Please check the data, and possibly adjust the x.")
 
     # Returns evenly spaced numbers over a specified interval.
     X_ = np.linspace(x_min, x_max, n_interpolation_points)

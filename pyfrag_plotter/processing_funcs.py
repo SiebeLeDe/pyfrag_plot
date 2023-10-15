@@ -103,9 +103,9 @@ def _trim_data_sequence(df: pd.DataFrame, trim_option: Sequence[float], trim_key
         raise PyFragResultsProcessingError(key="trim_data_sequence", message=f"No data points within the specified x limits {x_limits} for key {trim_key}.")
 
     if not reverse_axis:
-        x_indices = np.concatenate(([max(0, x_indices[0] - 1)], x_indices, [min(x_data.size - 1, x_indices[-1] + 1)]))
+        x_indices = np.concatenate(([max(0, x_indices[0])], x_indices, [min(x_data.size - 1, x_indices[-1])]))
     else:
-        x_indices = np.concatenate(([max(0, x_indices[0] + 1)], x_indices, [min(x_data.size - 1, x_indices[-1] - 1)]))
+        x_indices = np.concatenate(([max(0, x_indices[0])], x_indices, [min(x_data.size - 1, x_indices[-1])]))
 
     df = df.iloc[x_indices]
     return df
@@ -123,7 +123,7 @@ def trim_data(df: pd.DataFrame, trim_option: Optional[Union[str, float, int, Seq
     """'Overloaded' function to trim the dataframe based on the type of the trim_option.
 
     This function trims the given dataframe based on the type of the trim_option.
-    The trim_option is read from the configuration file and can be either a string ("min", "max"), integer (IRC point), float (energy value), or a sequence (x_limits such as (1.0, 3.0))).
+    The trim_option is read from the configuration file and can be either a string ("min", "max"), integer (IRC point), float (energy func), or a sequence (x_limits such as (1.0, 3.0))).
     The function returns the trimmed dataframe.
 
     Args:
@@ -155,9 +155,9 @@ def trim_data(df: pd.DataFrame, trim_option: Optional[Union[str, float, int, Seq
         if trim_option in ["x_lim", "xlim", "x_limits", "xlimits"]:
             trim_option = tuple(config.get("SHARED", "x_lim"))
 
-    for key, value in _overload_types.items():
+    for key, func in _overload_types.items():
         if isinstance(trim_option, key):
-            return value(df, trim_option, trim_key)
+            return func(df, trim_option, trim_key)
 
     return df
 
@@ -182,7 +182,7 @@ def remove_dispersion_term(df: pd.DataFrame) -> pd.DataFrame:
         return df
 
     # Check if the dispersion term is 0.0 everywhere
-    if all([math.isclose(value, 0.0) for value in df["Disp"]]):
+    if all([math.isclose(func, 0.0) for func in df["Disp"]]):
         # Remove the dispersion term
         df = df.drop(columns=["Disp"])
 
@@ -207,7 +207,7 @@ def remove_outliers(df: pd.DataFrame, outlier_threshold: Optional[float] = None)
     """
     outlier_threshold = config.get("SHARED", "outlier_threshold") if outlier_threshold is None else outlier_threshold
 
-    # Calculate the difference between each value and its two nearest neighbors from both ends
+    # Calculate the difference between each func and its two nearest neighbors from both ends
     diff = df["EnergyTotal"].diff().abs()
     diff_forward = df["EnergyTotal"].diff(periods=2).abs()
     diff_backward = df["EnergyTotal"].iloc[::-1].diff(periods=2).abs().iloc[::-1]
