@@ -34,6 +34,10 @@ with plot_inst as plotter:
     plotter.plot_asm()
     plotter.plot_asm(["EnergyTotal"], plot_legend=False)
     plotter.plot_eda(["Int", "Pauli", "Elstat", "OI"])
+    plotter.plot_eda(["Int"])
+    plotter.plot_eda(["Elstat", "OI"])
+    plotter.plot_eda(["OI"])
+
 
 # Other results can also be plotted by using `plot_arbitrary_keys` and specifying the keys to plot.
 with plot_inst as plotter:

@@ -1,7 +1,7 @@
 .. _General:
 
 General
-============
+========
 
 PyFrag Plotter is a Python package developed by the TheoCheM group (https://www.theochem.nl/) for plotting data from PyFrag calculations. PyFrag is a program for performing Energy Decomposition Analysis (EDA) and Activation Strain Model (ASM) calculations on molecular systems.
 

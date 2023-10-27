@@ -66,19 +66,19 @@ Here are example images:
 - ASM plot with `tight_layout` enabled and `y_lim` set to [-20, 20]
 
 .. image:: _static/ASM_EnergyTotal_Int_StrainTotal.png
-    :width: 400
+    :width: 550
     :alt: ASM plot with `tight_layout` enabled and `y_lim` set to [-20, 20]
 
 - ASM plot with only the EnergyTotal term (with `inst.plot_asm(keys=["EnergyTotal"]))
 
 .. image:: _static/ASM_EnergyTotal.png
-    :width: 400
+    :width: 550
     :alt: ASM plot with only the EnergyTotal term (with `inst.plot_asm(keys=["EnergyTotal"]))
 
 - EDA plot with all keys (with `inst.plot_eda()`)
 
 .. image:: _static/EDA_Int_Pauli_Elstat_OI.png
-    :width: 400
+    :width: 550
     :alt: EDA plot with all keys (with `inst.plot_eda()`)
 
 For more examples, `visit the example folder <https://github.com/SiebeLeDe/pyfrag_plot/tree/main/example>`_.
