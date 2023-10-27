@@ -41,11 +41,19 @@ def initialize_pyfrag_plotter(user_config_file: Optional[str] = None) -> None:
     # Finally, check if all config keys are valid
     # This it to make it easier for providing user-friendly error messages
     config.overwrite_config(config_parser)
+
+    try:
+        logging.basicConfig(level=config.get("SHARED", "log_level"), format="%(levelname)s - %(message)s")
+    except ValueError:
+        logging.basicConfig(level="DEBUG", format="%(levelname)s - %(message)s")
+        logging.log(logging.WARNING, f"Invalid log level '{config.get('SHARED', 'log_level')}'. Using 'DEBUG' level for finding (input) mistakes.")
+
     config.validate_config()
+    logging.log(logging.INFO, "The config file is valid")
 
     # Initialize the log level and plot parameters
-    logging.basicConfig(level=config.get("SHARED", "log_level"))
     _initialize_plot_parameters()
+    logging.log(logging.INFO, "Initialized PyFrag plotter Succesfully")
 
 
 def _initialize_plot_parameters() -> None:
@@ -85,12 +93,19 @@ def _initialize_plot_parameters() -> None:
     plt.rcParams["axes.xmargin"] = 0.00
     plt.rcParams["axes.ymargin"] = 0.00
 
+    # Font size for the text in the plot including the title, xticks, and yticks
     font_size = config.get("MATPLOTLIB", "font_size")
 
+    # Label font size for x and y axiss
+    label_font_size = config.get("MATPLOTLIB", "label_size")
+
+    # Legend font size for within the plot
+    legend_font_size = config.get("MATPLOTLIB", "legend_size")
+
     plt.rc("font", size=font_size)  # controls default text sizes
-    plt.rc("axes", titlesize=font_size)  # fontsize of the axes title
-    plt.rc("axes", labelsize=font_size)  # fontsize of the x and y labels
     plt.rc("xtick", labelsize=font_size - 2)  # fontsize of the tick labels
     plt.rc("ytick", labelsize=font_size - 2)  # fontsize of the tick labels
-    plt.rc("legend", fontsize=font_size - 7)  # legend fontsize
     plt.rc("figure", titlesize=font_size + 2)  # fontsize of the figure title
+    plt.rc("axes", titlesize=label_font_size)  # fontsize of the axes title
+    plt.rc("axes", labelsize=label_font_size)  # fontsize of the x and y labels
+    plt.rc("legend", fontsize=legend_font_size)  # legend fontsize

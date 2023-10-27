@@ -79,7 +79,9 @@ config_key_to_function_mapping: Dict[str, Callable[..., Any]] = {
     # Matplotlib keys
     "fig_size": _get_list_float_key,
     "font": _get_str_key,
-    "font_size": _get_int_key,
+    "font_size": _get_float_key,
+    "label_size": _get_float_key,
+    "legend_size": _get_float_key,
 }
 
 
