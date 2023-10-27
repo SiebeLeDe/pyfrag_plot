@@ -98,16 +98,17 @@ class Plotter:
             for x_axis, colour, obj in zip(x_axes, self.plot_info.colours, self.objects):
                 term_data = obj.get_data_of_key(term)  # eda, asm or extra_strain
 
-                # Plot the data
+                # Plot the data. If it's the first object, associate a label with the line
                 if i == 0:
                     ax.plot(x_axis, term_data, label=obj.name, color=colour, linestyle=line_style, zorder=1)
+                else:
+                    # Otherwise, just plot the data
+                    ax.plot(x_axis, term_data, color=colour, linestyle=line_style, zorder=1)
 
-                    if self.plot_info.peak_type is not None:
-                        peak_index, peak_value = obj.get_peak_of_key(key=term, peak=self.plot_info.peak_type)
-                        ax.scatter(x_axis[peak_index], peak_value, color=colour, s=45, zorder=2)
-                        continue
-
-                ax.plot(x_axis, term_data, color=colour, linestyle=line_style, zorder=1)
+                # If a peak type is specified, plot the peak
+                if i == 0 and self.plot_info.peak_type is not None:
+                    peak_index = obj.get_peak_index(peak=self.plot_info.peak_type)
+                    ax.scatter(x_axis[peak_index], term_data[peak_index], color=colour, s=45, zorder=2)
 
     @plot_logger()
     def plot_asm(self, keys: Optional[List[str]] = None, **kwargs):

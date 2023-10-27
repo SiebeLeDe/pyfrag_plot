@@ -1,7 +1,6 @@
 """ Module that combines the data from inputfile and outputfile into a PyFragResultsObject object """
 from collections import OrderedDict
-from typing import (Annotated, Any, Callable, Dict, List, Literal, Optional, Protocol, Sequence,
-                    Tuple, TypeVar, Union)
+from typing import (Annotated, Any, Callable, Dict, List, Literal, Optional, Protocol, Sequence, TypeVar, Union)
 
 import numpy as np
 import numpy.typing as npt
@@ -17,6 +16,28 @@ from pyfrag_plotter.processing_funcs import process_results_file
 # Type alias for 1D numpy array with variable length but with a fixed dtype (np.float64)
 DType = TypeVar("DType", bound=np.generic)
 Array1D = Annotated[npt.NDArray[DType], Literal[1]]
+
+
+class AvailableTerms:
+    """ Class containing the available terms for the PyFragResultsObject. """
+    INT = "Int"
+    ENERGY_TOTAL = "EnergyTotal"
+    STRAIN_TOTAL = "StrainTotal"
+    ELSTAT = "Elstat"
+    PAULI = "Pauli"
+    OI = "OI"
+    DISP = "Disp"
+    FRAG1_STRAIN = "frag1Strain"
+    FRAG2_STRAIN = "frag2Strain"
+    BONDLENGTH = "bondlength"
+    ANGLE = "angle"
+    DIHEDRAL = "dihedral"
+    OVERLAP = "overlap"
+    POPULATION = "population"
+    ORBITALENERGY = "orbitalenergy"
+    VDD = "vdd"
+    IRREPOI = "irrepOI"
+
 
 # The following dictionary is used to map the standard terms to a nice-looking label, given by a LaTeX string
 TERM_LABELS: dict[str, str] = {
@@ -228,16 +249,19 @@ class PyFragResultsObject:
         """ Returns the x-axis data for the specified IRC coordinate."""
         return self.dataframe[irc_coord].to_numpy()
 
-    def get_peak_of_key(self, key: str, peak: str = "max") -> Tuple[int, float]:
-        """ Returns the index and corresponding peak value of the specified key. The peak can be either the maximum or minimum value. """
-        if key not in self.dataframe.columns:
-            raise PyFragResultsObjectError(f"Key '{key}' not found in PyFragResultsObject. Available keys are: {self.dataframe.columns}")
+    def get_peak_index(self, peak: str = "max") -> int:
+        """
+        Determines the peak of the "EnergyTotal" data en returns the index.
+        The peak can be either the maximum or minimum value.
+        """
+        if "EnergyTotal" not in self.dataframe.columns:
+            raise PyFragResultsObjectError("EnergyTotal not found in PyFragResultsObject. The term should be in the output txt file of the PyFrag calculation")
 
-        data_of_key = self.dataframe[key].to_numpy()
+        data_of_key = self.dataframe["EnergyTotal"].to_numpy()
 
         if peak == "max":
-            return int(data_of_key.argmax()), data_of_key.max()
-        return int(data_of_key.argmin()), data_of_key.min()
+            return int(data_of_key.argmax())
+        return int(data_of_key.argmin())
 
 
 def _add_bondlength(obj: PyFragResultsObject, *bond_info) -> None:
@@ -295,14 +319,14 @@ def _add_irrep(obj: PyFragResultsObject, irrep: str):
 
 
 key_to_func_mapping: dict[str, Callable[..., None]] = {
-    "bondlength": _add_bondlength,
-    "angle": _add_bondangle,
-    "dihedral": _add_dihedralangle,
-    "overlap": _add_overlap,
-    "population": _add_population,
-    "orbitalenergy": _add_orbitalenergy,
-    "vdd": _add_vdd,
-    "irrep": _add_irrep,
+    AvailableTerms.BONDLENGTH: _add_bondlength,
+    AvailableTerms.ANGLE: _add_bondangle,
+    AvailableTerms.DIHEDRAL: _add_dihedralangle,
+    AvailableTerms.OVERLAP: _add_overlap,
+    AvailableTerms.POPULATION: _add_population,
+    AvailableTerms.ORBITALENERGY: _add_orbitalenergy,
+    AvailableTerms.VDD: _add_vdd,
+    AvailableTerms.IRREPOI: _add_irrep,
 }
 
 
