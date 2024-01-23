@@ -1,6 +1,6 @@
 """ Module that combines the data from inputfile and outputfile into a PyFragResultsObject object """
 from collections import OrderedDict
-from typing import (Annotated, Any, Callable, Dict, List, Literal, Optional, Protocol, Sequence, TypeVar, Union)
+from typing import Annotated, Any, Callable, Dict, List, Literal, Optional, Protocol, Sequence, TypeVar, Union
 
 import numpy as np
 import numpy.typing as npt
@@ -19,7 +19,8 @@ Array1D = Annotated[npt.NDArray[DType], Literal[1]]
 
 
 class AvailableTerms:
-    """ Class containing the available terms for the PyFragResultsObject. """
+    """Class containing the available terms for the PyFragResultsObject."""
+
     INT = "Int"
     ENERGY_TOTAL = "EnergyTotal"
     STRAIN_TOTAL = "StrainTotal"
@@ -67,7 +68,8 @@ pyfrag_headers_id_to_attribute_id_mapping: dict[str, str] = {
 
 @define
 class Property(Protocol):
-    """ Base class for all properties using the Protocol functionality of python.
+    """
+    Base class for all properties using the Protocol functionality of python.
     "Properties" are classes that inheret from this class, which are:
         - Bondlength
         - BondAngle
@@ -81,57 +83,61 @@ class Property(Protocol):
 
     @property
     def label(self) -> str:
-        """ Abstract method to be further specified in the individual classes. Returns the label for the property. """
+        """Abstract method to be further specified in the individual classes. Returns the label for the property."""
         ...
 
 
 @define
 class Bondlength:
-    """ Attrs class for the bond length property containing the atoms indices and the bond length."""
+    """Attrs class for the bond length property containing the atoms indices and the bond length."""
+
     atom1: int
     atom2: int
     bondlength: float
 
     def label(self) -> str:
-        """ Returns the label for the bond length property. """
+        """Returns the label for the bond length property."""
         return f"r {self.atom1}-{self.atom2}"
 
 
 @define
 class BondAngle:
-    """ Attrs class for the bond angle property containing the atoms indices and the bond angle."""
+    """Attrs class for the bond angle property containing the atoms indices and the bond angle."""
+
     atom1: int
     atom2: int
     bondangle: float
 
     def label(self) -> str:
-        """ Returns the label for the bond angle property. """
+        """Returns the label for the bond angle property."""
         return f"$\Theta${self.atom1}-{self.atom2}"  # type: ignore # noqa: W605 since it is a LaTeX string
 
 
 @define
 class DihedralAngle:
-    """ Attrs class for the dihedral angle property containing the atoms indices and the dihedral angle."""
+    """Attrs class for the dihedral angle property containing the atoms indices and the dihedral angle."""
+
     atom1: int
     atom2: int
     atom3: int
     dihedralangle: float
 
     def label(self) -> str:
-        """ Returns the label for the bond length property. """
+        """Returns the label for the bond length property."""
         return f"r {self.atom1}-{self.atom2}-{self.atom3}"
 
 
 @define
 class Overlap:
-    """ Attrs class for the overlap property containing the orbitals and irreps of the two fragments. """
+    """Attrs class for the overlap property containing the orbitals and irreps of the two fragments."""
+
     frag1_orb: str
     frag2_orb: str
     frag1_irrep: Optional[str] = None
     frag2_irrep: Optional[str] = None
 
     def label(self) -> str:
-        """ Returns the label for the overlap property. """
+        """Returns the label for the overlap property."""
         if self.frag1_irrep is None:
             return f"S {self.frag1_orb}-{self.frag2_orb}"
         return f"S {self.frag1_irrep} {self.frag1_orb}-{self.frag2_irrep} {self.frag2_orb}"
@@ -139,13 +145,14 @@ class Overlap:
 
 @define
 class Population:
-    """ Attrs class for the population property containing the orbitals and irreps of the two fragments."""
+    """Attrs class for the population property containing the orbitals and irreps of the two fragments."""
+
     orbital: float
     frag: int
     irrep: Optional[str] = None
 
     def label(self) -> str:
-        """ Returns the label for the population property. """
+        """Returns the label for the population property."""
         if self.irrep is None:
             return f"Pop {self.frag} {self.orbital}"
         return f"Pop {self.frag} {self.orbital} {self.irrep}"
@@ -153,13 +160,14 @@ class Population:
 
 @define
 class OrbitalEnergy:
-    """ Attrs class for the orbital energy property containing the orbitals and irreps of the two fragments."""
+    """Attrs class for the orbital energy property containing the orbitals and irreps of the two fragments."""
+
     orbital: float
     frag: int
     irrep: Optional[str] = None
 
     def label(self) -> str:
-        """ Returns the label for the orbital energy property. """
+        """Returns the label for the orbital energy property."""
         if self.irrep is None:
             return f"$\epsilon$ {self.frag} {self.orbital}"  # type: ignore # noqa: W605 since it is a LaTeX string
         return f"$\epsilon$ {self.frag} {self.orbital} {self.irrep}"  # type: ignore # noqa: W605 since it is a LaTeX string
@@ -170,7 +178,7 @@ class VDD:
     atom: int
 
     def label(self) -> str:
-        """ Returns the label for the VDD property. """
+        """Returns the label for the VDD property."""
         return f"VDD {self.atom}"
 
 
@@ -179,7 +187,7 @@ class Irrep:
     irrep: str
 
     def label(self) -> str:
-        """ Returns the label for the irrep property. """
+        """Returns the label for the irrep property."""
         return f"{self.irrep}"
 
 
@@ -205,6 +213,7 @@ class PyFragResultsObject:
         irrep (List[Irrep]): The irrep data for the PyFrag calculation.
 
     """
+
     name: str
     dataframe: pd.DataFrame
     extra_strain: OrderedDict[str, Array1D[np.float64]] = field(factory=dict)
@@ -218,11 +227,11 @@ class PyFragResultsObject:
     irrep: List[Irrep] = field(factory=list)
 
     def get_data_of_key(self, key: str) -> Array1D[np.float64]:
-        """ Returns the data found in the dataframe (from the .txt file) of the specified key."""
+        """Returns the data found in the dataframe (from the .txt file) of the specified key."""
         return self.dataframe[key].to_numpy()
 
     def get_plot_labels(self, keys: Union[Sequence[str], str]) -> Sequence[str]:
-        """ Returns the labels of the specified keys. There are two types of keys that should be handled differently:
+        """Returns the labels of the specified keys. There are two types of keys that should be handled differently:
         1. Standard terms such as "Int", "EnergyTotal", "StrainTotal", "Elstat", "Pauli", "OI", and "Disp"
         2. Non-standard terms such as "bondlength", "overlap", "orbitalenergy", and more.
 
@@ -241,12 +250,12 @@ class PyFragResultsObject:
                 # IrrepOI, 1 -> irrep, 1
                 key = pyfrag_headers_id_to_attribute_id_mapping[key]
                 # irrep, 1 -> irrep[1], which is an instance of the Irrep class and part of the irrep attribute list of the PyFragResultsObject
-                labels.append(getattr(self, key)[int(index)-1].label())
+                labels.append(getattr(self, key)[int(index) - 1].label())
 
         return labels
 
     def get_x_axis(self, irc_coord: str) -> Array1D[np.float64]:
-        """ Returns the x-axis data for the specified IRC coordinate."""
+        """Returns the x-axis data for the specified IRC coordinate."""
         return self.dataframe[irc_coord].to_numpy()
 
     def get_peak_index(self, peak: str = "max") -> int:
@@ -280,40 +289,56 @@ def _add_dihedralangle(obj: PyFragResultsObject, *dihedralangle_info) -> None:
 
 
 def _add_overlap(obj: PyFragResultsObject, *overlap_info) -> None:
-    """ Adds an Overlap object to the PyFragResultsObject object. """
+    """Adds an Overlap object to the PyFragResultsObject object."""
     if len(overlap_info) == 4:
-        overlap_obj = Overlap(frag1_orb=overlap_info[1], frag2_orb=overlap_info[3], )
+        overlap_obj = Overlap(
+            frag1_orb=overlap_info[1],
+            frag2_orb=overlap_info[3],
+        )
     else:
-        overlap_obj = Overlap(frag1_irrep=overlap_info[0], frag1_orb=overlap_info[2], frag2_irrep=overlap_info[3], frag2_orb=overlap_info[5], )
+        overlap_obj = Overlap(
+            frag1_irrep=overlap_info[0],
+            frag1_orb=overlap_info[2],
+            frag2_irrep=overlap_info[3],
+            frag2_orb=overlap_info[5],
+        )
     obj.overlap.append(overlap_obj)
 
 
 def _add_population(obj: PyFragResultsObject, *population_info):
-    """ Adds an Population object to the PyFragResultsObject object. """
+    """Adds an Population object to the PyFragResultsObject object."""
     if len(population_info) == 2:
         pop_obj = Population(frag=population_info[0], orbital=population_info[1])
     else:
-        pop_obj = Population(frag=population_info[1], orbital=population_info[0], irrep=population_info[2],)
+        pop_obj = Population(
+            frag=population_info[1],
+            orbital=population_info[0],
+            irrep=population_info[2],
+        )
     obj.population.append(pop_obj)
 
 
 def _add_orbitalenergy(obj: PyFragResultsObject, *orbenergy_info):
-    """ Adds an OrbitalEnergy object to the PyFragResultsObject object. """
+    """Adds an OrbitalEnergy object to the PyFragResultsObject object."""
     if len(orbenergy_info) == 2:
         orb_energy_obj = OrbitalEnergy(frag=orbenergy_info[0], orbital=orbenergy_info[1])
     else:
-        orb_energy_obj = OrbitalEnergy(frag=orbenergy_info[1], orbital=orbenergy_info[0], irrep=orbenergy_info[2],)
+        orb_energy_obj = OrbitalEnergy(
+            frag=orbenergy_info[1],
+            orbital=orbenergy_info[0],
+            irrep=orbenergy_info[2],
+        )
     obj.orbitalenergy.append(orb_energy_obj)
 
 
 def _add_vdd(obj: PyFragResultsObject, vdd_index: str):
-    """ Adds an OrbitalEnergy object to the PyFragResultsObject object. """
+    """Adds an OrbitalEnergy object to the PyFragResultsObject object."""
     vdd_obj = VDD(atom=int(vdd_index))
     obj.vdd.append(vdd_obj)
 
 
 def _add_irrep(obj: PyFragResultsObject, irrep: str):
-    """ Adds an OrbitalEnergy object to the PyFragResultsObject object. """
+    """Adds an OrbitalEnergy object to the PyFragResultsObject object."""
     irrep_obj = Irrep(irrep=irrep)
     obj.irrep.append(irrep_obj)
 
@@ -349,7 +374,6 @@ def create_pyfrag_object_from_processed_files(results_data: pd.DataFrame, inputf
     obj = PyFragResultsObject(inputfile_data.pop("name"), results_data)
 
     for key, value in inputfile_data.items():
-
         # For non-standard terms such as overlap_[x], bondlength_[x] the term is split on the underscore
         # The first part (e.g., "overlap") determines which kind of instance of the corresponding class should be created
         # The second part (e.g., "x") is to keep track of the relative order

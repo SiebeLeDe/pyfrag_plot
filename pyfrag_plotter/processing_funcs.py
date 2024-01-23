@@ -12,10 +12,10 @@ from pyfrag_plotter.errors import PyFragResultsProcessingError, PyFragResultsPro
 
 
 def process_results_file(
-        df: pd.DataFrame,
-        trim_option: Optional[Union[str, float, int, Sequence]] = None,
-        trim_key: Optional[str] = None,
-        outlier_threshold: Optional[float] = None,
+    df: pd.DataFrame,
+    trim_option: Optional[Union[str, float, int, Sequence]] = None,
+    trim_key: Optional[str] = None,
+    outlier_threshold: Optional[float] = None,
 ) -> pd.DataFrame:
     """Processes the results file data.
 
@@ -45,6 +45,7 @@ def process_results_file(
     df = remove_outliers(df, outlier_threshold)
 
     return df
+
 
 # ====================================================================================================
 # Data Trimming   ====================================================================================
@@ -82,14 +83,15 @@ def _trim_data_int(df: pd.DataFrame, trim_option: int, trim_key: str) -> pd.Data
 
 
 def _trim_data_sequence(df: pd.DataFrame, trim_option: Sequence[float], trim_key: str) -> pd.DataFrame:
-    """ Private function that performs the actual trimming of the dataframe with a sequence trim_option"""
+    """Private function that performs the actual trimming of the dataframe with a sequence trim_option"""
 
     x_limits = trim_option
     reverse_axis = bool(config.get("SHARED", "reverse_x_axis"))
 
     if not (trim_key.startswith("bondlength_") or trim_key.startswith("angle_") or trim_key.startswith("dihedral_")):
-        PyFragResultsProcessingWarning(section="_trim_data_sequence",
-                                       message=f"trim_key {trim_key} is not valid. Valid options are bondlength_x, angle_x, and dihedral_x. Proceeding with bondlength_1.")
+        PyFragResultsProcessingWarning(
+            section="_trim_data_sequence", message=f"trim_key {trim_key} is not valid. Valid options are bondlength_x, angle_x, and dihedral_x. Proceeding with bondlength_1."
+        )
         trim_key = "bondlength_1"
 
     if not isinstance(x_limits, Sequence) or len(x_limits) != 2 or x_limits[0] >= x_limits[1]:
@@ -166,6 +168,7 @@ def trim_data(df: pd.DataFrame, trim_option: Optional[Union[str, float, int, Seq
 # Dispersion term check ==============================================================================
 # ====================================================================================================
 
+
 def remove_dispersion_term(df: pd.DataFrame) -> pd.DataFrame:
     """Removes the dispersion term from the dataframe if it is 0.0 everywhere.
 
@@ -193,6 +196,7 @@ def remove_dispersion_term(df: pd.DataFrame) -> pd.DataFrame:
 # Removing Outliers ==================================================================================
 # ====================================================================================================
 
+
 def remove_outliers(df: pd.DataFrame, outlier_threshold: Optional[float] = None) -> pd.DataFrame:
     """Removes outliers from the dataframe.
 
@@ -219,6 +223,7 @@ def remove_outliers(df: pd.DataFrame, outlier_threshold: Optional[float] = None)
     df = df[~outliers]
 
     return df
+
 
 # ====================================================================================================
 # Removing duplicate x values ========================================================================

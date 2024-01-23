@@ -1,14 +1,14 @@
+import logging
 import os
+import time
 from os.path import join as opj
 from typing import List, Optional, Sequence, Tuple
-import logging
-import time
 
 import matplotlib.pyplot as plt
 from attrs import define, field
 
 from pyfrag_plotter import config
-from pyfrag_plotter.plot.plot_details import set_figure_details, set_axes_details
+from pyfrag_plotter.plot.plot_details import set_axes_details, set_figure_details
 from pyfrag_plotter.pyfrag_object import PyFragResultsObject
 
 
@@ -20,7 +20,9 @@ def plot_logger(log_level=logging.INFO):
             end_time = time.time()
             logging.log(log_level, f"Plotting with {func.__name__}. Time taken: {end_time - start_time:.2f} seconds.")
             return result
+
         return wrapper
+
     return decorator
 
 
@@ -36,6 +38,7 @@ class PlotInfo:
         peak_type (Optional[str]): The type of peak to plot, if any.
 
     """
+
     irc_coord: str
     irc_coord_label: str
     colours: List[str] = field(factory=lambda: config.get("SHARED", "colours"))
@@ -72,16 +75,16 @@ class Plotter:
         return self
 
     def __exit__(self, exc_type, exc_value, traceback):
-        """ Makes sure to close the plotter object and remove the plot directory if it's empty. """
+        """Makes sure to close the plotter object and remove the plot directory if it's empty."""
         for root, dirs, files in os.walk(self.path, topdown=False):
             for dir in dirs:
                 dir_path = os.path.join(root, dir)
                 if len(os.listdir(dir_path)) == 0:
                     os.rmdir(dir_path)
 
-# ------------------------------------------------------------------------------------------------------------- #
-# ------------------------------ ASM, EDA and ASM extra strain plotting routines ------------------------------ #
-# ------------------------------------------------------------------------------------------------------------- #
+    # ------------------------------------------------------------------------------------------------------------- #
+    # ------------------------------ ASM, EDA and ASM extra strain plotting routines ------------------------------ #
+    # ------------------------------------------------------------------------------------------------------------- #
 
     def standard_plot_routine(self, keys: Sequence[str], ax: Optional[plt.Axes] = None):
         """The plot routine for the EDA, ASM and extra strain plots.
@@ -140,11 +143,7 @@ class Plotter:
 
         # Set the key-specific plot details
         set_axes_details(ax=ax, x_label=self.plot_info.irc_coord_label, line_style_labels=labels, **kwargs)
-        set_figure_details(fig=fig,
-                           title=f"ASM_{'_'.join(asm_keys)}",
-                           savefig=opj(self.path, f"ASM_{'_'.join(asm_keys)}.png"),
-                           line_style_labels=labels,
-                           **kwargs)
+        set_figure_details(fig=fig, title=f"ASM_{'_'.join(asm_keys)}", savefig=opj(self.path, f"ASM_{'_'.join(asm_keys)}.png"), line_style_labels=labels, **kwargs)
         return fig, ax
 
     @plot_logger()
@@ -174,11 +173,7 @@ class Plotter:
 
         # Set the key-specific plot details
         set_axes_details(ax=ax, x_label=self.plot_info.irc_coord_label, line_style_labels=labels, **kwargs)
-        set_figure_details(fig=fig,
-                           title=f"EDA_{'_'.join(eda_keys)}",
-                           savefig=opj(self.path, f"EDA_{'_'.join(eda_keys)}.png"),
-                           **kwargs
-                           )
+        set_figure_details(fig=fig, title=f"EDA_{'_'.join(eda_keys)}", savefig=opj(self.path, f"EDA_{'_'.join(eda_keys)}.png"), **kwargs)
         return fig, ax
 
     @plot_logger()
@@ -208,17 +203,12 @@ class Plotter:
 
         # Set the key-specific plot details
         set_axes_details(ax=ax, x_label=self.plot_info.irc_coord_label, line_style_labels=labels, **kwargs)
-        set_figure_details(
-            fig=fig,
-            title=f"Strain_{'_'.join(extra_strain_keys)}",
-            savefig=opj(self.path, f"ASM_{'_'.join(extra_strain_keys)}.png"),
-            **kwargs
-        )
+        set_figure_details(fig=fig, title=f"Strain_{'_'.join(extra_strain_keys)}", savefig=opj(self.path, f"ASM_{'_'.join(extra_strain_keys)}.png"), **kwargs)
         return fig, ax
 
-# ------------------------------------------------------------------------------------------------------------- #
-# ------------------------------ Population and Orbital Energy plotting routines ------------------------------ #
-# ------------------------------------------------------------------------------------------------------------- #
+    # ------------------------------------------------------------------------------------------------------------- #
+    # ------------------------------ Population and Orbital Energy plotting routines ------------------------------ #
+    # ------------------------------------------------------------------------------------------------------------- #
 
     @plot_logger()
     def plot_population(self, keys: Optional[Tuple[List[str]]] = None):
@@ -281,8 +271,5 @@ class Plotter:
 
         # Set the key-specific plot details
         set_axes_details(ax=ax, x_label=self.plot_info.irc_coord_label, line_style_labels=labels, **kwargs)
-        set_figure_details(fig=fig,
-                           title=title,
-                           savefig=opj(self.path, f"{'_'.join(keys)}.png"),
-                           **kwargs)
+        set_figure_details(fig=fig, title=title, savefig=opj(self.path, f"{'_'.join(keys)}.png"), **kwargs)
         return fig, ax
