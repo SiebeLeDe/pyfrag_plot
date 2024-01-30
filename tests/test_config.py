@@ -1,14 +1,15 @@
-import pytest
-import os
+import pathlib as pl
 from configparser import ConfigParser
+
+import pytest
 from pyfrag_plotter.config.config_handler import Config, config_key_to_function_mapping
 from pyfrag_plotter.errors import PyFragConfigValidationError
 
-current_dir = os.path.abspath(os.path.dirname(__file__))
-package_path = os.path.abspath(os.path.join(current_dir, os.pardir))
-path_to_config = os.path.join(package_path, "pyfrag_plotter", "config", "config.ini")
-path_to_extra_config = os.path.join(current_dir, "fixtures", "extra_config.ini")
-path_to_invalid_config = os.path.join(current_dir, "fixtures", "invalid_config.ini")
+current_dir = pl.Path(__file__).resolve().parent
+package_path = current_dir.parent
+path_to_config = str(package_path / "src" / "pyfrag_plotter" / "config" / "config.ini")
+path_to_extra_config = str(current_dir / "fixtures" / "extra_config.ini")
+path_to_invalid_config = str(current_dir / "fixtures" / "invalid_config.ini")
 
 
 @pytest.fixture

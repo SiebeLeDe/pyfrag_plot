@@ -1,42 +1,61 @@
 [build-system]
-requires = ["setuptools==68.0.0", "wheel", "setuptools-git-versioning<2"]
+requires = [
+    "setuptools>=68.2.2",
+    "wheel",
+    "setuptools-git-versioning",
+    "gitpython",
+]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools.dynamic]
-dependencies = {file = ["requirements.txt"]}
-
 [project]
-dynamic = ["dependencies", "version"]
-name = "pyfrag_plotter"
+name = "PyFragPlotter"
+dynamic = ["version"]
+authors = [
+    { name = "Siebe Lekanne Deprez", email = "s.j.lekanne.deprez@vu.nl" },
+]
+maintainers = [
+    { name = "Siebe Lekanne Deprez", email = "s.j.lekanne.deprez@vu.nl" },
+]
+license = { text = "MIT" }
+urls = { repository = "https://github.com/SiebeLeDe/pyfrag_plot", documentation = "https://siebelede.github.io/pyfrag_plot/" }
 description = "Package for plotting pyfrag calculations using the AMS driver and plams"
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 classifiers = [
-    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-
-[[project.authors]]
-name = "Siebe Lekanne Deprez"
-email = "s.j.lekanne.deprez@vu.nl"
-
-[[project.maintainers]]
-name = "Siebe Lekanne Deprez"
-email = "s.j.lekanne.deprez@vu.nl"
-
-[project.license]
-text = "MIT License"
-
-[project.urls]
-repository = "https://github.com/SiebeLeDe/pyfrag_plot"
-documentation = "https://siebelede.github.io/pyfrag_plot/"
+dependencies = [
+    "numpy>=1.20.0",
+    "pandas>=1.2.4",
+    "scipy>=1.6.3",
+    "attrs>=21.2.0",
+    "matplotlib>=3.3.4",
+    "sphinx>=3.5.4",
+    "pydata_sphinx_theme>=0.6.3",
+    "myst_parser>=0.15.1",
+]
 
 [tool.setuptools-git-versioning]
 enabled = true
 template = "{tag}"
 dev_template = "{tag}"
 dirty_template = "{tag}"
+
+[tool.setuptools.packages.find]
+where = ["src"] # list of folders that contain the packages (["."] by default)
+include = [
+    "pyfrag_plotter*",
+] # package names should match these glob patterns (["*"] by default)
+exclude = [
+    "tests*",
+    "docs*",
+] # exclude packages matching these glob patterns (empty by default)
 
 [tool.ruff]
 line-length = 200
@@ -69,4 +88,3 @@ exclude = [
 [tool.ruff.lint]
 select = ["E9", "F63", "F7", "F82"]
 ignore = ["F401"]
-
