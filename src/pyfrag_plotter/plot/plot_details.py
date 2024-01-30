@@ -1,6 +1,6 @@
 import inspect
 import math
-from typing import Callable, Optional, Tuple, Sequence
+from typing import Callable, Optional, Sequence, Tuple
 
 import matplotlib.figure
 import matplotlib.pyplot as plt
@@ -95,18 +95,22 @@ def set_axes_details(
     n_max_y_ticks: int = 5,
     plot_legend: bool = True,
     line_style_labels: Optional[Sequence[str]] = None,
+    title: str = "",
+    vline: float | None = None,
 ) -> None:
     """Specifies axes options for making a shorter and cleaner code.
 
     Args:
         ax (Optional[plt.Axes], optional): The axes to modify. Defaults to None.
-        x_label (str, optional): The label for the x-axis. Defaults to "\u0394r / \u00c5" (dr / A).
-        y_label (str, optional): The label for the y-axis. Defaults to "\u0394$\it{E}$ / kcal mol$^{-1}$" (dE / kcal mol-1).
+        x_label (str, optional): The label for the x-axis. Defaults to "$\Delta$ r / \u00c5" (dr / A).
+        y_label (str, optional): The label for the y-axis. Defaults to "$\Delta \it{E}$ / kcal mol$^{-1}$" (dE / kcal mol-1).
         y_lim (Optional[Tuple[float, float]], optional): The y-axis limits. Defaults to None.
         n_max_x_ticks (int, optional): The maximum number of x-axis ticks. Defaults to 6.
         n_max_y_ticks (int, optional): The maximum number of y-axis ticks. Defaults to 5.
         plot_legend (bool, optional): Whether to plot the legend. Defaults to True.
         line_style_labels (Optional[Sequence[str]], optional): The legend for the line styles. Defaults to None.
+        title (str, optional): The title of the subplot. Defaults to "".
+        vline (float, optional): The x-coordinate of the vertical line. Defaults to 0.0.
     """
     ax = plt.gca() if ax is None else ax
 
@@ -125,6 +129,9 @@ def set_axes_details(
     x_lim = config.get("SHARED", "x_lim")
     ax.set_xlim(x_lim[0], x_lim[1])
 
+    # Plot title of the subplot
+    ax.set_title(title)
+
     # Reverses the plot direction by reversing the x-axis
     reverse_x_axis = config.get("SHARED", "reverse_x_axis")
     if reverse_x_axis:
@@ -138,7 +145,7 @@ def set_axes_details(
 
     # Draws a vertical line at the specified point
     # First check for user input, else check for config file input
-    vline = config.get("SHARED", "vline")
+    vline = config.get("SHARED", "vline") if vline is None else vline
     if not math.isclose(vline, 0.0):
         ax.vlines(
             vline,
