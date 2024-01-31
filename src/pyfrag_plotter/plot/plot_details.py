@@ -72,7 +72,7 @@ def set_figure_details(
 
     # Adds a title to the figure
     if title is not None:
-        fig.suptitle(title, fontweight='bold', y=1.00)
+        fig.suptitle(title, fontweight="bold", y=1.00)
 
     # Saves the figure in standard .png format.
     if savefig is not None:
@@ -95,14 +95,14 @@ def set_axes_details(
     n_max_y_ticks: int = 5,
     plot_legend: bool = True,
     line_style_labels: Optional[Sequence[str]] = None,
-    title: str = "",
-    vline: float | None = None,
+    title: str | None = None,
+    vline: float = 0.0,
 ) -> None:
-    """Specifies axes options for making a shorter and cleaner code.
+    r"""Specifies axes options for making a shorter and cleaner code.
 
     Args:
         ax (Optional[plt.Axes], optional): The axes to modify. Defaults to None.
-        x_label (str, optional): The label for the x-axis. Defaults to "$\Delta$ r / \u00c5" (dr / A).
+        x_label (str, optional): The label for the x-axis. Defaults to "$\Delta$ r / A" (dr / A).
         y_label (str, optional): The label for the y-axis. Defaults to "$\Delta \it{E}$ / kcal mol$^{-1}$" (dE / kcal mol-1).
         y_lim (Optional[Tuple[float, float]], optional): The y-axis limits. Defaults to None.
         n_max_x_ticks (int, optional): The maximum number of x-axis ticks. Defaults to 6.
@@ -130,7 +130,8 @@ def set_axes_details(
     ax.set_xlim(x_lim[0], x_lim[1])
 
     # Plot title of the subplot
-    ax.set_title(title)
+    if title is not None:
+        ax.set_title(title)
 
     # Reverses the plot direction by reversing the x-axis
     reverse_x_axis = config.get("SHARED", "reverse_x_axis")
@@ -145,22 +146,21 @@ def set_axes_details(
 
     # Draws a vertical line at the specified point
     # First check for user input, else check for config file input
-    vline = config.get("SHARED", "vline") if vline is None else vline
-    if not math.isclose(vline, 0.0):
-        ax.vlines(
-            vline,
-            ax.get_ylim()[0],
-            ax.get_ylim()[1],
-            colors=["grey"],
-            linestyles="dashed",
-        )
+    vline = config.get("SHARED", "vline") if math.isclose(vline, 0.0) else vline
+    ax.vlines(
+        vline,
+        ax.get_ylim()[0],
+        ax.get_ylim()[1],
+        colors=["grey"],
+        linestyles="dashed",
+    )
 
     # Draws a horizontal line at y=0 (indicating the 'zero line')
     ax.hlines(0, ax.get_xlim()[0], ax.get_xlim()[1], colors=["grey"], linewidth=0.2)
 
     # Set the y-axis formatter to round to one decimal place
-    ax.yaxis.set_major_formatter(FormatStrFormatter('%.1f'))
-    ax.xaxis.set_major_formatter(FormatStrFormatter('%.1f'))
+    ax.yaxis.set_major_formatter(FormatStrFormatter("%.1f"))
+    ax.xaxis.set_major_formatter(FormatStrFormatter("%.1f"))
 
     # Axes adjustments: tick markers and number of ticks
     ax.tick_params(which="both", width=1.5)
@@ -196,7 +196,7 @@ def set_axes_details(
             second_legend = ax.legend(
                 handles=lines,
                 loc="upper center",
-                ncol=len(line_style_labels)//2 if len(line_style_labels) > 2 else 1,
+                ncol=len(line_style_labels) // 2 if len(line_style_labels) > 2 else 1,
                 frameon=False,
             )
             ax.add_artist(second_legend)

@@ -111,7 +111,7 @@ class Plotter:
                 # If a peak type is specified, plot the peak
                 if i == 0 and self.plot_info.peak_type is not None:
                     peak_index = obj.get_peak_index(peak=self.plot_info.peak_type)
-                    ax.scatter(x_axis[peak_index], term_data[peak_index], color=colour, s=45, zorder=2)
+                    ax.scatter(x_axis[peak_index], term_data[peak_index], color=colour, s=90, zorder=2)
 
     @plot_logger()
     def plot_asm(self, keys: Optional[List[str]] = None, **kwargs):
