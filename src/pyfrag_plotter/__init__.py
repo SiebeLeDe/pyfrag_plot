@@ -1,9 +1,9 @@
-from pyfrag_plotter.config.config_handler import Config
-import os
 import configparser as cp
-from typing import Optional
 import logging
+import os
+from typing import Optional
 
+from pyfrag_plotter.config.config_handler import Config
 
 # Global variable that contains the config file. It is first empty, but will be filled in the |init| function
 config: Config = Config(cp.ConfigParser())
