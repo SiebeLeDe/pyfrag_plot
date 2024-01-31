@@ -23,7 +23,7 @@ jobs:
           pip install -e .
           
       - name: Run sphinx-apidoc
-        run: cd docs; sphinx-apidoc -f -o ./api ../pyfrag_plotter
+        run: cd docs; sphinx-apidoc -f -o ./api ../src/pyfrag_plotter
 
       - name: Sphinx build
         run: |
