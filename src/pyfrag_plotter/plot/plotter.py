@@ -86,7 +86,7 @@ class Plotter:
     # ------------------------------ ASM, EDA and ASM extra strain plotting routines ------------------------------ #
     # ------------------------------------------------------------------------------------------------------------- #
 
-    def standard_plot_routine(self, keys: Sequence[str], ax: Optional[plt.Axes] = None):
+    def standard_plot_routine(self, keys: Sequence[str], ax: Optional[plt.Axes] = None, markers: Optional[Sequence[str]] = None):
         """The plot routine for the EDA, ASM and extra strain plots.
 
         Args:
@@ -96,17 +96,19 @@ class Plotter:
 
         """
         ax = plt.gca() if ax is None else ax
+        markers = [""] * len(self.objects) if markers is None else markers
+
         x_axes = [obj.get_x_axis(self.plot_info.irc_coord) for obj in self.objects]
         for i, (line_style, term) in enumerate(zip(self.plot_info.line_styles, keys)):
-            for x_axis, colour, obj in zip(x_axes, self.plot_info.colours, self.objects):
+            for x_axis, colour, obj, line_marker in zip(x_axes, self.plot_info.colours, self.objects, markers):
                 term_data = obj.get_data_of_key(term)  # eda, asm or extra_strain
 
                 # Plot the data. If it's the first object, associate a label with the line
                 if i == 0:
-                    ax.plot(x_axis, term_data, label=obj.name, color=colour, linestyle=line_style, zorder=1)
+                    ax.plot(x_axis, term_data, label=obj.name, color=colour, linestyle=line_style, marker=line_marker, zorder=1)
                 else:
                     # Otherwise, just plot the data
-                    ax.plot(x_axis, term_data, color=colour, linestyle=line_style, zorder=1)
+                    ax.plot(x_axis, term_data, color=colour, linestyle=line_style, marker=line_marker, zorder=1)
 
                 # If a peak type is specified, plot the peak
                 if i == 0 and self.plot_info.peak_type is not None:

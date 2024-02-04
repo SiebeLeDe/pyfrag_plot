@@ -28,7 +28,7 @@ def initialize_pyfrag_plotter(user_config_file: Optional[str] = None) -> None:
     current_dir = os.path.abspath(os.path.dirname(__file__))
 
     # Construct the path to the configuration file
-    config_file = os.path.join(current_dir, 'config', 'config.ini')
+    config_file = os.path.join(current_dir, "config", "config.ini")
 
     # Read the default config file
     config_parser = cp.ConfigParser()
@@ -89,7 +89,7 @@ def _initialize_plot_parameters() -> None:
     plt.rcParams["font.family"] = config.get("MATPLOTLIB", "font")
 
     # Takes care of ticks starting at the edge of the screen
-    plt.rcParams["axes.autolimit_mode"] = "round_numbers"
+    # plt.rcParams["axes.autolimit_mode"] = "round_numbers"
     plt.rcParams["axes.xmargin"] = 0.00
     plt.rcParams["axes.ymargin"] = 0.00
 

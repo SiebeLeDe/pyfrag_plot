@@ -4,6 +4,7 @@ from typing import Callable, Optional, Sequence, Tuple
 
 import matplotlib.figure
 import matplotlib.pyplot as plt
+import numpy as np
 from matplotlib.ticker import FormatStrFormatter, MaxNLocator
 
 from pyfrag_plotter import config
@@ -88,8 +89,8 @@ def set_figure_details(
 @replace_overlapping_keys
 def set_axes_details(
     ax: Optional[plt.Axes] = None,
-    x_label: str = "\u0394r / \u00c5",
-    y_label: str = "\u0394$\it{E}$ / kcal mol$^{-1}$",  # type: ignore # noqa: W605 since it is a LaTeX string
+    x_label: str = r"$\Delta$r / \u00c5",
+    y_label: str = r"$\Delta\it{E}$ / kcal mol$^{-1}$",  # type: ignore # noqa: W605 since it is a LaTeX string
     y_lim: Optional[Tuple[float, float]] = None,
     n_max_x_ticks: int = 6,
     n_max_y_ticks: int = 5,
@@ -159,14 +160,16 @@ def set_axes_details(
     ax.hlines(0, ax.get_xlim()[0], ax.get_xlim()[1], colors=["grey"], linewidth=0.2)
 
     # Set the y-axis formatter to round to one decimal place
-    ax.yaxis.set_major_formatter(FormatStrFormatter("%.1f"))
     ax.xaxis.set_major_formatter(FormatStrFormatter("%.1f"))
+    ax.yaxis.set_major_formatter(FormatStrFormatter("%.1f"))
 
     # Axes adjustments: tick markers and number of ticks
     ax.tick_params(which="both", width=1.5)
     ax.tick_params(which="major", length=7)
+
     ax.xaxis.set_major_locator(MaxNLocator(n_max_x_ticks))
-    ax.yaxis.set_major_locator(MaxNLocator(n_max_y_ticks))
+    # ax.yaxis.set_major_locator(MaxNLocator(n_max_y_ticks))
+    ax.set_yticks(np.linspace(ax.get_ylim()[0], ax.get_ylim()[1], 5))
 
     # Removes the top en right border of the graph
     ax.spines["top"].set_visible(False)
