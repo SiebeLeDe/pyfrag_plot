@@ -230,6 +230,10 @@ class PyFragResultsObject:
         """Returns the data found in the dataframe (from the .txt file) of the specified key."""
         return self.dataframe[key].to_numpy()
 
+    def get_calculation_index_closest_to_irc_point(self, irc_coord: str, irc_point: float) -> int:
+        """ Returns the index of the calculation closest to the specified IRC point."""
+        return np.argmin(np.abs(self.dataframe[irc_coord].to_numpy() - irc_point))    
+
     def get_plot_labels(self, keys: Union[Sequence[str], str]) -> Sequence[str]:
         """Returns the labels of the specified keys. There are two types of keys that should be handled differently:
         1. Standard terms such as "Int", "EnergyTotal", "StrainTotal", "Elstat", "Pauli", "OI", and "Disp"
