@@ -41,16 +41,17 @@ class AvailableTerms:
 
 
 # The following dictionary is used to map the standard terms to a nice-looking label, given by a LaTeX string
+# the \mathrm is to ensure that the subscript is not italic
 TERM_LABELS: dict[str, str] = {
-    "EnergyTotal": "$\Delta$E",  # type: ignore # noqa: W605 since it is a LaTeX string
-    "Int": "$\Delta$E$_{int}$",  # type: ignore # noqa: W605 since it is a LaTeX string
-    "StrainTotal": "$\Delta$E$_{strain}$",  # type: ignore # noqa: W605 since it is a LaTeX string
-    "Elstat": "$\Delta$V$_{elstat}$",  # type: ignore # noqa: W605 since it is a LaTeX string
-    "Pauli": "$\Delta$E$_{Pauli}$",  # type: ignore # noqa: W605 since it is a LaTeX string
-    "OI": "$\Delta$E$_{oi}$",  # type: ignore # noqa: W605 since it is a LaTeX string
-    "Disp": "$\Delta$E$_{disp}$",  # type: ignore # noqa: W605 since it is a LaTeX string
-    "frag1Strain": "$\Delta$E$_{strain,frag1}$",  # type: ignore # noqa: W605 since it is a LaTeX string
-    "frag2Strain": "$\Delta$E$_{strain,frag2}$",  # type: ignore # noqa: W605 since it is a LaTeX string
+    "EnergyTotal": r"$\Delta$E",
+    "Int": r"$\Delta$E$_{\mathrm{int}}$",
+    "StrainTotal": r"$\Delta$E$_{\mathrm{strain}}$",
+    "Elstat": r"$\Delta$V$_{\mathrm{elstat}}$",
+    "Pauli": r"$\Delta$E$_{\mathrm{Pauli}}$",
+    "OI": r"$\Delta$E$_{\mathrm{oi}}$",
+    "Disp": r"$\Delta$E$_{\mathrm{disp}}$",
+    "frag1Strain": r"$\Delta$E$_{\mathrm{strain, frag1}}$",
+    "frag2Strain": r"$\Delta$E$_{\mathrm{strain, frag2}}$",
 }
 
 # The following dictionary makes sure that the headers in the .txt file are mapped to the correct attribute in the PyFragResultsObject
@@ -110,7 +111,7 @@ class BondAngle:
 
     def label(self) -> str:
         """Returns the label for the bond angle property."""
-        return f"$\Theta${self.atom1}-{self.atom2}"  # type: ignore # noqa: W605 since it is a LaTeX string
+        return rf"$\Theta${self.atom1}-{self.atom2}"
 
 
 @define
@@ -169,8 +170,8 @@ class OrbitalEnergy:
     def label(self) -> str:
         """Returns the label for the orbital energy property."""
         if self.irrep is None:
-            return f"$\epsilon$ {self.frag} {self.orbital}"  # type: ignore # noqa: W605 since it is a LaTeX string
-        return f"$\epsilon$ {self.frag} {self.orbital} {self.irrep}"  # type: ignore # noqa: W605 since it is a LaTeX string
+            return rf"$\epsilon$ {self.frag} {self.orbital}"
+        return rf"$\epsilon$ {self.frag} {self.orbital} {self.irrep}"
 
 
 @define
@@ -231,8 +232,8 @@ class PyFragResultsObject:
         return self.dataframe[key].to_numpy()
 
     def get_calculation_index_closest_to_irc_point(self, irc_coord: str, irc_point: float) -> int:
-        """ Returns the index of the calculation closest to the specified IRC point."""
-        return np.argmin(np.abs(self.dataframe[irc_coord].to_numpy() - irc_point))    
+        """Returns the index of the calculation closest to the specified IRC point."""
+        return np.argmin(np.abs(self.dataframe[irc_coord].to_numpy() - irc_point))
 
     def get_plot_labels(self, keys: Union[Sequence[str], str]) -> Sequence[str]:
         """Returns the labels of the specified keys. There are two types of keys that should be handled differently:
