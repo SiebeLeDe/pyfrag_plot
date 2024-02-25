@@ -10,17 +10,21 @@ config: Config = Config(cp.ConfigParser())
 
 
 def initialize_pyfrag_plotter(user_config_file: Optional[str] = None) -> None:
-    """Initializes the PyFrag plotter configuration.
+    """
+    Initializes the PyFrag plotter configuration.
 
-    Reads the standard configuration file provided in the module and sets the config as global variable that is read throughout the program.
-    May be overwritten by providing a custom configuration file.
+    This function reads the standard configuration file provided in the module and sets the config as a global variable
+    that is read throughout the program. The standard configuration can be overwritten by providing a custom configuration file.
 
     Args:
-        user_config_file (Optional[str]): The path to a custom configuration file. Defaults to None.
+        user_config_file (Optional[str]): The path to a custom configuration file. If provided, the settings in this file
+        will overwrite the standard configuration. Defaults to None.
 
     Returns:
         None
 
+    Raises:
+        ValueError: If the log level specified in the configuration is invalid.
     """
     global config
 
@@ -57,10 +61,15 @@ def initialize_pyfrag_plotter(user_config_file: Optional[str] = None) -> None:
 
 
 def _initialize_plot_parameters() -> None:
-    """Applies plot-specific parameters to matplotlib and is called by :func:`pyfrag_plotter.initialize_pyfrag_plotter`.
+    """
+    Applies plot-specific parameters to matplotlib.
 
-    This function sets various parameters for matplotlib, such as the figure size, font family, and font size.
+    This function is called by `initialize_pyfrag_plotter` and sets various parameters for matplotlib, such as the figure size,
+    font family, and font size. It also tries to use the interactive backend for matplotlib, and falls back to the non-interactive
+    backend if the interactive backend is not available.
 
+    Returns:
+        None
     """
     import matplotlib as mpl
 

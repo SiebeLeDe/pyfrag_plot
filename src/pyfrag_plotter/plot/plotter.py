@@ -47,35 +47,53 @@ class PlotInfo:
 
 
 class Plotter:
-    """Main class for plotting the results of the PyFrag calculations.
+    """
+    This class provides methods for plotting the results of the PyFrag calculations. It supports plotting of activation
+    strain model terms, energy decomposition terms, and extra strain terms. The plots are saved to a specified directory.
+
+    Additionally, the "standard_plot_routine" method can be used to plot any key (or a combination of) in the PyFragResultsObject and the user may create specicifed functions using this method.
 
     Attributes:
         name (str): The name of the plotter object.
-        objects (Sequence[PyFragResultsObject]): A list of PyFragResultsObject objects.
+        objects (Sequence[PyFragResultsObject]): A list of PyFragResultsObject objects that contain the data to be plotted.
         path (str): The directory to save the plots to.
-        plot_info (PlotInfo): An instance of the PlotInfo class.
+        plot_info (PlotInfo): An instance of the PlotInfo class that contains information about the plot, such as the
+                            line styles and colors.
 
     Note: The plotter object can be used with a "with" statement to ensure that the plot directory is removed if it's empty.
     """
 
     def __init__(self, name: str, plot_dir: str, pyfrag_objects: Sequence[PyFragResultsObject], irc_coord: Sequence[str]):
+        """
+        Initializes the Plotter object.
+
+        Args:
+            name (str): The name of the plotter object.
+            plot_dir (str): The directory to save the plots to.
+            pyfrag_objects (Sequence[PyFragResultsObject]): A list of PyFragResultsObject objects that contain the data to be plotted.
+            irc_coord (Sequence[str]): A sequence of two strings that specify the IRC coordinate and its label.
+        """
         self.name = name
         self.objects = pyfrag_objects
         self.path = opj(plot_dir, name)
         self.plot_info = PlotInfo(irc_coord=irc_coord[0], irc_coord_label=irc_coord[1])
 
     def __enter__(self):
-        """For using the class with an "with" statment.
+        """
+        Prepares the plotter object for use with a "with" statement.
 
-        It checks if the specified directory exists for making plots.
-        If not, creates it (and any parent directories).
+        This method checks if the specified directory exists for making plots. If not, it creates it (and any parent directories).
         """
         if not os.path.isdir(self.path):
             os.makedirs(self.path)
         return self
 
     def __exit__(self, exc_type, exc_value, traceback):
-        """Makes sure to close the plotter object and remove the plot directory if it's empty."""
+        """
+        Cleans up the plotter object after use with a "with" statement.
+
+        This method makes sure to close the plotter object and remove the plot directory if it's empty.
+        """
         for root, dirs, files in os.walk(self.path, topdown=False):
             for dir in dirs:
                 dir_path = os.path.join(root, dir)
@@ -87,13 +105,16 @@ class Plotter:
     # ------------------------------------------------------------------------------------------------------------- #
 
     def standard_plot_routine(self, keys: Sequence[str], ax: Optional[plt.Axes] = None, markers: Optional[Sequence[str]] = None):
-        """The plot routine for the EDA, ASM and extra strain plots.
+        """
+        The standard plot routine for the EDA, ASM and extra strain plots.
+
+        This method plots the specified keys for each PyFragResultsObject in the plotter. It supports plotting of multiple keys
+        on the same axes, and allows for customization of the line styles and markers.
 
         Args:
-            plot_key (str): The type of plot to make (eda, asm or extra_strain).
-            keys (list[str]): The keys to plot that should match the keys in the corresponding dictionary type (asm, eda or extra_strain).
-            ax (Optional[plt.Axes], optional): The axes to plot on. Defaults to None.
-
+            keys (Sequence[str]): The keys to plot. These should match the keys in the corresponding dictionary type (asm, eda or extra_strain).
+            ax (Optional[plt.Axes], optional): The axes to plot on. If None, the current axes is used. Defaults to None.
+            markers (Optional[Sequence[str]], optional): The markers to use for the lines. If None, no markers are used. Defaults to None.
         """
         ax = plt.gca() if ax is None else ax
         markers = [""] * len(self.objects) if markers is None else markers
@@ -116,17 +137,19 @@ class Plotter:
                     ax.scatter(x_axis[peak_index], term_data[peak_index], color=colour, s=90, zorder=2)
 
     @plot_logger()
-    def plot_asm(self, keys: Optional[List[str]] = None, **kwargs):
-        """Plots the activation strain model terms. The user can specify which terms to plot, otherwise all of them are plotted.
+    def plot_asm(self, keys: Optional[List[str]] = None, **kwargs) -> Tuple[plt.Figure, plt.Axes]:
+        """
+        Plots the activation strain model terms.
+
+        This method plots the specified ASM terms for each PyFragResultsObject in the plotter. If no terms are specified, all terms are plotted.
 
         Args:
-            keys (Optional[List[str]], optional): Keys that are plotted. Defaults to None (plot all keys).
-            **kwargs: Additional keyword arguments to pass to the function.
+            keys (Optional[List[str]], optional): The ASM terms to plot. If None, all terms are plotted. Defaults to None.
+            **kwargs: Additional keyword arguments to pass to the `set_axes_details` and `set_figure_details` functions.
 
         Returns:
             fig (plt.Figure): The figure object.
             ax (plt.Axes): The axes object.
-
         """
         fig = plt.figure()
         ax = fig.add_subplot(111)
@@ -149,11 +172,15 @@ class Plotter:
         return fig, ax
 
     @plot_logger()
-    def plot_eda(self, keys: Optional[List[str]] = None, **kwargs):
-        """Plots the energy decomposition terms. The user can specify which terms to plot, otherwise all of them are plotted.
+    def plot_eda(self, keys: Optional[List[str]] = None, **kwargs) -> Tuple[plt.Figure, plt.Axes]:
+        """
+        Plots the energy decomposition terms.
+
+        This method plots the specified EDA terms for each PyFragResultsObject in the plotter. If no terms are specified, all terms are plotted.
 
         Args:
-            keys (Optional[List[str]], optional): Keys that are plotted. Defaults to None (plot all keys).
+            keys (Optional[List[str]], optional): The EDA terms to plot. If None, all terms are plotted. Defaults to None.
+            **kwargs: Additional keyword arguments to pass to the `set_axes_details` and `set_figure_details` functions.
 
         Returns:
             fig (plt.Figure): The figure object.
@@ -179,15 +206,23 @@ class Plotter:
         return fig, ax
 
     @plot_logger()
-    def plot_extra_strain(self, keys: Optional[List[str]] = None, **kwargs):
-        """Plots the extra strain terms. The user can specify which terms to plot, otherwise all of them are plotted.
+    def plot_extra_strain(self, keys: Optional[List[str]] = None, **kwargs) -> Tuple[plt.Figure, plt.Axes]:
+        """
+        Plots the extra strain terms.
+
+        This method plots the specified extra strain terms for each PyFragResultsObject in the plotter. If no terms are specified,
+        all terms are plotted. The plot is saved to the plot directory with a filename that includes the plotted terms.
 
         Args:
-            keys (Optional[List[str]], optional): Keys that are plotted. Defaults to None (plot all keys).
+            keys (Optional[List[str]], optional): The extra strain terms to plot. If None, all terms are plotted. Defaults to None.
+            **kwargs: Additional keyword arguments to pass to the `set_axes_details` and `set_figure_details` functions.
 
         Returns:
             fig (plt.Figure): The figure object.
             ax (plt.Axes): The axes object.
+
+        Raises:
+            ValueError: If any of the specified keys do not exist in the extra strain dictionary.
         """
         fig = plt.figure()
         ax = fig.add_subplot(111)
@@ -252,17 +287,24 @@ class Plotter:
         #                 x_label=self.plot_info.irc_coord_label)
 
     @plot_logger()
-    def plot_arbitrary_keys(self, title: str, keys: List[str], **kwargs):
-        """Arbitrary plotting function for plotting any key (or a combination of) in the PyFragResultsObject object.
+    def plot_arbitrary_keys(self, title: str, keys: List[str], **kwargs) -> Tuple[plt.Figure, plt.Axes]:
+        """
+        Arbitrary plotting function for plotting any key (or a combination of) in the PyFragResultsObject object.
+
+        This method plots the specified keys for each PyFragResultsObject in the plotter. The plot is saved to the plot directory
+        with a filename that includes the plotted keys. The plot title and other figure and axes details can be customized.
 
         Args:
-            keys (Optional[List[str]], optional): Keys that are plotted. Defaults to None (plot all keys).
-            **kwargs: Additional keyword arguments to pass to the function.
+            title (str): The title of the plot.
+            keys (List[str]): The keys to plot. These should match the keys in the corresponding dictionary type (asm, eda or extra_strain).
+            **kwargs: Additional keyword arguments to pass to the `set_axes_details` and `set_figure_details` functions.
 
         Returns:
             fig (plt.Figure): The figure object.
             ax (plt.Axes): The axes object.
 
+        Raises:
+            ValueError: If any of the specified keys do not exist in the dictionaries of the PyFragResultsObject objects.
         """
         fig = plt.figure()
         ax = fig.add_subplot(111)

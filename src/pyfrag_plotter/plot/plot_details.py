@@ -55,17 +55,26 @@ def set_figure_details(
     clear_plot: bool = False,
     tight_layout: bool = True,
 ) -> None:
-    """Specifies figure options for making a shorter and cleaner code.
+    """
+    Modifies the provided figure according to the specified options.
+
+    This function can remove empty subplots, adjust layout, add a title, save the figure to a file,
+    display the plot, and clear the plot.
 
     Args:
-        fig (Optional[matplotlib.figure.Figure], optional): The figure to modify. Defaults to None.
-        title (Optional[str], optional): The title of the figure. Defaults to None.
-        savefig (Optional[str], optional): The filename to save the figure to. Defaults to None.
-        show_plot (bool, optional): Whether to show the plot. Defaults to False.
-        clear_plot (bool, optional): Whether to clear the plot. Defaults to False.
-        tight_layout (bool, optional): Whether to use tight layout. Defaults to True.
+        fig (Optional[matplotlib.figure.Figure], optional): The figure to modify. If None, the current figure is used. Defaults to None.
+        title (Optional[str], optional): The title of the figure. If provided, it is added to the figure. Defaults to None.
+        savefig (Optional[str], optional): The filename to save the figure to. If provided, the figure is saved as a .png file. Defaults to None.
+        show_plot (bool, optional): Whether to display the plot. If True, the plot is displayed. Defaults to False.
+        clear_plot (bool, optional): Whether to clear the plot. If True, the current plot is cleared. Defaults to False.
+        tight_layout (bool, optional): Whether to adjust the padding between and around the subplots. If True, the padding is adjusted. Defaults to True.
     """
     fig = plt.gcf() if fig is None else fig
+
+    # Removes the empty axes from the figure
+    for ax in fig.axes:
+        if not ax.lines and not ax.patches:
+            fig.delaxes(ax)
 
     # Fixes the large padding between the axes and the labels of the axes
     if tight_layout:
@@ -97,21 +106,25 @@ def set_axes_details(
     plot_legend: bool = True,
     line_style_labels: Optional[Sequence[str]] = None,
     title: str | None = None,
-    vline: float = 0.0,
+    vline: float | None = 0.0,
 ) -> None:
-    r"""Specifies axes options for making a shorter and cleaner code.
+    r"""
+    Specifies axes options for making a shorter and cleaner code.
+
+    This function modifies the provided axes according to the specified options. It sets the labels, limits, ticks,
+    title, and line styles of the axes. It also draws a vertical line at a specified x-coordinate and a horizontal line at y=0.
 
     Args:
-        ax (Optional[plt.Axes], optional): The axes to modify. Defaults to None.
+        ax (Optional[plt.Axes], optional): The axes to modify. If None, the current axes is used. Defaults to None.
         x_label (str, optional): The label for the x-axis. Defaults to "$\Delta$ r / A" (dr / A).
         y_label (str, optional): The label for the y-axis. Defaults to "$\Delta \it{E}$ / kcal mol$^{-1}$" (dE / kcal mol-1).
-        y_lim (Optional[Tuple[float, float]], optional): The y-axis limits. Defaults to None.
+        y_lim (Optional[Tuple[float, float]], optional): The y-axis limits. If None, the default y-axis limits are used. Defaults to None.
         n_max_x_ticks (int, optional): The maximum number of x-axis ticks. Defaults to 6.
         n_max_y_ticks (int, optional): The maximum number of y-axis ticks. Defaults to 5.
-        plot_legend (bool, optional): Whether to plot the legend. Defaults to True.
-        line_style_labels (Optional[Sequence[str]], optional): The legend for the line styles. Defaults to None.
-        title (str, optional): The title of the subplot. Defaults to "".
-        vline (float, optional): The x-coordinate of the vertical line. Defaults to 0.0.
+        plot_legend (bool, optional): Whether to plot the legend. If True, a legend is plotted. Defaults to True.
+        line_style_labels (Optional[Sequence[str]], optional): The labels for the line styles. If provided, these labels are used in the legend. Defaults to None.
+        title (str | None, optional): The title of the subplot. If provided, this title is set. Defaults to None.
+        vline (float | None, optional): The x-coordinate of the vertical line. If provided, a vertical line is drawn at this x-coordinate. Defaults to 0.0.
     """
     ax = plt.gca() if ax is None else ax
 
@@ -147,14 +160,16 @@ def set_axes_details(
 
     # Draws a vertical line at the specified point
     # First check for user input, else check for config file input
-    vline = config.get("SHARED", "vline") if math.isclose(vline, 0.0) else vline
-    ax.vlines(
-        vline,
-        ax.get_ylim()[0],
-        ax.get_ylim()[1],
-        colors=["grey"],
-        linestyles="dashed",
-    )
+    vline = config.get("SHARED", "vline") if vline is None else vline
+
+    if vline is not None or not math.isclose(vline, 0.0):
+        ax.vlines(
+            vline,
+            ax.get_ylim()[0],
+            ax.get_ylim()[1],
+            colors=["grey"],
+            linestyles="dashed",
+        )
 
     # Draws a horizontal line at y=0 (indicating the 'zero line')
     ax.hlines(0, ax.get_xlim()[0], ax.get_xlim()[1], colors=["grey"], linewidth=0.2)
@@ -169,7 +184,7 @@ def set_axes_details(
 
     ax.xaxis.set_major_locator(MaxNLocator(n_max_x_ticks))
     # ax.yaxis.set_major_locator(MaxNLocator(n_max_y_ticks))
-    ax.set_yticks(np.linspace(ax.get_ylim()[0], ax.get_ylim()[1], 5))
+    ax.set_yticks(np.linspace(ax.get_ylim()[0], ax.get_ylim()[1], n_max_y_ticks))
 
     # Removes the top en right border of the graph
     ax.spines["top"].set_visible(False)
