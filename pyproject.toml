@@ -8,7 +8,7 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "PyFragPlotter"
+name = "pyfrag_plotter"
 dynamic = ["version"]
 authors = [
     { name = "Siebe Lekanne Deprez", email = "s.j.lekanne.deprez@vu.nl" },
