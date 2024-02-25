@@ -25,6 +25,11 @@ def interpolate_plot(x_axis: np.ndarray, y_axis: np.ndarray, x_range: Optional[S
     """
     n_interpolation_points = config.get("SHARED", "n_interpolation_points")
     reverse_axis = config.get("SHARED", "reverse_x_axis")
+
+    # This option is used to disable interpolation, which is useful for non-strictly increasing (of decreasing) data
+    if n_interpolation_points == 0:
+        return x_axis, y_axis
+
     if x_range is None:
         x_min, x_max = x_axis.min(), x_axis.max()
     else:
