@@ -11,7 +11,7 @@ from pyfrag_plotter.errors import PyFragInterpolationError
 from pyfrag_plotter.pyfrag_object import Array1D, PyFragResultsObject
 
 
-def interpolate_plot(x_axis: np.ndarray, y_axis: np.ndarray, x_range: Optional[Sequence[float]] = None) -> Tuple[np.ndarray, BSpline]:
+def interpolate_plot(x_axis: np.ndarray, y_axis: np.ndarray, x_range: Optional[Sequence[float]] = None) -> Union[Tuple[np.ndarray, BSpline], Tuple[np.ndarray, np.ndarray]]:
     """
     Interpolates the data to a finer grid for plotting purposes using the scipy spline library.
 

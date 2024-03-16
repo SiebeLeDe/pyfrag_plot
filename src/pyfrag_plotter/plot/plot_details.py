@@ -105,8 +105,8 @@ def set_axes_details(
     n_max_y_ticks: int = 5,
     plot_legend: bool = True,
     line_style_labels: Optional[Sequence[str]] = None,
-    title: str | None = None,
-    vline: float | None = 0.0,
+    title: Optional[str] = None,
+    vline: float = 0.0,
 ) -> None:
     r"""
     Specifies axes options for making a shorter and cleaner code.
@@ -161,8 +161,7 @@ def set_axes_details(
     # Draws a vertical line at the specified point
     # First check for user input, else check for config file input
     vline = config.get("SHARED", "vline") if vline is None else vline
-
-    if vline is not None or not math.isclose(vline, 0.0):
+    if not math.isclose(vline, 0.0):
         ax.vlines(
             vline,
             ax.get_ylim()[0],
