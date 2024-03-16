@@ -1,0 +1,920 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyfrag_plotter.pyfrag_object &#8212; PyFragPlotter 0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pyfrag_plotter/pyfrag_object';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PyFragPlotter 0.0.1 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../general.html">
+                        General
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../usage.html">
+                        Usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../config.html">
+                        The Config File
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api/modules.html">
+                        pyfrag_plotter
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../general.html">
+                        General
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../usage.html">
+                        Usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../config.html">
+                        The Config File
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api/modules.html">
+                        pyfrag_plotter
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Module code</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../pyfrag_plotter.html" class="nav-link">pyfrag_plotter</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">pyfrag_plott...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for pyfrag_plotter.pyfrag_object</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot; Module that combines the data from inputfile and outputfile into a PyFragResultsObject object &quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Annotated</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Protocol</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy.typing</span> <span class="k">as</span> <span class="nn">npt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">attrs</span> <span class="kn">import</span> <span class="n">define</span><span class="p">,</span> <span class="n">field</span>
+
+<span class="kn">from</span> <span class="nn">pyfrag_plotter.errors</span> <span class="kn">import</span> <span class="n">PyFragResultsObjectError</span>
+<span class="kn">from</span> <span class="nn">pyfrag_plotter.input.pyfrag_files</span> <span class="kn">import</span> <span class="n">get_pyfrag_files</span>
+<span class="kn">from</span> <span class="nn">pyfrag_plotter.input.read_inputfile</span> <span class="kn">import</span> <span class="n">read_inputfile</span>
+<span class="kn">from</span> <span class="nn">pyfrag_plotter.input.read_resultsfile</span> <span class="kn">import</span> <span class="n">read_results_file</span>
+<span class="kn">from</span> <span class="nn">pyfrag_plotter.processing_funcs</span> <span class="kn">import</span> <span class="n">process_results_file</span>
+
+<span class="c1"># Type alias for 1D numpy array with variable length but with a fixed dtype (np.float64)</span>
+<span class="n">DType</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;DType&quot;</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">generic</span><span class="p">)</span>
+<span class="n">Array1D</span> <span class="o">=</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">[</span><span class="n">DType</span><span class="p">],</span> <span class="n">Literal</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+
+
+<div class="viewcode-block" id="AvailableTerms">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.AvailableTerms">[docs]</a>
+<span class="k">class</span> <span class="nc">AvailableTerms</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Class containing the available terms for the PyFragResultsObject.&quot;&quot;&quot;</span>
+
+    <span class="n">INT</span> <span class="o">=</span> <span class="s2">&quot;Int&quot;</span>
+    <span class="n">ENERGY_TOTAL</span> <span class="o">=</span> <span class="s2">&quot;EnergyTotal&quot;</span>
+    <span class="n">STRAIN_TOTAL</span> <span class="o">=</span> <span class="s2">&quot;StrainTotal&quot;</span>
+    <span class="n">ELSTAT</span> <span class="o">=</span> <span class="s2">&quot;Elstat&quot;</span>
+    <span class="n">PAULI</span> <span class="o">=</span> <span class="s2">&quot;Pauli&quot;</span>
+    <span class="n">OI</span> <span class="o">=</span> <span class="s2">&quot;OI&quot;</span>
+    <span class="n">DISP</span> <span class="o">=</span> <span class="s2">&quot;Disp&quot;</span>
+    <span class="n">FRAG1_STRAIN</span> <span class="o">=</span> <span class="s2">&quot;frag1Strain&quot;</span>
+    <span class="n">FRAG2_STRAIN</span> <span class="o">=</span> <span class="s2">&quot;frag2Strain&quot;</span>
+    <span class="n">BONDLENGTH</span> <span class="o">=</span> <span class="s2">&quot;bondlength&quot;</span>
+    <span class="n">ANGLE</span> <span class="o">=</span> <span class="s2">&quot;angle&quot;</span>
+    <span class="n">DIHEDRAL</span> <span class="o">=</span> <span class="s2">&quot;dihedral&quot;</span>
+    <span class="n">OVERLAP</span> <span class="o">=</span> <span class="s2">&quot;overlap&quot;</span>
+    <span class="n">POPULATION</span> <span class="o">=</span> <span class="s2">&quot;population&quot;</span>
+    <span class="n">ORBITALENERGY</span> <span class="o">=</span> <span class="s2">&quot;orbitalenergy&quot;</span>
+    <span class="n">VDD</span> <span class="o">=</span> <span class="s2">&quot;vdd&quot;</span>
+    <span class="n">IRREPOI</span> <span class="o">=</span> <span class="s2">&quot;irrepOI&quot;</span></div>
+
+
+
+<span class="c1"># The following dictionary is used to map the standard terms to a nice-looking label, given by a LaTeX string</span>
+<span class="c1"># the \mathrm is to ensure that the subscript is not italic</span>
+<span class="n">TERM_LABELS</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;EnergyTotal&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;$\Delta$E&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Int&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;$\Delta$E$_{\mathrm</span><span class="si">{int}</span><span class="s2">}$&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;StrainTotal&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;$\Delta$E$_{\mathrm</span><span class="si">{strain}</span><span class="s2">}$&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Elstat&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;$\Delta$V$_{\mathrm</span><span class="si">{elstat}</span><span class="s2">}$&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Pauli&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;$\Delta$E$_{\mathrm</span><span class="si">{Pauli}</span><span class="s2">}$&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;OI&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;$\Delta$E$_{\mathrm</span><span class="si">{oi}</span><span class="s2">}$&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Disp&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;$\Delta$E$_{\mathrm</span><span class="si">{disp}</span><span class="s2">}$&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;frag1Strain&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;$\Delta$E$_{\mathrm{strain, frag1}}$&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;frag2Strain&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;$\Delta$E$_{\mathrm{strain, frag2}}$&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># The following dictionary makes sure that the headers in the .txt file are mapped to the correct attribute in the PyFragResultsObject</span>
+<span class="n">pyfrag_headers_id_to_attribute_id_mapping</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;bondlength&quot;</span><span class="p">:</span> <span class="s2">&quot;bondlength&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;angle&quot;</span><span class="p">:</span> <span class="s2">&quot;angle&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dihedral&quot;</span><span class="p">:</span> <span class="s2">&quot;dihedral&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;overlap&quot;</span><span class="p">:</span> <span class="s2">&quot;overlap&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;population&quot;</span><span class="p">:</span> <span class="s2">&quot;population&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;orbitalenergy&quot;</span><span class="p">:</span> <span class="s2">&quot;orbitalenergy&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;vdd&quot;</span><span class="p">:</span> <span class="s2">&quot;vdd&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;irrepOI&quot;</span><span class="p">:</span> <span class="s2">&quot;irrep&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="Property">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.Property">[docs]</a>
+<span class="nd">@define</span>
+<span class="k">class</span> <span class="nc">Property</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for all properties using the Protocol functionality of python.</span>
+<span class="sd">    &quot;Properties&quot; are classes that inheret from this class, which are:</span>
+<span class="sd">        - Bondlength</span>
+<span class="sd">        - BondAngle</span>
+<span class="sd">        - DihedralAngle</span>
+<span class="sd">        - Overlap</span>
+<span class="sd">        - Population</span>
+<span class="sd">        - OrbitalEnergy</span>
+<span class="sd">        - VDD</span>
+<span class="sd">        - Irrep</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">label</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Abstract method to be further specified in the individual classes. Returns the label for the property.&quot;&quot;&quot;</span>
+        <span class="o">...</span></div>
+
+
+
+<div class="viewcode-block" id="Bondlength">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.Bondlength">[docs]</a>
+<span class="nd">@define</span>
+<span class="k">class</span> <span class="nc">Bondlength</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Attrs class for the bond length property containing the atoms indices and the bond length.&quot;&quot;&quot;</span>
+
+    <span class="n">atom1</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">atom2</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">bondlength</span><span class="p">:</span> <span class="nb">float</span>
+
+<div class="viewcode-block" id="Bondlength.label">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.Bondlength.label">[docs]</a>
+    <span class="k">def</span> <span class="nf">label</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the label for the bond length property.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;r </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">atom1</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">atom2</span><span class="si">}</span><span class="s2">&quot;</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="BondAngle">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.BondAngle">[docs]</a>
+<span class="nd">@define</span>
+<span class="k">class</span> <span class="nc">BondAngle</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Attrs class for the bond angle property containing the atoms indices and the bond angle.&quot;&quot;&quot;</span>
+
+    <span class="n">atom1</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">atom2</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">bondangle</span><span class="p">:</span> <span class="nb">float</span>
+
+<div class="viewcode-block" id="BondAngle.label">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.BondAngle.label">[docs]</a>
+    <span class="k">def</span> <span class="nf">label</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the label for the bond angle property.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">rf</span><span class="s2">&quot;$\Theta$</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">atom1</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">atom2</span><span class="si">}</span><span class="s2">&quot;</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="DihedralAngle">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.DihedralAngle">[docs]</a>
+<span class="nd">@define</span>
+<span class="k">class</span> <span class="nc">DihedralAngle</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Attrs class for the dihedral angle property containing the atoms indices and the dihedral angle.&quot;&quot;&quot;</span>
+
+    <span class="n">atom1</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">atom2</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">atom3</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">dihedralangle</span><span class="p">:</span> <span class="nb">float</span>
+
+<div class="viewcode-block" id="DihedralAngle.label">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.DihedralAngle.label">[docs]</a>
+    <span class="k">def</span> <span class="nf">label</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the label for the bond length property.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;r </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">atom1</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">atom2</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">atom3</span><span class="si">}</span><span class="s2">&quot;</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Overlap">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.Overlap">[docs]</a>
+<span class="nd">@define</span>
+<span class="k">class</span> <span class="nc">Overlap</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Attrs class for the overlap property containing the orbitals and irreps of the two fragments.&quot;&quot;&quot;</span>
+
+    <span class="n">frag1_orb</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">frag2_orb</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">frag1_irrep</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">frag2_irrep</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="Overlap.label">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.Overlap.label">[docs]</a>
+    <span class="k">def</span> <span class="nf">label</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the label for the overlap property.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">frag1_irrep</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;S </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">frag1_orb</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">frag2_orb</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;S </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">frag1_irrep</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">frag1_orb</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">frag2_irrep</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">frag2_orb</span><span class="si">}</span><span class="s2">&quot;</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Population">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.Population">[docs]</a>
+<span class="nd">@define</span>
+<span class="k">class</span> <span class="nc">Population</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Attrs class for the population property containing the orbitals and irreps of the two fragments.&quot;&quot;&quot;</span>
+
+    <span class="n">orbital</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">frag</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">irrep</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="Population.label">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.Population.label">[docs]</a>
+    <span class="k">def</span> <span class="nf">label</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the label for the population property.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">irrep</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Pop </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">frag</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">orbital</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Pop </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">frag</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">orbital</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">irrep</span><span class="si">}</span><span class="s2">&quot;</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="OrbitalEnergy">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.OrbitalEnergy">[docs]</a>
+<span class="nd">@define</span>
+<span class="k">class</span> <span class="nc">OrbitalEnergy</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Attrs class for the orbital energy property containing the orbitals and irreps of the two fragments.&quot;&quot;&quot;</span>
+
+    <span class="n">orbital</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">frag</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">irrep</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="OrbitalEnergy.label">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.OrbitalEnergy.label">[docs]</a>
+    <span class="k">def</span> <span class="nf">label</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the label for the orbital energy property.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">irrep</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">rf</span><span class="s2">&quot;$\epsilon$ </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">frag</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">orbital</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="sa">rf</span><span class="s2">&quot;$\epsilon$ </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">frag</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">orbital</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">irrep</span><span class="si">}</span><span class="s2">&quot;</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="VDD">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.VDD">[docs]</a>
+<span class="nd">@define</span>
+<span class="k">class</span> <span class="nc">VDD</span><span class="p">:</span>
+    <span class="n">atom</span><span class="p">:</span> <span class="nb">int</span>
+
+<div class="viewcode-block" id="VDD.label">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.VDD.label">[docs]</a>
+    <span class="k">def</span> <span class="nf">label</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the label for the VDD property.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;VDD </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">atom</span><span class="si">}</span><span class="s2">&quot;</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Irrep">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.Irrep">[docs]</a>
+<span class="nd">@define</span>
+<span class="k">class</span> <span class="nc">Irrep</span><span class="p">:</span>
+    <span class="n">irrep</span><span class="p">:</span> <span class="nb">str</span>
+
+<div class="viewcode-block" id="Irrep.label">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.Irrep.label">[docs]</a>
+    <span class="k">def</span> <span class="nf">label</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the label for the irrep property.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">irrep</span><span class="si">}</span><span class="s2">&quot;</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="PyFragResultsObject">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.PyFragResultsObject">[docs]</a>
+<span class="nd">@define</span>
+<span class="k">class</span> <span class="nc">PyFragResultsObject</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Attrs class containing all the data of one pyfrag calculation.</span>
+
+<span class="sd">    It combines the data from the output file (i.e., the pyfrag_*.txt file) through binding a pandas DataFrame to the class, and the data from the input file through binding specific attributes.</span>
+<span class="sd">    Examples of the specific attributes are bond lengths, bond angles, dihedral angles, overlaps, populations, orbital energies, VDD, and irreps.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str): The name of the PyFrag calculation.</span>
+<span class="sd">        dataframe (pd.DataFrame): The data from the output file (i.e., the pyfrag_*.txt file).</span>
+<span class="sd">        extra_strain (OrderedDict[str, Array1D[np.float64]]): The extra strain data for the PyFrag calculation.</span>
+<span class="sd">        bondlength (List[Bondlength]): The bond length data for the PyFrag calculation.</span>
+<span class="sd">        angle (List[BondAngle]): The bond angle data for the PyFrag calculation.</span>
+<span class="sd">        dihedral (List[DihedralAngle]): The dihedral angle data for the PyFrag calculation.</span>
+<span class="sd">        overlap (List[Overlap]): The overlap data for the PyFrag calculation.</span>
+<span class="sd">        population (List[Population]): The population data for the PyFrag calculation.</span>
+<span class="sd">        orbitalenergy (List[OrbitalEnergy]): The orbital energy data for the PyFrag calculation.</span>
+<span class="sd">        vdd (List[VDD]): The VDD data for the PyFrag calculation.</span>
+<span class="sd">        irrep (List[Irrep]): The irrep data for the PyFrag calculation.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">dataframe</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+    <span class="n">extra_strain</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Array1D</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
+    <span class="n">bondlength</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Bondlength</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+    <span class="n">angle</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BondAngle</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+    <span class="n">dihedral</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">DihedralAngle</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+    <span class="n">overlap</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Overlap</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+    <span class="n">population</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Population</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+    <span class="n">orbitalenergy</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">OrbitalEnergy</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+    <span class="n">vdd</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">VDD</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+    <span class="n">irrep</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Irrep</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PyFragResultsObject.get_data_of_key">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.PyFragResultsObject.get_data_of_key">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_data_of_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Array1D</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the data found in the dataframe (from the .txt file) of the specified key.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataframe</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="PyFragResultsObject.get_calculation_index_closest_to_irc_point">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.PyFragResultsObject.get_calculation_index_closest_to_irc_point">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_calculation_index_closest_to_irc_point</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">irc_coord</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">irc_point</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the index of the calculation closest to the specified IRC point.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataframe</span><span class="p">[</span><span class="n">irc_coord</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span> <span class="o">-</span> <span class="n">irc_point</span><span class="p">)))</span></div>
+
+
+<div class="viewcode-block" id="PyFragResultsObject.get_plot_labels">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.PyFragResultsObject.get_plot_labels">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_plot_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the labels of the specified keys. There are two types of keys that should be handled differently:</span>
+<span class="sd">        1. Standard terms such as &quot;Int&quot;, &quot;EnergyTotal&quot;, &quot;StrainTotal&quot;, &quot;Elstat&quot;, &quot;Pauli&quot;, &quot;OI&quot;, and &quot;Disp&quot;</span>
+<span class="sd">        2. Non-standard terms such as &quot;bondlength&quot;, &quot;overlap&quot;, &quot;orbitalenergy&quot;, and more.</span>
+
+<span class="sd">        The former ones are handled by the TERM_LABELS dictionary, while the latter ones are handled by the label() method of the corresponding class.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="n">keys</span><span class="p">]</span>
+
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">TERM_LABELS</span><span class="p">:</span>
+                <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TERM_LABELS</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># IrrepOI_1 -&gt; IrrepOI, 1</span>
+                <span class="n">key</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span>
+                <span class="c1"># IrrepOI, 1 -&gt; irrep, 1</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="n">pyfrag_headers_id_to_attribute_id_mapping</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                <span class="c1"># irrep, 1 -&gt; irrep[1], which is an instance of the Irrep class and part of the irrep attribute list of the PyFragResultsObject</span>
+                <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)[</span><span class="nb">int</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">label</span><span class="p">())</span>
+
+        <span class="k">return</span> <span class="n">labels</span></div>
+
+
+<div class="viewcode-block" id="PyFragResultsObject.get_x_axis">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.PyFragResultsObject.get_x_axis">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_x_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">irc_coord</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Array1D</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the x-axis data for the specified IRC coordinate.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataframe</span><span class="p">[</span><span class="n">irc_coord</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="PyFragResultsObject.get_peak_index">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.PyFragResultsObject.get_peak_index">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_peak_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">peak</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;max&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Determines the peak of the &quot;EnergyTotal&quot; data en returns the index.</span>
+<span class="sd">        The peak can be either the maximum or minimum value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;EnergyTotal&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataframe</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">PyFragResultsObjectError</span><span class="p">(</span><span class="s2">&quot;EnergyTotal not found in PyFragResultsObject. The term should be in the output txt file of the PyFrag calculation&quot;</span><span class="p">)</span>
+
+        <span class="n">data_of_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataframe</span><span class="p">[</span><span class="s2">&quot;EnergyTotal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">peak</span> <span class="o">==</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">data_of_key</span><span class="o">.</span><span class="n">argmax</span><span class="p">())</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">data_of_key</span><span class="o">.</span><span class="n">argmin</span><span class="p">())</span></div>
+</div>
+
+
+
+<span class="k">def</span> <span class="nf">_add_bondlength</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">PyFragResultsObject</span><span class="p">,</span> <span class="o">*</span><span class="n">bond_info</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">bondlength_obj</span> <span class="o">=</span> <span class="n">Bondlength</span><span class="p">(</span><span class="n">atom1</span><span class="o">=</span><span class="n">bond_info</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">atom2</span><span class="o">=</span><span class="n">bond_info</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">bondlength</span><span class="o">=</span><span class="n">bond_info</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">bondlength</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bondlength_obj</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_add_bondangle</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">PyFragResultsObject</span><span class="p">,</span> <span class="o">*</span><span class="n">bondangle_info</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">bondangle_obj</span> <span class="o">=</span> <span class="n">BondAngle</span><span class="p">(</span><span class="n">atom1</span><span class="o">=</span><span class="n">bondangle_info</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">atom2</span><span class="o">=</span><span class="n">bondangle_info</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">bondangle</span><span class="o">=</span><span class="n">bondangle_info</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">angle</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bondangle_obj</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_add_dihedralangle</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">PyFragResultsObject</span><span class="p">,</span> <span class="o">*</span><span class="n">dihedralangle_info</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">dihedral_obj</span> <span class="o">=</span> <span class="n">DihedralAngle</span><span class="p">(</span><span class="n">atom1</span><span class="o">=</span><span class="n">dihedralangle_info</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">atom2</span><span class="o">=</span><span class="n">dihedralangle_info</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">atom3</span><span class="o">=</span><span class="n">dihedralangle_info</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">dihedralangle</span><span class="o">=</span><span class="n">dihedralangle_info</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">dihedral</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dihedral_obj</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_add_overlap</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">PyFragResultsObject</span><span class="p">,</span> <span class="o">*</span><span class="n">overlap_info</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds an Overlap object to the PyFragResultsObject object.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">overlap_info</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="n">overlap_obj</span> <span class="o">=</span> <span class="n">Overlap</span><span class="p">(</span>
+            <span class="n">frag1_orb</span><span class="o">=</span><span class="n">overlap_info</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+            <span class="n">frag2_orb</span><span class="o">=</span><span class="n">overlap_info</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">overlap_obj</span> <span class="o">=</span> <span class="n">Overlap</span><span class="p">(</span>
+            <span class="n">frag1_irrep</span><span class="o">=</span><span class="n">overlap_info</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">frag1_orb</span><span class="o">=</span><span class="n">overlap_info</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+            <span class="n">frag2_irrep</span><span class="o">=</span><span class="n">overlap_info</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
+            <span class="n">frag2_orb</span><span class="o">=</span><span class="n">overlap_info</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span>
+        <span class="p">)</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">overlap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">overlap_obj</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_add_population</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">PyFragResultsObject</span><span class="p">,</span> <span class="o">*</span><span class="n">population_info</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds an Population object to the PyFragResultsObject object.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">population_info</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">pop_obj</span> <span class="o">=</span> <span class="n">Population</span><span class="p">(</span><span class="n">frag</span><span class="o">=</span><span class="n">population_info</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">orbital</span><span class="o">=</span><span class="n">population_info</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pop_obj</span> <span class="o">=</span> <span class="n">Population</span><span class="p">(</span>
+            <span class="n">frag</span><span class="o">=</span><span class="n">population_info</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+            <span class="n">orbital</span><span class="o">=</span><span class="n">population_info</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">irrep</span><span class="o">=</span><span class="n">population_info</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+        <span class="p">)</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">population</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pop_obj</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_add_orbitalenergy</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">PyFragResultsObject</span><span class="p">,</span> <span class="o">*</span><span class="n">orbenergy_info</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds an OrbitalEnergy object to the PyFragResultsObject object.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">orbenergy_info</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">orb_energy_obj</span> <span class="o">=</span> <span class="n">OrbitalEnergy</span><span class="p">(</span><span class="n">frag</span><span class="o">=</span><span class="n">orbenergy_info</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">orbital</span><span class="o">=</span><span class="n">orbenergy_info</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">orb_energy_obj</span> <span class="o">=</span> <span class="n">OrbitalEnergy</span><span class="p">(</span>
+            <span class="n">frag</span><span class="o">=</span><span class="n">orbenergy_info</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+            <span class="n">orbital</span><span class="o">=</span><span class="n">orbenergy_info</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">irrep</span><span class="o">=</span><span class="n">orbenergy_info</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+        <span class="p">)</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">orbitalenergy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">orb_energy_obj</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_add_vdd</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">PyFragResultsObject</span><span class="p">,</span> <span class="n">vdd_index</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds an OrbitalEnergy object to the PyFragResultsObject object.&quot;&quot;&quot;</span>
+    <span class="n">vdd_obj</span> <span class="o">=</span> <span class="n">VDD</span><span class="p">(</span><span class="n">atom</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">vdd_index</span><span class="p">))</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">vdd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vdd_obj</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_add_irrep</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">PyFragResultsObject</span><span class="p">,</span> <span class="n">irrep</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds an OrbitalEnergy object to the PyFragResultsObject object.&quot;&quot;&quot;</span>
+    <span class="n">irrep_obj</span> <span class="o">=</span> <span class="n">Irrep</span><span class="p">(</span><span class="n">irrep</span><span class="o">=</span><span class="n">irrep</span><span class="p">)</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">irrep</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">irrep_obj</span><span class="p">)</span>
+
+
+<span class="n">key_to_func_mapping</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">AvailableTerms</span><span class="o">.</span><span class="n">BONDLENGTH</span><span class="p">:</span> <span class="n">_add_bondlength</span><span class="p">,</span>
+    <span class="n">AvailableTerms</span><span class="o">.</span><span class="n">ANGLE</span><span class="p">:</span> <span class="n">_add_bondangle</span><span class="p">,</span>
+    <span class="n">AvailableTerms</span><span class="o">.</span><span class="n">DIHEDRAL</span><span class="p">:</span> <span class="n">_add_dihedralangle</span><span class="p">,</span>
+    <span class="n">AvailableTerms</span><span class="o">.</span><span class="n">OVERLAP</span><span class="p">:</span> <span class="n">_add_overlap</span><span class="p">,</span>
+    <span class="n">AvailableTerms</span><span class="o">.</span><span class="n">POPULATION</span><span class="p">:</span> <span class="n">_add_population</span><span class="p">,</span>
+    <span class="n">AvailableTerms</span><span class="o">.</span><span class="n">ORBITALENERGY</span><span class="p">:</span> <span class="n">_add_orbitalenergy</span><span class="p">,</span>
+    <span class="n">AvailableTerms</span><span class="o">.</span><span class="n">VDD</span><span class="p">:</span> <span class="n">_add_vdd</span><span class="p">,</span>
+    <span class="n">AvailableTerms</span><span class="o">.</span><span class="n">IRREPOI</span><span class="p">:</span> <span class="n">_add_irrep</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="create_pyfrag_object_from_processed_files">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.create_pyfrag_object_from_processed_files">[docs]</a>
+<span class="k">def</span> <span class="nf">create_pyfrag_object_from_processed_files</span><span class="p">(</span><span class="n">results_data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">inputfile_data</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">PyFragResultsObject</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a PyFragResultsObject from the given results data and input file data.</span>
+
+<span class="sd">    This function takes a pandas DataFrame containing the results file data and a dictionary containing the input file data and creates a PyFragResultsObject.</span>
+<span class="sd">    The PyFragResultsObject contains data for various properties such as EDA, ASM, extra strain, bond lengths, bond angles, dihedral angles, overlaps, populations, orbital energies, VDD, and irreps.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        results_data (pd.DataFrame): The data from the output file (i.e., the pyfrag_*.txt file).</span>
+<span class="sd">        inputfile_data (Dict[str, Any]): The keys from the input file such as bondlength, overlap, orbitalenergy, and more.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        PyFragResultsObject: The dataclass containing all the data of one PyFrag calculation.</span>
+
+<span class="sd">    Note: standard terms such &quot;Int&quot;, &quot;EnergyTotal&quot;, &quot;StrainTotal&quot;, &quot;Elstat&quot;, &quot;Pauli&quot;, &quot;OI&quot;, and &quot;Disp&quot; are automatically added to the PyFragResultsObject.</span>
+<span class="sd">    Non-standard terms such as &quot;bondlength&quot;, &quot;overlap&quot;, &quot;orbitalenergy&quot;, and more are added to the PyFragResultsObject by using the key_to_func_mapping dictionary.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">obj</span> <span class="o">=</span> <span class="n">PyFragResultsObject</span><span class="p">(</span><span class="n">inputfile_data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">),</span> <span class="n">results_data</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">inputfile_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="c1"># For non-standard terms such as overlap_[x], bondlength_[x] the term is split on the underscore</span>
+        <span class="c1"># The first part (e.g., &quot;overlap&quot;) determines which kind of instance of the corresponding class should be created</span>
+        <span class="c1"># The second part (e.g., &quot;x&quot;) is to keep track of the relative order</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+        <span class="c1"># For both standard and non-standard terms the key is used to call the corresponding function in the key_to_func_mapping dictionary</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">key_to_func_mapping</span><span class="p">:</span>
+            <span class="n">key_to_func_mapping</span><span class="p">[</span><span class="n">key</span><span class="p">](</span><span class="n">obj</span><span class="p">,</span> <span class="o">*</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">obj</span></div>
+
+
+
+<div class="viewcode-block" id="create_pyfrag_object_from_dir">
+<a class="viewcode-back" href="../../api/pyfrag_plotter.html#pyfrag_plotter.pyfrag_object.create_pyfrag_object_from_dir">[docs]</a>
+<span class="k">def</span> <span class="nf">create_pyfrag_object_from_dir</span><span class="p">(</span><span class="n">results_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PyFragResultsObject</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a PyFragResultsObject from the results in a directory.</span>
+<span class="sd">    This function provides a shortcut for creating a PyFragResultsObject from the results in a directory by processing and creating the PyFragResultsObject in one function.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        results_dir (str): The path to the directory containing the PyFrag results files.</span>
+<span class="sd">        **kwargs: Additional keyword arguments to pass to the `process_results_file` function. These are:</span>
+<span class="sd">            trim_parameter (Optional[Union[str, float, int]]): The parameter to use for trimming. Defaults to none.</span>
+<span class="sd">            trim_key (Optional[str]): The key to use for reading the trim_parameter from the configuration file. Defaults to the &quot;EnergyTotal&quot; column.</span>
+<span class="sd">            outlier_threshold: (Optional[float]): The threshold to use for removing outliers. If none is specified, the threshold from the configuration file is used. Defaults to None.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        PyFragResultsObject: A PyFragResultsObject containing the processed PyFrag results.</span>
+
+<span class="sd">    This function reads the PyFrag input and output files from the given directory, processes the output file using the `process_results_file` function with any additional keyword arguments provided.</span>
+<span class="sd">    Creates a PyFragResultsObject from the processed results and input data using the `create_pyfrag_object_from_processed_files` function.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">input_file</span><span class="p">,</span> <span class="n">output_file</span> <span class="o">=</span> <span class="n">get_pyfrag_files</span><span class="p">(</span><span class="n">results_dir</span><span class="p">)</span>
+
+    <span class="n">inputfile_data</span> <span class="o">=</span> <span class="n">read_inputfile</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span>
+
+    <span class="n">results_data</span> <span class="o">=</span> <span class="n">read_results_file</span><span class="p">(</span><span class="n">output_file</span><span class="p">)</span>
+    <span class="n">results_data</span> <span class="o">=</span> <span class="n">process_results_file</span><span class="p">(</span><span class="n">results_data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="n">obj</span> <span class="o">=</span> <span class="n">create_pyfrag_object_from_processed_files</span><span class="p">(</span><span class="n">results_data</span><span class="p">,</span> <span class="n">inputfile_data</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">obj</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2023, SiebeLeDe.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

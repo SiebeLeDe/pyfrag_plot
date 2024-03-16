@@ -1,0 +1,601 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyfrag_plotter.config.config_handler &#8212; PyFragPlotter 0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pyfrag_plotter/config/config_handler';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PyFragPlotter 0.0.1 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../general.html">
+                        General
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../usage.html">
+                        Usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../config.html">
+                        The Config File
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../api/modules.html">
+                        pyfrag_plotter
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../general.html">
+                        General
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../usage.html">
+                        Usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../config.html">
+                        The Config File
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../api/modules.html">
+                        pyfrag_plotter
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../../pyfrag_plotter.html" class="nav-link">pyfrag_plotter</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">pyfrag_plott...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for pyfrag_plotter.config.config_handler</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot; Module that contains the functions for initializing the config file and reading the config file. This module should be imported by any module that needs to read the config file. &quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">configparser</span> <span class="k">as</span> <span class="nn">cp</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">pyfrag_plotter.config.validate</span> <span class="kn">import</span> <span class="n">validate_config_key</span>
+<span class="kn">from</span> <span class="nn">pyfrag_plotter.errors</span> <span class="kn">import</span> <span class="n">PyFragConfigValidationError</span>
+
+
+<span class="k">def</span> <span class="nf">_get_str_key</span><span class="p">(</span><span class="n">config_parser</span><span class="p">:</span> <span class="n">cp</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">,</span> <span class="n">section</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">option</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">config_parser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">_get_list_str_key</span><span class="p">(</span><span class="n">config_parser</span><span class="p">:</span> <span class="n">cp</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">,</span> <span class="n">section</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">option</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="c1"># Split the value string using a regular expression that matches any whitespace character</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\s*,\s*|\s+&#39;</span><span class="p">,</span> <span class="n">config_parser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">value</span> <span class="k">if</span> <span class="n">v</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">_get_float_key</span><span class="p">(</span><span class="n">config_parser</span><span class="p">:</span> <span class="n">cp</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">,</span> <span class="n">section</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">option</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">config_parser</span><span class="o">.</span><span class="n">getfloat</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">value</span>
+
+
+<span class="k">def</span> <span class="nf">_get_list_float_key</span><span class="p">(</span><span class="n">config_parser</span><span class="p">:</span> <span class="n">cp</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">,</span> <span class="n">section</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">option</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\s*,\s*|\s+&#39;</span><span class="p">,</span> <span class="n">config_parser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="p">))</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">value</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">value</span>
+
+
+<span class="k">def</span> <span class="nf">_get_int_key</span><span class="p">(</span><span class="n">config_parser</span><span class="p">:</span> <span class="n">cp</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">,</span> <span class="n">section</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">option</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">config_parser</span><span class="o">.</span><span class="n">getint</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">value</span>
+
+
+<span class="k">def</span> <span class="nf">_get_boolean_key</span><span class="p">(</span><span class="n">config_parser</span><span class="p">:</span> <span class="n">cp</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">,</span> <span class="n">section</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">option</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">config_parser</span><span class="o">.</span><span class="n">getboolean</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">value</span>
+
+
+<span class="k">def</span> <span class="nf">_get_any_key</span><span class="p">(</span><span class="n">config_parser</span><span class="p">:</span> <span class="n">cp</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">,</span> <span class="n">section</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">option</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="c1"># First, try to get the value as an integer</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">config_parser</span><span class="o">.</span><span class="n">getint</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="c1"># If that fails, try to get the value as a float</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">config_parser</span><span class="o">.</span><span class="n">getfloat</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="c1"># If that fails, get the value as a string</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">config_parser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">value</span>
+
+
+<span class="n">config_key_to_function_mapping</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># Shared keys</span>
+    <span class="s2">&quot;log_level&quot;</span><span class="p">:</span> <span class="n">_get_str_key</span><span class="p">,</span>
+    <span class="s2">&quot;x_lim&quot;</span><span class="p">:</span> <span class="n">_get_list_float_key</span><span class="p">,</span>
+    <span class="s2">&quot;y_lim&quot;</span><span class="p">:</span> <span class="n">_get_list_float_key</span><span class="p">,</span>
+    <span class="s2">&quot;colours&quot;</span><span class="p">:</span> <span class="n">_get_list_str_key</span><span class="p">,</span>
+    <span class="s2">&quot;line_styles&quot;</span><span class="p">:</span> <span class="n">_get_list_str_key</span><span class="p">,</span>
+    <span class="s2">&quot;outlier_threshold&quot;</span><span class="p">:</span> <span class="n">_get_float_key</span><span class="p">,</span>
+    <span class="s2">&quot;trim_option&quot;</span><span class="p">:</span> <span class="n">_get_any_key</span><span class="p">,</span>
+    <span class="s2">&quot;vline&quot;</span><span class="p">:</span> <span class="n">_get_float_key</span><span class="p">,</span>
+    <span class="s2">&quot;trim_key&quot;</span><span class="p">:</span> <span class="n">_get_str_key</span><span class="p">,</span>
+    <span class="s2">&quot;reverse_x_axis&quot;</span><span class="p">:</span> <span class="n">_get_boolean_key</span><span class="p">,</span>
+    <span class="s2">&quot;stat_point_type&quot;</span><span class="p">:</span> <span class="n">_get_str_key</span><span class="p">,</span>
+    <span class="s2">&quot;n_interpolation_points&quot;</span><span class="p">:</span> <span class="n">_get_int_key</span><span class="p">,</span>
+
+    <span class="c1"># EDA keys</span>
+    <span class="s2">&quot;eda_keys&quot;</span><span class="p">:</span> <span class="n">_get_list_str_key</span><span class="p">,</span>
+
+    <span class="c1"># ASM keys</span>
+    <span class="s2">&quot;asm_keys&quot;</span><span class="p">:</span> <span class="n">_get_list_str_key</span><span class="p">,</span>
+    <span class="s2">&quot;asm_strain_keys&quot;</span><span class="p">:</span> <span class="n">_get_list_str_key</span><span class="p">,</span>
+
+    <span class="c1"># Matplotlib keys</span>
+    <span class="s2">&quot;fig_size&quot;</span><span class="p">:</span> <span class="n">_get_list_float_key</span><span class="p">,</span>
+    <span class="s2">&quot;font&quot;</span><span class="p">:</span> <span class="n">_get_str_key</span><span class="p">,</span>
+    <span class="s2">&quot;font_size&quot;</span><span class="p">:</span> <span class="n">_get_float_key</span><span class="p">,</span>
+    <span class="s2">&quot;label_size&quot;</span><span class="p">:</span> <span class="n">_get_float_key</span><span class="p">,</span>
+    <span class="s2">&quot;legend_size&quot;</span><span class="p">:</span> <span class="n">_get_float_key</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="Config">
+<a class="viewcode-back" href="../../../api/pyfrag_plotter.config.html#pyfrag_plotter.config.config_handler.Config">[docs]</a>
+<span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An interface for the config file.</span>
+
+<span class="sd">    This class overloads the get method of the ConfigParser class to ensure that the correct type is returned.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        config_parser (ConfigParser): The ConfigParser instance that contains the configuration data.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_parser</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config_parser</span><span class="p">:</span> <span class="n">cp</span><span class="o">.</span><span class="n">ConfigParser</span> <span class="o">=</span> <span class="n">config_parser</span>
+
+<div class="viewcode-block" id="Config.get">
+<a class="viewcode-back" href="../../../api/pyfrag_plotter.config.html#pyfrag_plotter.config.config_handler.Config.get">[docs]</a>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">option</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the value of the specified option in the specified section.</span>
+
+<span class="sd">        This method returns the value with the correct type.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            section (str): The name of the section that contains the option.</span>
+<span class="sd">            option (str): The name of the option to get.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            ret_variable (Any): The value of the specified option in the specified section.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If the specified option is not a valid option.</span>
+<span class="sd">            ValueError: If the specified section is not a valid section.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">option</span> <span class="o">=</span> <span class="n">option</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">option</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">config_key_to_function_mapping</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Option &#39;</span><span class="si">{</span><span class="n">option</span><span class="si">}</span><span class="s2">&#39; is not a valid option. Valid options are </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">config_key_to_function_mapping</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">Please check the config file.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">section</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_parser</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Section &#39;</span><span class="si">{</span><span class="n">section</span><span class="si">}</span><span class="s2">&#39; is not a valid section. Valid sections are </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sections</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+        <span class="n">ret_variable</span> <span class="o">=</span> <span class="n">config_key_to_function_mapping</span><span class="p">[</span><span class="n">option</span><span class="p">](</span><span class="bp">self</span><span class="o">.</span><span class="n">config_parser</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ret_variable</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sections</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets a list of the sections in the config file.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[str]: A list of the sections in the config file.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_parser</span><span class="o">.</span><span class="n">sections</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">content</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets a dictionary containing the content of the config file.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Dict[str, Dict[str, Any]]: A dictionary containing the content of the config file.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">section</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_parser</span><span class="p">[</span><span class="n">section</span><span class="p">])</span> <span class="k">for</span> <span class="n">section</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_parser</span><span class="o">.</span><span class="n">sections</span><span class="p">()}</span>
+
+<div class="viewcode-block" id="Config.overwrite_config">
+<a class="viewcode-back" href="../../../api/pyfrag_plotter.config.html#pyfrag_plotter.config.config_handler.Config.overwrite_config">[docs]</a>
+    <span class="k">def</span> <span class="nf">overwrite_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_parser</span><span class="p">:</span> <span class="n">cp</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Overwrites the current config parser with a new config parser. This is used to overwrite the default config parser with a user-specified config parser with the |init| function.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config_parser</span> <span class="o">=</span> <span class="n">config_parser</span></div>
+
+
+<div class="viewcode-block" id="Config.validate_config">
+<a class="viewcode-back" href="../../../api/pyfrag_plotter.config.html#pyfrag_plotter.config.config_handler.Config.validate_config">[docs]</a>
+    <span class="k">def</span> <span class="nf">validate_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Validates all available config keys. It checks whether:</span>
+<span class="sd">            - the user specified keys are valid keys (valid keys are specified in the config_key_to_function_mapping dictionary)</span>
+<span class="sd">            - the user specified keys have the correct values</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            PyFragConfigValidationError (PyFragConfigValidationError): If the config key is invalid.</span>
+
+<span class="sd">        Note: it uses the |validate| function from the validate module.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># First checks whether all required keys are present</span>
+        <span class="n">config_keys</span> <span class="o">=</span> <span class="p">[</span><span class="n">key</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_parser</span><span class="o">.</span><span class="n">defaults</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">([</span><span class="n">key</span> <span class="ow">in</span> <span class="n">config_keys</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">config_key_to_function_mapping</span><span class="o">.</span><span class="n">keys</span><span class="p">()]):</span>
+            <span class="k">raise</span> <span class="n">PyFragConfigValidationError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Not all required keys are present in the config file. Please check if these keys are specified </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">config_key_to_function_mapping</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Then check every key-value pair</span>
+        <span class="k">for</span> <span class="n">section</span><span class="p">,</span> <span class="n">config_keys</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">config_key</span> <span class="ow">in</span> <span class="n">config_keys</span><span class="p">:</span>
+                <span class="n">typed_value_of_config_key</span> <span class="o">=</span> <span class="n">config_key_to_function_mapping</span><span class="p">[</span><span class="n">config_key</span><span class="p">](</span><span class="bp">self</span><span class="o">.</span><span class="n">config_parser</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">config_key</span><span class="p">)</span>
+                <span class="n">validate_config_key</span><span class="p">(</span><span class="n">config_key</span><span class="p">,</span> <span class="n">typed_value_of_config_key</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">config_key_to_function_mapping</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2023, SiebeLeDe.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

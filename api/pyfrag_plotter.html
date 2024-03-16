@@ -1,0 +1,1578 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>pyfrag_plotter package &#8212; PyFragPlotter 0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/pyfrag_plotter';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="pyfrag_plotter.config package" href="pyfrag_plotter.config.html" />
+    <link rel="prev" title="pyfrag_plotter" href="modules.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PyFragPlotter 0.0.1 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../general.html">
+                        General
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../usage.html">
+                        Usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../config.html">
+                        The Config File
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="modules.html">
+                        pyfrag_plotter
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../general.html">
+                        General
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../usage.html">
+                        Usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../config.html">
+                        The Config File
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="modules.html">
+                        pyfrag_plotter
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">pyfrag_plotter package</a><input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.config.html">pyfrag_plotter.config package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.input.html">pyfrag_plotter.input package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.plot.html">pyfrag_plotter.plot package</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="modules.html" class="nav-link">pyfrag_plotter</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">pyfrag_plott...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="pyfrag-plotter-package">
+<h1>pyfrag_plotter package<a class="headerlink" href="#pyfrag-plotter-package" title="Link to this heading">#</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pyfrag_plotter.config.html">pyfrag_plotter.config package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.config.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.config.html#module-pyfrag_plotter.config.config_handler">pyfrag_plotter.config.config_handler module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.config.html#pyfrag_plotter.config.config_handler.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.config.html#pyfrag_plotter.config.config_handler.Config.config_parser"><code class="docutils literal notranslate"><span class="pre">Config.config_parser</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.config.html#pyfrag_plotter.config.config_handler.Config.content"><code class="docutils literal notranslate"><span class="pre">Config.content</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.config.html#pyfrag_plotter.config.config_handler.Config.get"><code class="docutils literal notranslate"><span class="pre">Config.get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.config.html#pyfrag_plotter.config.config_handler.Config.overwrite_config"><code class="docutils literal notranslate"><span class="pre">Config.overwrite_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.config.html#pyfrag_plotter.config.config_handler.Config.sections"><code class="docutils literal notranslate"><span class="pre">Config.sections</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.config.html#pyfrag_plotter.config.config_handler.Config.validate_config"><code class="docutils literal notranslate"><span class="pre">Config.validate_config()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.config.html#module-pyfrag_plotter.config.validate">pyfrag_plotter.config.validate module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.config.html#pyfrag_plotter.config.validate.validate_config_key"><code class="docutils literal notranslate"><span class="pre">validate_config_key()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.config.html#module-pyfrag_plotter.config">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pyfrag_plotter.input.html">pyfrag_plotter.input package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.input.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.input.html#module-pyfrag_plotter.input.pyfrag_files">pyfrag_plotter.input.pyfrag_files module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.input.html#pyfrag_plotter.input.pyfrag_files.get_pyfrag_files"><code class="docutils literal notranslate"><span class="pre">get_pyfrag_files()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.input.html#module-pyfrag_plotter.input.read_inputfile">pyfrag_plotter.input.read_inputfile module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.input.html#pyfrag_plotter.input.read_inputfile.read_inputfile"><code class="docutils literal notranslate"><span class="pre">read_inputfile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.input.html#module-pyfrag_plotter.input.read_resultsfile">pyfrag_plotter.input.read_resultsfile module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.input.html#pyfrag_plotter.input.read_resultsfile.read_results_file"><code class="docutils literal notranslate"><span class="pre">read_results_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.input.html#module-pyfrag_plotter.input">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pyfrag_plotter.plot.html">pyfrag_plotter.plot package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.plot.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.plot.html#module-pyfrag_plotter.plot.plot_details">pyfrag_plotter.plot.plot_details module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.plot.html#pyfrag_plotter.plot.plot_details.replace_overlapping_keys"><code class="docutils literal notranslate"><span class="pre">replace_overlapping_keys()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.plot.html#pyfrag_plotter.plot.plot_details.set_axes_details"><code class="docutils literal notranslate"><span class="pre">set_axes_details()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.plot.html#pyfrag_plotter.plot.plot_details.set_figure_details"><code class="docutils literal notranslate"><span class="pre">set_figure_details()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.plot.html#module-pyfrag_plotter.plot.plotter">pyfrag_plotter.plot.plotter module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.PlotInfo"><code class="docutils literal notranslate"><span class="pre">PlotInfo</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.PlotInfo.irc_coord"><code class="docutils literal notranslate"><span class="pre">PlotInfo.irc_coord</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.PlotInfo.irc_coord_label"><code class="docutils literal notranslate"><span class="pre">PlotInfo.irc_coord_label</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.PlotInfo.colours"><code class="docutils literal notranslate"><span class="pre">PlotInfo.colours</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.PlotInfo.line_styles"><code class="docutils literal notranslate"><span class="pre">PlotInfo.line_styles</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.PlotInfo.peak_type"><code class="docutils literal notranslate"><span class="pre">PlotInfo.peak_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#id0"><code class="docutils literal notranslate"><span class="pre">PlotInfo.colours</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#id1"><code class="docutils literal notranslate"><span class="pre">PlotInfo.irc_coord</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#id2"><code class="docutils literal notranslate"><span class="pre">PlotInfo.irc_coord_label</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#id3"><code class="docutils literal notranslate"><span class="pre">PlotInfo.line_styles</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#id4"><code class="docutils literal notranslate"><span class="pre">PlotInfo.peak_type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.Plotter"><code class="docutils literal notranslate"><span class="pre">Plotter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.Plotter.name"><code class="docutils literal notranslate"><span class="pre">Plotter.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.Plotter.objects"><code class="docutils literal notranslate"><span class="pre">Plotter.objects</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.Plotter.path"><code class="docutils literal notranslate"><span class="pre">Plotter.path</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.Plotter.plot_info"><code class="docutils literal notranslate"><span class="pre">Plotter.plot_info</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.Plotter.plot_arbitrary_keys"><code class="docutils literal notranslate"><span class="pre">Plotter.plot_arbitrary_keys()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.Plotter.plot_asm"><code class="docutils literal notranslate"><span class="pre">Plotter.plot_asm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.Plotter.plot_eda"><code class="docutils literal notranslate"><span class="pre">Plotter.plot_eda()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.Plotter.plot_extra_strain"><code class="docutils literal notranslate"><span class="pre">Plotter.plot_extra_strain()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.Plotter.plot_population"><code class="docutils literal notranslate"><span class="pre">Plotter.plot_population()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.Plotter.standard_plot_routine"><code class="docutils literal notranslate"><span class="pre">Plotter.standard_plot_routine()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.plot_logger"><code class="docutils literal notranslate"><span class="pre">plot_logger()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyfrag_plotter.plot.html#module-pyfrag_plotter.plot">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
+</section>
+<section id="module-pyfrag_plotter.errors">
+<span id="pyfrag-plotter-errors-module"></span><h2>pyfrag_plotter.errors module<a class="headerlink" href="#module-pyfrag_plotter.errors" title="Link to this heading">#</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="pyfrag_plotter.errors.PyFragConfigError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.errors.</span></span><span class="sig-name descname"><span class="pre">PyFragConfigError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyfrag_plotter/errors.html#PyFragConfigError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.errors.PyFragConfigError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyfrag_plotter.errors.PyFragError" title="pyfrag_plotter.errors.PyFragError"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyFragError</span></code></a></p>
+<p>An error that occurs when the PyFrag configuration is invalid.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pyfrag_plotter.errors.PyFragConfigValidationError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.errors.</span></span><span class="sig-name descname"><span class="pre">PyFragConfigValidationError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyfrag_plotter/errors.html#PyFragConfigValidationError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.errors.PyFragConfigValidationError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyfrag_plotter.errors.PyFragError" title="pyfrag_plotter.errors.PyFragError"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyFragError</span></code></a></p>
+<p>An error that occurs when the PyFrag config is invalid.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pyfrag_plotter.errors.PyFragError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.errors.</span></span><span class="sig-name descname"><span class="pre">PyFragError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyfrag_plotter/errors.html#PyFragError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.errors.PyFragError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ValueError</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pyfrag_plotter.errors.PyFragInputError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.errors.</span></span><span class="sig-name descname"><span class="pre">PyFragInputError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyfrag_plotter/errors.html#PyFragInputError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.errors.PyFragInputError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ValueError</span></code></p>
+<p>An error that occurs when the PyFrag input is invalid.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pyfrag_plotter.errors.PyFragInterpolationError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.errors.</span></span><span class="sig-name descname"><span class="pre">PyFragInterpolationError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyfrag_plotter/errors.html#PyFragInterpolationError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.errors.PyFragInterpolationError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyfrag_plotter.errors.PyFragError" title="pyfrag_plotter.errors.PyFragError"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyFragError</span></code></a></p>
+<p>An error that occurs when interpolating data.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pyfrag_plotter.errors.PyFragResultsObjectError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.errors.</span></span><span class="sig-name descname"><span class="pre">PyFragResultsObjectError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyfrag_plotter/errors.html#PyFragResultsObjectError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.errors.PyFragResultsObjectError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyfrag_plotter.errors.PyFragError" title="pyfrag_plotter.errors.PyFragError"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyFragError</span></code></a></p>
+<p>An error that occurs when a PyFrag results object is invalid.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pyfrag_plotter.errors.PyFragResultsProcessingError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.errors.</span></span><span class="sig-name descname"><span class="pre">PyFragResultsProcessingError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyfrag_plotter/errors.html#PyFragResultsProcessingError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.errors.PyFragResultsProcessingError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyfrag_plotter.errors.PyFragError" title="pyfrag_plotter.errors.PyFragError"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyFragError</span></code></a></p>
+<p>An error that occurs when processing PyFrag results.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pyfrag_plotter.errors.PyFragResultsProcessingWarning">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.errors.</span></span><span class="sig-name descname"><span class="pre">PyFragResultsProcessingWarning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">section</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyfrag_plotter/errors.html#PyFragResultsProcessingWarning"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.errors.PyFragResultsProcessingWarning" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Warning</span></code></p>
+<p>An error that occurs when processing PyFrag results.</p>
+</dd></dl>
+
+</section>
+<section id="module-pyfrag_plotter.interpolate">
+<span id="pyfrag-plotter-interpolate-module"></span><h2>pyfrag_plotter.interpolate module<a class="headerlink" href="#module-pyfrag_plotter.interpolate" title="Link to this heading">#</a></h2>
+<p>Module that contains functions for interpolating data</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyfrag_plotter.interpolate.interpolate_data">
+<span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.interpolate.</span></span><span class="sig-name descname"><span class="pre">interpolate_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject" title="pyfrag_plotter.pyfrag_object.PyFragResultsObject"><span class="pre">PyFragResultsObject</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">irc_coord</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">point</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/pyfrag_plotter/interpolate.html#interpolate_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.interpolate.interpolate_data" title="Link to this definition">#</a></dt>
+<dd><p>Interpolates data that can be in the format of a PyFragResultsObject or a pandas DataFrame.</p>
+<p>This function takes input data in the format of a PyFragResultsObject or a pandas DataFrame and interpolates the data at a specified point along the x-axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_data</strong> (<em>Union</em><em>[</em><a class="reference internal" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject" title="pyfrag_plotter.pyfrag_object.PyFragResultsObject"><em>PyFragResultsObject</em></a><em>, </em><em>pd.DataFrame</em><em>]</em>) – The input data to interpolate.</p></li>
+<li><p><strong>irc_coord</strong> (<em>str</em>) – The name of the x-axis coordinate to interpolate along.</p></li>
+<li><p><strong>point</strong> (<em>float</em>) – The point along the x-axis to interpolate at.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the input data is not a PyFragResultsObject or a pandas DataFrame.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A pandas DataFrame containing the interpolated data.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pandas DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyfrag_plotter.interpolate.interpolate_plot">
+<span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.interpolate.</span></span><span class="sig-name descname"><span class="pre">interpolate_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">BSpline</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/pyfrag_plotter/interpolate.html#interpolate_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.interpolate.interpolate_plot" title="Link to this definition">#</a></dt>
+<dd><p>Interpolates the data to a finer grid for plotting purposes using the scipy spline library.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x_axis</strong> (<em>np.ndarray</em>) – The x-axis data to interpolate.</p></li>
+<li><p><strong>y_axis</strong> (<em>np.ndarray</em>) – The y-axis data to interpolate.</p></li>
+<li><p><strong>x_range</strong> (<em>Optional</em><em>[</em><em>Sequence</em><em>[</em><em>float</em><em>]</em><em>]</em><em>, </em><em>optional</em>) – The range of x-axis values to interpolate over. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The interpolated x-axis and y-axis data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[np.ndarray, BSpline]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyfrag_plotter.interpolate.remove_duplicate_x_values">
+<span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.interpolate.</span></span><span class="sig-name descname"><span class="pre">remove_duplicate_x_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/pyfrag_plotter/interpolate.html#remove_duplicate_x_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.interpolate.remove_duplicate_x_values" title="Link to this definition">#</a></dt>
+<dd><p>Removes duplicate x-axis values from the input arrays.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>np.ndarray</em>) – The x-axis data.</p></li>
+<li><p><strong>y</strong> (<em>np.ndarray</em>) – The y-axis data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The modified x-axis and y-axis data with duplicates removed.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[np.ndarray, np.ndarray]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pyfrag_plotter.processing_funcs">
+<span id="pyfrag-plotter-processing-funcs-module"></span><h2>pyfrag_plotter.processing_funcs module<a class="headerlink" href="#module-pyfrag_plotter.processing_funcs" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyfrag_plotter.processing_funcs.process_results_file">
+<span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.processing_funcs.</span></span><span class="sig-name descname"><span class="pre">process_results_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_option</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outlier_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/pyfrag_plotter/processing_funcs.html#process_results_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.processing_funcs.process_results_file" title="Link to this definition">#</a></dt>
+<dd><p>Processes the results file data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> – A pandas DataFrame containing the results file data.</p></li>
+<li><p><strong>trim_option</strong> – An optional argument specifying how to trim the data. Can be “max”, “min”, “x_limits”, or None.</p></li>
+<li><p><strong>trim_key</strong> – An optional argument specifying the key to use for trimming the data. Can be “EnergyTotal” or None.</p></li>
+<li><p><strong>outlier_threshold</strong> – An optional argument specifying the threshold for removing outliers. Can be a float or None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pandas DataFrame containing the processed results file data.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pyfrag_plotter.errors.PyFragResultsProcessingError" title="pyfrag_plotter.errors.PyFragResultsProcessingError"><strong>PyFragResultsProcessingError</strong></a> – If an error occurs during processing.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyfrag_plotter.processing_funcs.remove_dispersion_term">
+<span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.processing_funcs.</span></span><span class="sig-name descname"><span class="pre">remove_dispersion_term</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/pyfrag_plotter/processing_funcs.html#remove_dispersion_term"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.processing_funcs.remove_dispersion_term" title="Link to this definition">#</a></dt>
+<dd><p>Removes the dispersion term from the dataframe if it is 0.0 everywhere.</p>
+<p>This function takes a pandas DataFrame containing the results file data and removes the dispersion term if it is 0.0 everywhere. The function returns the modified DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pd.DataFrame</em>) – The DataFrame containing the results file data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The modified DataFrame without the dispersion term if it is 0.0 everywhere.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyfrag_plotter.processing_funcs.remove_duplicate_x_values_dataframe">
+<span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.processing_funcs.</span></span><span class="sig-name descname"><span class="pre">remove_duplicate_x_values_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/pyfrag_plotter/processing_funcs.html#remove_duplicate_x_values_dataframe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.processing_funcs.remove_duplicate_x_values_dataframe" title="Link to this definition">#</a></dt>
+<dd><p>Removes rows with duplicate x-axis values from a pandas DataFrame. This is necessary since otherwise the interpolation will fail.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The DataFrame to remove duplicates from.</p></li>
+<li><p><strong>x_axis_key</strong> (<em>str</em>) – The name of the column containing the x-axis values.</p></li>
+<li><p><strong>y_axis_key</strong> (<em>str</em>) – The name of the column containing the y-axis values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The modified DataFrame with duplicates removed.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyfrag_plotter.processing_funcs.remove_outliers">
+<span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.processing_funcs.</span></span><span class="sig-name descname"><span class="pre">remove_outliers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outlier_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/pyfrag_plotter/processing_funcs.html#remove_outliers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.processing_funcs.remove_outliers" title="Link to this definition">#</a></dt>
+<dd><p>Removes outliers from the dataframe.</p>
+<p>This function takes a pandas DataFrame containing the results file data and removes outliers from the dataframe. The function returns the modified DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pd.DataFrame</em>) – The DataFrame containing the results file data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The modified DataFrame without outliers.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyfrag_plotter.processing_funcs.trim_data">
+<span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.processing_funcs.</span></span><span class="sig-name descname"><span class="pre">trim_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_option</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/pyfrag_plotter/processing_funcs.html#trim_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.processing_funcs.trim_data" title="Link to this definition">#</a></dt>
+<dd><p>‘Overloaded’ function to trim the dataframe based on the type of the trim_option.</p>
+<p>This function trims the given dataframe based on the type of the trim_option.
+The trim_option is read from the configuration file and can be either a string (“min”, “max”), integer (IRC point), float (energy func), or a sequence (x_limits such as (1.0, 3.0))).
+The function returns the trimmed dataframe.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The dataframe to trim.</p></li>
+<li><p><strong>trim_parameter</strong> (<em>Optional</em><em>[</em><em>Union</em><em>[</em><em>str</em><em>, </em><em>float</em><em>, </em><em>int</em><em>]</em><em>]</em>) – The parameter to use for trimming. Defaults to None.</p></li>
+<li><p><strong>trim_key</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – The key to use for reading the trim_parameter from the configuration file. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#pyfrag_plotter.errors.PyFragResultsProcessingError" title="pyfrag_plotter.errors.PyFragResultsProcessingError"><strong>PyFragResultsProcessingError</strong></a> – If the trim_option is not a valid type.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The trimmed dataframe.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pyfrag_plotter.pyfrag_object">
+<span id="pyfrag-plotter-pyfrag-object-module"></span><h2>pyfrag_plotter.pyfrag_object module<a class="headerlink" href="#module-pyfrag_plotter.pyfrag_object" title="Link to this heading">#</a></h2>
+<p>Module that combines the data from inputfile and outputfile into a PyFragResultsObject object</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.AvailableTerms">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.pyfrag_object.</span></span><span class="sig-name descname"><span class="pre">AvailableTerms</span></span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#AvailableTerms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.AvailableTerms" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class containing the available terms for the PyFragResultsObject.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.AvailableTerms.ANGLE">
+<span class="sig-name descname"><span class="pre">ANGLE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'angle'</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.ANGLE" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.AvailableTerms.BONDLENGTH">
+<span class="sig-name descname"><span class="pre">BONDLENGTH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'bondlength'</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.BONDLENGTH" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.AvailableTerms.DIHEDRAL">
+<span class="sig-name descname"><span class="pre">DIHEDRAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'dihedral'</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.DIHEDRAL" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.AvailableTerms.DISP">
+<span class="sig-name descname"><span class="pre">DISP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Disp'</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.DISP" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.AvailableTerms.ELSTAT">
+<span class="sig-name descname"><span class="pre">ELSTAT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Elstat'</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.ELSTAT" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.AvailableTerms.ENERGY_TOTAL">
+<span class="sig-name descname"><span class="pre">ENERGY_TOTAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'EnergyTotal'</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.ENERGY_TOTAL" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.AvailableTerms.FRAG1_STRAIN">
+<span class="sig-name descname"><span class="pre">FRAG1_STRAIN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'frag1Strain'</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.FRAG1_STRAIN" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.AvailableTerms.FRAG2_STRAIN">
+<span class="sig-name descname"><span class="pre">FRAG2_STRAIN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'frag2Strain'</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.FRAG2_STRAIN" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.AvailableTerms.INT">
+<span class="sig-name descname"><span class="pre">INT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Int'</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.INT" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.AvailableTerms.IRREPOI">
+<span class="sig-name descname"><span class="pre">IRREPOI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'irrepOI'</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.IRREPOI" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.AvailableTerms.OI">
+<span class="sig-name descname"><span class="pre">OI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'OI'</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.OI" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.AvailableTerms.ORBITALENERGY">
+<span class="sig-name descname"><span class="pre">ORBITALENERGY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'orbitalenergy'</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.ORBITALENERGY" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.AvailableTerms.OVERLAP">
+<span class="sig-name descname"><span class="pre">OVERLAP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'overlap'</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.OVERLAP" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.AvailableTerms.PAULI">
+<span class="sig-name descname"><span class="pre">PAULI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Pauli'</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.PAULI" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.AvailableTerms.POPULATION">
+<span class="sig-name descname"><span class="pre">POPULATION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'population'</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.POPULATION" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.AvailableTerms.STRAIN_TOTAL">
+<span class="sig-name descname"><span class="pre">STRAIN_TOTAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'StrainTotal'</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.STRAIN_TOTAL" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.AvailableTerms.VDD">
+<span class="sig-name descname"><span class="pre">VDD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'vdd'</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.VDD" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.BondAngle">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.pyfrag_object.</span></span><span class="sig-name descname"><span class="pre">BondAngle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atom1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atom2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bondangle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#BondAngle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.BondAngle" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Attrs class for the bond angle property containing the atoms indices and the bond angle.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.BondAngle.atom1">
+<span class="sig-name descname"><span class="pre">atom1</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.BondAngle.atom1" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.BondAngle.atom2">
+<span class="sig-name descname"><span class="pre">atom2</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.BondAngle.atom2" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.BondAngle.bondangle">
+<span class="sig-name descname"><span class="pre">bondangle</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.BondAngle.bondangle" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.BondAngle.label">
+<span class="sig-name descname"><span class="pre">label</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#BondAngle.label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.BondAngle.label" title="Link to this definition">#</a></dt>
+<dd><p>Returns the label for the bond angle property.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.Bondlength">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.pyfrag_object.</span></span><span class="sig-name descname"><span class="pre">Bondlength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atom1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atom2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bondlength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#Bondlength"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.Bondlength" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Attrs class for the bond length property containing the atoms indices and the bond length.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.Bondlength.atom1">
+<span class="sig-name descname"><span class="pre">atom1</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.Bondlength.atom1" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.Bondlength.atom2">
+<span class="sig-name descname"><span class="pre">atom2</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.Bondlength.atom2" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.Bondlength.bondlength">
+<span class="sig-name descname"><span class="pre">bondlength</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.Bondlength.bondlength" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.Bondlength.label">
+<span class="sig-name descname"><span class="pre">label</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#Bondlength.label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.Bondlength.label" title="Link to this definition">#</a></dt>
+<dd><p>Returns the label for the bond length property.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.DihedralAngle">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.pyfrag_object.</span></span><span class="sig-name descname"><span class="pre">DihedralAngle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atom1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atom2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atom3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dihedralangle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#DihedralAngle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.DihedralAngle" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Attrs class for the dihedral angle property containing the atoms indices and the dihedral angle.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.DihedralAngle.atom1">
+<span class="sig-name descname"><span class="pre">atom1</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.DihedralAngle.atom1" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.DihedralAngle.atom2">
+<span class="sig-name descname"><span class="pre">atom2</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.DihedralAngle.atom2" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.DihedralAngle.atom3">
+<span class="sig-name descname"><span class="pre">atom3</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.DihedralAngle.atom3" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.DihedralAngle.dihedralangle">
+<span class="sig-name descname"><span class="pre">dihedralangle</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.DihedralAngle.dihedralangle" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.DihedralAngle.label">
+<span class="sig-name descname"><span class="pre">label</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#DihedralAngle.label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.DihedralAngle.label" title="Link to this definition">#</a></dt>
+<dd><p>Returns the label for the bond length property.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.Irrep">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.pyfrag_object.</span></span><span class="sig-name descname"><span class="pre">Irrep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">irrep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#Irrep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.Irrep" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.Irrep.irrep">
+<span class="sig-name descname"><span class="pre">irrep</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.Irrep.irrep" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.Irrep.label">
+<span class="sig-name descname"><span class="pre">label</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#Irrep.label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.Irrep.label" title="Link to this definition">#</a></dt>
+<dd><p>Returns the label for the irrep property.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.OrbitalEnergy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.pyfrag_object.</span></span><span class="sig-name descname"><span class="pre">OrbitalEnergy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">orbital</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">irrep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#OrbitalEnergy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.OrbitalEnergy" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Attrs class for the orbital energy property containing the orbitals and irreps of the two fragments.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.OrbitalEnergy.frag">
+<span class="sig-name descname"><span class="pre">frag</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.OrbitalEnergy.frag" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.OrbitalEnergy.irrep">
+<span class="sig-name descname"><span class="pre">irrep</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.OrbitalEnergy.irrep" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.OrbitalEnergy.label">
+<span class="sig-name descname"><span class="pre">label</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#OrbitalEnergy.label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.OrbitalEnergy.label" title="Link to this definition">#</a></dt>
+<dd><p>Returns the label for the orbital energy property.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.OrbitalEnergy.orbital">
+<span class="sig-name descname"><span class="pre">orbital</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.OrbitalEnergy.orbital" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.Overlap">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.pyfrag_object.</span></span><span class="sig-name descname"><span class="pre">Overlap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frag1_orb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frag2_orb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frag1_irrep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frag2_irrep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#Overlap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.Overlap" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Attrs class for the overlap property containing the orbitals and irreps of the two fragments.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.Overlap.frag1_irrep">
+<span class="sig-name descname"><span class="pre">frag1_irrep</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.Overlap.frag1_irrep" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.Overlap.frag1_orb">
+<span class="sig-name descname"><span class="pre">frag1_orb</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.Overlap.frag1_orb" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.Overlap.frag2_irrep">
+<span class="sig-name descname"><span class="pre">frag2_irrep</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.Overlap.frag2_irrep" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.Overlap.frag2_orb">
+<span class="sig-name descname"><span class="pre">frag2_orb</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.Overlap.frag2_orb" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.Overlap.label">
+<span class="sig-name descname"><span class="pre">label</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#Overlap.label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.Overlap.label" title="Link to this definition">#</a></dt>
+<dd><p>Returns the label for the overlap property.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.Population">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.pyfrag_object.</span></span><span class="sig-name descname"><span class="pre">Population</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">orbital</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">irrep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#Population"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.Population" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Attrs class for the population property containing the orbitals and irreps of the two fragments.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.Population.frag">
+<span class="sig-name descname"><span class="pre">frag</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.Population.frag" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.Population.irrep">
+<span class="sig-name descname"><span class="pre">irrep</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.Population.irrep" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.Population.label">
+<span class="sig-name descname"><span class="pre">label</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#Population.label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.Population.label" title="Link to this definition">#</a></dt>
+<dd><p>Returns the label for the population property.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.Population.orbital">
+<span class="sig-name descname"><span class="pre">orbital</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.Population.orbital" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.Property">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.pyfrag_object.</span></span><span class="sig-name descname"><span class="pre">Property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#Property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.Property" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code></p>
+<p>Base class for all properties using the Protocol functionality of python.
+“Properties” are classes that inheret from this class, which are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Bondlength</p></li>
+<li><p>BondAngle</p></li>
+<li><p>DihedralAngle</p></li>
+<li><p>Overlap</p></li>
+<li><p>Population</p></li>
+<li><p>OrbitalEnergy</p></li>
+<li><p>VDD</p></li>
+<li><p>Irrep</p></li>
+</ul>
+</div></blockquote>
+<dl class="py property">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.Property.label">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.Property.label" title="Link to this definition">#</a></dt>
+<dd><p>Abstract method to be further specified in the individual classes. Returns the label for the property.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.PyFragResultsObject">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.pyfrag_object.</span></span><span class="sig-name descname"><span class="pre">PyFragResultsObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_strain</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">OrderedDict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">_Nothing.NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bondlength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pyfrag_plotter.pyfrag_object.Bondlength" title="pyfrag_plotter.pyfrag_object.Bondlength"><span class="pre">Bondlength</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">_Nothing.NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pyfrag_plotter.pyfrag_object.BondAngle" title="pyfrag_plotter.pyfrag_object.BondAngle"><span class="pre">BondAngle</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">_Nothing.NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dihedral</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pyfrag_plotter.pyfrag_object.DihedralAngle" title="pyfrag_plotter.pyfrag_object.DihedralAngle"><span class="pre">DihedralAngle</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">_Nothing.NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overlap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pyfrag_plotter.pyfrag_object.Overlap" title="pyfrag_plotter.pyfrag_object.Overlap"><span class="pre">Overlap</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">_Nothing.NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">population</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pyfrag_plotter.pyfrag_object.Population" title="pyfrag_plotter.pyfrag_object.Population"><span class="pre">Population</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">_Nothing.NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orbitalenergy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pyfrag_plotter.pyfrag_object.OrbitalEnergy" title="pyfrag_plotter.pyfrag_object.OrbitalEnergy"><span class="pre">OrbitalEnergy</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">_Nothing.NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vdd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pyfrag_plotter.pyfrag_object.VDD" title="pyfrag_plotter.pyfrag_object.VDD"><span class="pre">VDD</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">_Nothing.NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">irrep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pyfrag_plotter.pyfrag_object.Irrep" title="pyfrag_plotter.pyfrag_object.Irrep"><span class="pre">Irrep</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">_Nothing.NOTHING</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#PyFragResultsObject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Attrs class containing all the data of one pyfrag calculation.</p>
+<p>It combines the data from the output file (i.e., the pyfrag_*.txt file) through binding a pandas DataFrame to the class, and the data from the input file through binding specific attributes.
+Examples of the specific attributes are bond lengths, bond angles, dihedral angles, overlaps, populations, orbital energies, VDD, and irreps.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.PyFragResultsObject.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.name" title="Link to this definition">#</a></dt>
+<dd><p>The name of the PyFrag calculation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.PyFragResultsObject.dataframe">
+<span class="sig-name descname"><span class="pre">dataframe</span></span><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.dataframe" title="Link to this definition">#</a></dt>
+<dd><p>The data from the output file (i.e., the pyfrag_*.txt file).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.PyFragResultsObject.extra_strain">
+<span class="sig-name descname"><span class="pre">extra_strain</span></span><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.extra_strain" title="Link to this definition">#</a></dt>
+<dd><p>The extra strain data for the PyFrag calculation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>OrderedDict[str, Array1D[np.float64]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.PyFragResultsObject.bondlength">
+<span class="sig-name descname"><span class="pre">bondlength</span></span><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.bondlength" title="Link to this definition">#</a></dt>
+<dd><p>The bond length data for the PyFrag calculation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="#pyfrag_plotter.pyfrag_object.Bondlength" title="pyfrag_plotter.pyfrag_object.Bondlength">Bondlength</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.PyFragResultsObject.angle">
+<span class="sig-name descname"><span class="pre">angle</span></span><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.angle" title="Link to this definition">#</a></dt>
+<dd><p>The bond angle data for the PyFrag calculation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="#pyfrag_plotter.pyfrag_object.BondAngle" title="pyfrag_plotter.pyfrag_object.BondAngle">BondAngle</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.PyFragResultsObject.dihedral">
+<span class="sig-name descname"><span class="pre">dihedral</span></span><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.dihedral" title="Link to this definition">#</a></dt>
+<dd><p>The dihedral angle data for the PyFrag calculation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="#pyfrag_plotter.pyfrag_object.DihedralAngle" title="pyfrag_plotter.pyfrag_object.DihedralAngle">DihedralAngle</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.PyFragResultsObject.overlap">
+<span class="sig-name descname"><span class="pre">overlap</span></span><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.overlap" title="Link to this definition">#</a></dt>
+<dd><p>The overlap data for the PyFrag calculation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="#pyfrag_plotter.pyfrag_object.Overlap" title="pyfrag_plotter.pyfrag_object.Overlap">Overlap</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.PyFragResultsObject.population">
+<span class="sig-name descname"><span class="pre">population</span></span><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.population" title="Link to this definition">#</a></dt>
+<dd><p>The population data for the PyFrag calculation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="#pyfrag_plotter.pyfrag_object.Population" title="pyfrag_plotter.pyfrag_object.Population">Population</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.PyFragResultsObject.orbitalenergy">
+<span class="sig-name descname"><span class="pre">orbitalenergy</span></span><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.orbitalenergy" title="Link to this definition">#</a></dt>
+<dd><p>The orbital energy data for the PyFrag calculation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="#pyfrag_plotter.pyfrag_object.OrbitalEnergy" title="pyfrag_plotter.pyfrag_object.OrbitalEnergy">OrbitalEnergy</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.PyFragResultsObject.vdd">
+<span class="sig-name descname"><span class="pre">vdd</span></span><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.vdd" title="Link to this definition">#</a></dt>
+<dd><p>The VDD data for the PyFrag calculation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="#pyfrag_plotter.pyfrag_object.VDD" title="pyfrag_plotter.pyfrag_object.VDD">VDD</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.PyFragResultsObject.irrep">
+<span class="sig-name descname"><span class="pre">irrep</span></span><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.irrep" title="Link to this definition">#</a></dt>
+<dd><p>The irrep data for the PyFrag calculation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="#pyfrag_plotter.pyfrag_object.Irrep" title="pyfrag_plotter.pyfrag_object.Irrep">Irrep</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">angle</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pyfrag_plotter.pyfrag_object.BondAngle" title="pyfrag_plotter.pyfrag_object.BondAngle"><span class="pre">BondAngle</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">bondlength</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pyfrag_plotter.pyfrag_object.Bondlength" title="pyfrag_plotter.pyfrag_object.Bondlength"><span class="pre">Bondlength</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id1" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">dataframe</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span></em><a class="headerlink" href="#id2" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">dihedral</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pyfrag_plotter.pyfrag_object.DihedralAngle" title="pyfrag_plotter.pyfrag_object.DihedralAngle"><span class="pre">DihedralAngle</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id3" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">extra_strain</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">OrderedDict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id4" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.PyFragResultsObject.get_calculation_index_closest_to_irc_point">
+<span class="sig-name descname"><span class="pre">get_calculation_index_closest_to_irc_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">irc_coord</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">irc_point</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#PyFragResultsObject.get_calculation_index_closest_to_irc_point"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.get_calculation_index_closest_to_irc_point" title="Link to this definition">#</a></dt>
+<dd><p>Returns the index of the calculation closest to the specified IRC point.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.PyFragResultsObject.get_data_of_key">
+<span class="sig-name descname"><span class="pre">get_data_of_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#PyFragResultsObject.get_data_of_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.get_data_of_key" title="Link to this definition">#</a></dt>
+<dd><p>Returns the data found in the dataframe (from the .txt file) of the specified key.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.PyFragResultsObject.get_peak_index">
+<span class="sig-name descname"><span class="pre">get_peak_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">peak</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'max'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#PyFragResultsObject.get_peak_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.get_peak_index" title="Link to this definition">#</a></dt>
+<dd><p>Determines the peak of the “EnergyTotal” data en returns the index.
+The peak can be either the maximum or minimum value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.PyFragResultsObject.get_plot_labels">
+<span class="sig-name descname"><span class="pre">get_plot_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#PyFragResultsObject.get_plot_labels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.get_plot_labels" title="Link to this definition">#</a></dt>
+<dd><p>Returns the labels of the specified keys. There are two types of keys that should be handled differently:
+1. Standard terms such as “Int”, “EnergyTotal”, “StrainTotal”, “Elstat”, “Pauli”, “OI”, and “Disp”
+2. Non-standard terms such as “bondlength”, “overlap”, “orbitalenergy”, and more.</p>
+<p>The former ones are handled by the TERM_LABELS dictionary, while the latter ones are handled by the label() method of the corresponding class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.PyFragResultsObject.get_x_axis">
+<span class="sig-name descname"><span class="pre">get_x_axis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">irc_coord</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#PyFragResultsObject.get_x_axis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.get_x_axis" title="Link to this definition">#</a></dt>
+<dd><p>Returns the x-axis data for the specified IRC coordinate.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id5">
+<span class="sig-name descname"><span class="pre">irrep</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pyfrag_plotter.pyfrag_object.Irrep" title="pyfrag_plotter.pyfrag_object.Irrep"><span class="pre">Irrep</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id5" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id6" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id7">
+<span class="sig-name descname"><span class="pre">orbitalenergy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pyfrag_plotter.pyfrag_object.OrbitalEnergy" title="pyfrag_plotter.pyfrag_object.OrbitalEnergy"><span class="pre">OrbitalEnergy</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id7" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id8">
+<span class="sig-name descname"><span class="pre">overlap</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pyfrag_plotter.pyfrag_object.Overlap" title="pyfrag_plotter.pyfrag_object.Overlap"><span class="pre">Overlap</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id8" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id9">
+<span class="sig-name descname"><span class="pre">population</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pyfrag_plotter.pyfrag_object.Population" title="pyfrag_plotter.pyfrag_object.Population"><span class="pre">Population</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id9" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id10">
+<span class="sig-name descname"><span class="pre">vdd</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pyfrag_plotter.pyfrag_object.VDD" title="pyfrag_plotter.pyfrag_object.VDD"><span class="pre">VDD</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id10" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.VDD">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.pyfrag_object.</span></span><span class="sig-name descname"><span class="pre">VDD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#VDD"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.VDD" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.VDD.atom">
+<span class="sig-name descname"><span class="pre">atom</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.VDD.atom" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.VDD.label">
+<span class="sig-name descname"><span class="pre">label</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#VDD.label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.VDD.label" title="Link to this definition">#</a></dt>
+<dd><p>Returns the label for the VDD property.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.create_pyfrag_object_from_dir">
+<span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.pyfrag_object.</span></span><span class="sig-name descname"><span class="pre">create_pyfrag_object_from_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject" title="pyfrag_plotter.pyfrag_object.PyFragResultsObject"><span class="pre">PyFragResultsObject</span></a></span></span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#create_pyfrag_object_from_dir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.create_pyfrag_object_from_dir" title="Link to this definition">#</a></dt>
+<dd><p>Creates a PyFragResultsObject from the results in a directory.
+This function provides a shortcut for creating a PyFragResultsObject from the results in a directory by processing and creating the PyFragResultsObject in one function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results_dir</strong> (<em>str</em>) – The path to the directory containing the PyFrag results files.</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments to pass to the <cite>process_results_file</cite> function. These are:
+trim_parameter (Optional[Union[str, float, int]]): The parameter to use for trimming. Defaults to none.
+trim_key (Optional[str]): The key to use for reading the trim_parameter from the configuration file. Defaults to the “EnergyTotal” column.
+outlier_threshold: (Optional[float]): The threshold to use for removing outliers. If none is specified, the threshold from the configuration file is used. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A PyFragResultsObject containing the processed PyFrag results.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject" title="pyfrag_plotter.pyfrag_object.PyFragResultsObject">PyFragResultsObject</a></p>
+</dd>
+</dl>
+<p>This function reads the PyFrag input and output files from the given directory, processes the output file using the <cite>process_results_file</cite> function with any additional keyword arguments provided.
+Creates a PyFragResultsObject from the processed results and input data using the <cite>create_pyfrag_object_from_processed_files</cite> function.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyfrag_plotter.pyfrag_object.create_pyfrag_object_from_processed_files">
+<span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.pyfrag_object.</span></span><span class="sig-name descname"><span class="pre">create_pyfrag_object_from_processed_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputfile_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject" title="pyfrag_plotter.pyfrag_object.PyFragResultsObject"><span class="pre">PyFragResultsObject</span></a></span></span><a class="reference internal" href="../_modules/pyfrag_plotter/pyfrag_object.html#create_pyfrag_object_from_processed_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.pyfrag_object.create_pyfrag_object_from_processed_files" title="Link to this definition">#</a></dt>
+<dd><p>Creates a PyFragResultsObject from the given results data and input file data.</p>
+<p>This function takes a pandas DataFrame containing the results file data and a dictionary containing the input file data and creates a PyFragResultsObject.
+The PyFragResultsObject contains data for various properties such as EDA, ASM, extra strain, bond lengths, bond angles, dihedral angles, overlaps, populations, orbital energies, VDD, and irreps.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results_data</strong> (<em>pd.DataFrame</em>) – The data from the output file (i.e., the pyfrag_*.txt file).</p></li>
+<li><p><strong>inputfile_data</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – The keys from the input file such as bondlength, overlap, orbitalenergy, and more.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The dataclass containing all the data of one PyFrag calculation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject" title="pyfrag_plotter.pyfrag_object.PyFragResultsObject">PyFragResultsObject</a></p>
+</dd>
+</dl>
+<p>Note: standard terms such “Int”, “EnergyTotal”, “StrainTotal”, “Elstat”, “Pauli”, “OI”, and “Disp” are automatically added to the PyFragResultsObject.
+Non-standard terms such as “bondlength”, “overlap”, “orbitalenergy”, and more are added to the PyFragResultsObject by using the key_to_func_mapping dictionary.</p>
+</dd></dl>
+
+</section>
+<section id="module-pyfrag_plotter">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyfrag_plotter" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyfrag_plotter.initialize_pyfrag_plotter">
+<span class="sig-prename descclassname"><span class="pre">pyfrag_plotter.</span></span><span class="sig-name descname"><span class="pre">initialize_pyfrag_plotter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_config_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/pyfrag_plotter.html#initialize_pyfrag_plotter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyfrag_plotter.initialize_pyfrag_plotter" title="Link to this definition">#</a></dt>
+<dd><p>Initializes the PyFrag plotter configuration.</p>
+<p>This function reads the standard configuration file provided in the module and sets the config as a global variable
+that is read throughout the program. The standard configuration can be overwritten by providing a custom configuration file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user_config_file</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – The path to a custom configuration file. If provided, the settings in this file</p></li>
+<li><p><strong>None.</strong> (<em>will overwrite the standard configuration. Defaults to</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If the log level specified in the configuration is invalid.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="modules.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">pyfrag_plotter</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="pyfrag_plotter.config.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">pyfrag_plotter.config package</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pyfrag_plotter.errors">pyfrag_plotter.errors module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.errors.PyFragConfigError"><code class="docutils literal notranslate"><span class="pre">PyFragConfigError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.errors.PyFragConfigValidationError"><code class="docutils literal notranslate"><span class="pre">PyFragConfigValidationError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.errors.PyFragError"><code class="docutils literal notranslate"><span class="pre">PyFragError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.errors.PyFragInputError"><code class="docutils literal notranslate"><span class="pre">PyFragInputError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.errors.PyFragInterpolationError"><code class="docutils literal notranslate"><span class="pre">PyFragInterpolationError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.errors.PyFragResultsObjectError"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObjectError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.errors.PyFragResultsProcessingError"><code class="docutils literal notranslate"><span class="pre">PyFragResultsProcessingError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.errors.PyFragResultsProcessingWarning"><code class="docutils literal notranslate"><span class="pre">PyFragResultsProcessingWarning</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pyfrag_plotter.interpolate">pyfrag_plotter.interpolate module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.interpolate.interpolate_data"><code class="docutils literal notranslate"><span class="pre">interpolate_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.interpolate.interpolate_plot"><code class="docutils literal notranslate"><span class="pre">interpolate_plot()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.interpolate.remove_duplicate_x_values"><code class="docutils literal notranslate"><span class="pre">remove_duplicate_x_values()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pyfrag_plotter.processing_funcs">pyfrag_plotter.processing_funcs module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.processing_funcs.process_results_file"><code class="docutils literal notranslate"><span class="pre">process_results_file()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.processing_funcs.remove_dispersion_term"><code class="docutils literal notranslate"><span class="pre">remove_dispersion_term()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.processing_funcs.remove_duplicate_x_values_dataframe"><code class="docutils literal notranslate"><span class="pre">remove_duplicate_x_values_dataframe()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.processing_funcs.remove_outliers"><code class="docutils literal notranslate"><span class="pre">remove_outliers()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.processing_funcs.trim_data"><code class="docutils literal notranslate"><span class="pre">trim_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pyfrag_plotter.pyfrag_object">pyfrag_plotter.pyfrag_object module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.AvailableTerms"><code class="docutils literal notranslate"><span class="pre">AvailableTerms</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.ANGLE"><code class="docutils literal notranslate"><span class="pre">AvailableTerms.ANGLE</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.BONDLENGTH"><code class="docutils literal notranslate"><span class="pre">AvailableTerms.BONDLENGTH</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.DIHEDRAL"><code class="docutils literal notranslate"><span class="pre">AvailableTerms.DIHEDRAL</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.DISP"><code class="docutils literal notranslate"><span class="pre">AvailableTerms.DISP</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.ELSTAT"><code class="docutils literal notranslate"><span class="pre">AvailableTerms.ELSTAT</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.ENERGY_TOTAL"><code class="docutils literal notranslate"><span class="pre">AvailableTerms.ENERGY_TOTAL</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.FRAG1_STRAIN"><code class="docutils literal notranslate"><span class="pre">AvailableTerms.FRAG1_STRAIN</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.FRAG2_STRAIN"><code class="docutils literal notranslate"><span class="pre">AvailableTerms.FRAG2_STRAIN</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.INT"><code class="docutils literal notranslate"><span class="pre">AvailableTerms.INT</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.IRREPOI"><code class="docutils literal notranslate"><span class="pre">AvailableTerms.IRREPOI</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.OI"><code class="docutils literal notranslate"><span class="pre">AvailableTerms.OI</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.ORBITALENERGY"><code class="docutils literal notranslate"><span class="pre">AvailableTerms.ORBITALENERGY</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.OVERLAP"><code class="docutils literal notranslate"><span class="pre">AvailableTerms.OVERLAP</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.PAULI"><code class="docutils literal notranslate"><span class="pre">AvailableTerms.PAULI</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.POPULATION"><code class="docutils literal notranslate"><span class="pre">AvailableTerms.POPULATION</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.STRAIN_TOTAL"><code class="docutils literal notranslate"><span class="pre">AvailableTerms.STRAIN_TOTAL</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.AvailableTerms.VDD"><code class="docutils literal notranslate"><span class="pre">AvailableTerms.VDD</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.BondAngle"><code class="docutils literal notranslate"><span class="pre">BondAngle</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.BondAngle.atom1"><code class="docutils literal notranslate"><span class="pre">BondAngle.atom1</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.BondAngle.atom2"><code class="docutils literal notranslate"><span class="pre">BondAngle.atom2</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.BondAngle.bondangle"><code class="docutils literal notranslate"><span class="pre">BondAngle.bondangle</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.BondAngle.label"><code class="docutils literal notranslate"><span class="pre">BondAngle.label()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.Bondlength"><code class="docutils literal notranslate"><span class="pre">Bondlength</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.Bondlength.atom1"><code class="docutils literal notranslate"><span class="pre">Bondlength.atom1</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.Bondlength.atom2"><code class="docutils literal notranslate"><span class="pre">Bondlength.atom2</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.Bondlength.bondlength"><code class="docutils literal notranslate"><span class="pre">Bondlength.bondlength</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.Bondlength.label"><code class="docutils literal notranslate"><span class="pre">Bondlength.label()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.DihedralAngle"><code class="docutils literal notranslate"><span class="pre">DihedralAngle</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.DihedralAngle.atom1"><code class="docutils literal notranslate"><span class="pre">DihedralAngle.atom1</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.DihedralAngle.atom2"><code class="docutils literal notranslate"><span class="pre">DihedralAngle.atom2</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.DihedralAngle.atom3"><code class="docutils literal notranslate"><span class="pre">DihedralAngle.atom3</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.DihedralAngle.dihedralangle"><code class="docutils literal notranslate"><span class="pre">DihedralAngle.dihedralangle</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.DihedralAngle.label"><code class="docutils literal notranslate"><span class="pre">DihedralAngle.label()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.Irrep"><code class="docutils literal notranslate"><span class="pre">Irrep</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.Irrep.irrep"><code class="docutils literal notranslate"><span class="pre">Irrep.irrep</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.Irrep.label"><code class="docutils literal notranslate"><span class="pre">Irrep.label()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.OrbitalEnergy"><code class="docutils literal notranslate"><span class="pre">OrbitalEnergy</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.OrbitalEnergy.frag"><code class="docutils literal notranslate"><span class="pre">OrbitalEnergy.frag</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.OrbitalEnergy.irrep"><code class="docutils literal notranslate"><span class="pre">OrbitalEnergy.irrep</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.OrbitalEnergy.label"><code class="docutils literal notranslate"><span class="pre">OrbitalEnergy.label()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.OrbitalEnergy.orbital"><code class="docutils literal notranslate"><span class="pre">OrbitalEnergy.orbital</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.Overlap"><code class="docutils literal notranslate"><span class="pre">Overlap</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.Overlap.frag1_irrep"><code class="docutils literal notranslate"><span class="pre">Overlap.frag1_irrep</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.Overlap.frag1_orb"><code class="docutils literal notranslate"><span class="pre">Overlap.frag1_orb</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.Overlap.frag2_irrep"><code class="docutils literal notranslate"><span class="pre">Overlap.frag2_irrep</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.Overlap.frag2_orb"><code class="docutils literal notranslate"><span class="pre">Overlap.frag2_orb</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.Overlap.label"><code class="docutils literal notranslate"><span class="pre">Overlap.label()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.Population"><code class="docutils literal notranslate"><span class="pre">Population</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.Population.frag"><code class="docutils literal notranslate"><span class="pre">Population.frag</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.Population.irrep"><code class="docutils literal notranslate"><span class="pre">Population.irrep</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.Population.label"><code class="docutils literal notranslate"><span class="pre">Population.label()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.Population.orbital"><code class="docutils literal notranslate"><span class="pre">Population.orbital</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.Property"><code class="docutils literal notranslate"><span class="pre">Property</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.Property.label"><code class="docutils literal notranslate"><span class="pre">Property.label</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.name"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.name</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.dataframe"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.dataframe</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.extra_strain"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.extra_strain</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.bondlength"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.bondlength</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.angle"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.angle</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.dihedral"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.dihedral</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.overlap"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.overlap</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.population"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.population</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.orbitalenergy"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.orbitalenergy</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.vdd"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.vdd</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.irrep"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.irrep</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.angle</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.bondlength</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.dataframe</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.dihedral</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.extra_strain</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.get_calculation_index_closest_to_irc_point"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.get_calculation_index_closest_to_irc_point()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.get_data_of_key"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.get_data_of_key()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.get_peak_index"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.get_peak_index()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.get_plot_labels"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.get_plot_labels()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.PyFragResultsObject.get_x_axis"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.get_x_axis()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.irrep</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.name</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.orbitalenergy</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.overlap</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.population</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10"><code class="docutils literal notranslate"><span class="pre">PyFragResultsObject.vdd</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.VDD"><code class="docutils literal notranslate"><span class="pre">VDD</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.VDD.atom"><code class="docutils literal notranslate"><span class="pre">VDD.atom</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.VDD.label"><code class="docutils literal notranslate"><span class="pre">VDD.label()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.create_pyfrag_object_from_dir"><code class="docutils literal notranslate"><span class="pre">create_pyfrag_object_from_dir()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.pyfrag_object.create_pyfrag_object_from_processed_files"><code class="docutils literal notranslate"><span class="pre">create_pyfrag_object_from_processed_files()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pyfrag_plotter">Module contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfrag_plotter.initialize_pyfrag_plotter"><code class="docutils literal notranslate"><span class="pre">initialize_pyfrag_plotter()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/api/pyfrag_plotter.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2023, SiebeLeDe.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

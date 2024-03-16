@@ -1,0 +1,764 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyfrag_plotter.plot.plotter &#8212; PyFragPlotter 0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pyfrag_plotter/plot/plotter';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PyFragPlotter 0.0.1 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../general.html">
+                        General
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../usage.html">
+                        Usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../config.html">
+                        The Config File
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../api/modules.html">
+                        pyfrag_plotter
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../general.html">
+                        General
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../usage.html">
+                        Usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../config.html">
+                        The Config File
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../api/modules.html">
+                        pyfrag_plotter
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../../pyfrag_plotter.html" class="nav-link">pyfrag_plotter</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">pyfrag_plott...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for pyfrag_plotter.plot.plotter</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span> <span class="k">as</span> <span class="n">opj</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">attrs</span> <span class="kn">import</span> <span class="n">define</span><span class="p">,</span> <span class="n">field</span>
+
+<span class="kn">from</span> <span class="nn">pyfrag_plotter</span> <span class="kn">import</span> <span class="n">config</span>
+<span class="kn">from</span> <span class="nn">pyfrag_plotter.plot.plot_details</span> <span class="kn">import</span> <span class="n">set_axes_details</span><span class="p">,</span> <span class="n">set_figure_details</span>
+<span class="kn">from</span> <span class="nn">pyfrag_plotter.pyfrag_object</span> <span class="kn">import</span> <span class="n">PyFragResultsObject</span>
+
+
+<div class="viewcode-block" id="plot_logger">
+<a class="viewcode-back" href="../../../api/pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.plot_logger">[docs]</a>
+<span class="k">def</span> <span class="nf">plot_logger</span><span class="p">(</span><span class="n">log_level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">log_level</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Plotting with </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">. Time taken: </span><span class="si">{</span><span class="n">end_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> seconds.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">result</span>
+
+        <span class="k">return</span> <span class="n">wrapper</span>
+
+    <span class="k">return</span> <span class="n">decorator</span></div>
+
+
+
+<div class="viewcode-block" id="PlotInfo">
+<a class="viewcode-back" href="../../../api/pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.PlotInfo">[docs]</a>
+<span class="nd">@define</span>
+<span class="k">class</span> <span class="nc">PlotInfo</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Class to hold information about the plot to be generated.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        irc_coord (str): The IRC coordinate to plot on the x-axis.</span>
+<span class="sd">        irc_coord_label (str): The label for the x-axis.</span>
+<span class="sd">        colours (List[str]): The list of colours to use for the plot.</span>
+<span class="sd">        line_styles (List[str]): The list of line styles to use for the plot.</span>
+<span class="sd">        peak_type (Optional[str]): The type of peak to plot, if any.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">irc_coord</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">irc_coord_label</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">colours</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">factory</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SHARED&quot;</span><span class="p">,</span> <span class="s2">&quot;colours&quot;</span><span class="p">))</span>
+    <span class="n">line_styles</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">factory</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SHARED&quot;</span><span class="p">,</span> <span class="s2">&quot;line_styles&quot;</span><span class="p">))</span>
+    <span class="n">peak_type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">factory</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SHARED&quot;</span><span class="p">,</span> <span class="s2">&quot;stat_point_type&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SHARED&quot;</span><span class="p">,</span> <span class="s2">&quot;stat_point_type&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;none&quot;</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="Plotter">
+<a class="viewcode-back" href="../../../api/pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.Plotter">[docs]</a>
+<span class="k">class</span> <span class="nc">Plotter</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This class provides methods for plotting the results of the PyFrag calculations. It supports plotting of activation</span>
+<span class="sd">    strain model terms, energy decomposition terms, and extra strain terms. The plots are saved to a specified directory.</span>
+
+<span class="sd">    Additionally, the &quot;standard_plot_routine&quot; method can be used to plot any key (or a combination of) in the PyFragResultsObject and the user may create specicifed functions using this method.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str): The name of the plotter object.</span>
+<span class="sd">        objects (Sequence[PyFragResultsObject]): A list of PyFragResultsObject objects that contain the data to be plotted.</span>
+<span class="sd">        path (str): The directory to save the plots to.</span>
+<span class="sd">        plot_info (PlotInfo): An instance of the PlotInfo class that contains information about the plot, such as the</span>
+<span class="sd">                            line styles and colors.</span>
+
+<span class="sd">    Note: The plotter object can be used with a &quot;with&quot; statement to ensure that the plot directory is removed if it&#39;s empty.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">plot_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pyfrag_objects</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">PyFragResultsObject</span><span class="p">],</span> <span class="n">irc_coord</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the Plotter object.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name (str): The name of the plotter object.</span>
+<span class="sd">            plot_dir (str): The directory to save the plots to.</span>
+<span class="sd">            pyfrag_objects (Sequence[PyFragResultsObject]): A list of PyFragResultsObject objects that contain the data to be plotted.</span>
+<span class="sd">            irc_coord (Sequence[str]): A sequence of two strings that specify the IRC coordinate and its label.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">objects</span> <span class="o">=</span> <span class="n">pyfrag_objects</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">opj</span><span class="p">(</span><span class="n">plot_dir</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plot_info</span> <span class="o">=</span> <span class="n">PlotInfo</span><span class="p">(</span><span class="n">irc_coord</span><span class="o">=</span><span class="n">irc_coord</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">irc_coord_label</span><span class="o">=</span><span class="n">irc_coord</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Prepares the plotter object for use with a &quot;with&quot; statement.</span>
+
+<span class="sd">        This method checks if the specified directory exists for making plots. If not, it creates it (and any parent directories).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Cleans up the plotter object after use with a &quot;with&quot; statement.</span>
+
+<span class="sd">        This method makes sure to close the plotter object and remove the plot directory if it&#39;s empty.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">topdown</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+            <span class="k">for</span> <span class="nb">dir</span> <span class="ow">in</span> <span class="n">dirs</span><span class="p">:</span>
+                <span class="n">dir_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="nb">dir</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">dir_path</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="n">dir_path</span><span class="p">)</span>
+
+    <span class="c1"># ------------------------------------------------------------------------------------------------------------- #</span>
+    <span class="c1"># ------------------------------ ASM, EDA and ASM extra strain plotting routines ------------------------------ #</span>
+    <span class="c1"># ------------------------------------------------------------------------------------------------------------- #</span>
+
+<div class="viewcode-block" id="Plotter.standard_plot_routine">
+<a class="viewcode-back" href="../../../api/pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.Plotter.standard_plot_routine">[docs]</a>
+    <span class="k">def</span> <span class="nf">standard_plot_routine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">ax</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">markers</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The standard plot routine for the EDA, ASM and extra strain plots.</span>
+
+<span class="sd">        This method plots the specified keys for each PyFragResultsObject in the plotter. It supports plotting of multiple keys</span>
+<span class="sd">        on the same axes, and allows for customization of the line styles and markers.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            keys (Sequence[str]): The keys to plot. These should match the keys in the corresponding dictionary type (asm, eda or extra_strain).</span>
+<span class="sd">            ax (Optional[plt.Axes], optional): The axes to plot on. If None, the current axes is used. Defaults to None.</span>
+<span class="sd">            markers (Optional[Sequence[str]], optional): The markers to use for the lines. If None, no markers are used. Defaults to None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span> <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">ax</span>
+        <span class="n">markers</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">objects</span><span class="p">)</span> <span class="k">if</span> <span class="n">markers</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">markers</span>
+
+        <span class="n">x_axes</span> <span class="o">=</span> <span class="p">[</span><span class="n">obj</span><span class="o">.</span><span class="n">get_x_axis</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">plot_info</span><span class="o">.</span><span class="n">irc_coord</span><span class="p">)</span> <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">objects</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">line_style</span><span class="p">,</span> <span class="n">term</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">plot_info</span><span class="o">.</span><span class="n">line_styles</span><span class="p">,</span> <span class="n">keys</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">x_axis</span><span class="p">,</span> <span class="n">colour</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">line_marker</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x_axes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">plot_info</span><span class="o">.</span><span class="n">colours</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">objects</span><span class="p">,</span> <span class="n">markers</span><span class="p">):</span>
+                <span class="n">term_data</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">get_data_of_key</span><span class="p">(</span><span class="n">term</span><span class="p">)</span>  <span class="c1"># eda, asm or extra_strain</span>
+
+                <span class="c1"># Plot the data. If it&#39;s the first object, associate a label with the line</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">term_data</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">obj</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colour</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="n">line_style</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">line_marker</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Otherwise, just plot the data</span>
+                    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">term_data</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colour</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="n">line_style</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">line_marker</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+                <span class="c1"># If a peak type is specified, plot the peak</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">plot_info</span><span class="o">.</span><span class="n">peak_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">peak_index</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">get_peak_index</span><span class="p">(</span><span class="n">peak</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">plot_info</span><span class="o">.</span><span class="n">peak_type</span><span class="p">)</span>
+                    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_axis</span><span class="p">[</span><span class="n">peak_index</span><span class="p">],</span> <span class="n">term_data</span><span class="p">[</span><span class="n">peak_index</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">colour</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Plotter.plot_asm">
+<a class="viewcode-back" href="../../../api/pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.Plotter.plot_asm">[docs]</a>
+    <span class="nd">@plot_logger</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">plot_asm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">Figure</span><span class="p">,</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Plots the activation strain model terms.</span>
+
+<span class="sd">        This method plots the specified ASM terms for each PyFragResultsObject in the plotter. If no terms are specified, all terms are plotted.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            keys (Optional[List[str]], optional): The ASM terms to plot. If None, all terms are plotted. Defaults to None.</span>
+<span class="sd">            **kwargs: Additional keyword arguments to pass to the `set_axes_details` and `set_figure_details` functions.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            fig (plt.Figure): The figure object.</span>
+<span class="sd">            ax (plt.Axes): The axes object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+        <span class="c1"># Get the keys to plot. If none are specified, plot all of them</span>
+        <span class="k">if</span> <span class="n">keys</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">asm_keys</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ASM&quot;</span><span class="p">,</span> <span class="s2">&quot;asm_keys&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">asm_keys</span> <span class="o">=</span> <span class="n">keys</span>
+
+        <span class="c1"># Plot the keys</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">standard_plot_routine</span><span class="p">(</span><span class="n">asm_keys</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+        <span class="c1"># Since the same keys are plotted for all objects, we can just use the first object to get the labels</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_plot_labels</span><span class="p">(</span><span class="n">asm_keys</span><span class="p">)</span>
+
+        <span class="c1"># Set the key-specific plot details</span>
+        <span class="n">set_axes_details</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">x_label</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">plot_info</span><span class="o">.</span><span class="n">irc_coord_label</span><span class="p">,</span> <span class="n">line_style_labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">set_figure_details</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;ASM_</span><span class="si">{</span><span class="s1">&#39;_&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">asm_keys</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">savefig</span><span class="o">=</span><span class="n">opj</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;ASM_</span><span class="si">{</span><span class="s1">&#39;_&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">asm_keys</span><span class="p">)</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">),</span> <span class="n">line_style_labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span></div>
+
+
+<div class="viewcode-block" id="Plotter.plot_eda">
+<a class="viewcode-back" href="../../../api/pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.Plotter.plot_eda">[docs]</a>
+    <span class="nd">@plot_logger</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">plot_eda</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">Figure</span><span class="p">,</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Plots the energy decomposition terms.</span>
+
+<span class="sd">        This method plots the specified EDA terms for each PyFragResultsObject in the plotter. If no terms are specified, all terms are plotted.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            keys (Optional[List[str]], optional): The EDA terms to plot. If None, all terms are plotted. Defaults to None.</span>
+<span class="sd">            **kwargs: Additional keyword arguments to pass to the `set_axes_details` and `set_figure_details` functions.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            fig (plt.Figure): The figure object.</span>
+<span class="sd">            ax (plt.Axes): The axes object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+        <span class="c1"># Get the keys to plot. If none are specified, plot all of them</span>
+        <span class="k">if</span> <span class="n">keys</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">eda_keys</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;EDA&quot;</span><span class="p">,</span> <span class="s2">&quot;eda_keys&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">eda_keys</span> <span class="o">=</span> <span class="n">keys</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">standard_plot_routine</span><span class="p">(</span><span class="n">eda_keys</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+        <span class="c1"># Since the same keys are plotted for all objects, we can just use the first object to get the labels</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_plot_labels</span><span class="p">(</span><span class="n">eda_keys</span><span class="p">)</span>
+
+        <span class="c1"># Set the key-specific plot details</span>
+        <span class="n">set_axes_details</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">x_label</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">plot_info</span><span class="o">.</span><span class="n">irc_coord_label</span><span class="p">,</span> <span class="n">line_style_labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">set_figure_details</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;EDA_</span><span class="si">{</span><span class="s1">&#39;_&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">eda_keys</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">savefig</span><span class="o">=</span><span class="n">opj</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;EDA_</span><span class="si">{</span><span class="s1">&#39;_&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">eda_keys</span><span class="p">)</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span></div>
+
+
+<div class="viewcode-block" id="Plotter.plot_extra_strain">
+<a class="viewcode-back" href="../../../api/pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.Plotter.plot_extra_strain">[docs]</a>
+    <span class="nd">@plot_logger</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">plot_extra_strain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">Figure</span><span class="p">,</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Plots the extra strain terms.</span>
+
+<span class="sd">        This method plots the specified extra strain terms for each PyFragResultsObject in the plotter. If no terms are specified,</span>
+<span class="sd">        all terms are plotted. The plot is saved to the plot directory with a filename that includes the plotted terms.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            keys (Optional[List[str]], optional): The extra strain terms to plot. If None, all terms are plotted. Defaults to None.</span>
+<span class="sd">            **kwargs: Additional keyword arguments to pass to the `set_axes_details` and `set_figure_details` functions.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            fig (plt.Figure): The figure object.</span>
+<span class="sd">            ax (plt.Axes): The axes object.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If any of the specified keys do not exist in the extra strain dictionary.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+        <span class="c1"># Get the keys to plot. If none are specified, plot all of them</span>
+        <span class="k">if</span> <span class="n">keys</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">extra_strain_keys</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ASM&quot;</span><span class="p">,</span> <span class="s2">&quot;asm_strain_keys&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">extra_strain_keys</span> <span class="o">=</span> <span class="n">keys</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">standard_plot_routine</span><span class="p">(</span><span class="n">extra_strain_keys</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+        <span class="c1"># Since the same keys are plotted for all objects, we can just use the first object to get the labels</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_plot_labels</span><span class="p">(</span><span class="n">extra_strain_keys</span><span class="p">)</span>
+
+        <span class="c1"># Set the key-specific plot details</span>
+        <span class="n">set_axes_details</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">x_label</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">plot_info</span><span class="o">.</span><span class="n">irc_coord_label</span><span class="p">,</span> <span class="n">line_style_labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">set_figure_details</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Strain_</span><span class="si">{</span><span class="s1">&#39;_&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">extra_strain_keys</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">savefig</span><span class="o">=</span><span class="n">opj</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;ASM_</span><span class="si">{</span><span class="s1">&#39;_&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">extra_strain_keys</span><span class="p">)</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span></div>
+
+
+    <span class="c1"># ------------------------------------------------------------------------------------------------------------- #</span>
+    <span class="c1"># ------------------------------ Population and Orbital Energy plotting routines ------------------------------ #</span>
+    <span class="c1"># ------------------------------------------------------------------------------------------------------------- #</span>
+
+<div class="viewcode-block" id="Plotter.plot_population">
+<a class="viewcode-back" href="../../../api/pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.Plotter.plot_population">[docs]</a>
+    <span class="nd">@plot_logger</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">plot_population</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plots the population of the orbitals.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            keys (Optional[Tuple[List[str]]], optional): The keys to plot. Defaults to None.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            NotImplementedError: This function is not implemented yet.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;This function is not implemented yet&quot;</span><span class="p">)</span></div>
+
+
+        <span class="c1"># Plots the keys by doing the folowwing: if no keys are specified, it plots all of them in pairs of two</span>
+        <span class="c1"># Otherwise, it plots the specified keys in the format: [list_of_first_object[specified indices], list_of_second_object[specified indices], ...]</span>
+
+        <span class="c1"># # Get the keys to plot. If none are specified, plot all of them in pairs of two</span>
+        <span class="c1"># if keys is None:</span>
+        <span class="c1">#     keys = [(self.objects[i].population.keys(), self.objects[i+1].population.keys()) for i in range(0, len(self.objects), 2)]</span>
+        <span class="c1"># else:</span>
+        <span class="c1">#     keys = [tuple(self.objects[i].population.keys() if j in indices else [] for i in range(len(self.objects))) for j, indices in enumerate(keys)]</span>
+
+        <span class="c1"># # Plot the keys</span>
+        <span class="c1"># for key_pair in keys:</span>
+        <span class="c1">#     x_axes = [obj.get_x_axis(self.plot_info.irc_coord) for obj in self.objects]</span>
+        <span class="c1">#     for i, (line_style, term) in enumerate(zip(self.plot_info.line_styles, key_pair)):</span>
+        <span class="c1">#         for x_axis, colour, obj in zip(x_axes, self.plot_info.colours, self.objects):</span>
+        <span class="c1">#             term_data = obj.population[term]</span>
+        <span class="c1">#             # Plot the data</span>
+        <span class="c1">#             if i == 0:</span>
+        <span class="c1">#                 plt.plot(x_axis, term_data, label=obj.name, color=colour, linestyle=line_style)</span>
+        <span class="c1">#             else:</span>
+        <span class="c1">#                 plt.plot(x_axis, term_data, color=colour, linestyle=line_style)</span>
+
+        <span class="c1"># # Set the plot details</span>
+        <span class="c1"># set_plot_details(savefig=opj(self.path, &quot;population.png&quot;),</span>
+        <span class="c1">#                 title=&quot;Population&quot;,</span>
+        <span class="c1">#                 x_label=self.plot_info.irc_coord_label)</span>
+
+<div class="viewcode-block" id="Plotter.plot_arbitrary_keys">
+<a class="viewcode-back" href="../../../api/pyfrag_plotter.plot.html#pyfrag_plotter.plot.plotter.Plotter.plot_arbitrary_keys">[docs]</a>
+    <span class="nd">@plot_logger</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">plot_arbitrary_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">keys</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">Figure</span><span class="p">,</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Arbitrary plotting function for plotting any key (or a combination of) in the PyFragResultsObject object.</span>
+
+<span class="sd">        This method plots the specified keys for each PyFragResultsObject in the plotter. The plot is saved to the plot directory</span>
+<span class="sd">        with a filename that includes the plotted keys. The plot title and other figure and axes details can be customized.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            title (str): The title of the plot.</span>
+<span class="sd">            keys (List[str]): The keys to plot. These should match the keys in the corresponding dictionary type (asm, eda or extra_strain).</span>
+<span class="sd">            **kwargs: Additional keyword arguments to pass to the `set_axes_details` and `set_figure_details` functions.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            fig (plt.Figure): The figure object.</span>
+<span class="sd">            ax (plt.Axes): The axes object.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If any of the specified keys do not exist in the dictionaries of the PyFragResultsObject objects.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">standard_plot_routine</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+        <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_plot_labels</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span>
+
+        <span class="c1"># Set the key-specific plot details</span>
+        <span class="n">set_axes_details</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">x_label</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">plot_info</span><span class="o">.</span><span class="n">irc_coord_label</span><span class="p">,</span> <span class="n">line_style_labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">set_figure_details</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">savefig</span><span class="o">=</span><span class="n">opj</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;_&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2023, SiebeLeDe.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
